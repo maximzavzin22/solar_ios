@@ -62,6 +62,8 @@
 		22C53B8B2A6EA8EB0014D195 /* MonthYearWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B8A2A6EA8EB0014D195 /* MonthYearWheelPicker.swift */; };
 		22C53B8D2A6EAB410014D195 /* YearWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B8C2A6EAB410014D195 /* YearWheelPicker.swift */; };
 		22C53B8F2A6EAC5D0014D195 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */; };
+		22CE080B2A6FE79900E03A1B /* DeviceTypeSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */; };
+		22CE080D2A6FF73300E03A1B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE080C2A6FF73300E03A1B /* Device.swift */; };
 		DD7F8F6BB25DE47E5D13D85F /* libPods-FusionSolar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BB506999E0EC252C894123 /* libPods-FusionSolar.a */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,8 @@
 		22C53B8A2A6EA8EB0014D195 /* MonthYearWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearWheelPicker.swift; sourceTree = "<group>"; };
 		22C53B8C2A6EAB410014D195 /* YearWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearWheelPicker.swift; sourceTree = "<group>"; };
 		22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
+		22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeSearchView.swift; sourceTree = "<group>"; };
+		22CE080C2A6FF73300E03A1B /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		24BB506999E0EC252C894123 /* libPods-FusionSolar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FusionSolar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DAEB275D4574077463EF0B /* Pods-FusionSolar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FusionSolar.release.xcconfig"; path = "Target Support Files/Pods-FusionSolar/Pods-FusionSolar.release.xcconfig"; sourceTree = "<group>"; };
 		BD7011CF20E7132978DA55FB /* Pods-FusionSolar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FusionSolar.debug.xcconfig"; path = "Target Support Files/Pods-FusionSolar/Pods-FusionSolar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 				22A58A772A6A353000E29710 /* Profile.swift */,
 				22A58A882A6A6BB600E29710 /* Station.swift */,
 				22B3C9F02A6FACA600548753 /* Alarm.swift */,
+				22CE080C2A6FF73300E03A1B /* Device.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 		22B3C9E72A6F7D2E00548753 /* DevicesViews */ = {
 			isa = PBXGroup;
 			children = (
+				22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */,
 			);
 			path = DevicesViews;
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 				22B3C9DD2A6F792100548753 /* MaintenanceView.swift in Sources */,
 				22B3C9E62A6F7CE700548753 /* DevicesView.swift in Sources */,
 				22B3C9EB2A6F81A300548753 /* AlarmsStatisticView.swift in Sources */,
+				22CE080B2A6FE79900E03A1B /* DeviceTypeSearchView.swift in Sources */,
 				22A58A742A691AAC00E29710 /* SignInController.swift in Sources */,
 				22A58A8B2A6A6D9000E29710 /* EmptyDataView.swift in Sources */,
 				22B3C9E02A6F79D000548753 /* MaintenanceNavigationView.swift in Sources */,
@@ -467,6 +474,7 @@
 				22A58A812A6A4B7F00E29710 /* HomeNavigationView.swift in Sources */,
 				22A58A762A6A2CE200E29710 /* LanguageController.swift in Sources */,
 				22A1AA362A6C2687002AA262 /* GraphView.swift in Sources */,
+				22CE080D2A6FF73300E03A1B /* Device.swift in Sources */,
 				22A58A722A6918A100E29710 /* HomeController.swift in Sources */,
 				22A58A542A69155E00E29710 /* ApiService.swift in Sources */,
 				22A58A5C2A6915E300E29710 /* LoadingView.swift in Sources */,

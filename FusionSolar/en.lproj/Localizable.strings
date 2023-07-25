@@ -69,3 +69,8 @@
 "device_name"="Device name";
 "plant_name"="Plant name";
 "occurrence_time"="Occurrence Time";
+"name"="Name";
+"sn"="SN";
+"seacrh_device_name"="Enter a device name";
+"seacrh_device_sn"="Enter a device SN";
+

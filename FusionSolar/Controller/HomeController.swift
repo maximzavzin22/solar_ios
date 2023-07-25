@@ -258,6 +258,7 @@ class HomeController: UIViewController {
         
         homeView.plantsCellView?.plantsSearchView.searchTextField.inputAccessoryView = toolbar
         maintenanceView.alarmsCellView?.alarmSearchView.searchTextField.inputAccessoryView = toolbar
+        devicesView.searchDevicesView.devicesSearchView.searchTextField.inputAccessoryView = toolbar
 //        homeView.inputAccessoryView = toolbar
 //        usernameTextField.delegate = self
 //

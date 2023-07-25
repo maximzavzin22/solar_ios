@@ -69,4 +69,8 @@
 "device_name"="Название устройства";
 "plant_name"="Название установки";
 "occurrence_time"="Время появления";
+"name"="Имя";
+"sn"="SN";
+"seacrh_device_name"="Имя устройства";
+"seacrh_device_sn"="SN устройства";
 
