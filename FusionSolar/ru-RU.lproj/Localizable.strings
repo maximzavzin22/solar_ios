@@ -59,8 +59,14 @@
 "storage_alarms"="PV+Тревоги";
 "tasks"="Задачи";
 "search_alarm"="Enter an alarm name.";
-"critical"="Критическая";
-"major"="Серьёзная";
-"minor"="Незначительная";
-"warning"="Предупреждения";
+"critical"="Критических";
+"major"="Серьёзных";
+"minor"="Низких";
+"warning"="Извещений";
 "total"="Всего";
+"unacked"="Unacked";
+"defect_elimination_status"="Статус устранения дефектов";
+"device_name"="Название устройства";
+"plant_name"="Название установки";
+"occurrence_time"="Время появления";
+

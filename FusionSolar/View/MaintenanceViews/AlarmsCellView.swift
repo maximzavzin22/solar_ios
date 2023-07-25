@@ -7,9 +7,25 @@
 
 import UIKit
 
-class AlarmsCellView: UICollectionViewCell {
+class AlarmsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var maintenanceView: MaintenanceView?
+    
+    var alarms: [Alarm]? {
+        didSet {
+            if let count = self.alarms?.count {
+                if(count > 0) {
+                    emptyView.isHidden = true
+                    collectionView.isHidden = false
+                } else {
+                    emptyView.isHidden = false
+                    collectionView.isHidden = true
+                }
+            }
+            self.initData()
+            self.collectionView.reloadData()
+        }
+    }
     
     //topView
     let topView: UIView = {
@@ -50,6 +66,16 @@ class AlarmsCellView: UICollectionViewCell {
     //
     //
     
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        cv.dataSource = self
+        cv.delegate = self
+        return cv
+    }()
+    
     let emptyView: EmptyDataView = {
         let view = EmptyDataView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +96,7 @@ class AlarmsCellView: UICollectionViewCell {
         self.setupView()
         self.setupTopView()
         self.setupSearchView()
+        self.setupCollectionView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,33 +107,61 @@ class AlarmsCellView: UICollectionViewCell {
         self.maintenanceView?.homeController?.setupToolbar()
     }
     
+    func initData() {
+        var criticalCount = 0
+        var majorCount = 0
+        var minorCount = 0
+        var warningCount = 0
+        if let alarms = self.alarms {
+            for alarm in alarms {
+                if let status = alarm.lev {
+                    if(status == 1) {
+                        criticalCount = criticalCount + 1
+                    }
+                    if(status == 2) {
+                        majorCount = majorCount + 1
+                    }
+                    if(status == 3) {
+                        minorCount = minorCount + 1
+                    }
+                    if(status == 4) {
+                        warningCount = warningCount + 1
+                    }
+                }
+            }
+        }
+        self.alarmsStatisticView.criticalCount = criticalCount
+        self.alarmsStatisticView.majorCount = majorCount
+        self.alarmsStatisticView.minorCount = minorCount
+        self.alarmsStatisticView.warningCount = warningCount
+        self.alarmsStatisticView.initData()
+    }
+    
     func setupView() {
         self.addSubview(topView)
-       // self.addSubview(emptyView)
-       // self.addSubview(collectionView)
+        self.addSubview(emptyView)
+        self.addSubview(collectionView)
         
         self.addConstraintsWithFormat("H:|[v0]|", views: topView)
-       // self.addConstraintsWithFormat("H:[v0(\(143.dp))]", views: emptyView)
-       // self.addConstraintsWithFormat("H:|[v0]|", views: collectionView)
+        self.addConstraintsWithFormat("H:[v0(\(143.dp))]", views: emptyView)
+        self.addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         
-        //self.addConstraintsWithFormat("V:|[v0(\(219.dp))][v1]|", views: topView, collectionView)
-        //self.addConstraintsWithFormat("V:|[v0(\(219.dp))]", views: topView)
-        self.addConstraintsWithFormat("V:|[v0(\(519.dp))]", views: topView) //test
-      //  self.addConstraintsWithFormat("V:[v0(\(154.dp))]", views: emptyView)
+        self.addConstraintsWithFormat("V:|[v0(\(219.dp))][v1]|", views: topView, collectionView)
+        self.addConstraintsWithFormat("V:|[v0(\(219.dp))]", views: topView)
+        self.addConstraintsWithFormat("V:[v0(\(154.dp))]", views: emptyView)
         
-       // emptyView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-       // emptyView.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        emptyView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        emptyView.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
     
     func setupTopView() {
         topView.addSubview(alarmsStatisticView)
         topView.addSubview(searchView)
         
-        topView.addConstraintsWithFormat("H:[v0(\(359.dp))]", views: alarmsStatisticView)
+        topView.addConstraintsWithFormat("H:|[v0]|", views: alarmsStatisticView)
         topView.addConstraintsWithFormat("H:[v0(\(359.dp))]", views: searchView)
         
-        //topView.addConstraintsWithFormat("V:|-\(16.dp)-[v0(\(100.dp))]-\(32.dp)-[v1(\(48.dp))]", views: alarmsStatisticView, searchView)
-        topView.addConstraintsWithFormat("V:|-\(16.dp)-[v0(\(300.dp))]-\(32.dp)-[v1(\(48.dp))]", views: alarmsStatisticView, searchView) //test
+        topView.addConstraintsWithFormat("V:|-\(16.dp)-[v0(\(100.dp))]-\(32.dp)-[v1(\(48.dp))]", views: alarmsStatisticView, searchView)
         
         alarmsStatisticView.centerXAnchor.constraint(equalTo: topView.centerXAnchor).isActive = true
         searchView.centerXAnchor.constraint(equalTo: topView.centerXAnchor).isActive = true
@@ -130,8 +185,121 @@ class AlarmsCellView: UICollectionViewCell {
     
     @objc func filterButtonPress() {
         print("filterButtonPress")
-
     }
+    
+    //collectionView Setup
+    func setupCollectionView() {
+        print("setupCollectionView")
+        collectionView.register(AlarmCellView.self, forCellWithReuseIdentifier: "alarmCellViewId")
+        collectionView.contentInset = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.alarms?.count ?? 0
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let index = indexPath.item
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "alarmCellViewId", for: indexPath) as! AlarmCellView
+        cell.alarm = self.alarms?[index]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 231.dp)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.dp
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16.dp
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Press")
+        let index = indexPath.item
+        
+    }
+    //collectionView Setup end
+    
+    //fot test
+    func generateAlarms() {
+        var alarms = [Alarm]()
+        
+        var alarm1 = Alarm()
+        alarm1.alarmCause = "An unrecoverable fault has occurred in the internal circuit of the device."
+        alarm1.alarmId = 2064
+        alarm1.alarmName = "The device is abnormal."
+        alarm1.alarmType = 2
+        alarm1.causeId = 5
+        alarm1.devName = "Inverter-1"
+        alarm1.devTypeId = 38
+        alarm1.esnCode = "Inverter05"
+        alarm1.lev = 1
+        alarm1.raiseTime = 1667179861000
+        alarm1.repairSuggestion = "Turn off the AC and DC switches, wait for 5 minutes, and then turn on the AC and DC switches. If the fault persists, contact your dealer or technical support."
+        alarm1.stationCode = "NE=33554792"
+        alarm1.stationName = "hzhStation02"
+        alarm1.status = 1
+        alarms.append(alarm1)
+        
+        var alarm2 = Alarm()
+        alarm2.alarmCause = "An unrecoverable fault has occurred in the internal circuit of the device."
+        alarm2.alarmId = 2064
+        alarm2.alarmName = "The device is abnormal."
+        alarm2.alarmType = 2
+        alarm2.causeId = 5
+        alarm2.devName = "Inverter-1"
+        alarm2.devTypeId = 38
+        alarm2.esnCode = "Inverter05"
+        alarm2.lev = 2
+        alarm2.raiseTime = 1667179861000
+        alarm2.repairSuggestion = "Turn off the AC and DC switches, wait for 5 minutes, and then turn on the AC and DC switches. If the fault persists, contact your dealer or technical support."
+        alarm2.stationCode = "NE=33554792"
+        alarm2.stationName = "hzhStation02"
+        alarm2.status = 1
+        alarms.append(alarm2)
+        
+        var alarm3 = Alarm()
+        alarm3.alarmCause = "An unrecoverable fault has occurred in the internal circuit of the device."
+        alarm3.alarmId = 2064
+        alarm3.alarmName = "The device is abnormal."
+        alarm3.alarmType = 2
+        alarm3.causeId = 5
+        alarm3.devName = "Inverter-1"
+        alarm3.devTypeId = 38
+        alarm3.esnCode = "Inverter05"
+        alarm3.lev = 2
+        alarm3.raiseTime = 1667179861000
+        alarm3.repairSuggestion = "Turn off the AC and DC switches, wait for 5 minutes, and then turn on the AC and DC switches. If the fault persists, contact your dealer or technical support."
+        alarm3.stationCode = "NE=33554792"
+        alarm3.stationName = "hzhStation02"
+        alarm3.status = 1
+        alarms.append(alarm3)
+        
+        var alarm4 = Alarm()
+        alarm4.alarmCause = "An unrecoverable fault has occurred in the internal circuit of the device."
+        alarm4.alarmId = 2064
+        alarm4.alarmName = "The device is abnormal."
+        alarm4.alarmType = 2
+        alarm4.causeId = 5
+        alarm4.devName = "Inverter-1"
+        alarm4.devTypeId = 38
+        alarm4.esnCode = "Inverter05"
+        alarm4.lev = 4
+        alarm4.raiseTime = 1667179861000
+        alarm4.repairSuggestion = "Turn off the AC and DC switches, wait for 5 minutes, and then turn on the AC and DC switches. If the fault persists, contact your dealer or technical support."
+        alarm4.stationCode = "NE=33554792"
+        alarm4.stationName = "hzhStation02"
+        alarm4.status = 1
+        alarms.append(alarm4)
+        
+        self.alarms = alarms
+    }
+    //
 }
 
 class AlarmSearchView: UIView {

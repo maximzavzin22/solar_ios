@@ -64,3 +64,8 @@
 "minor"="Minor";
 "warning"="Warning";
 "total"="Total";
+"unacked"="Unacked";
+"defect_elimination_status"="Defect Elimination Status";
+"device_name"="Device name";
+"plant_name"="Plant name";
+"occurrence_time"="Occurrence Time";

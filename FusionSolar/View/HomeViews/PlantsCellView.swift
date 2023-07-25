@@ -309,8 +309,8 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         collectionView.register(PlantCellView.self, forCellWithReuseIdentifier: "plantCellViewId")
         collectionView.contentInset = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
-        
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.stations?.count ?? 0
     }

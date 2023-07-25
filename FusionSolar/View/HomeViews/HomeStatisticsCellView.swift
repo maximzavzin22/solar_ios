@@ -370,7 +370,7 @@ class EnvironmentalView: UIView {
         view.titleLabel.text = NSLocalizedString("standard_coal_saved", comment: "")
         view.backgroundColor = .rgb(208, green: 232, blue: 255)
         view.iconImageView.image = UIImage(named: "image_1")
-        view.animatioName = "zavod"
+        view.animatioName = "stroyka"
         return view
     }()
     
@@ -381,6 +381,7 @@ class EnvironmentalView: UIView {
         view.titleLabel.text = NSLocalizedString("co2_reduced", comment: "")
         view.backgroundColor = .rgb(255, green: 236, blue: 217)
         view.iconImageView.image = UIImage(named: "image_2")
+        view.animatioName = "zavod"
         return view
     }()
     
@@ -391,6 +392,7 @@ class EnvironmentalView: UIView {
         view.titleLabel.text = NSLocalizedString("equivalent_trees_planted", comment: "")
         view.backgroundColor = .rgb(198, green: 255, blue: 218)
         view.iconImageView.image = UIImage(named: "image_3")
+        view.animatioName = "ELKI 2"
         return view
     }()
     //
@@ -439,8 +441,8 @@ class EnvironmentalCellView: UIView {
     var animatioName: String? {
         didSet {
             if let name = animatioName {
-//                animationView.animation = LottieAnimation.named(name)
-//                animationView.play()
+                animationView.animation = LottieAnimation.named(name)
+                animationView.play()
             }
         }
     }
@@ -469,10 +471,10 @@ class EnvironmentalCellView: UIView {
     }()
     
     let animationView: LottieAnimationView = {
-        let view = LottieAnimationView.init(name: "3")
+        let view = LottieAnimationView()//LottieAnimationView.init(name: "ELKI 2")
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-      //  view.animationSpeed = 0.7
+        view.animationSpeed = 0.7
         view.loopMode = .loop
         return view
     }()
@@ -491,22 +493,21 @@ class EnvironmentalCellView: UIView {
     }
     
     func setupView() {
-        self.addSubview(iconImageView)
-//        self.addSubview(animationView)
+//        self.addSubview(iconImageView)
+        self.addSubview(animationView)
         self.addSubview(valueLabel)
         self.addSubview(titleLabel)
         
-        
         self.addConstraintsWithFormat("H:|-\(12.dp)-[v0]", views: valueLabel)
         self.addConstraintsWithFormat("H:|-\(12.dp)-[v0]-\(12.dp)-|", views: titleLabel)
-        self.addConstraintsWithFormat("H:|[v0]|", views: iconImageView)
-//        self.addConstraintsWithFormat("H:|[v0(\(100.dp))]", views: animationView)
+//        self.addConstraintsWithFormat("H:|[v0]|", views: iconImageView)
+        self.addConstraintsWithFormat("H:|[v0(\(100.dp))]|", views: animationView)
         
         self.addConstraintsWithFormat("V:|-\(16.dp)-[v0]-\(6.dp)-[v1]", views: valueLabel, titleLabel)
-        self.addConstraintsWithFormat("V:[v0(\(100.dp))]|", views: iconImageView)
-//        self.addConstraintsWithFormat("V:[v0(\(100.dp))]|", views: animationView)
+//        self.addConstraintsWithFormat("V:[v0(\(100.dp))]|", views: iconImageView)
+        self.addConstraintsWithFormat("V:[v0(\(100.dp))]|", views: animationView)
         
-      //  animationView.play()
+        animationView.play()
     }
 }
  

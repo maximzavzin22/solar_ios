@@ -31,7 +31,8 @@ class HomeController: UIViewController {
                     self.maintenanceView.isHidden = false
                     self.devicesView.isHidden = true
                     self.profileView.isHidden = true
-                    self.maintenanceView.alarmsCellView?.alarmsStatisticView.setupChartView()
+                    //self.maintenanceView.alarmsCellView?.alarmsStatisticView.initData()
+                    self.maintenanceView.alarmsCellView?.generateAlarms() //for test need fetch api method
                 }
                 if(page == 2) {
                     self.homeView.isHidden = true
