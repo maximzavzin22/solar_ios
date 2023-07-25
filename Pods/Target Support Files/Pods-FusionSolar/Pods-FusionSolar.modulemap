@@ -1,0 +1,6 @@
+module Pods_FusionSolar {
+  umbrella header "Pods-FusionSolar-umbrella.h"
+
+  export *
+  module * { export * }
+}
