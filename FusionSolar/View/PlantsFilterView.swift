@@ -543,11 +543,24 @@ class PlantsFilterView: UIView {
     
     @objc func resetButtonPress() {
         print("resetButtonPress")
+        self.unSelectAll()
+        self.cap1FilterCellView.isSelected = true
+        self.unSelectAllConf()
+        self.conf1FilterCellView.isSelected = true
+        self.homeController?.homeView.plantsCellView?.isFilter = false
+        self.fromDate = nil
+        self.toDate = nil
+        self.fromFilterCellView.titleLabel.text = NSLocalizedString("start_time", comment: "")
+        self.fromFilterCellView.isSelected = false
+        self.toFilterCellView.titleLabel.text = NSLocalizedString("end_time", comment: "")
+        self.toFilterCellView.isSelected = false
+        self.isDatePickerShow = false
         self.hideAnimation()
     }
     
     @objc func confirmButtonPress() {
         print("confirmButtonPress")
+        self.isDatePickerShow = false
         self.hideAnimation()
         if(!(self.cap1FilterCellView.isSelected ?? false) || !(self.conf1FilterCellView.isSelected ?? false)) {
             print("confirmButtonPress")

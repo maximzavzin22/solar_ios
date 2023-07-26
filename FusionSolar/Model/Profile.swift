@@ -8,5 +8,7 @@
 import UIKit
 
 class Profile: NSObject {
-    
+    var iconImage: String?
+    var login: String?
+    var email: String?
 }

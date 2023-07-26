@@ -221,6 +221,9 @@ class AlarmsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Press")
         let index = indexPath.item
+        if let alarm = self.alarms?[index] {
+            self.maintenanceView?.homeController?.openAlarmDetailController(alarm: alarm)
+        }
         
     }
     //collectionView Setup end
@@ -249,7 +252,7 @@ class AlarmsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         var alarm2 = Alarm()
         alarm2.alarmCause = "An unrecoverable fault has occurred in the internal circuit of the device."
         alarm2.alarmId = 2064
-        alarm2.alarmName = "The device is abnormal."
+        alarm2.alarmName = "Abnormal communication between management system and equipment"
         alarm2.alarmType = 2
         alarm2.causeId = 5
         alarm2.devName = "Inverter-1"
@@ -257,7 +260,7 @@ class AlarmsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         alarm2.esnCode = "Inverter05"
         alarm2.lev = 2
         alarm2.raiseTime = 1667179861000
-        alarm2.repairSuggestion = "Turn off the AC and DC switches, wait for 5 minutes, and then turn on the AC and DC switches. If the fault persists, contact your dealer or technical support."
+        alarm2.repairSuggestion = "Scenario 1: device connection through a network cable.\n1,Check whether the network and cable connection of the router are normal.\n2,Check whether the router network can access the public network.\nScenario 2: device connection through WiFi.\n1,Check whether the network and cable connection of the router are normal.\n2,Check whether the router network can access the public network.\n\nScenario 3:device connection through a 4G network. Check whether the SIM card is inserted improperly or in arrears, ot its network is abnormal."
         alarm2.stationCode = "NE=33554792"
         alarm2.stationName = "hzhStation02"
         alarm2.status = 1

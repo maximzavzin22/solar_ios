@@ -7,11 +7,40 @@
 
 import UIKit
 
-class DevicesView: UIView {
+class DevicesView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var homeController: HomeController?
     
     var topSafeArea: CGFloat = 0.0
+    
+    var devices: [Device]? {
+        didSet {
+            if let count = self.devices?.count {
+                if(count > 0) {
+                    emptyView.isHidden = true
+                    collectionView.isHidden = false
+                } else {
+                    emptyView.isHidden = false
+                    collectionView.isHidden = true
+                }
+            }
+            self.collectionView.reloadData()
+        }
+    }
+    
+    var isFilter: Bool? {
+        didSet {
+            if(isFilter ?? false) {
+                print("isFilter true")
+                let image = UIImage(named: "filter_active")?.withRenderingMode(.alwaysOriginal)
+                searchDevicesView.filterButton.setImage(image, for: .normal)
+            } else {
+                print("isFilter false")
+                let image = UIImage(named: "filter")?.withRenderingMode(.alwaysOriginal)
+                searchDevicesView.filterButton.setImage(image, for: .normal)
+            }
+        }
+    }
     
     //topView
     let topView: UIView = {
@@ -36,6 +65,16 @@ class DevicesView: UIView {
         return view
     }()
     //
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        cv.dataSource = self
+        cv.delegate = self
+        return cv
+    }()
     
     let emptyView: EmptyDataView = {
         let view = EmptyDataView()
@@ -63,6 +102,7 @@ class DevicesView: UIView {
         
         self.setupView()
         self.setupTopView()
+        self.setupCollectionView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,10 +112,12 @@ class DevicesView: UIView {
     func setupView() {
         self.addSubview(topView)
         self.addSubview(emptyView)
+        self.addSubview(collectionView)
         self.addSubview(deviceTypeSearchView)
         
         self.addConstraintsWithFormat("H:|[v0]|", views: topView)
         self.addConstraintsWithFormat("H:[v0(\(143.dp))]", views: emptyView)
+        self.addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         self.addConstraintsWithFormat("H:|-\(35.dp)-[v0(\(170.dp))]", views: deviceTypeSearchView)
         
         let window = UIApplication.shared.keyWindow
@@ -87,6 +129,8 @@ class DevicesView: UIView {
         
         deviceTypeSearchView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: -8.dp).isActive = true
         deviceTypeSearchView.isHidden = true
+        collectionView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         emptyView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         emptyView.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
@@ -109,6 +153,102 @@ class DevicesView: UIView {
         
         searchDevicesView.typeValue = "name"
         searchDevicesView.devicesView = self
+    }
+    
+    //collectionView Setup
+    func setupCollectionView() {
+        print("setupCollectionView")
+        collectionView.register(DeviceCellView.self, forCellWithReuseIdentifier: "deviceCellViewId")
+        collectionView.register(DeviceInverterCellView.self, forCellWithReuseIdentifier: "deviceInverterCellViewId")
+        collectionView.contentInset = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.devices?.count ?? 0
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let index = indexPath.item
+        let device = self.devices?[index]
+        if(device?.devTypeId ?? 0 == 1) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deviceInverterCellViewId", for: indexPath) as! DeviceInverterCellView
+            cell.device = device
+            cell.status = "running"
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deviceCellViewId", for: indexPath) as! DeviceCellView
+            cell.device = device
+            cell.status = "offline"
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let index = indexPath.item
+        let devTypeId = self.devices?[index].devTypeId ?? 0
+        if(devTypeId == 1) {
+            return CGSize(width: collectionView.frame.width, height: 260.dp)
+        } else {
+            return CGSize(width: collectionView.frame.width, height: 202.dp)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.dp
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16.dp
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Press")
+        let index = indexPath.item
+        
+    }
+    //collectionView Setup end
+    
+    func generateDevices() {
+        var devices = [Device]()
+        
+        var device1 = Device()
+        device1.id = -214543629611879
+        device1.devName = "5fbfk4"
+        device1.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
+        device1.esnCode = "5fbfk4"
+        device1.devTypeId = 1
+        device1.softwareVersion = "V100R001PC666"
+        device1.invType = "SUN2000-17KTL"
+        device1.longitude = 0
+        device1.latitude = 0
+        devices.append(device1)
+        
+        var device2 = Device()
+        device2.id = -214543629611879
+        device2.devName = "5fbfk4"
+        device2.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
+        device2.esnCode = "5fbfk4"
+        device2.devTypeId = 62
+        device2.softwareVersion = "V100R001PC666"
+        device2.invType = "SUN2000-17KTL"
+        device2.longitude = 0
+        device2.latitude = 0
+        devices.append(device2)
+        
+        var device3 = Device()
+        device3.id = -214543629611879
+        device3.devName = "5fbfk4"
+        device3.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
+        device3.esnCode = "5fbfk4"
+        device3.devTypeId = 1
+        device3.softwareVersion = "V100R001PC666"
+        device3.invType = "SUN2000-17KTL"
+        device3.longitude = 0
+        device3.latitude = 0
+        devices.append(device3)
+        
+        self.devices = devices
     }
 }
 
@@ -188,8 +328,6 @@ class SearchDevicesView: UIView {
         
         self.setupView()
         self.setupTypeView()
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -222,10 +360,16 @@ class SearchDevicesView: UIView {
         let typeViewTap = UITapGestureRecognizer(target: self, action: #selector(self.typeViewPress))
         typeView.isUserInteractionEnabled = true
         typeView.addGestureRecognizer(typeViewTap)
+        
+        filterButton.addTarget(self, action: #selector(self.filterButtonPress), for: .touchUpInside)
     }
     
     @objc func typeViewPress() {
         self.devicesView?.showDeviceTypeSearchView()
+    }
+    
+    @objc func filterButtonPress() {
+        self.devicesView?.homeController?.openDeviceFilterView()
     }
     
     func setupTypeView() {

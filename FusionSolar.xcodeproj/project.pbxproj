@@ -64,6 +64,16 @@
 		22C53B8F2A6EAC5D0014D195 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */; };
 		22CE080B2A6FE79900E03A1B /* DeviceTypeSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */; };
 		22CE080D2A6FF73300E03A1B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE080C2A6FF73300E03A1B /* Device.swift */; };
+		22ED5C852A70C6A3007C8AB1 /* DeviceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C842A70C6A3007C8AB1 /* DeviceCellView.swift */; };
+		22ED5C872A70CA2C007C8AB1 /* DeviceInverterCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C862A70CA2C007C8AB1 /* DeviceInverterCellView.swift */; };
+		22ED5C892A70D7AC007C8AB1 /* DeviceFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C882A70D7AC007C8AB1 /* DeviceFilterView.swift */; };
+		22ED5C8C2A70ED5E007C8AB1 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C8B2A70ED5E007C8AB1 /* SettingsController.swift */; };
+		22ED5C8E2A70F4C9007C8AB1 /* ChangeLanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C8D2A70F4C9007C8AB1 /* ChangeLanguageController.swift */; };
+		22ED5C902A70F96D007C8AB1 /* LogoutQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C8F2A70F96D007C8AB1 /* LogoutQuestionView.swift */; };
+		22ED5C922A712BB6007C8AB1 /* TasksNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C912A712BB6007C8AB1 /* TasksNavigationView.swift */; };
+		22ED5C942A7136B6007C8AB1 /* InspectionTasksCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C932A7136B6007C8AB1 /* InspectionTasksCellView.swift */; };
+		22ED5C962A7136FB007C8AB1 /* EliminationTasksCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C952A7136FB007C8AB1 /* EliminationTasksCellView.swift */; };
+		22ED5C982A713DF7007C8AB1 /* AlarmDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C972A713DF7007C8AB1 /* AlarmDetailController.swift */; };
 		DD7F8F6BB25DE47E5D13D85F /* libPods-FusionSolar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BB506999E0EC252C894123 /* libPods-FusionSolar.a */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +146,16 @@
 		22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeSearchView.swift; sourceTree = "<group>"; };
 		22CE080C2A6FF73300E03A1B /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		22ED5C842A70C6A3007C8AB1 /* DeviceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellView.swift; sourceTree = "<group>"; };
+		22ED5C862A70CA2C007C8AB1 /* DeviceInverterCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInverterCellView.swift; sourceTree = "<group>"; };
+		22ED5C882A70D7AC007C8AB1 /* DeviceFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFilterView.swift; sourceTree = "<group>"; };
+		22ED5C8B2A70ED5E007C8AB1 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		22ED5C8D2A70F4C9007C8AB1 /* ChangeLanguageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageController.swift; sourceTree = "<group>"; };
+		22ED5C8F2A70F96D007C8AB1 /* LogoutQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutQuestionView.swift; sourceTree = "<group>"; };
+		22ED5C912A712BB6007C8AB1 /* TasksNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksNavigationView.swift; sourceTree = "<group>"; };
+		22ED5C932A7136B6007C8AB1 /* InspectionTasksCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionTasksCellView.swift; sourceTree = "<group>"; };
+		22ED5C952A7136FB007C8AB1 /* EliminationTasksCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationTasksCellView.swift; sourceTree = "<group>"; };
+		22ED5C972A713DF7007C8AB1 /* AlarmDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailController.swift; sourceTree = "<group>"; };
 		24BB506999E0EC252C894123 /* libPods-FusionSolar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FusionSolar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DAEB275D4574077463EF0B /* Pods-FusionSolar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FusionSolar.release.xcconfig"; path = "Target Support Files/Pods-FusionSolar/Pods-FusionSolar.release.xcconfig"; sourceTree = "<group>"; };
 		BD7011CF20E7132978DA55FB /* Pods-FusionSolar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FusionSolar.debug.xcconfig"; path = "Target Support Files/Pods-FusionSolar/Pods-FusionSolar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -235,6 +255,7 @@
 				22A58A7F2A6A4B6B00E29710 /* HomeViews */,
 				22B3C9DE2A6F79C300548753 /* MaintenanceViews */,
 				22B3C9E72A6F7D2E00548753 /* DevicesViews */,
+				22ED5C8A2A70DDDE007C8AB1 /* ProfileViews */,
 				22A58A592A6915CD00E29710 /* SimpleErrorView.swift */,
 				22A58A5B2A6915E300E29710 /* LoadingView.swift */,
 				22A58A7B2A6A3C6800E29710 /* MenuBar.swift */,
@@ -246,6 +267,7 @@
 				22B3C9DC2A6F792100548753 /* MaintenanceView.swift */,
 				22B3C9E52A6F7CE700548753 /* DevicesView.swift */,
 				22B3C9E82A6F7D4200548753 /* ProfileView.swift */,
+				22ED5C8F2A70F96D007C8AB1 /* LogoutQuestionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -257,6 +279,9 @@
 				22A58A712A6918A100E29710 /* HomeController.swift */,
 				22A58A732A691AAC00E29710 /* SignInController.swift */,
 				22A58A752A6A2CE200E29710 /* LanguageController.swift */,
+				22ED5C8B2A70ED5E007C8AB1 /* SettingsController.swift */,
+				22ED5C8D2A70F4C9007C8AB1 /* ChangeLanguageController.swift */,
+				22ED5C972A713DF7007C8AB1 /* AlarmDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -304,6 +329,9 @@
 				22B3C9E32A6F7B5700548753 /* TasksCellView.swift */,
 				22B3C9EA2A6F81A300548753 /* AlarmsStatisticView.swift */,
 				22B3C9F62A6FB01C00548753 /* AlarmCellView.swift */,
+				22ED5C912A712BB6007C8AB1 /* TasksNavigationView.swift */,
+				22ED5C932A7136B6007C8AB1 /* InspectionTasksCellView.swift */,
+				22ED5C952A7136FB007C8AB1 /* EliminationTasksCellView.swift */,
 			);
 			path = MaintenanceViews;
 			sourceTree = "<group>";
@@ -312,6 +340,9 @@
 			isa = PBXGroup;
 			children = (
 				22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */,
+				22ED5C842A70C6A3007C8AB1 /* DeviceCellView.swift */,
+				22ED5C862A70CA2C007C8AB1 /* DeviceInverterCellView.swift */,
+				22ED5C882A70D7AC007C8AB1 /* DeviceFilterView.swift */,
 			);
 			path = DevicesViews;
 			sourceTree = "<group>";
@@ -323,6 +354,13 @@
 				22C53B842A6E8F0B0014D195 /* XYMarkerView.swift */,
 			);
 			path = ChartComponents;
+			sourceTree = "<group>";
+		};
+		22ED5C8A2A70DDDE007C8AB1 /* ProfileViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileViews;
 			sourceTree = "<group>";
 		};
 		D0D73EAA87049D16FCBB5EDD /* Frameworks */ = {
@@ -451,19 +489,26 @@
 				22A58A782A6A353000E29710 /* Profile.swift in Sources */,
 				22A58A582A6915BA00E29710 /* CustomError.swift in Sources */,
 				22A58A5A2A6915CD00E29710 /* SimpleErrorView.swift in Sources */,
+				22ED5C922A712BB6007C8AB1 /* TasksNavigationView.swift in Sources */,
 				22B3C9DD2A6F792100548753 /* MaintenanceView.swift in Sources */,
+				22ED5C892A70D7AC007C8AB1 /* DeviceFilterView.swift in Sources */,
 				22B3C9E62A6F7CE700548753 /* DevicesView.swift in Sources */,
+				22ED5C902A70F96D007C8AB1 /* LogoutQuestionView.swift in Sources */,
 				22B3C9EB2A6F81A300548753 /* AlarmsStatisticView.swift in Sources */,
+				22ED5C962A7136FB007C8AB1 /* EliminationTasksCellView.swift in Sources */,
 				22CE080B2A6FE79900E03A1B /* DeviceTypeSearchView.swift in Sources */,
 				22A58A742A691AAC00E29710 /* SignInController.swift in Sources */,
 				22A58A8B2A6A6D9000E29710 /* EmptyDataView.swift in Sources */,
+				22ED5C942A7136B6007C8AB1 /* InspectionTasksCellView.swift in Sources */,
 				22B3C9E02A6F79D000548753 /* MaintenanceNavigationView.swift in Sources */,
 				22A1AA342A6BD8C9002AA262 /* StatisticPlantCellView.swift in Sources */,
 				22B3C9E22A6F7AFC00548753 /* AlarmsCellView.swift in Sources */,
+				22ED5C8E2A70F4C9007C8AB1 /* ChangeLanguageController.swift in Sources */,
 				22B3C9F72A6FB01C00548753 /* AlarmCellView.swift in Sources */,
 				22A58A382A6914A400E29710 /* AppDelegate.swift in Sources */,
 				22A58A7C2A6A3C6800E29710 /* MenuBar.swift in Sources */,
 				22C53B892A6EA7C90014D195 /* MonthPickerView.swift in Sources */,
+				22ED5C852A70C6A3007C8AB1 /* DeviceCellView.swift in Sources */,
 				22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */,
 				22A58A832A6A516100E29710 /* PlantsCellView.swift in Sources */,
 				22A58A522A69154500E29710 /* Extensions.swift in Sources */,
@@ -476,9 +521,12 @@
 				22A1AA362A6C2687002AA262 /* GraphView.swift in Sources */,
 				22CE080D2A6FF73300E03A1B /* Device.swift in Sources */,
 				22A58A722A6918A100E29710 /* HomeController.swift in Sources */,
+				22ED5C872A70CA2C007C8AB1 /* DeviceInverterCellView.swift in Sources */,
 				22A58A542A69155E00E29710 /* ApiService.swift in Sources */,
+				22ED5C982A713DF7007C8AB1 /* AlarmDetailController.swift in Sources */,
 				22A58A5C2A6915E300E29710 /* LoadingView.swift in Sources */,
 				22B3C9E92A6F7D4200548753 /* ProfileView.swift in Sources */,
+				22ED5C8C2A70ED5E007C8AB1 /* SettingsController.swift in Sources */,
 				22C53B8B2A6EA8EB0014D195 /* MonthYearWheelPicker.swift in Sources */,
 				22B3C9F12A6FACA600548753 /* Alarm.swift in Sources */,
 				22C53B8F2A6EAC5D0014D195 /* YearPickerView.swift in Sources */,

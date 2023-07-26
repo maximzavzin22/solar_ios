@@ -39,6 +39,7 @@ class HomeController: UIViewController {
                     self.maintenanceView.isHidden = true
                     self.devicesView.isHidden = false
                     self.profileView.isHidden = true
+                    self.devicesView.generateDevices()
                 }
                 if(page == 3) {
                     self.homeView.isHidden = true
@@ -109,6 +110,13 @@ class HomeController: UIViewController {
         return view
     }()
     
+    lazy var deviceFilterView: DeviceFilterView = {
+        let view = DeviceFilterView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.homeController = self
+        return view
+    }()
+    
     lazy var datePickerView: DatePickerView = {
         let view = DatePickerView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -146,6 +154,7 @@ class HomeController: UIViewController {
         self.view.addSubview(contentView)
         self.view.addSubview(menuBar)
         self.view.addSubview(plantsFilterView)
+        self.view.addSubview(deviceFilterView)
         self.view.addSubview(datePickerView)
         self.view.addSubview(monthPickerView)
         self.view.addSubview(yearPickerView)
@@ -153,12 +162,14 @@ class HomeController: UIViewController {
         self.view.addConstraintsWithFormat("H:|[v0]|", views: contentView)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: plantsFilterView)
+        self.view.addConstraintsWithFormat("H:|[v0]|", views: deviceFilterView)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: datePickerView)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: monthPickerView)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: yearPickerView)
         
         self.view.addConstraintsWithFormat("V:[v0(\(66.dp))]", views: menuBar)
         self.view.addConstraintsWithFormat("V:|[v0]|", views: plantsFilterView)
+        self.view.addConstraintsWithFormat("V:|[v0]|", views: deviceFilterView)
         self.view.addConstraintsWithFormat("V:|[v0]|", views: datePickerView)
         self.view.addConstraintsWithFormat("V:|[v0]|", views: monthPickerView)
         self.view.addConstraintsWithFormat("V:|[v0]|", views: yearPickerView)
@@ -168,6 +179,7 @@ class HomeController: UIViewController {
         menuBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         plantsFilterView.isHidden = true
+        deviceFilterView.isHidden = true
         datePickerView.isHidden = true
         monthPickerView.isHidden = true
         yearPickerView.isHidden = true
@@ -199,6 +211,11 @@ class HomeController: UIViewController {
         self.plantsFilterView.showAnimaton()
     }
     
+    func openDeviceFilterView() {
+        self.deviceFilterView.isHidden = false
+        self.deviceFilterView.showAnimaton()
+    }
+    
     func openDatePickerView(selectedDate: Date, graphView: GraphView) {
         self.datePickerView.selectedDate = selectedDate
         self.datePickerView.graphView = graphView
@@ -218,6 +235,19 @@ class HomeController: UIViewController {
         self.yearPickerView.graphView = graphView
         self.yearPickerView.isHidden = false
         self.yearPickerView.showAnimaton()
+    }
+    
+    func openSettingsController() {
+        let settingsController = SettingsController()
+        settingsController.modalPresentationStyle = .fullScreen
+        self.present(settingsController, animated: true)
+    }
+    
+    func openAlarmDetailController(alarm: Alarm) {
+        let alarmDetailController = AlarmDetailController()
+        alarmDetailController.modalPresentationStyle = .fullScreen
+        alarmDetailController.alarm = alarm
+        self.present(alarmDetailController, animated: true)
     }
     
     //Error and Loading views
@@ -259,6 +289,7 @@ class HomeController: UIViewController {
         homeView.plantsCellView?.plantsSearchView.searchTextField.inputAccessoryView = toolbar
         maintenanceView.alarmsCellView?.alarmSearchView.searchTextField.inputAccessoryView = toolbar
         devicesView.searchDevicesView.devicesSearchView.searchTextField.inputAccessoryView = toolbar
+        maintenanceView.tasksCellView?.inspectionTasksCellView?.searchView.searchTextField.inputAccessoryView = toolbar
 //        homeView.inputAccessoryView = toolbar
 //        usernameTextField.delegate = self
 //
