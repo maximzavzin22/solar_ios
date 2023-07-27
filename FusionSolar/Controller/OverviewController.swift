@@ -114,6 +114,27 @@ class OverviewController: UIViewController {
         return view
     }()
     
+    lazy var datePickerView: DatePickerView = {
+        let view = DatePickerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.overviewController = self
+        return view
+    }()
+    
+    lazy var monthPickerView: MonthPickerView = {
+        let view = MonthPickerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.overviewController = self
+        return view
+    }()
+    
+    lazy var yearPickerView: YearPickerView = {
+        let view = YearPickerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.overviewController = self
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,18 +150,31 @@ class OverviewController: UIViewController {
         self.view.addSubview(contentView)
         self.view.addSubview(menuBar)
         self.view.addSubview(headerView)
+        self.view.addSubview(datePickerView)
+        self.view.addSubview(monthPickerView)
+        self.view.addSubview(yearPickerView)
         
         self.view.addConstraintsWithFormat("H:|[v0]|", views: contentView)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: headerView)
+        self.view.addConstraintsWithFormat("H:|[v0]|", views: datePickerView)
+        self.view.addConstraintsWithFormat("H:|[v0]|", views: monthPickerView)
+        self.view.addConstraintsWithFormat("H:|[v0]|", views: yearPickerView)
         
         self.view.addConstraintsWithFormat("V:[v0(\(66.dp))]", views: menuBar)
         self.view.addConstraintsWithFormat("V:[v0(\(46.dp))]", views: headerView)
+        self.view.addConstraintsWithFormat("V:|[v0]|", views: datePickerView)
+        self.view.addConstraintsWithFormat("V:|[v0]|", views: monthPickerView)
+        self.view.addConstraintsWithFormat("V:|[v0]|", views: yearPickerView)
         
         contentView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.menuBar.topAnchor).isActive = true
         menuBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 6.dp).isActive = true
+        
+        datePickerView.isHidden = true
+        monthPickerView.isHidden = true
+        yearPickerView.isHidden = true
     }
     
     func setupHeaderView() {
@@ -190,5 +224,26 @@ class OverviewController: UIViewController {
         alarmDetailController.modalPresentationStyle = .fullScreen
         alarmDetailController.alarm = alarm
         self.present(alarmDetailController, animated: true)
+    }
+    
+    func openDatePickerView(selectedDate: Date, stationChartsView: StationChartsView) {
+        self.datePickerView.selectedDate = selectedDate
+        self.datePickerView.stationChartsView = stationChartsView
+        self.datePickerView.isHidden = false
+        self.datePickerView.showAnimaton()
+    }
+    
+    func openMonthPickerView(selectedDate: Date, stationChartsView: StationChartsView) {
+        self.monthPickerView.selectedDate = selectedDate
+        self.monthPickerView.stationChartsView = stationChartsView
+        self.monthPickerView.isHidden = false
+        self.monthPickerView.showAnimaton()
+    }
+    
+    func openYearPickerView(selectedDate: Date, stationChartsView: StationChartsView) {
+        self.yearPickerView.selectedDate = selectedDate
+        self.yearPickerView.stationChartsView = stationChartsView
+        self.yearPickerView.isHidden = false
+        self.yearPickerView.showAnimaton()
     }
 }

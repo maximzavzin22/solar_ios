@@ -20,6 +20,7 @@
 		222D33F62A7253E000004453 /* 3 shara.json in Resources */ = {isa = PBXBuildFile; fileRef = 222D33F42A7253E000004453 /* 3 shara.json */; };
 		222D33F82A72775400004453 /* 3 shara faulty.json in Resources */ = {isa = PBXBuildFile; fileRef = 222D33F72A72775400004453 /* 3 shara faulty.json */; };
 		222D33FA2A72912200004453 /* StationChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33F92A72912200004453 /* StationChartsView.swift */; };
+		2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245356D2A72E056007F5708 /* BasicInfoController.swift */; };
 		22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */; };
 		22A1AA322A6BBADD002AA262 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 22A1AA312A6BBADD002AA262 /* empty.json */; };
 		22A1AA342A6BD8C9002AA262 /* StatisticPlantCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1AA332A6BD8C9002AA262 /* StatisticPlantCellView.swift */; };
@@ -104,6 +105,7 @@
 		222D33F42A7253E000004453 /* 3 shara.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3 shara.json"; sourceTree = "<group>"; };
 		222D33F72A72775400004453 /* 3 shara faulty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3 shara faulty.json"; sourceTree = "<group>"; };
 		222D33F92A72912200004453 /* StationChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationChartsView.swift; sourceTree = "<group>"; };
+		2245356D2A72E056007F5708 /* BasicInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoController.swift; sourceTree = "<group>"; };
 		22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsFilterView.swift; sourceTree = "<group>"; };
 		22A1AA312A6BBADD002AA262 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		22A1AA332A6BD8C9002AA262 /* StatisticPlantCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticPlantCellView.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				22ED5C8D2A70F4C9007C8AB1 /* ChangeLanguageController.swift */,
 				22ED5C972A713DF7007C8AB1 /* AlarmDetailController.swift */,
 				222D33E02A7222F700004453 /* OverviewController.swift */,
+				2245356D2A72E056007F5708 /* BasicInfoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */,
 				22A58A5E2A69160200E29710 /* SplashController.swift in Sources */,
 				222D33EC2A722C0000004453 /* StationDevicesView.swift in Sources */,
 				22A58A7E2A6A4A5D00E29710 /* HomeView.swift in Sources */,

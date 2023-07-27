@@ -321,9 +321,13 @@ class GraphView: UIView {
             if(newDay > toDay) {
                 print("needs disable button")
                 self.rightButton.isEnabled = false
+                let image = UIImage(named: "arrow_right_gray")?.withRenderingMode(.alwaysOriginal)
+                self.rightButton.setImage(image, for: .normal)
             } else {
                 print("needs active button")
                 self.rightButton.isEnabled = true
+                let image = UIImage(named: "arrow_right")?.withRenderingMode(.alwaysOriginal)
+                self.rightButton.setImage(image, for: .normal)
             }
         }
         
@@ -405,7 +409,6 @@ class GraphView: UIView {
                             } else {
                                 days.append("0\(value)")
                             }
-                            
                         }
                         axisValue = days
                         granularity = 2.0
@@ -538,27 +541,27 @@ class GraphView: UIView {
     }
     
     func getDaysInMonth(month: Int, year: Int) -> Int? {
-            let calendar = Calendar.current
+        let calendar = Calendar.current
 
-            var startComps = DateComponents()
-            startComps.day = 1
-            startComps.month = month
-            startComps.year = year
+        var startComps = DateComponents()
+        startComps.day = 1
+        startComps.month = month
+        startComps.year = year
 
-            var endComps = DateComponents()
-            endComps.day = 1
-            endComps.month = month == 12 ? 1 : month + 1
-            endComps.year = month == 12 ? year + 1 : year
-
-            
-            let startDate = calendar.date(from: startComps)!
-            let endDate = calendar.date(from:endComps)!
+        var endComps = DateComponents()
+        endComps.day = 1
+        endComps.month = month == 12 ? 1 : month + 1
+        endComps.year = month == 12 ? year + 1 : year
 
             
-            let diff = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
+        let startDate = calendar.date(from: startComps)!
+        let endDate = calendar.date(from:endComps)!
 
-            return diff.day
-        }
+            
+        let diff = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
+
+        return diff.day
+    }
     
 }
 

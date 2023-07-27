@@ -10,7 +10,9 @@ import UIKit
 class DatePickerView: UIView {
     
     var homeController: HomeController?
+    var overviewController: OverviewController?
     var graphView: GraphView?
+    var stationChartsView: StationChartsView?
     
     var selectedDate: Date? {
         didSet {
@@ -186,6 +188,7 @@ class DatePickerView: UIView {
     @objc func okButtonPress() {
         print("okButtonPress")
         self.graphView?.selectedDate = self.selectedDate
+        self.stationChartsView?.selectedDate = self.selectedDate
         self.hideAnimation()
     }
     
