@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		222D33E12A7222F700004453 /* OverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E02A7222F700004453 /* OverviewController.swift */; };
+		222D33E32A72236F00004453 /* OverviewMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E22A72236F00004453 /* OverviewMenuBar.swift */; };
+		222D33E62A722A9400004453 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E52A722A9400004453 /* OverviewView.swift */; };
+		222D33E82A722BB300004453 /* StationStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E72A722BB300004453 /* StationStatisticsView.swift */; };
+		222D33EA2A722BE000004453 /* StationLayotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E92A722BE000004453 /* StationLayotView.swift */; };
+		222D33EC2A722C0000004453 /* StationDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33EB2A722C0000004453 /* StationDevicesView.swift */; };
+		222D33EE2A72313B00004453 /* StationRealKpi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33ED2A72313B00004453 /* StationRealKpi.swift */; };
+		222D33F02A72361F00004453 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33EF2A72361F00004453 /* WeatherView.swift */; };
+		222D33F22A72365900004453 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33F12A72365900004453 /* Weather.swift */; };
+		222D33F52A7253E000004453 /* 3 shara off.json in Resources */ = {isa = PBXBuildFile; fileRef = 222D33F32A7253E000004453 /* 3 shara off.json */; };
+		222D33F62A7253E000004453 /* 3 shara.json in Resources */ = {isa = PBXBuildFile; fileRef = 222D33F42A7253E000004453 /* 3 shara.json */; };
+		222D33F82A72775400004453 /* 3 shara faulty.json in Resources */ = {isa = PBXBuildFile; fileRef = 222D33F72A72775400004453 /* 3 shara faulty.json */; };
+		222D33FA2A72912200004453 /* StationChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33F92A72912200004453 /* StationChartsView.swift */; };
 		22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */; };
 		22A1AA322A6BBADD002AA262 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 22A1AA312A6BBADD002AA262 /* empty.json */; };
 		22A1AA342A6BD8C9002AA262 /* StatisticPlantCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1AA332A6BD8C9002AA262 /* StatisticPlantCellView.swift */; };
@@ -78,6 +91,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		222D33E02A7222F700004453 /* OverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewController.swift; sourceTree = "<group>"; };
+		222D33E22A72236F00004453 /* OverviewMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewMenuBar.swift; sourceTree = "<group>"; };
+		222D33E52A722A9400004453 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
+		222D33E72A722BB300004453 /* StationStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationStatisticsView.swift; sourceTree = "<group>"; };
+		222D33E92A722BE000004453 /* StationLayotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationLayotView.swift; sourceTree = "<group>"; };
+		222D33EB2A722C0000004453 /* StationDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDevicesView.swift; sourceTree = "<group>"; };
+		222D33ED2A72313B00004453 /* StationRealKpi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRealKpi.swift; sourceTree = "<group>"; };
+		222D33EF2A72361F00004453 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		222D33F12A72365900004453 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		222D33F32A7253E000004453 /* 3 shara off.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3 shara off.json"; sourceTree = "<group>"; };
+		222D33F42A7253E000004453 /* 3 shara.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3 shara.json"; sourceTree = "<group>"; };
+		222D33F72A72775400004453 /* 3 shara faulty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3 shara faulty.json"; sourceTree = "<group>"; };
+		222D33F92A72912200004453 /* StationChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationChartsView.swift; sourceTree = "<group>"; };
 		22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsFilterView.swift; sourceTree = "<group>"; };
 		22A1AA312A6BBADD002AA262 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		22A1AA332A6BD8C9002AA262 /* StatisticPlantCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticPlantCellView.swift; sourceTree = "<group>"; };
@@ -182,6 +208,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		222D33E42A722A7A00004453 /* OverviewViews */ = {
+			isa = PBXGroup;
+			children = (
+				222D33E52A722A9400004453 /* OverviewView.swift */,
+				222D33E72A722BB300004453 /* StationStatisticsView.swift */,
+				222D33E92A722BE000004453 /* StationLayotView.swift */,
+				222D33EB2A722C0000004453 /* StationDevicesView.swift */,
+				222D33F92A72912200004453 /* StationChartsView.swift */,
+			);
+			path = OverviewViews;
+			sourceTree = "<group>";
+		};
 		22A58A2B2A6914A400E29710 = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +283,8 @@
 				22A58A882A6A6BB600E29710 /* Station.swift */,
 				22B3C9F02A6FACA600548753 /* Alarm.swift */,
 				22CE080C2A6FF73300E03A1B /* Device.swift */,
+				222D33ED2A72313B00004453 /* StationRealKpi.swift */,
+				222D33F12A72365900004453 /* Weather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,6 +292,7 @@
 		22A58A4E2A69151100E29710 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				222D33E42A722A7A00004453 /* OverviewViews */,
 				22A58A7F2A6A4B6B00E29710 /* HomeViews */,
 				22B3C9DE2A6F79C300548753 /* MaintenanceViews */,
 				22B3C9E72A6F7D2E00548753 /* DevicesViews */,
@@ -268,6 +309,8 @@
 				22B3C9E52A6F7CE700548753 /* DevicesView.swift */,
 				22B3C9E82A6F7D4200548753 /* ProfileView.swift */,
 				22ED5C8F2A70F96D007C8AB1 /* LogoutQuestionView.swift */,
+				222D33E22A72236F00004453 /* OverviewMenuBar.swift */,
+				222D33EF2A72361F00004453 /* WeatherView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -282,6 +325,7 @@
 				22ED5C8B2A70ED5E007C8AB1 /* SettingsController.swift */,
 				22ED5C8D2A70F4C9007C8AB1 /* ChangeLanguageController.swift */,
 				22ED5C972A713DF7007C8AB1 /* AlarmDetailController.swift */,
+				222D33E02A7222F700004453 /* OverviewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,9 +336,12 @@
 				22B3CA0D2A6FD00700548753 /* alarm warning.json */,
 				22B3CA0C2A6FD00600548753 /* alarm yellow.json */,
 				22B3C9FA2A6FB24800548753 /* stroyka.json */,
+				222D33F32A7253E000004453 /* 3 shara off.json */,
+				222D33F42A7253E000004453 /* 3 shara.json */,
 				22B3C9F42A6FAEE400548753 /* zavod.json */,
 				22B3CA102A6FD04B00548753 /* alarm orange.json */,
 				22B3CA042A6FCD3900548753 /* alarm pink.json */,
+				222D33F72A72775400004453 /* 3 shara faulty.json */,
 				22A58A792A6A3B5A00E29710 /* loader.json */,
 				22B3C9EE2A6FA65F00548753 /* ELKI 2.json */,
 				22C53B7D2A6E62850014D195 /* icon stroyka.json */,
@@ -440,8 +487,11 @@
 				22C53B7E2A6E62850014D195 /* icon stroyka.json in Resources */,
 				22B3CA0E2A6FD00700548753 /* alarm yellow.json in Resources */,
 				22A58A652A6916C700E29710 /* Localizable.strings in Resources */,
+				222D33F82A72775400004453 /* 3 shara faulty.json in Resources */,
+				222D33F52A7253E000004453 /* 3 shara off.json in Resources */,
 				22B3C9FB2A6FB24800548753 /* stroyka.json in Resources */,
 				22B3C9F52A6FAEE400548753 /* zavod.json in Resources */,
+				222D33F62A7253E000004453 /* 3 shara.json in Resources */,
 				22A58A442A6914A500E29710 /* LaunchScreen.storyboard in Resources */,
 				22A58A412A6914A500E29710 /* Assets.xcassets in Resources */,
 				22A58A3F2A6914A400E29710 /* Main.storyboard in Resources */,
@@ -485,8 +535,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A58A5E2A69160200E29710 /* SplashController.swift in Sources */,
+				222D33EC2A722C0000004453 /* StationDevicesView.swift in Sources */,
 				22A58A7E2A6A4A5D00E29710 /* HomeView.swift in Sources */,
 				22A58A782A6A353000E29710 /* Profile.swift in Sources */,
+				222D33F22A72365900004453 /* Weather.swift in Sources */,
 				22A58A582A6915BA00E29710 /* CustomError.swift in Sources */,
 				22A58A5A2A6915CD00E29710 /* SimpleErrorView.swift in Sources */,
 				22ED5C922A712BB6007C8AB1 /* TasksNavigationView.swift in Sources */,
@@ -494,8 +546,10 @@
 				22ED5C892A70D7AC007C8AB1 /* DeviceFilterView.swift in Sources */,
 				22B3C9E62A6F7CE700548753 /* DevicesView.swift in Sources */,
 				22ED5C902A70F96D007C8AB1 /* LogoutQuestionView.swift in Sources */,
+				222D33E12A7222F700004453 /* OverviewController.swift in Sources */,
 				22B3C9EB2A6F81A300548753 /* AlarmsStatisticView.swift in Sources */,
 				22ED5C962A7136FB007C8AB1 /* EliminationTasksCellView.swift in Sources */,
+				222D33E62A722A9400004453 /* OverviewView.swift in Sources */,
 				22CE080B2A6FE79900E03A1B /* DeviceTypeSearchView.swift in Sources */,
 				22A58A742A691AAC00E29710 /* SignInController.swift in Sources */,
 				22A58A8B2A6A6D9000E29710 /* EmptyDataView.swift in Sources */,
@@ -509,6 +563,7 @@
 				22A58A7C2A6A3C6800E29710 /* MenuBar.swift in Sources */,
 				22C53B892A6EA7C90014D195 /* MonthPickerView.swift in Sources */,
 				22ED5C852A70C6A3007C8AB1 /* DeviceCellView.swift in Sources */,
+				222D33FA2A72912200004453 /* StationChartsView.swift in Sources */,
 				22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */,
 				22A58A832A6A516100E29710 /* PlantsCellView.swift in Sources */,
 				22A58A522A69154500E29710 /* Extensions.swift in Sources */,
@@ -516,21 +571,26 @@
 				22A58A852A6A52A200E29710 /* HomeStatisticsCellView.swift in Sources */,
 				22C53B8D2A6EAB410014D195 /* YearWheelPicker.swift in Sources */,
 				22C53B832A6E8AAD0014D195 /* BalloonMarker.swift in Sources */,
+				222D33F02A72361F00004453 /* WeatherView.swift in Sources */,
 				22A58A812A6A4B7F00E29710 /* HomeNavigationView.swift in Sources */,
 				22A58A762A6A2CE200E29710 /* LanguageController.swift in Sources */,
 				22A1AA362A6C2687002AA262 /* GraphView.swift in Sources */,
 				22CE080D2A6FF73300E03A1B /* Device.swift in Sources */,
 				22A58A722A6918A100E29710 /* HomeController.swift in Sources */,
+				222D33E32A72236F00004453 /* OverviewMenuBar.swift in Sources */,
 				22ED5C872A70CA2C007C8AB1 /* DeviceInverterCellView.swift in Sources */,
 				22A58A542A69155E00E29710 /* ApiService.swift in Sources */,
 				22ED5C982A713DF7007C8AB1 /* AlarmDetailController.swift in Sources */,
 				22A58A5C2A6915E300E29710 /* LoadingView.swift in Sources */,
+				222D33E82A722BB300004453 /* StationStatisticsView.swift in Sources */,
 				22B3C9E92A6F7D4200548753 /* ProfileView.swift in Sources */,
 				22ED5C8C2A70ED5E007C8AB1 /* SettingsController.swift in Sources */,
+				222D33EA2A722BE000004453 /* StationLayotView.swift in Sources */,
 				22C53B8B2A6EA8EB0014D195 /* MonthYearWheelPicker.swift in Sources */,
 				22B3C9F12A6FACA600548753 /* Alarm.swift in Sources */,
 				22C53B8F2A6EAC5D0014D195 /* YearPickerView.swift in Sources */,
 				22B3C9E42A6F7B5700548753 /* TasksCellView.swift in Sources */,
+				222D33EE2A72313B00004453 /* StationRealKpi.swift in Sources */,
 				22C53B872A6E96050014D195 /* DatePickerView.swift in Sources */,
 				22C53B852A6E8F0B0014D195 /* XYMarkerView.swift in Sources */,
 				22A58A872A6A6B3F00E29710 /* PlantCellView.swift in Sources */,
@@ -701,9 +761,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3YRDL7KAP6;
+				DEVELOPMENT_TEAM = R37J42Q9W7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FusionSolar/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Fusion Solar App Uzbekistan";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -714,7 +775,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sablab.FusionSolar;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sabgmes.solarapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -730,9 +791,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3YRDL7KAP6;
+				DEVELOPMENT_TEAM = R37J42Q9W7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FusionSolar/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Fusion Solar App Uzbekistan";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -743,7 +805,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sablab.FusionSolar;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sabgmes.solarapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

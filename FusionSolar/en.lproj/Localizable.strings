@@ -102,3 +102,20 @@
 "alarm_plant_name"="Plant name";
 "alarm_сause"="Alarm Cause";
 "suggestions"="Suggestions";
+"contact_person"="Contact Person";
+"contact_method"="Contact method";
+"plant_address"="Plant address";
+"overview"="Overview";
+"statistics"="Statistics";
+"layout"="Layout";
+"plant_details"="Plant details";
+"weather"="Weather";
+"pv"="PV";
+"load"="Load";
+"grid"="Grid";
+"overview_yield_today"="Yield today";
+"overview_revenue_today"="Revenue today";
+"yield_this_month"="Yield this month";
+"yield_this_year"="Yield this year";
+"yield_this_total"="Total yield";
+

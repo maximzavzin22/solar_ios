@@ -157,6 +157,12 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
         eyeButton.addTarget(self, action: #selector(self.eyeButtonPress), for: .touchUpInside)
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
+    
     @objc func loginButtonPress() {
         HomeController.login = self.usernameTextField.text ?? ""
         HomeController.password = self.passwordTextField.text ?? ""

@@ -102,4 +102,19 @@
 "alarm_plant_name"="Имя установки";
 "alarm_сause"="Причина";
 "suggestions"="Предложения";
-
+"contact_person"="Контактное лицо";
+"contact_method"="Способ связи";
+"plant_address"="Адрес станции";
+"overview"="Просмотр";
+"statistics"="Статистика";
+"layout"="Схема";
+"plant_details"="Детали";
+"weather"="Погода";
+"pv"="PV";
+"load"="Нагрузка";
+"grid"="Сеть";
+"overview_yield_today"="Сегодня";
+"overview_revenue_today"="Доход";
+"yield_this_month"="В месяце";
+"yield_this_year"="В году";
+"yield_this_total"="Всего";

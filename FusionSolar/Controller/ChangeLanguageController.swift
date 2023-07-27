@@ -153,7 +153,7 @@ class ChangeLanguageController: UIViewController {
         headeView.addSubview(backButton)
         headeView.addSubview(titleLabel)
         
-        headeView.addConstraintsWithFormat("H:|[v0(\(46.dp))][v1]|", views: backButton, titleLabel)
+        headeView.addConstraintsWithFormat("H:|-\(8.dp)-[v0(\(46.dp))][v1]|", views: backButton, titleLabel)
         
         headeView.addConstraintsWithFormat("V:[v0(\(46.dp))]", views: backButton)
         headeView.addConstraintsWithFormat("V:[v0]", views: titleLabel)

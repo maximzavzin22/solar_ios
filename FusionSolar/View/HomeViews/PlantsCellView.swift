@@ -337,12 +337,16 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Press")
         let index = indexPath.item
+        if let station = self.stations?[index] {
+            self.homeView?.homeController?.openOverviewController(station: station)
+        }
         
     }
     //collectionView Setup end
     
     //ApiService
-    func fetchStations() { //убрал чтобы не насиловать сервер
+    func fetchStations() {
+        self.generateData()
 //        self.showLoadingView()
 //        ApiService.sharedInstance.fetchStations(pageNo: self.pageNo) {
 //            (error: CustomError?, stations: [Station]?) in
@@ -361,7 +365,6 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
     func showLoadingView() {
         self.addSubview(loadingView)
         self.addConstraintsWithFormat("H:|[v0]|", views: loadingView)
-//        self.addConstraintsWithFormat("V:|[v0]|", views: loadingView)
         loadingView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
         loadingView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         loadingView.isHidden = false
@@ -372,6 +375,38 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         loadingView.stopActivityIndicator()
         loadingView.isHidden = true
     }
+    
+    //for test
+    func generateData() {
+        var stations = [Station]()
+        
+        var station1 = Station()
+        station1.capacity = 0.0
+        station1.contactMethod = "zavmax92@gmail.com"
+        station1.contactPerson = ""
+        station1.gridConnectionDate = "2023-07-18T14:06:27+05:00"
+        station1.latitude = 41.3158263
+        station1.longitude = 69.2758336
+        station1.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
+        station1.plantCode = "NE=33695851"
+        station1.plantName = "Фарғона Вилоят перинатал маркази 100"
+        stations.append(station1)
+        
+        var station2 = Station()
+        station2.capacity = 0.0
+        station2.contactMethod = "zavmax92@gmail.com"
+        station2.contactPerson = "Max"
+        station2.gridConnectionDate = "2023-07-18T14:06:27+05:00"
+        station2.latitude = 41.3158263
+        station2.longitude = 69.2758336
+        station2.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
+        station2.plantCode = "NE=33696229"
+        station2.plantName = "Жиззах вилояти юқумли касалликлар шифохонаси 50"
+        stations.append(station2)
+        
+        self.stations = stations
+    }
+    //
 }
 
 class PlantsTopView: UIView {

@@ -250,6 +250,13 @@ class HomeController: UIViewController {
         self.present(alarmDetailController, animated: true)
     }
     
+    func openOverviewController(station: Station) {
+        let pverviewController = OverviewController()
+        pverviewController.modalPresentationStyle = .fullScreen
+        pverviewController.station = station
+        self.present(pverviewController, animated: true)
+    }
+    
     //Error and Loading views
     func showErrorView(title: String, message: String) {
         self.view.addSubview(errorView)

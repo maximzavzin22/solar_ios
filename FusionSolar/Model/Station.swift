@@ -12,8 +12,8 @@ class Station: NSObject {
     var contactMethod: String?
     var contactPerson: String?
     var gridConnectionDate: String?
-    var latitude: String?
-    var longitude: String?
+    var latitude: Double?
+    var longitude: Double?
     var plantAddress: String?
     var plantCode: String?
     var plantName: String?

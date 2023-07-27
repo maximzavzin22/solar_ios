@@ -33,6 +33,16 @@ class JSONParse: NSObject {
                 error.code = result["errors"] as? Int ?? 0
                 return error
             }
+            if let result = json as? Dictionary<String,Any> {
+                let success = result["success"] as? Bool ?? false
+                if(!success) {
+                    var error = CustomError()
+                    error.title = NSLocalizedString("error", comment: "")
+                    error.code = result["failCode"] as? Int ?? 0
+                    error.message = result["message"] as? String ?? ""
+                    return error
+                }
+            }
             var error = CustomError()
             error.title = NSLocalizedString("error", comment: "")
             error.code = result["errors"] as? Int ?? 0
@@ -66,12 +76,41 @@ class JSONParse: NSObject {
             station.contactMethod = result["contactMethod"] as? String ?? ""
             station.contactPerson = result["contactPerson"] as? String ?? ""
             station.gridConnectionDate = result["gridConnectionDate"] as? String ?? ""
-            station.latitude = result["latitude"] as? String ?? ""
-            station.longitude = result["longitude"] as? String ?? ""
+            station.latitude = result["latitude"] as? Double ?? 0.0
+            station.longitude = result["longitude"] as? Double ?? 0.0
             station.plantAddress = result["plantAddress"] as? String ?? ""
             station.plantCode = result["plantCode"] as? String ?? ""
             station.plantName = result["plantName"] as? String ?? ""
             return station
+        }
+        return nil
+    }
+    
+    func stationRealKpisParse(json: Any) -> [StationRealKpi]? {
+        if let result = json as? Dictionary<String,Any> {
+            if let data = result["data"] as? Array<Dictionary<String,Any>> {
+                var stationRealKpis = [StationRealKpi]()
+                for dictionary in data as [[String: AnyObject]]  {
+                    if let stationRealKpi = stationRealKpiParse(json: dictionary["dataItemMap"] as? Dictionary<String,Any>) {
+                        stationRealKpis.append(stationRealKpi)
+                    }
+                }
+                return stationRealKpis
+            }
+        }
+        return nil
+    }
+
+    func stationRealKpiParse(json: Any) -> StationRealKpi? {
+        if let result = json as? Dictionary<String,Any> {
+            var stationRealKpi = StationRealKpi()
+            stationRealKpi.real_health_state = result["result"] as? Int ?? 0
+            stationRealKpi.day_power = result["day_power"] as? Double ?? 0.0
+            stationRealKpi.total_power = result["total_power"] as? Double ?? 0.0
+            stationRealKpi.day_income = result["day_income"] as? Double ?? 0.0
+            stationRealKpi.month_power = result["month_power"] as? Double ?? 0.0
+            stationRealKpi.total_income = result["total_income"] as? Double ?? 0.0
+            return stationRealKpi
         }
         return nil
     }

@@ -161,6 +161,12 @@ class HomeStatisticsCellView: UICollectionViewCell {
         self.graphView.homeStatisticsCellView = self
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
+    
     func setScrollViewHeight() {
         let contentScrollViewHeight = 196.dp + 16.dp + 434.dp + 16.dp + height + 16.dp + 218.dp + 16.dp
         self.contentScrollView.contentSize = CGSize(width: 390.dp, height: contentScrollViewHeight)

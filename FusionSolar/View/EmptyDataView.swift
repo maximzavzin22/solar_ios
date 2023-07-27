@@ -38,7 +38,7 @@ class EmptyDataView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .rgb(241, green: 243, blue: 245)
+      //  self.backgroundColor = .rgb(241, green: 243, blue: 245)
         
         self.setupView()
     }

@@ -36,9 +36,14 @@ class PlantCellView: UICollectionViewCell {
                     fonStatusView.backgroundColor = .rgb(242, green: 242, blue: 242)
                 }
             }
-            
+            width = self.getWidth(text: statusLabel.text ?? "") + 8.dp + 8.dp + 8.dp
+            nameLeftConstraint?.constant = -1 * width
+            self.layoutIfNeeded()
         }
     }
+    
+    var nameLeftConstraint: NSLayoutConstraint?
+    var width: CGFloat = 0
     
     let borderView: UIView = {
         let view = UIView()
@@ -144,7 +149,6 @@ class PlantCellView: UICollectionViewCell {
 
         self.setupView()
         self.setupBorderView()
-        self.setupContentBlockView()
         self.setupBottomView()
     }
 
@@ -161,35 +165,37 @@ class PlantCellView: UICollectionViewCell {
     
     func setupBorderView() {
         borderView.addSubview(iconImageView)
-        borderView.addSubview(contentBlockView)
+        //borderView.addSubview(contentBlockView)
         borderView.addSubview(fonStatusView)
         borderView.addSubview(statusLabel)
+        borderView.addSubview(titleLabel)
+        borderView.addSubview(addressLabel)
+        borderView.addSubview(bottomView)
         
-        borderView.addConstraintsWithFormat("H:|-\(16.dp)-[v0(\(72.dp))]-\(13.dp)-[v1(\(227.dp))]", views: iconImageView, contentBlockView)
+        //borderView.addConstraintsWithFormat("H:|-\(16.dp)-[v0(\(72.dp))]-\(13.dp)-[v1(\(227.dp))]", views: iconImageView, contentBlockView)
+        borderView.addConstraintsWithFormat("H:|-\(16.dp)-[v0(\(72.dp))]", views: iconImageView)
         borderView.addConstraintsWithFormat("H:[v0]-\(18.dp)-|", views: statusLabel)
+        borderView.addConstraintsWithFormat("H:|-\(101.dp)-[v0(\(227.dp))]", views: addressLabel)
+        borderView.addConstraintsWithFormat("H:|-\(101.dp)-[v0(\(227.dp))]", views: bottomView)
+      //  borderView.addConstraintsWithFormat("H:[v0]", views: titleLabel)
         
         borderView.addConstraintsWithFormat("V:|-\(23.dp)-[v0(\(72.dp))]", views: iconImageView)
-        borderView.addConstraintsWithFormat("V:|-\(22.dp)-[v0(\(74.dp))]", views: contentBlockView)
+       // borderView.addConstraintsWithFormat("V:|-\(22.dp)-[v0(\(74.dp))]", views: contentBlockView)
         borderView.addConstraintsWithFormat("V:[v0(\(22.dp))]", views: fonStatusView)
         borderView.addConstraintsWithFormat("V:|-\(18.dp)-[v0]", views: statusLabel)
+        
+        borderView.addConstraintsWithFormat("V:|-\(22.dp)-[v0]-\(6.dp)-[v1]", views: titleLabel, addressLabel)
+        borderView.addConstraintsWithFormat("V:[v0(\(16.dp))]-\(21.dp)-|", views: bottomView)
         
         fonStatusView.leftAnchor.constraint(equalTo: statusLabel.leftAnchor, constant: -8.dp).isActive = true
         fonStatusView.rightAnchor.constraint(equalTo: statusLabel.rightAnchor, constant: 8.dp).isActive = true
         
+        titleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 13.dp).isActive = true
+        //titleLabel.rightAnchor.constraint(equalTo: fonStatusView.leftAnchor, constant: -8.dp).isActive = true
+        nameLeftConstraint = titleLabel.anchor(nil, left: nil, bottom: nil, right: borderView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 32.dp, widthConstant: 0, heightConstant: 0)[0]
+        nameLeftConstraint?.isActive = true
+        
         fonStatusView.centerYAnchor.constraint(equalTo: statusLabel.centerYAnchor).isActive = true
-    }
-    
-    func setupContentBlockView() {
-        contentBlockView.addSubview(titleLabel)
-        contentBlockView.addSubview(addressLabel)
-        contentBlockView.addSubview(bottomView)
-        
-        contentBlockView.addConstraintsWithFormat("H:|[v0]|", views: titleLabel)
-        contentBlockView.addConstraintsWithFormat("H:|[v0]|", views: addressLabel)
-        contentBlockView.addConstraintsWithFormat("H:|[v0]|", views: bottomView)
-        
-        contentBlockView.addConstraintsWithFormat("V:|[v0]-\(6.dp)-[v1]", views: titleLabel, addressLabel)
-        contentBlockView.addConstraintsWithFormat("V:[v0(\(16.dp))]|", views: bottomView)
     }
     
     func setupBottomView() {
@@ -210,5 +216,19 @@ class PlantCellView: UICollectionViewCell {
         solarValueLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
         energyImageView.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
         energyValueLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+    }
+    
+    func getWidth(text: String) -> CGFloat {
+        let dummySize = CGSize(width: 1000.dp, height: 10.dp)
+        let options = NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin)
+        let rect = descAttributedText(name: text).boundingRect(with: dummySize, options: options, context: nil)
+        return rect.width
+    }
+    
+    fileprivate func descAttributedText(name: String?) -> NSAttributedString {
+        let text = name
+        let attrs:[NSAttributedString.Key:AnyObject] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.dp)]
+        let normal = NSMutableAttributedString(string: text!, attributes:attrs)
+        return normal
     }
 }
