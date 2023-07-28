@@ -133,3 +133,11 @@
 "basic_plant_address"="Адрес";
 "plant_time_zone"="Часовой пояс";
 "plant_overview"="Обзор установки";
+"map_critical"="Опасный";
+"map_major"="Главный";
+"map_minor"="Низкий";
+"map_warning"="Извещение";
+"map_info_current_power"="Текущая мощность";
+"map_info_yield_today"="Cегодня";
+"map_info_total_string_capacity"="Общая вместимость";
+"map_info_plant_address"="Адрес";

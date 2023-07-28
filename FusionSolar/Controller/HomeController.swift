@@ -138,6 +138,13 @@ class HomeController: UIViewController {
         return view
     }()
     
+    lazy var plantMapInfoView: PlantMapInfoView = {
+        let view = PlantMapInfoView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.homeController = self
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -158,6 +165,7 @@ class HomeController: UIViewController {
         self.view.addSubview(datePickerView)
         self.view.addSubview(monthPickerView)
         self.view.addSubview(yearPickerView)
+        self.view.addSubview(plantMapInfoView)
         
         self.view.addConstraintsWithFormat("H:|[v0]|", views: contentView)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
@@ -166,6 +174,7 @@ class HomeController: UIViewController {
         self.view.addConstraintsWithFormat("H:|[v0]|", views: datePickerView)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: monthPickerView)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: yearPickerView)
+        self.view.addConstraintsWithFormat("H:|[v0]|", views: plantMapInfoView)
         
         self.view.addConstraintsWithFormat("V:[v0(\(66.dp))]", views: menuBar)
         self.view.addConstraintsWithFormat("V:|[v0]|", views: plantsFilterView)
@@ -173,6 +182,7 @@ class HomeController: UIViewController {
         self.view.addConstraintsWithFormat("V:|[v0]|", views: datePickerView)
         self.view.addConstraintsWithFormat("V:|[v0]|", views: monthPickerView)
         self.view.addConstraintsWithFormat("V:|[v0]|", views: yearPickerView)
+        self.view.addConstraintsWithFormat("V:|[v0]|", views: plantMapInfoView)
         
         contentView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.menuBar.topAnchor).isActive = true
@@ -183,6 +193,7 @@ class HomeController: UIViewController {
         datePickerView.isHidden = true
         monthPickerView.isHidden = true
         yearPickerView.isHidden = true
+        plantMapInfoView.isHidden = true
     }
     
     func setupContentView() {
@@ -214,6 +225,12 @@ class HomeController: UIViewController {
     func openDeviceFilterView() {
         self.deviceFilterView.isHidden = false
         self.deviceFilterView.showAnimaton()
+    }
+    
+    func openPlantMapInfoView(station: Station) {
+        self.plantMapInfoView.isHidden = false
+        self.plantMapInfoView.station = station
+        self.plantMapInfoView.showAnimaton()
     }
     
     func openDatePickerView(selectedDate: Date, graphView: GraphView) {

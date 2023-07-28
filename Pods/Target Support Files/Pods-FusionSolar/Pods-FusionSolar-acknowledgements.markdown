@@ -207,6 +207,10 @@ Apache License
 
 
 
+## GoogleMaps
+
+Copyright 2022 Google
+
 ## lottie-ios
 
                                  Apache License

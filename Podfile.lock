@@ -2,21 +2,30 @@ PODS:
   - DGCharts (5.0.0):
     - DGCharts/Core (= 5.0.0)
   - DGCharts/Core (5.0.0)
+  - GoogleMaps (7.0.0):
+    - GoogleMaps/Maps (= 7.0.0)
+  - GoogleMaps/Base (7.0.0)
+  - GoogleMaps/Maps (7.0.0):
+    - GoogleMaps/Base
   - lottie-ios (4.2.0)
 
 DEPENDENCIES:
   - DGCharts
+  - GoogleMaps
   - lottie-ios
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - GoogleMaps
   trunk:
     - DGCharts
     - lottie-ios
 
 SPEC CHECKSUMS:
   DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
+  GoogleMaps: 6e9c923ca035989709fcb5771544fda4cc5fa2a4
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
 
-PODFILE CHECKSUM: 9258b1c94cd620b2d59f463df113a180e19016e8
+PODFILE CHECKSUM: 8a442af3fbe8151d3b9980b0164932322d97f9f5
 
 COCOAPODS: 1.12.1

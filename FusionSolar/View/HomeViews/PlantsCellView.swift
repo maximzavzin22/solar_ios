@@ -166,6 +166,17 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         return view
     }()
     
+    let mapButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 24.dp
+        let image = UIImage(named: "map")?.withRenderingMode(.alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
+        return button
+    }()
+    
     let loadingView: LoadingView = {
         let lV = LoadingView()
         lV.translatesAutoresizingMaskIntoConstraints = false
@@ -198,18 +209,27 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         self.addSubview(topView)
         self.addSubview(emptyView)
         self.addSubview(collectionView)
+        self.addSubview(mapButton)
         
         self.addConstraintsWithFormat("H:|[v0]|", views: topView)
         self.addConstraintsWithFormat("H:[v0(\(143.dp))]", views: emptyView)
         self.addConstraintsWithFormat("H:|[v0]|", views: collectionView)
+        self.addConstraintsWithFormat("H:[v0(\(48.dp))]-\(24.dp)-|", views: mapButton)
         
         self.addConstraintsWithFormat("V:|[v0(\(156.dp))][v1]|", views: topView, collectionView)
         self.addConstraintsWithFormat("V:[v0(\(154.dp))]", views: emptyView)
+        self.addConstraintsWithFormat("V:[v0(\(48.dp))]-\(18.dp)-|", views: mapButton)
         
         emptyView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         emptyView.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         //emptyView.isHidden = true
+        
+        mapButton.addTarget(self, action: #selector(self.mapButtonPress), for: .touchUpInside)
+    }
+    
+    @objc func mapButtonPress() {
+        self.homeView?.showMap = true
     }
     
     func setupTopView() {
@@ -385,8 +405,8 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         station1.contactMethod = "zavmax92@gmail.com"
         station1.contactPerson = ""
         station1.gridConnectionDate = "2023-07-18T14:06:27+05:00"
-        station1.latitude = 41.3158263
-        station1.longitude = 69.2758336
+        station1.latitude = 41.3281172
+        station1.longitude = 69.2953415
         station1.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
         station1.plantCode = "NE=33695851"
         station1.plantName = "Фарғона Вилоят перинатал маркази 100"
@@ -397,8 +417,8 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         station2.contactMethod = "zavmax92@gmail.com"
         station2.contactPerson = "Max"
         station2.gridConnectionDate = "2023-07-18T14:06:27+05:00"
-        station2.latitude = 41.3158263
-        station2.longitude = 69.2758336
+        station2.latitude = 41.2937107
+        station2.longitude = 69.3561711
         station2.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
         station2.plantCode = "NE=33696229"
         station2.plantName = "Жиззах вилояти юқумли касалликлар шифохонаси 50"

@@ -11,7 +11,14 @@ class HomeView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     
     var homeController: HomeController?
     var plantsCellView: PlantsCellView?
+    var mapCellView: MapCellView?
     var homeStatisticsCellView: HomeStatisticsCellView?
+    
+    var showMap: Bool? {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     let topWhiteView: UIView = {
         let view = UIView()
@@ -72,6 +79,7 @@ class HomeView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     func setupCollectionView() {
         print("setupCollectionView")
         collectionView.register(PlantsCellView.self, forCellWithReuseIdentifier: "plantsCellViewId")
+        collectionView.register(MapCellView.self, forCellWithReuseIdentifier: "mapCellViewId")
         collectionView.register(HomeStatisticsCellView.self, forCellWithReuseIdentifier: "homeStatisticsCellViewId")
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
         
@@ -94,11 +102,20 @@ class HomeView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = indexPath.item
         if(index == 0) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "plantsCellViewId", for: indexPath) as! PlantsCellView
-            self.plantsCellView = cell
-            cell.homeView = self
-            cell.initKeyboard()
-            return cell
+            if(showMap ?? false) {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mapCellViewId", for: indexPath) as! MapCellView
+                self.mapCellView = cell
+                cell.homeView = self
+                cell.setupGoogleMap()
+                cell.stations = self.plantsCellView?.stations
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "plantsCellViewId", for: indexPath) as! PlantsCellView
+                self.plantsCellView = cell
+                cell.homeView = self
+                cell.initKeyboard()
+                return cell
+            }
         }
         if(index == 1) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeStatisticsCellViewId", for: indexPath) as! HomeStatisticsCellView

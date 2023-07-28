@@ -70,6 +70,9 @@
 		22B3CA0E2A6FD00700548753 /* alarm yellow.json in Resources */ = {isa = PBXBuildFile; fileRef = 22B3CA0C2A6FD00600548753 /* alarm yellow.json */; };
 		22B3CA0F2A6FD00700548753 /* alarm warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 22B3CA0D2A6FD00700548753 /* alarm warning.json */; };
 		22B3CA112A6FD04B00548753 /* alarm orange.json in Resources */ = {isa = PBXBuildFile; fileRef = 22B3CA102A6FD04B00548753 /* alarm orange.json */; };
+		22C0E2DE2A73C70C000FFAAB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0E2DD2A73C70C000FFAAB /* MapView.swift */; };
+		22C0E2E02A73CCF3000FFAAB /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 22C0E2DF2A73CCF3000FFAAB /* style.json */; };
+		22C0E2E22A73E3C0000FFAAB /* PlantMapInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0E2E12A73E3C0000FFAAB /* PlantMapInfoView.swift */; };
 		22C53B7E2A6E62850014D195 /* icon stroyka.json in Resources */ = {isa = PBXBuildFile; fileRef = 22C53B7D2A6E62850014D195 /* icon stroyka.json */; };
 		22C53B832A6E8AAD0014D195 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B822A6E8AAD0014D195 /* BalloonMarker.swift */; };
 		22C53B852A6E8F0B0014D195 /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B842A6E8F0B0014D195 /* XYMarkerView.swift */; };
@@ -168,6 +171,9 @@
 		22B3CA0C2A6FD00600548753 /* alarm yellow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "alarm yellow.json"; sourceTree = "<group>"; };
 		22B3CA0D2A6FD00700548753 /* alarm warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "alarm warning.json"; sourceTree = "<group>"; };
 		22B3CA102A6FD04B00548753 /* alarm orange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "alarm orange.json"; sourceTree = "<group>"; };
+		22C0E2DD2A73C70C000FFAAB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		22C0E2DF2A73CCF3000FFAAB /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
+		22C0E2E12A73E3C0000FFAAB /* PlantMapInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantMapInfoView.swift; sourceTree = "<group>"; };
 		22C53B7D2A6E62850014D195 /* icon stroyka.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "icon stroyka.json"; sourceTree = "<group>"; };
 		22C53B822A6E8AAD0014D195 /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		22C53B842A6E8F0B0014D195 /* XYMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 		22A58A362A6914A400E29710 /* FusionSolar */ = {
 			isa = PBXGroup;
 			children = (
+				22C0E2DF2A73CCF3000FFAAB /* style.json */,
 				22A58A502A69152600E29710 /* JSON */,
 				22A58A4F2A69151B00E29710 /* Controller */,
 				22A58A4E2A69151100E29710 /* View */,
@@ -373,6 +380,8 @@
 				22C53B862A6E96050014D195 /* DatePickerView.swift */,
 				22C53B882A6EA7C90014D195 /* MonthPickerView.swift */,
 				22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */,
+				22C0E2DD2A73C70C000FFAAB /* MapView.swift */,
+				22C0E2E12A73E3C0000FFAAB /* PlantMapInfoView.swift */,
 			);
 			path = HomeViews;
 			sourceTree = "<group>";
@@ -438,6 +447,7 @@
 				22A58A302A6914A400E29710 /* Sources */,
 				22A58A312A6914A400E29710 /* Frameworks */,
 				22A58A322A6914A400E29710 /* Resources */,
+				AFE2F7643AB66E1CC35EAB4B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -500,6 +510,7 @@
 				222D33F82A72775400004453 /* 3 shara faulty.json in Resources */,
 				222D33F52A7253E000004453 /* 3 shara off.json in Resources */,
 				22B3C9FB2A6FB24800548753 /* stroyka.json in Resources */,
+				22C0E2E02A73CCF3000FFAAB /* style.json in Resources */,
 				22B3C9F52A6FAEE400548753 /* zavod.json in Resources */,
 				222D33F62A7253E000004453 /* 3 shara.json in Resources */,
 				22A58A442A6914A500E29710 /* LaunchScreen.storyboard in Resources */,
@@ -538,6 +549,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AFE2F7643AB66E1CC35EAB4B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FusionSolar/Pods-FusionSolar-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FusionSolar/Pods-FusionSolar-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FusionSolar/Pods-FusionSolar-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -552,6 +580,7 @@
 				22A58A782A6A353000E29710 /* Profile.swift in Sources */,
 				222D33F22A72365900004453 /* Weather.swift in Sources */,
 				22A58A582A6915BA00E29710 /* CustomError.swift in Sources */,
+				22C0E2DE2A73C70C000FFAAB /* MapView.swift in Sources */,
 				22A58A5A2A6915CD00E29710 /* SimpleErrorView.swift in Sources */,
 				22ED5C922A712BB6007C8AB1 /* TasksNavigationView.swift in Sources */,
 				22B3C9DD2A6F792100548753 /* MaintenanceView.swift in Sources */,
@@ -597,6 +626,7 @@
 				222D33E82A722BB300004453 /* StationStatisticsView.swift in Sources */,
 				22B3C9E92A6F7D4200548753 /* ProfileView.swift in Sources */,
 				22ED5C8C2A70ED5E007C8AB1 /* SettingsController.swift in Sources */,
+				22C0E2E22A73E3C0000FFAAB /* PlantMapInfoView.swift in Sources */,
 				222D33EA2A722BE000004453 /* StationLayotView.swift in Sources */,
 				22C53B8B2A6EA8EB0014D195 /* MonthYearWheelPicker.swift in Sources */,
 				22B3C9F12A6FACA600548753 /* Alarm.swift in Sources */,
@@ -777,6 +807,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FusionSolar/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fusion Solar App Uzbekistan";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Приложение Fusion Solar App Uzbekistan запрашивает гео данные для отображения вашей позиции на карте";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Приложение Fusion Solar App Uzbekistan запрашивает гео данные для отображения вашей позиции на карте";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Приложение Fusion Solar App Uzbekistan запрашивает гео данные для отображения вашей позиции на карте";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -807,6 +840,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FusionSolar/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fusion Solar App Uzbekistan";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Приложение Fusion Solar App Uzbekistan запрашивает гео данные для отображения вашей позиции на карте";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Приложение Fusion Solar App Uzbekistan запрашивает гео данные для отображения вашей позиции на карте";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Приложение Fusion Solar App Uzbekistan запрашивает гео данные для отображения вашей позиции на карте";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

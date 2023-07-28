@@ -133,3 +133,13 @@
 "basic_plant_address"="Plant address";
 "plant_time_zone"="Plant time zone";
 "plant_overview"="Plant overview";
+"map_critical"="Сritical";
+"map_major"="Major";
+"map_minor"="Minor";
+"map_warning"="Warning";
+"map_info_current_power"="Current power";
+"map_info_yield_today"="Yield today";
+"map_info_total_string_capacity"="Total string capacity";
+"map_info_plant_address"="Plant address";
+
+
