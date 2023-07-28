@@ -123,4 +123,13 @@
 "full_screen"="Full screen";
 "revenue"="Revenue";
 "total_revenue"="Total revenue";
-
+"country_region"="Country/Region";
+"service_provider"="Service provider";
+"plant_type"="Plant type";
+"charging_only_plant"="Charging-only plant";
+"total_string_capacity"="Total string capacity (kWp)";
+"grid_connection_date"="Grid connection date";
+"start_date_of_safe_running"="Start date of safe running";
+"basic_plant_address"="Plant address";
+"plant_time_zone"="Plant time zone";
+"plant_overview"="Plant overview";

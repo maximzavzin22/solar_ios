@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220EA68E2A739F3900BFBDE5 /* 3 shara default.json in Resources */ = {isa = PBXBuildFile; fileRef = 220EA68D2A739F3900BFBDE5 /* 3 shara default.json */; };
+		220EA6942A73BF8400BFBDE5 /* cloud_sun.json in Resources */ = {isa = PBXBuildFile; fileRef = 220EA6932A73BF8400BFBDE5 /* cloud_sun.json */; };
 		222D33E12A7222F700004453 /* OverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E02A7222F700004453 /* OverviewController.swift */; };
 		222D33E32A72236F00004453 /* OverviewMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E22A72236F00004453 /* OverviewMenuBar.swift */; };
 		222D33E62A722A9400004453 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E52A722A9400004453 /* OverviewView.swift */; };
@@ -92,6 +94,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220EA68D2A739F3900BFBDE5 /* 3 shara default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3 shara default.json"; sourceTree = "<group>"; };
+		220EA6932A73BF8400BFBDE5 /* cloud_sun.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cloud_sun.json; sourceTree = "<group>"; };
 		222D33E02A7222F700004453 /* OverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewController.swift; sourceTree = "<group>"; };
 		222D33E22A72236F00004453 /* OverviewMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewMenuBar.swift; sourceTree = "<group>"; };
 		222D33E52A722A9400004453 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
@@ -124,7 +128,7 @@
 		22A58A5B2A6915E300E29710 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		22A58A5D2A69160200E29710 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		22A58A5F2A69162D00E29710 /* solar_uzb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = solar_uzb.json; sourceTree = "<group>"; };
-		22A58A612A69164800E29710 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		22A58A612A69164800E29710 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		22A58A662A6916C700E29710 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22A58A682A6916FC00E29710 /* ru-RU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-RU"; path = "ru-RU.lproj/Main.strings"; sourceTree = "<group>"; };
 		22A58A692A6916FC00E29710 /* ru-RU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-RU"; path = "ru-RU.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -347,6 +351,8 @@
 				222D33F72A72775400004453 /* 3 shara faulty.json */,
 				22A58A792A6A3B5A00E29710 /* loader.json */,
 				22B3C9EE2A6FA65F00548753 /* ELKI 2.json */,
+				220EA68D2A739F3900BFBDE5 /* 3 shara default.json */,
+				220EA6932A73BF8400BFBDE5 /* cloud_sun.json */,
 				22C53B7D2A6E62850014D195 /* icon stroyka.json */,
 				22A1AA312A6BBADD002AA262 /* empty.json */,
 				22A58A5F2A69162D00E29710 /* solar_uzb.json */,
@@ -490,6 +496,7 @@
 				22C53B7E2A6E62850014D195 /* icon stroyka.json in Resources */,
 				22B3CA0E2A6FD00700548753 /* alarm yellow.json in Resources */,
 				22A58A652A6916C700E29710 /* Localizable.strings in Resources */,
+				220EA68E2A739F3900BFBDE5 /* 3 shara default.json in Resources */,
 				222D33F82A72775400004453 /* 3 shara faulty.json in Resources */,
 				222D33F52A7253E000004453 /* 3 shara off.json in Resources */,
 				22B3C9FB2A6FB24800548753 /* stroyka.json in Resources */,
@@ -501,6 +508,7 @@
 				22B3C9EF2A6FA65F00548753 /* ELKI 2.json in Resources */,
 				22B3CA0F2A6FD00700548753 /* alarm warning.json in Resources */,
 				22A58A602A69162D00E29710 /* solar_uzb.json in Resources */,
+				220EA6942A73BF8400BFBDE5 /* cloud_sun.json in Resources */,
 				22B3CA082A6FCD3A00548753 /* alarm pink.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

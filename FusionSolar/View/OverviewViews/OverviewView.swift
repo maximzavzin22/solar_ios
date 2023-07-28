@@ -294,6 +294,12 @@ class OverviewView: UIView {
         topView.addConstraintsWithFormat("V:|[v0]|", views: plantDetailButton)
         
         weatherView.centerYAnchor.constraint(equalTo: topView.centerYAnchor).isActive = true
+        
+        plantDetailButton.addTarget(self, action: #selector(self.plantDetailButtonPress), for: .touchUpInside)
+    }
+    
+    @objc func plantDetailButtonPress() {
+        self.overviewController?.openBasicInfoController()
     }
     
     func setupAnimationView() {

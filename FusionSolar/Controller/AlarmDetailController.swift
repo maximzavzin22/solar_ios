@@ -15,7 +15,6 @@ class AlarmDetailController: UIViewController, UINavigationControllerDelegate, U
             self.alarmDetailBasicView.alarm = alarm
             self.causeAlarmDetailTextView.valueLabel.text = alarm?.alarmCause ?? ""
             self.suggestionsAlarmDetailTextView.valueLabel.text = alarm?.repairSuggestion ?? ""
-            
         }
     }
     

@@ -28,6 +28,7 @@ class HomeStatisticsCellView: UICollectionViewCell {
     lazy var contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.bounces = false
         return scrollView
     }()
     

@@ -123,3 +123,13 @@
 "full_screen"="Полный экран";
 "revenue"="Доход";
 "total_revenue"="Общий доход";
+"country_region"="Страна/регион";
+"service_provider"="Поставщик услуг";
+"plant_type"="Тип станции";
+"charging_only_plant"="Зарядная установка";
+"total_string_capacity"="Общая мощность (кВт)";
+"grid_connection_date"="Дата подключения";
+"start_date_of_safe_running"="Дата начала работы";
+"basic_plant_address"="Адрес";
+"plant_time_zone"="Часовой пояс";
+"plant_overview"="Обзор установки";

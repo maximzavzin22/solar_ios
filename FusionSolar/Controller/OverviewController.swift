@@ -226,6 +226,13 @@ class OverviewController: UIViewController {
         self.present(alarmDetailController, animated: true)
     }
     
+    func openBasicInfoController() {
+        let basicInfoController = BasicInfoController()
+        basicInfoController.modalPresentationStyle = .fullScreen
+        basicInfoController.station = self.station
+        self.present(basicInfoController, animated: true)
+    }
+    
     func openDatePickerView(selectedDate: Date, stationChartsView: StationChartsView) {
         self.datePickerView.selectedDate = selectedDate
         self.datePickerView.stationChartsView = stationChartsView
