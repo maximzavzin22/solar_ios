@@ -37,7 +37,40 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         }
     }
     
-    var stations: [Station]? {
+    var filter: String? {
+        didSet {
+            if let value = filter {
+                if(value == "all") {
+                    self.showStations = stations
+                } else {
+                    var showStations = [Station]()
+                    if let stations = self.stations {
+                        for station in stations {
+                            if(value == "normal") {
+                                if(station.status ?? 0 == 1) {
+                                    showStations.append(station)
+                                }
+                            }
+                            if(value == "faulty") {
+                                if(station.status ?? 0 == 2) {
+                                    showStations.append(station)
+                                }
+                            }
+                            if(value == "offline") {
+                                if(station.status ?? 0 == 3) {
+                                    showStations.append(station)
+                                }
+                            }
+                        }
+                    }
+                    self.showStations = showStations
+                }
+                
+            }
+        }
+    }
+    
+    var showStations: [Station]? {
         didSet {
             if let count = self.stations?.count {
                 if(count > 0) {
@@ -47,24 +80,36 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
                     emptyView.isHidden = false
                     collectionView.isHidden = true
                 }
-                allCount = count
-                if let stations = self.stations {
-                    for station in stations {
-                        if let status = station.status {
-                            if(status == 1) {
-                                normalCount = (normalCount ?? 0) + 1
-                            }
-                            if(status == 2) {
-                                faultyCount = (faultyCount ?? 0) + 1
-                            }
-                            if(status == 3) {
-                                offlineCount = (offlineCount ?? 0) + 1
-                            }
+            }
+            self.collectionView.reloadData()
+        }
+    }
+    
+    var stations: [Station]? {
+        didSet {
+            self.showStations = stations
+            self.allCount = self.stations?.count ?? 0
+            if let stations = self.stations {
+                var normalCount = 0
+                var faultyCount = 0
+                var offlineCount = 0
+                for station in stations {
+                    if let status = station.status {
+                        if(status == 1) {
+                            normalCount = (normalCount ?? 0) + 1
+                        }
+                        if(status == 2) {
+                            faultyCount = (faultyCount ?? 0) + 1
+                        }
+                        if(status == 3) {
+                            offlineCount = (offlineCount ?? 0) + 1
                         }
                     }
                 }
+                self.normalCount = normalCount
+                self.faultyCount = faultyCount
+                self.offlineCount = offlineCount
             }
-            self.collectionView.reloadData()
         }
     }
     
@@ -292,21 +337,25 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
     @objc func allPlantsTopViewPress() {
         self.disactiveAll()
         allPlantsTopView.isSelect = true
+        self.filter = "all"
     }
     
     @objc func normalPlantsTopViewPress() {
         self.disactiveAll()
         normalPlantsTopView.isSelect = true
+        self.filter = "normal"
     }
     
     @objc func faultyPlantsTopViewPress() {
         self.disactiveAll()
         faultyPlantsTopView.isSelect = true
+        self.filter = "faulty"
     }
     
     @objc func offlinePlantsTopViewPress() {
         self.disactiveAll()
         offlinePlantsTopView.isSelect = true
+        self.filter = "offline"
     }
     
     func disactiveAll() {
@@ -346,13 +395,13 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.stations?.count ?? 0
+        return self.showStations?.count ?? 0
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = indexPath.item
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "plantCellViewId", for: indexPath) as! PlantCellView
-        cell.station = self.stations?[index]
+        cell.station = self.showStations?[index]
         return cell
     }
     
@@ -371,7 +420,7 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Press")
         let index = indexPath.item
-        if let station = self.stations?[index] {
+        if let station = self.showStations?[index] {
             self.homeView?.homeController?.openOverviewController(station: station)
         }
         

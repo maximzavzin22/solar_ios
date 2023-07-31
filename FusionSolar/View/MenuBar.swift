@@ -76,12 +76,17 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     {
         let index = indexPath.item
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: menuCellId, for: indexPath) as! MenuCell
+        cell.index = index
         if(selectedIndehPath == index) {
+            cell.isActive = true
+            cell.endImage = self.defoultImageName[index]
             cell.image = self.activeImageName[index]
             cell.titleItemLabel.textColor = self.activeColor
            // cell.changeView()
            // cell.changeView(startImageName: self.defoultImageName[index], endImageName: self.activeImageName[index], color: self.activeColor)
         } else {
+            cell.isActive = false
+            cell.endImage = self.activeImageName[index]
             cell.image = self.defoultImageName[index]
             cell.titleItemLabel.textColor = self.defoultColor
            // cell.changeView(startImageName: self.activeImageName[index],endImageName: self.defoultImageName[index], color: self.activeColor)
@@ -101,13 +106,18 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 
 class MenuCell: UICollectionViewCell {
     
+    var isActive: Bool?
+    var index: Int?
+    var endImage: String?
+    
     var image: String? {
         didSet {
             menuItemImageView.image = UIImage(named: image ?? "")
+//            self.changeView()
         }
     }
     
-    let menuItemImageView: UIImageView = {
+    lazy var menuItemImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
@@ -125,7 +135,8 @@ class MenuCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupView()
+        self.setupView()
+      //  self.changeView()
     }
     
     func setupView() {
@@ -145,15 +156,22 @@ class MenuCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    func changeView(startImageName: String, endImageName: String, color: UIColor) {
-//        self.menuItemImageView.image = UIImage(named: startImageName)
-//        UIView.transition(with: self.menuItemImageView,
-//                                 duration: 1.0,
-//                          options: .transitionCrossDissolve,
-//                                 animations: {
-//                                   self.menuItemImageView.image = UIImage(named: endImageName)
-//               }, completion: nil)
-//    }
+    func changeView() {
+//        print("changeView \(index) \(endImage) \(image)")
+        self.menuItemImageView.image = UIImage(named: endImage ?? "")
+        if let imageName = self.image {
+            if(isActive ?? false) {
+                UIView.transition(with: self.menuItemImageView,
+                                         duration: 1.0,
+                                  options: .transitionCrossDissolve,
+                                         animations: {
+                    self.menuItemImageView.image = UIImage(named: imageName)
+                       }, completion: nil)
+            } else {
+                self.menuItemImageView.image = UIImage(named: imageName)
+            }
+        }
+    }
     
 //    func changeView() {
 //        let expandTransform:CGAffineTransform = CGAffineTransformMakeScale(1.15, 1.15)
@@ -161,7 +179,7 @@ class MenuCell: UICollectionViewCell {
 //        duration:0.2,
 //                          options: UIView.AnimationOptions.transitionCrossDissolve,
 //        animations: {
-//            self.menuItemImageView.image = UIImage(named: self.image ?? "")
+//           // self.menuItemImageView.image = UIImage(named: self.image ?? "")
 //          self.menuItemImageView.transform = expandTransform
 //        },
 //        completion: {(finished: Bool) in
