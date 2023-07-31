@@ -22,6 +22,12 @@
 		222D33F62A7253E000004453 /* 3 shara.json in Resources */ = {isa = PBXBuildFile; fileRef = 222D33F42A7253E000004453 /* 3 shara.json */; };
 		222D33F82A72775400004453 /* 3 shara faulty.json in Resources */ = {isa = PBXBuildFile; fileRef = 222D33F72A72775400004453 /* 3 shara faulty.json */; };
 		222D33FA2A72912200004453 /* StationChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33F92A72912200004453 /* StationChartsView.swift */; };
+		2234836A2A74253C007DC1E1 /* locatin green.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483642A74253B007DC1E1 /* locatin green.json */; };
+		2234836B2A74253C007DC1E1 /* locatin grey tap.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483652A74253B007DC1E1 /* locatin grey tap.json */; };
+		2234836C2A74253C007DC1E1 /* locatin red tap.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483662A74253C007DC1E1 /* locatin red tap.json */; };
+		2234836D2A74253C007DC1E1 /* locatin red.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483672A74253C007DC1E1 /* locatin red.json */; };
+		2234836E2A74253C007DC1E1 /* locatin green tap.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483682A74253C007DC1E1 /* locatin green tap.json */; };
+		2234836F2A74253C007DC1E1 /* locatin grey.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483692A74253C007DC1E1 /* locatin grey.json */; };
 		2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245356D2A72E056007F5708 /* BasicInfoController.swift */; };
 		22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */; };
 		22A1AA322A6BBADD002AA262 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 22A1AA312A6BBADD002AA262 /* empty.json */; };
@@ -93,6 +99,17 @@
 		22ED5C942A7136B6007C8AB1 /* InspectionTasksCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C932A7136B6007C8AB1 /* InspectionTasksCellView.swift */; };
 		22ED5C962A7136FB007C8AB1 /* EliminationTasksCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C952A7136FB007C8AB1 /* EliminationTasksCellView.swift */; };
 		22ED5C982A713DF7007C8AB1 /* AlarmDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C972A713DF7007C8AB1 /* AlarmDetailController.swift */; };
+		22F2D2CC2A77695D003DA894 /* cloud snow.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C12A77695C003DA894 /* cloud snow.json */; };
+		22F2D2CD2A77695D003DA894 /* cloud rain storm.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C22A77695C003DA894 /* cloud rain storm.json */; };
+		22F2D2CE2A77695D003DA894 /* LUNA.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C32A77695C003DA894 /* LUNA.json */; };
+		22F2D2CF2A77695D003DA894 /* LUNA I CLOUD.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C42A77695C003DA894 /* LUNA I CLOUD.json */; };
+		22F2D2D02A77695D003DA894 /* sun.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C52A77695C003DA894 /* sun.json */; };
+		22F2D2D12A77695D003DA894 /* veter.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C62A77695C003DA894 /* veter.json */; };
+		22F2D2D22A77695D003DA894 /* cloud rain.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C72A77695C003DA894 /* cloud rain.json */; };
+		22F2D2D32A77695D003DA894 /* sun cloud rain.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C82A77695D003DA894 /* sun cloud rain.json */; };
+		22F2D2D42A77695D003DA894 /* sun cloud rain snow.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C92A77695D003DA894 /* sun cloud rain snow.json */; };
+		22F2D2D52A77695D003DA894 /* cloud storm.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2CA2A77695D003DA894 /* cloud storm.json */; };
+		22F2D2D62A77695D003DA894 /* cloud grad.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2CB2A77695D003DA894 /* cloud grad.json */; };
 		DD7F8F6BB25DE47E5D13D85F /* libPods-FusionSolar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BB506999E0EC252C894123 /* libPods-FusionSolar.a */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +129,12 @@
 		222D33F42A7253E000004453 /* 3 shara.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3 shara.json"; sourceTree = "<group>"; };
 		222D33F72A72775400004453 /* 3 shara faulty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3 shara faulty.json"; sourceTree = "<group>"; };
 		222D33F92A72912200004453 /* StationChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationChartsView.swift; sourceTree = "<group>"; };
+		223483642A74253B007DC1E1 /* locatin green.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin green.json"; sourceTree = "<group>"; };
+		223483652A74253B007DC1E1 /* locatin grey tap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin grey tap.json"; sourceTree = "<group>"; };
+		223483662A74253C007DC1E1 /* locatin red tap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin red tap.json"; sourceTree = "<group>"; };
+		223483672A74253C007DC1E1 /* locatin red.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin red.json"; sourceTree = "<group>"; };
+		223483682A74253C007DC1E1 /* locatin green tap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin green tap.json"; sourceTree = "<group>"; };
+		223483692A74253C007DC1E1 /* locatin grey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin grey.json"; sourceTree = "<group>"; };
 		2245356D2A72E056007F5708 /* BasicInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoController.swift; sourceTree = "<group>"; };
 		22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsFilterView.swift; sourceTree = "<group>"; };
 		22A1AA312A6BBADD002AA262 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
@@ -194,6 +217,17 @@
 		22ED5C932A7136B6007C8AB1 /* InspectionTasksCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionTasksCellView.swift; sourceTree = "<group>"; };
 		22ED5C952A7136FB007C8AB1 /* EliminationTasksCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationTasksCellView.swift; sourceTree = "<group>"; };
 		22ED5C972A713DF7007C8AB1 /* AlarmDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailController.swift; sourceTree = "<group>"; };
+		22F2D2C12A77695C003DA894 /* cloud snow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cloud snow.json"; sourceTree = "<group>"; };
+		22F2D2C22A77695C003DA894 /* cloud rain storm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cloud rain storm.json"; sourceTree = "<group>"; };
+		22F2D2C32A77695C003DA894 /* LUNA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LUNA.json; sourceTree = "<group>"; };
+		22F2D2C42A77695C003DA894 /* LUNA I CLOUD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "LUNA I CLOUD.json"; sourceTree = "<group>"; };
+		22F2D2C52A77695C003DA894 /* sun.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sun.json; sourceTree = "<group>"; };
+		22F2D2C62A77695C003DA894 /* veter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = veter.json; sourceTree = "<group>"; };
+		22F2D2C72A77695C003DA894 /* cloud rain.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cloud rain.json"; sourceTree = "<group>"; };
+		22F2D2C82A77695D003DA894 /* sun cloud rain.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sun cloud rain.json"; sourceTree = "<group>"; };
+		22F2D2C92A77695D003DA894 /* sun cloud rain snow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sun cloud rain snow.json"; sourceTree = "<group>"; };
+		22F2D2CA2A77695D003DA894 /* cloud storm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cloud storm.json"; sourceTree = "<group>"; };
+		22F2D2CB2A77695D003DA894 /* cloud grad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cloud grad.json"; sourceTree = "<group>"; };
 		24BB506999E0EC252C894123 /* libPods-FusionSolar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FusionSolar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DAEB275D4574077463EF0B /* Pods-FusionSolar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FusionSolar.release.xcconfig"; path = "Target Support Files/Pods-FusionSolar/Pods-FusionSolar.release.xcconfig"; sourceTree = "<group>"; };
 		BD7011CF20E7132978DA55FB /* Pods-FusionSolar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FusionSolar.debug.xcconfig"; path = "Target Support Files/Pods-FusionSolar/Pods-FusionSolar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -356,6 +390,23 @@
 				22B3CA102A6FD04B00548753 /* alarm orange.json */,
 				22B3CA042A6FCD3900548753 /* alarm pink.json */,
 				222D33F72A72775400004453 /* 3 shara faulty.json */,
+				223483682A74253C007DC1E1 /* locatin green tap.json */,
+				22F2D2CB2A77695D003DA894 /* cloud grad.json */,
+				22F2D2C22A77695C003DA894 /* cloud rain storm.json */,
+				22F2D2C72A77695C003DA894 /* cloud rain.json */,
+				22F2D2C12A77695C003DA894 /* cloud snow.json */,
+				22F2D2CA2A77695D003DA894 /* cloud storm.json */,
+				22F2D2C42A77695C003DA894 /* LUNA I CLOUD.json */,
+				22F2D2C32A77695C003DA894 /* LUNA.json */,
+				22F2D2C92A77695D003DA894 /* sun cloud rain snow.json */,
+				22F2D2C82A77695D003DA894 /* sun cloud rain.json */,
+				22F2D2C52A77695C003DA894 /* sun.json */,
+				22F2D2C62A77695C003DA894 /* veter.json */,
+				223483642A74253B007DC1E1 /* locatin green.json */,
+				223483652A74253B007DC1E1 /* locatin grey tap.json */,
+				223483692A74253C007DC1E1 /* locatin grey.json */,
+				223483662A74253C007DC1E1 /* locatin red tap.json */,
+				223483672A74253C007DC1E1 /* locatin red.json */,
 				22A58A792A6A3B5A00E29710 /* loader.json */,
 				22B3C9EE2A6FA65F00548753 /* ELKI 2.json */,
 				220EA68D2A739F3900BFBDE5 /* 3 shara default.json */,
@@ -500,25 +551,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A58A7A2A6A3B5A00E29710 /* loader.json in Resources */,
+				22F2D2CD2A77695D003DA894 /* cloud rain storm.json in Resources */,
 				22A1AA322A6BBADD002AA262 /* empty.json in Resources */,
+				2234836F2A74253C007DC1E1 /* locatin grey.json in Resources */,
 				22B3CA112A6FD04B00548753 /* alarm orange.json in Resources */,
 				22A58A622A69164800E29710 /* Podfile in Resources */,
 				22C53B7E2A6E62850014D195 /* icon stroyka.json in Resources */,
 				22B3CA0E2A6FD00700548753 /* alarm yellow.json in Resources */,
 				22A58A652A6916C700E29710 /* Localizable.strings in Resources */,
+				22F2D2D42A77695D003DA894 /* sun cloud rain snow.json in Resources */,
+				22F2D2CF2A77695D003DA894 /* LUNA I CLOUD.json in Resources */,
+				22F2D2D32A77695D003DA894 /* sun cloud rain.json in Resources */,
+				22F2D2D52A77695D003DA894 /* cloud storm.json in Resources */,
+				2234836D2A74253C007DC1E1 /* locatin red.json in Resources */,
 				220EA68E2A739F3900BFBDE5 /* 3 shara default.json in Resources */,
 				222D33F82A72775400004453 /* 3 shara faulty.json in Resources */,
 				222D33F52A7253E000004453 /* 3 shara off.json in Resources */,
 				22B3C9FB2A6FB24800548753 /* stroyka.json in Resources */,
+				22F2D2CE2A77695D003DA894 /* LUNA.json in Resources */,
 				22C0E2E02A73CCF3000FFAAB /* style.json in Resources */,
 				22B3C9F52A6FAEE400548753 /* zavod.json in Resources */,
 				222D33F62A7253E000004453 /* 3 shara.json in Resources */,
 				22A58A442A6914A500E29710 /* LaunchScreen.storyboard in Resources */,
+				2234836E2A74253C007DC1E1 /* locatin green tap.json in Resources */,
+				22F2D2CC2A77695D003DA894 /* cloud snow.json in Resources */,
+				22F2D2D12A77695D003DA894 /* veter.json in Resources */,
 				22A58A412A6914A500E29710 /* Assets.xcassets in Resources */,
 				22A58A3F2A6914A400E29710 /* Main.storyboard in Resources */,
+				22F2D2D22A77695D003DA894 /* cloud rain.json in Resources */,
 				22B3C9EF2A6FA65F00548753 /* ELKI 2.json in Resources */,
+				2234836C2A74253C007DC1E1 /* locatin red tap.json in Resources */,
 				22B3CA0F2A6FD00700548753 /* alarm warning.json in Resources */,
+				2234836B2A74253C007DC1E1 /* locatin grey tap.json in Resources */,
+				22F2D2D62A77695D003DA894 /* cloud grad.json in Resources */,
 				22A58A602A69162D00E29710 /* solar_uzb.json in Resources */,
+				22F2D2D02A77695D003DA894 /* sun.json in Resources */,
+				2234836A2A74253C007DC1E1 /* locatin green.json in Resources */,
 				220EA6942A73BF8400BFBDE5 /* cloud_sun.json in Resources */,
 				22B3CA082A6FCD3A00548753 /* alarm pink.json in Resources */,
 			);

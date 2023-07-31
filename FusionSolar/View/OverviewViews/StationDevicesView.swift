@@ -11,9 +11,41 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     var overviewController: OverviewController?
     
+    var filter: String? {
+        didSet {
+            if let value = filter {
+                if(value == "all") {
+                    self.showDevices = devices
+                } else {
+                    var showDevices = [Device]()
+                    if let devices = self.devices {
+                        for device in devices {
+                            if(device.devTypeId ?? 0 == 1) {
+                                if(value == "inverter") {
+                                    showDevices.append(device)
+                                }
+                            } else {
+                                if(value == "dongle") {
+                                    showDevices.append(device)
+                                }
+                            }
+                        }
+                    }
+                    self.showDevices = showDevices
+                }
+            }
+        }
+    }
+    
     var devices: [Device]? {
         didSet {
-            if let count = self.devices?.count {
+            self.showDevices = devices
+        }
+    }
+    
+    var showDevices: [Device]? {
+        didSet {
+            if let count = self.showDevices?.count {
                 if(count > 0) {
                     emptyView.isHidden = true
                     collectionView.isHidden = false
@@ -99,12 +131,12 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.devices?.count ?? 0
+        return self.showDevices?.count ?? 0
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = indexPath.item
-        let device = self.devices?[index]
+        let device = self.showDevices?[index]
         if(device?.devTypeId ?? 0 == 1) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deviceInverterCellViewId", for: indexPath) as! DeviceInverterCellView
             cell.device = device
@@ -120,7 +152,7 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let index = indexPath.item
-        let devTypeId = self.devices?[index].devTypeId ?? 0
+        let devTypeId = self.showDevices?[index].devTypeId ?? 0
         if(devTypeId == 1) {
             return CGSize(width: collectionView.frame.width, height: 260.dp)
         } else {
@@ -201,6 +233,8 @@ class StationDevicesNavigationView: UIView {
                 
                 dongleLabel.textColor = .rgb(106, green: 106, blue: 106)
                 dongleSeperateView.isHidden = true
+                
+                self.stationDevicesView?.filter = "all"
             }
             if((selectePage ?? 0) == 1) {
                 inverterLabel.textColor = .rgb(39, green: 87, blue: 238)
@@ -211,6 +245,8 @@ class StationDevicesNavigationView: UIView {
                 
                 dongleLabel.textColor = .rgb(106, green: 106, blue: 106)
                 dongleSeperateView.isHidden = true
+                
+                self.stationDevicesView?.filter = "inverter"
             }
             if((selectePage ?? 0) == 2) {
                 dongleLabel.textColor = .rgb(39, green: 87, blue: 238)
@@ -221,6 +257,8 @@ class StationDevicesNavigationView: UIView {
                 
                 allLabel.textColor = .rgb(106, green: 106, blue: 106)
                 allSeperateView.isHidden = true
+                
+                self.stationDevicesView?.filter = "dongle"
             }
         }
     }

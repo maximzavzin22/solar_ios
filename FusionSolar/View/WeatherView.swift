@@ -30,7 +30,7 @@ class WeatherView: UIView {
     }
     
     let animationView: LottieAnimationView = {
-        let view = LottieAnimationView.init(name: "cloud_sun")
+        let view = LottieAnimationView.init(name: "sun")
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         view.loopMode = .loop

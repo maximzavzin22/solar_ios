@@ -13,9 +13,41 @@ class DevicesView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     
     var topSafeArea: CGFloat = 0.0
     
+    var filter: String? {
+        didSet {
+            if let value = filter {
+                if(value == "all") {
+                    self.showDevices = devices
+                } else {
+                    var showDevices = [Device]()
+                    if let devices = self.devices {
+                        for device in devices {
+                            if(device.devTypeId ?? 0 == 1) {
+                                if(value == "inverter") {
+                                    showDevices.append(device)
+                                }
+                            } else {
+                                if(value == "dongle") {
+                                    showDevices.append(device)
+                                }
+                            }
+                        }
+                    }
+                    self.showDevices = showDevices
+                }
+            }
+        }
+    }
+    
     var devices: [Device]? {
         didSet {
-            if let count = self.devices?.count {
+            self.showDevices = devices
+        }
+    }
+    
+    var showDevices: [Device]? {
+        didSet {
+            if let count = self.showDevices?.count {
                 if(count > 0) {
                     emptyView.isHidden = true
                     collectionView.isHidden = false
@@ -165,12 +197,12 @@ class DevicesView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.devices?.count ?? 0
+        return self.showDevices?.count ?? 0
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = indexPath.item
-        let device = self.devices?[index]
+        let device = self.showDevices?[index]
         if(device?.devTypeId ?? 0 == 1) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deviceInverterCellViewId", for: indexPath) as! DeviceInverterCellView
             cell.device = device
@@ -186,7 +218,7 @@ class DevicesView: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let index = indexPath.item
-        let devTypeId = self.devices?[index].devTypeId ?? 0
+        let devTypeId = self.showDevices?[index].devTypeId ?? 0
         if(devTypeId == 1) {
             return CGSize(width: collectionView.frame.width, height: 260.dp)
         } else {

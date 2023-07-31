@@ -12,7 +12,8 @@ class OverviewController: UIViewController {
     var station: Station? {
         didSet {
             self.titleLabel.text = station?.plantName ?? ""
-            
+            overviewView.station = station
+            self.overviewView.generateKpi()
         }
     }
     
@@ -216,7 +217,7 @@ class OverviewController: UIViewController {
         stationLayotView.isHidden = true
         stationDevicesView.isHidden = true
         
-        overviewView.generateKpi()
+     //   overviewView.generateKpi()
     }
     
     func openAlarmDetailController(alarm: Alarm) {

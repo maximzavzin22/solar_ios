@@ -13,7 +13,17 @@ class PlantCellView: UICollectionViewCell {
         didSet {
             titleLabel.text = station?.plantName ?? ""
             addressLabel.text = station?.plantAddress ?? ""
-            status = "normal"
+            if let statusValue = station?.status {
+                if(statusValue == 1) {
+                    status = "normal"
+                }
+                if(statusValue == 2) {
+                    status = "faulty"
+                }
+                if(statusValue == 3) {
+                    status = "offline"
+                }
+            }
         }
     }
     

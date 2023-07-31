@@ -8,6 +8,7 @@
 import UIKit
 import GoogleMaps
 import MapKit
+import Lottie
 
 class MapCellView: UICollectionViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
     
@@ -19,7 +20,6 @@ class MapCellView: UICollectionViewCell, GMSMapViewDelegate, CLLocationManagerDe
     
     var stations: [Station]? {
         didSet {
-            dump(stations)
             var index = 0
             if let stations = self.stations {
                 self.googleMapView.clear()
@@ -27,24 +27,72 @@ class MapCellView: UICollectionViewCell, GMSMapViewDelegate, CLLocationManagerDe
                 for station in stations {
                     let marker = GMSMarker()
                     marker.userData = ["index": index]
+                    marker.appearAnimation = .pop
                     index = index + 1
                     var latitude = station.latitude ?? 0.0
                     var longitude = station.longitude ?? 0.0
                     marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                     marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
                     marker.map = googleMapView
+                    var animationName = ""
+                    if(station.status ?? 0 == 1) {
+                        animationName = "locatin green"
+                        normalCount = (normalCount ?? 0) + 1
+                    }
+                    if(station.status ?? 0 == 2) {
+                        animationName = "locatin red"
+                        faultyCount = (faultyCount ?? 0) + 1
+                    }
+                    if(station.status ?? 0 == 3) {
+                        animationName = "locatin grey"
+                        offlineCount = (offlineCount ?? 0) + 1
+                    }
+                    let pointAnimation = LottieAnimation.named(animationName)
+                    var pointImageView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 50.dp, height: 50.dp))
+                    pointImageView.animation = pointAnimation
+                    pointImageView.loopMode = .loop
+                    pointImageView.play()
+                    animatios.append(pointImageView)
+                    let markerView = UIImageView()
+                    marker.iconView = pointImageView
+
                     googleMapView.selectedMarker = marker
                     markers?.append(marker)
                 }
+                allCount = (normalCount ?? 0) + (faultyCount ?? 0) + (offlineCount ?? 0)
             }
-            self.statisticsMapView.allValueLabel.text = "\(self.stations?.count ?? 0)"
-            self.statisticsMapView.normalValueLabel.text = "\(self.stations?.count ?? 0)"
         }
     }
+    
+    var animatios = [LottieAnimationView]()
     
     var locationManager = CLLocationManager()
     
     let geocoder = GMSGeocoder()
+    
+    var allCount: Int? {
+        didSet {
+            self.statisticsMapView.allValueLabel.text = "\(allCount ?? 0)"
+        }
+    }
+    
+    var normalCount: Int? {
+        didSet {
+            self.statisticsMapView.normalValueLabel.text = "\(normalCount ?? 0)"
+        }
+    }
+    
+    var faultyCount: Int? {
+        didSet {
+            self.statisticsMapView.faultyValueLabel.text = "\(faultyCount ?? 0)"
+        }
+    }
+    
+    var offlineCount: Int? {
+        didSet {
+            self.statisticsMapView.offlineValueLabel.text = "\(offlineCount ?? 0)"
+        }
+    }
     
     //topView
     let topView: UIView = {
@@ -167,6 +215,35 @@ class MapCellView: UICollectionViewCell, GMSMapViewDelegate, CLLocationManagerDe
             if let index = dict["index"] {
                 if let station = self.stations?[index] {
                     print("select station \(station.plantName)")
+                    var animationName = ""
+                    if(station.status ?? 0 == 1) {
+                        animationName = "locatin green tap"
+                    }
+                    if(station.status ?? 0 == 2) {
+                        animationName = "locatin red tap"
+                    }
+                    if(station.status ?? 0 == 3) {
+                        animationName = "locatin grey tap"
+                    }
+                    let pointAnimation = LottieAnimation.named(animationName)
+                    self.animatios[index].animation = pointAnimation
+                    self.animatios[index].loopMode = .playOnce
+                    self.animatios[index].play { (finished) in
+                        if(station.status ?? 0 == 1) {
+                            animationName = "locatin green"
+                        }
+                        if(station.status ?? 0 == 2) {
+                            animationName = "locatin red"
+                        }
+                        if(station.status ?? 0 == 3) {
+                            animationName = "locatin grey"
+                        }
+                        let pointAnimation = LottieAnimation.named(animationName)
+                        self.animatios[index].animation = pointAnimation
+                        self.animatios[index].loopMode = .loop
+                        self.animatios[index].play()
+                    }
+                    
                     self.homeView?.homeController?.openPlantMapInfoView(station: station)
                 }
             }

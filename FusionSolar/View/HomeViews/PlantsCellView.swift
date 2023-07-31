@@ -48,7 +48,21 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
                     collectionView.isHidden = true
                 }
                 allCount = count
-                normalCount = count
+                if let stations = self.stations {
+                    for station in stations {
+                        if let status = station.status {
+                            if(status == 1) {
+                                normalCount = (normalCount ?? 0) + 1
+                            }
+                            if(status == 2) {
+                                faultyCount = (faultyCount ?? 0) + 1
+                            }
+                            if(status == 3) {
+                                offlineCount = (offlineCount ?? 0) + 1
+                            }
+                        }
+                    }
+                }
             }
             self.collectionView.reloadData()
         }
@@ -327,8 +341,8 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
     func setupCollectionView() {
         print("setupCollectionView")
         collectionView.register(PlantCellView.self, forCellWithReuseIdentifier: "plantCellViewId")
-        collectionView.contentInset = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 16.dp, left: 0, bottom: 66.dp, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 16.dp, left: 0, bottom: 66.dp, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -410,6 +424,7 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         station1.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
         station1.plantCode = "NE=33695851"
         station1.plantName = "Фарғона Вилоят перинатал маркази 100"
+        station1.status = 1
         stations.append(station1)
         
         var station2 = Station()
@@ -422,7 +437,34 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         station2.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
         station2.plantCode = "NE=33696229"
         station2.plantName = "Жиззах вилояти юқумли касалликлар шифохонаси 50"
+        station2.status = 1
         stations.append(station2)
+        
+        var station3 = Station()
+        station3.capacity = 0.0
+        station3.contactMethod = "zavmax92@gmail.com"
+        station3.contactPerson = "Max"
+        station3.gridConnectionDate = "2023-07-18T14:06:27+05:00"
+        station3.latitude = 41.3562168
+        station3.longitude = 69.37427
+        station3.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
+        station3.plantCode = "NE=33696229"
+        station3.plantName = "Жиззах вилояти юқумли касалликлар шифохонаси 50"
+        station3.status = 2
+        stations.append(station3)
+        
+        var station4 = Station()
+        station4.capacity = 0.0
+        station4.contactMethod = "zavmax92@gmail.com"
+        station4.contactPerson = "Max"
+        station4.gridConnectionDate = "2023-07-18T14:06:27+05:00"
+        station4.latitude = 41.3854563
+        station4.longitude = 69.2520689
+        station4.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
+        station4.plantCode = "NE=33696229"
+        station4.plantName = "Жиззах вилояти юқумли касалликлар шифохонаси 50"
+        station4.status = 3
+        stations.append(station4)
         
         self.stations = stations
     }

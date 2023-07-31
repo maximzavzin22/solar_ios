@@ -15,6 +15,9 @@ class BasicInfoController: UIViewController, UINavigationControllerDelegate, UIS
             self.addressBasicInfoAddressView.valueLabel.text = station?.plantAddress ?? ""
             self.personBasicInfoSmallView.valueLabel.text = station?.contactPerson ?? ""
             self.methodBasicInfoSmallView.valueLabel.text = station?.contactMethod ?? ""
+            self.countryBasicInfoSmallView.valueLabel.text = "Uzbekistan"
+            self.providerBasicInfoSmallView.valueLabel.text = HomeController.login ?? ""
+            self.chargingBasicInfoSmallView.valueLabel.text = "No"
         }
     }
     

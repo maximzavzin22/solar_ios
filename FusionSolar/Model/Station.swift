@@ -17,6 +17,7 @@ class Station: NSObject {
     var plantAddress: String?
     var plantCode: String?
     var plantName: String?
+    var status: Int? //1-normal//2-faulity//3-offline
 }
 
 
