@@ -141,6 +141,7 @@ class ChangeLanguageController: UIViewController {
             HomeController.selectedLanguage = self.selectedLanguage
             isChangeLanguage = true
             UserDefaults.standard.set(HomeController.selectedLanguage, forKey: "selectedLanguage")
+            UserDefaults.standard.synchronize()
             if(HomeController.selectedLanguage != "") {
                 self.setupLanguage()
             }

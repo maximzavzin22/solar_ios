@@ -18,6 +18,7 @@ class DatePickerView: UIView {
         didSet {
             if let date = selectedDate {
                 let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: HomeController.selectedLanguage)
                 dateFormatter.dateFormat = "dd MMM, yyyy"
                 titleLabel.text = dateFormatter.string(from: date)
             }
@@ -57,6 +58,8 @@ class DatePickerView: UIView {
         dP.datePickerMode = .date
         dP.preferredDatePickerStyle = .wheels
         dP.maximumDate = Date()
+        let loc = Locale(identifier: HomeController.selectedLanguage)
+        dP.locale = loc
         return dP
     }()
     

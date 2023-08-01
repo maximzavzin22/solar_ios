@@ -142,8 +142,8 @@ class LanguageController: UIViewController {
         uzLanguageView.isSelect = true
         self.activeButton()
         HomeController.selectedLanguage = "uz-UZ"
-        chooseButton.setTitle("", for: .normal)
-        titleLabel.text = ""
+        chooseButton.setTitle("Tanlash", for: .normal)
+        titleLabel.text = "Til"
     }
     
     @objc func uzCyrlLanguageViewPress() {
@@ -151,8 +151,8 @@ class LanguageController: UIViewController {
         uzCyrlLanguageView.isSelect = true
         self.activeButton()
         HomeController.selectedLanguage = "uz-Cyrl"
-        chooseButton.setTitle("", for: .normal)
-        titleLabel.text = ""
+        chooseButton.setTitle("Танлаш", for: .normal)
+        titleLabel.text = "Тил"
     }
     
     @objc func ruLanguageViewPress() {

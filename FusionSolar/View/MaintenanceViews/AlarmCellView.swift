@@ -194,7 +194,7 @@ class AlarmCellView: UICollectionViewCell {
         borderView.addSubview(textsContentView)
         
         self.addConstraintsWithFormat("H:[v0(\(360.dp))]", views: borderView)
-        borderView.addConstraintsWithFormat("H:|-\(20.dp)-[v0(\(24.dp))]-\(10.dp)-[v1]-\(78.dp)-|", views: animationView, nameLabel)
+        borderView.addConstraintsWithFormat("H:|-\(20.dp)-[v0(\(24.dp))]-\(10.dp)-[v1]-\(100.dp)-|", views: animationView, nameLabel)
         borderView.addConstraintsWithFormat("H:[v0]-\(26.dp)-|", views: statusLabel)
         borderView.addConstraintsWithFormat("H:[v0(\(320.dp))]", views: textsContentView)
         

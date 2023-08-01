@@ -18,6 +18,7 @@ class YearPickerView: UIView {
         didSet {
             if let date = selectedDate {
                 let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: HomeController.selectedLanguage)
                 dateFormatter.dateFormat = "yyyy"
                 titleLabel.text = dateFormatter.string(from: date)
             }

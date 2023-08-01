@@ -10,7 +10,7 @@ import UIKit
 /// A control for the inputting of month and year values in a view that uses a spinning-wheel or slot-machine metaphor.
 open class MonthYearWheelPicker: UIPickerView {
     
-    private var calendar = Calendar(identifier: .gregorian)
+    var calendar = Calendar(identifier: .gregorian)
     private var _maximumDate: Date?
     private var _minimumDate: Date?
     private var _date: Date?
@@ -121,6 +121,7 @@ open class MonthYearWheelPicker: UIPickerView {
     /// - Note: If you attempt to set the date beyond the ``maximumDate``or below the ``minimumDate`` then the date will be corrected to the closest date within those bounds (i.e. if your maximum date is set to 1st June 2022 and you try to set the date as 1st January 2023, the date that will actually be set will be 1st June 2022).
     public func setDate(_ date: Date, animated: Bool) {
         let date = formattedDate(from: date)
+       
         _date = date
         if date > maximumDate {
             setDate(maximumDate, animated: true)
@@ -166,6 +167,7 @@ open class MonthYearWheelPicker: UIPickerView {
     }
     
     private func formattedDate(from date: Date) -> Date {
+        calendar.locale = Locale(identifier: HomeController.selectedLanguage)
         return DateComponents(calendar: calendar, year: calendar.component(.year, from: date), month: calendar.component(.month, from: date), day: 1, hour: 0, minute: 0, second: 0).date ?? Date()
     }
     
@@ -187,10 +189,14 @@ open class MonthYearWheelPicker: UIPickerView {
         delegate = self
         dataSource = self
         
+        calendar.locale = Locale(identifier: HomeController.selectedLanguage)
+        
         var months: [String] = []
         var month = 0
         for _ in 1...12 {
-            months.append(DateFormatter().monthSymbols[month].capitalized)
+            let dateFormater = DateFormatter()
+            dateFormater.locale = Locale(identifier: HomeController.selectedLanguage)
+            months.append(dateFormater.monthSymbols[month].capitalized)
             month += 1
         }
         self.months = months

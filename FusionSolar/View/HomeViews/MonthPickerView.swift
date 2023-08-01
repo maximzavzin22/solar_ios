@@ -18,6 +18,7 @@ class MonthPickerView: UIView {
         didSet {
             if let date = selectedDate {
                 let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: HomeController.selectedLanguage)
                 dateFormatter.dateFormat = "MMM yyyy"
                 titleLabel.text = dateFormatter.string(from: date)
             }
@@ -54,6 +55,9 @@ class MonthPickerView: UIView {
     let datePicker: MonthYearWheelPicker = {
         let dP = MonthYearWheelPicker()
         dP.translatesAutoresizingMaskIntoConstraints = false
+        dP.calendar.locale = Locale(identifier: HomeController.selectedLanguage)
+//        let loc = Locale(identifier: HomeController.selectedLanguage)
+//        dP.locale = loc
        // dP.datePickerMode = .date
        // dP.preferredDatePickerStyle = .wheels
       //  dP.maximumDate = Date()

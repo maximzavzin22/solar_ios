@@ -58,11 +58,14 @@ class SplashController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         self.view.backgroundColor = .rgb(233, green: 237, blue: 246)
         
+        HomeController.selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? ""
+        if(HomeController.selectedLanguage != "") {
+            self.setupLanguage()
+        }
+        
         self.setupView()
         self.initView()
         self.startTimer()
-        
-        HomeController.selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? ""
     }
     
     func setupView() {
@@ -105,6 +108,14 @@ class SplashController: UIViewController {
         } else {
             self.isLoadEnd = true
         }
+    }
+    
+    func setupLanguage() {
+        var language = HomeController.selectedLanguage
+        let defaults = UserDefaults.standard
+        defaults.set (language, forKey: "AppleLanguage")
+        defaults.synchronize ()
+        Bundle.setLanguage (language)
     }
     
     func openController() {
