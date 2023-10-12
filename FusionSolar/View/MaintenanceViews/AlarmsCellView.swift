@@ -228,6 +228,20 @@ class AlarmsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
     }
     //collectionView Setup end
     
+    //ApiService
+//    func fetchAlarmList() {
+//        ApiService.sharedInstance.fetchAlarmList() {
+//            (error: CustomError?, alarms: [Alarm]?) in
+//            //self.hideLoadingView()
+//            if(error?.code ?? 0 == 0) {
+//                
+//            } else {
+//                //error
+//            }
+//        }
+//    }
+    //
+    
     //fot test
     func generateAlarms() {
         var alarms = [Alarm]()

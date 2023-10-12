@@ -11,6 +11,20 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
     
     var isShowPassword = false
     
+    var unissoLogin: UnissoLogin? {
+        didSet {
+           // dump(unissoLogin)
+            self.fetchValidateUser(username: unissoLogin?.body?.username ?? "", password: unissoLogin?.body?.password ?? "", url: unissoLogin?.url ?? "")
+        }
+    }
+    
+    var validateCookie: ValidateCookie? {
+        didSet {
+            dump(validateCookie)
+            self.fetchLogin()
+        }
+    }
+    
     lazy var contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -168,6 +182,7 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
         HomeController.password = self.passwordTextField.text ?? ""
         if(HomeController.login != "" && HomeController.password != "") {
             self.fetchProfile()
+//            self.fetchPassword()
         }
     }
     
@@ -213,6 +228,71 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
             } else {
                 self.hideLoadingView()
                 self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+            }
+        }
+    }
+    
+    func fetchPassword() {
+        self.showLoadingView()
+        ApiService.sharedInstance.fetchPassword(username: HomeController.login, password: HomeController.password) {
+            (error: CustomError?, unissoLogin: UnissoLogin?) in
+           // self.hideLoadingView()
+            if(error?.code ?? 0 == 0) {
+                self.unissoLogin = unissoLogin
+            } else {
+                self.hideLoadingView()
+                self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+            }
+        }
+    }
+    
+    func fetchValidateUser(username: String, password: String, url: String) {
+        self.showLoadingView()
+        ApiService.sharedInstance.fetchValidateUser(username: username, password: password, url: url) {
+            (error: CustomError?, validateCookie: ValidateCookie?) in
+           // self.hideLoadingView()
+            if(error?.code ?? 0 == 0) {
+                self.validateCookie = validateCookie
+            } else {
+                self.hideLoadingView()
+                self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+            }
+        }
+    }
+    
+    func fetchLogin() {
+        if let validateCookie = self.validateCookie {
+       //     self.showLoadingView()
+            ApiService.sharedInstance.fetchLogin(validateCookie: validateCookie) {
+                (error: CustomError?, location: String?) in
+                //self.hideLoadingView()
+                if(error?.code ?? 0 == 0) {
+                    if(location != "") {
+                        self.fetchAuth(url: location ?? "")
+                    } else {
+                        self.hideLoadingView()
+                    }
+                } else {
+                    self.hideLoadingView()
+                    self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+                }
+            }
+        }
+    }
+    
+    func fetchAuth(url: String) {
+        if let validateCookie = self.validateCookie {
+            //self.showLoadingView()
+            ApiService.sharedInstance.fetchAuth(url: url) {
+                (error: CustomError?, bspsession: String?) in
+                self.hideLoadingView()
+                if(error?.code ?? 0 == 0) {
+                    HomeController.bspsession = bspsession ?? ""
+                    self.openHomeController()
+                } else {
+                    self.hideLoadingView()
+                    self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+                }
             }
         }
     }

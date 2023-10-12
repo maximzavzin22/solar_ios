@@ -16,7 +16,10 @@ class HomeStatisticsCellView: UICollectionViewCell {
     
     var stations: [Station]? {
         didSet {
-            let count = stations?.count ?? 0
+            var count = stations?.count ?? 0
+            if(count > 5) {
+                count = 5
+            }
             height = CGFloat(count) * 70.dp + 21.dp + 24.dp + 16.dp
             plantsViewHeightConstraint?.constant = height
             self.setScrollViewHeight()
@@ -317,7 +320,11 @@ class StatisticsPlantsView: UIView, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.stations?.count ?? 0
+        var count = self.stations?.count ?? 0
+        if(count > 5) {
+            count = 5
+        }
+        return count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

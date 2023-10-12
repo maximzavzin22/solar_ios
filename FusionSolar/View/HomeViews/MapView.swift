@@ -29,12 +29,16 @@ class MapCellView: UICollectionViewCell, GMSMapViewDelegate, CLLocationManagerDe
                     marker.userData = ["index": index]
                     marker.appearAnimation = .pop
                     index = index + 1
-                    var latitude = station.latitude ?? 0.0
-                    var longitude = station.longitude ?? 0.0
-                    marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    var latitude = Double(station.latitude ?? "0.0")
+                    var longitude = Double(station.longitude ?? "0.0")
+                    marker.position = CLLocationCoordinate2D(latitude: latitude ?? 0.0, longitude: longitude ?? 0.0)
                     marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
                     marker.map = googleMapView
                     var animationName = ""
+                    if(station.status ?? 0 == 0) {
+                        animationName = "locatin green"
+                        normalCount = (normalCount ?? 0) + 1
+                    }
                     if(station.status ?? 0 == 1) {
                         animationName = "locatin green"
                         normalCount = (normalCount ?? 0) + 1
@@ -216,6 +220,9 @@ class MapCellView: UICollectionViewCell, GMSMapViewDelegate, CLLocationManagerDe
                 if let station = self.stations?[index] {
                     print("select station \(station.plantName)")
                     var animationName = ""
+                    if(station.status ?? 0 == 0) {
+                        animationName = "locatin green tap"
+                    }
                     if(station.status ?? 0 == 1) {
                         animationName = "locatin green tap"
                     }
@@ -229,6 +236,9 @@ class MapCellView: UICollectionViewCell, GMSMapViewDelegate, CLLocationManagerDe
                     self.animatios[index].animation = pointAnimation
                     self.animatios[index].loopMode = .playOnce
                     self.animatios[index].play { (finished) in
+                        if(station.status ?? 0 == 0) {
+                            animationName = "locatin green"
+                        }
                         if(station.status ?? 0 == 1) {
                             animationName = "locatin green"
                         }

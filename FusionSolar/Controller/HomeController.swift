@@ -14,8 +14,71 @@ class HomeController: UIViewController {
     static var login = ""
     static var password = ""
     static var token = ""
+    static var bspsession = ""
     
     static var profile: Profile?
+    
+    var stationsList = ""
+    
+    var pageNo = 1
+    var isLoadEnd = false
+    
+    var allStations = [Station]()
+    
+    var stations: [Station]? {
+        didSet {
+            stationsList = ""
+            if let stations = self.stations {
+                for station in stations {
+                    stationsList.append("\(station.plantCode ?? ""),")
+                }
+                if(stationsList != "") {
+                    stationsList.removeLast()
+                }
+                self.allStations.append(contentsOf: stations)
+            }
+            print("stationsList \(stationsList)")
+            
+            self.fetchStations(stationCodes: stationsList)
+            self.fetchAlarmList(stationCodes: stationsList)
+            self.fetchStations()
+        }
+    }
+    
+    var realKpis: [StationRealKpi]? {
+        didSet {
+            if let stations = self.stations {
+                if let realKpis = self.realKpis {
+                    for station in stations {
+                        for realKpi in realKpis {
+                            if(station.plantCode == realKpi.stationCode) {
+                                station.stationRealKpi = realKpi
+                            }
+                        }
+                    }
+                }
+            }
+            //dump(stations)
+            //self.homeView.plantsCellView?.stations = self.stations
+        }
+    }
+    
+    var alarms: [Alarm]? {
+        didSet {
+            if let stations = self.stations {
+                if let alarms = self.alarms {
+                    for station in stations {
+                        station.alarms = [Alarm]()
+                        for alarm in alarms {
+                            if(station.plantCode == alarm.stationCode) {
+                                station.alarms?.append(alarm)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     var currentPage: Int? {
         didSet {
@@ -31,7 +94,8 @@ class HomeController: UIViewController {
                     self.maintenanceView.isHidden = false
                     self.devicesView.isHidden = true
                     self.profileView.isHidden = true
-                    //self.maintenanceView.alarmsCellView?.alarmsStatisticView.initData()
+                    self.maintenanceView.alarmsCellView?.alarms = self.alarms
+//                    self.maintenanceView.alarmsCellView?.fetchAlarmList()
                     self.maintenanceView.alarmsCellView?.generateAlarms() //for test need fetch api method
                 }
                 if(page == 2) {
@@ -154,7 +218,8 @@ class HomeController: UIViewController {
         self.setupView()
         self.setupContentView()
         
-        //self.setupToolbar()
+        self.showLoadingView()
+        self.fetchStations()
     }
     
     func setupView() {
@@ -274,6 +339,63 @@ class HomeController: UIViewController {
         self.present(pverviewController, animated: true)
     }
     
+    func compliteAllRequests() {
+        self.homeView.plantsCellView?.stations = self.allStations
+        self.hideLoadingView()
+    }
+    
+    //ApiService
+    func fetchStations() {
+        if(!isLoadEnd) {
+          //  self.showLoadingView()
+            ApiService.sharedInstance.fetchStations(pageNo: self.pageNo) {
+                (error: CustomError?, stations: [Station]?) in
+           //     self.hideLoadingView()
+                if(error?.code ?? 0 == 0) {
+                    self.isLoadEnd = true
+                    self.stations = stations
+                    
+//                    if(stations?.count ?? 0 == 0) {
+                        
+                        self.compliteAllRequests()
+//                    }
+                   // self.pageNo = self.pageNo + 1
+                } else {
+                    //error
+                }
+            }
+        }
+    }
+    
+    func fetchStations(stationCodes: String) {
+       // self.showLoadingView()
+        ApiService.sharedInstance.fetchStationRealKpi(stationCodes: stationCodes) {
+            (error: CustomError?, realKpis: [StationRealKpi]?) in
+          //  self.hideLoadingView()
+            if(error?.code ?? 0 == 0) {
+                if(realKpis?.count ?? 0 > 0) {
+                    self.realKpis = realKpis
+                }
+            } else {
+                //error
+            }
+        }
+    }
+    
+    func fetchAlarmList(stationCodes: String) {
+      //  self.showLoadingView()
+        ApiService.sharedInstance.fetchAlarmList(stationCodes: stationCodes) {
+            (error: CustomError?, alarms: [Alarm]?) in
+         //   self.hideLoadingView()
+            if(error?.code ?? 0 == 0) {
+                self.alarms = alarms
+            } else {
+                //error
+            }
+        }
+    }
+    //
+    
     //Error and Loading views
     func showErrorView(title: String, message: String) {
         self.view.addSubview(errorView)
@@ -314,11 +436,6 @@ class HomeController: UIViewController {
         maintenanceView.alarmsCellView?.alarmSearchView.searchTextField.inputAccessoryView = toolbar
         devicesView.searchDevicesView.devicesSearchView.searchTextField.inputAccessoryView = toolbar
         maintenanceView.tasksCellView?.inspectionTasksCellView?.searchView.searchTextField.inputAccessoryView = toolbar
-//        homeView.inputAccessoryView = toolbar
-//        usernameTextField.delegate = self
-//
-//        passwordTextField.inputAccessoryView = toolbar
-//        passwordTextField.delegate = self
     }
     
     @objc func doneButtonAction() {

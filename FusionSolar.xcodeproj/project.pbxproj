@@ -28,6 +28,8 @@
 		2234836D2A74253C007DC1E1 /* locatin red.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483672A74253C007DC1E1 /* locatin red.json */; };
 		2234836E2A74253C007DC1E1 /* locatin green tap.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483682A74253C007DC1E1 /* locatin green tap.json */; };
 		2234836F2A74253C007DC1E1 /* locatin grey.json in Resources */ = {isa = PBXBuildFile; fileRef = 223483692A74253C007DC1E1 /* locatin grey.json */; };
+		223DCD132AA6E36C00E1AF6C /* UnissoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DCD122AA6E36C00E1AF6C /* UnissoLogin.swift */; };
+		223DCD152AA6F17000E1AF6C /* ValidateCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DCD142AA6F17000E1AF6C /* ValidateCookie.swift */; };
 		2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245356D2A72E056007F5708 /* BasicInfoController.swift */; };
 		22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */; };
 		22A1AA322A6BBADD002AA262 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 22A1AA312A6BBADD002AA262 /* empty.json */; };
@@ -135,6 +137,8 @@
 		223483672A74253C007DC1E1 /* locatin red.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin red.json"; sourceTree = "<group>"; };
 		223483682A74253C007DC1E1 /* locatin green tap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin green tap.json"; sourceTree = "<group>"; };
 		223483692A74253C007DC1E1 /* locatin grey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "locatin grey.json"; sourceTree = "<group>"; };
+		223DCD122AA6E36C00E1AF6C /* UnissoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnissoLogin.swift; sourceTree = "<group>"; };
+		223DCD142AA6F17000E1AF6C /* ValidateCookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCookie.swift; sourceTree = "<group>"; };
 		2245356D2A72E056007F5708 /* BasicInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoController.swift; sourceTree = "<group>"; };
 		22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsFilterView.swift; sourceTree = "<group>"; };
 		22A1AA312A6BBADD002AA262 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
@@ -266,6 +270,15 @@
 			path = OverviewViews;
 			sourceTree = "<group>";
 		};
+		223DCD112AA6E33600E1AF6C /* web */ = {
+			isa = PBXGroup;
+			children = (
+				223DCD122AA6E36C00E1AF6C /* UnissoLogin.swift */,
+				223DCD142AA6F17000E1AF6C /* ValidateCookie.swift */,
+			);
+			path = web;
+			sourceTree = "<group>";
+		};
 		22A58A2B2A6914A400E29710 = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +338,7 @@
 		22A58A4D2A69150600E29710 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				223DCD112AA6E33600E1AF6C /* web */,
 				22A58A572A6915BA00E29710 /* CustomError.swift */,
 				22A58A772A6A353000E29710 /* Profile.swift */,
 				22A58A882A6A6BB600E29710 /* Station.swift */,
@@ -642,6 +656,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */,
+				223DCD152AA6F17000E1AF6C /* ValidateCookie.swift in Sources */,
 				22A58A5E2A69160200E29710 /* SplashController.swift in Sources */,
 				222D33EC2A722C0000004453 /* StationDevicesView.swift in Sources */,
 				22A58A7E2A6A4A5D00E29710 /* HomeView.swift in Sources */,
@@ -695,6 +710,7 @@
 				22B3C9E92A6F7D4200548753 /* ProfileView.swift in Sources */,
 				22ED5C8C2A70ED5E007C8AB1 /* SettingsController.swift in Sources */,
 				22C0E2E22A73E3C0000FFAAB /* PlantMapInfoView.swift in Sources */,
+				223DCD132AA6E36C00E1AF6C /* UnissoLogin.swift in Sources */,
 				222D33EA2A722BE000004453 /* StationLayotView.swift in Sources */,
 				22C53B8B2A6EA8EB0014D195 /* MonthYearWheelPicker.swift in Sources */,
 				22B3C9F12A6FACA600548753 /* Alarm.swift in Sources */,

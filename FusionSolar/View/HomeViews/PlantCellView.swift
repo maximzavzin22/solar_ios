@@ -13,6 +13,10 @@ class PlantCellView: UICollectionViewCell {
         didSet {
             titleLabel.text = station?.plantName ?? ""
             addressLabel.text = station?.plantAddress ?? ""
+            if let capacity = station?.capacity {
+                solarValueLabel.text = "\(capacity)\(NSLocalizedString("kwp", comment: ""))"
+            }
+            
             if let statusValue = station?.status {
                 if(statusValue == 1) {
                     status = "normal"
@@ -168,29 +172,25 @@ class PlantCellView: UICollectionViewCell {
     
     func setupView() {
         self.addSubview(borderView)
-        self.addConstraintsWithFormat("H:[v0(\(360.dp))]", views: borderView)
+        self.addConstraintsWithFormat("H:|-\(15.dp)-[v0]-\(15.dp)-|", views: borderView)
         self.addConstraintsWithFormat("V:[v0(\(117.dp))]", views: borderView)
         borderView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     func setupBorderView() {
         borderView.addSubview(iconImageView)
-        //borderView.addSubview(contentBlockView)
         borderView.addSubview(fonStatusView)
         borderView.addSubview(statusLabel)
         borderView.addSubview(titleLabel)
         borderView.addSubview(addressLabel)
         borderView.addSubview(bottomView)
         
-        //borderView.addConstraintsWithFormat("H:|-\(16.dp)-[v0(\(72.dp))]-\(13.dp)-[v1(\(227.dp))]", views: iconImageView, contentBlockView)
         borderView.addConstraintsWithFormat("H:|-\(16.dp)-[v0(\(72.dp))]", views: iconImageView)
         borderView.addConstraintsWithFormat("H:[v0]-\(18.dp)-|", views: statusLabel)
-        borderView.addConstraintsWithFormat("H:|-\(101.dp)-[v0(\(227.dp))]", views: addressLabel)
+        borderView.addConstraintsWithFormat("H:|-\(101.dp)-[v0]-\(32.dp)-|", views: addressLabel)
         borderView.addConstraintsWithFormat("H:|-\(101.dp)-[v0(\(227.dp))]", views: bottomView)
-      //  borderView.addConstraintsWithFormat("H:[v0]", views: titleLabel)
         
         borderView.addConstraintsWithFormat("V:|-\(23.dp)-[v0(\(72.dp))]", views: iconImageView)
-       // borderView.addConstraintsWithFormat("V:|-\(22.dp)-[v0(\(74.dp))]", views: contentBlockView)
         borderView.addConstraintsWithFormat("V:[v0(\(22.dp))]", views: fonStatusView)
         borderView.addConstraintsWithFormat("V:|-\(18.dp)-[v0]", views: statusLabel)
         
@@ -201,7 +201,6 @@ class PlantCellView: UICollectionViewCell {
         fonStatusView.rightAnchor.constraint(equalTo: statusLabel.rightAnchor, constant: 8.dp).isActive = true
         
         titleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 13.dp).isActive = true
-        //titleLabel.rightAnchor.constraint(equalTo: fonStatusView.leftAnchor, constant: -8.dp).isActive = true
         nameLeftConstraint = titleLabel.anchor(nil, left: nil, bottom: nil, right: borderView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 32.dp, widthConstant: 0, heightConstant: 0)[0]
         nameLeftConstraint?.isActive = true
         

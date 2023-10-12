@@ -14,7 +14,7 @@ class OverviewView: UIView {
     
     var station: Station? {
         didSet {
-            
+            self.fetchStations()
         }
     }
     

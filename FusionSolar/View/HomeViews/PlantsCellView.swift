@@ -85,6 +85,7 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         }
     }
     
+    var isLoadEnd = false
     var stations: [Station]? {
         didSet {
             self.showStations = stations
@@ -253,7 +254,7 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         self.setupSearchView()
         self.setupCollectionView()
         
-        self.fetchStations()
+      //  self.fetchStations()
     }
     
     func initKeyboard() {
@@ -281,8 +282,6 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         
         emptyView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         emptyView.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        
-        //emptyView.isHidden = true
         
         mapButton.addTarget(self, action: #selector(self.mapButtonPress), for: .touchUpInside)
     }
@@ -423,25 +422,45 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         if let station = self.showStations?[index] {
             self.homeView?.homeController?.openOverviewController(station: station)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        var index = indexPath.item
+        if(showStations?.count ?? 0 > 0 && index > 0) {
+            if (index == (showStations?.count ?? 0) - 1 ) { //it's your last cell
+                if(!isLoadEnd) {
+                //    self.fetchStations()
+                }
+            }
+        }
         
     }
     //collectionView Setup end
     
     //ApiService
     func fetchStations() {
-        self.generateData()
-//        self.showLoadingView()
-//        ApiService.sharedInstance.fetchStations(pageNo: self.pageNo) {
-//            (error: CustomError?, stations: [Station]?) in
-//            self.hideLoadingView()
-//            if(error?.code ?? 0 == 0) {
-//                self.stations = stations
-//                self.pageNo = self.pageNo + 1
-//                dump(stations)
-//            } else {
-//                //error
-//            }
-//        }
+//        self.generateData()
+        self.showLoadingView()
+        ApiService.sharedInstance.fetchStations(pageNo: self.pageNo) {
+            (error: CustomError?, stations: [Station]?) in
+            self.hideLoadingView()
+            if(error?.code ?? 0 == 0) {
+                if(self.stations == nil) {
+                    self.stations = stations
+                } else {
+                    if let newStations = stations {
+                        self.stations?.append(contentsOf: newStations)
+                    }
+                }
+                if(stations?.count ?? 0 == 0) {
+                    self.isLoadEnd = true
+                }
+                self.pageNo = self.pageNo + 1
+                dump(stations)
+            } else {
+                //error
+            }
+        }
     }
     //
     
@@ -468,8 +487,8 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         station1.contactMethod = "zavmax92@gmail.com"
         station1.contactPerson = ""
         station1.gridConnectionDate = "2023-07-18T14:06:27+05:00"
-        station1.latitude = 41.3281172
-        station1.longitude = 69.2953415
+        station1.latitude = "41.3281172"
+        station1.longitude = "69.2953415"
         station1.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
         station1.plantCode = "NE=33695851"
         station1.plantName = "Фарғона Вилоят перинатал маркази 100"
@@ -481,8 +500,8 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         station2.contactMethod = "zavmax92@gmail.com"
         station2.contactPerson = "Max"
         station2.gridConnectionDate = "2023-07-18T14:06:27+05:00"
-        station2.latitude = 41.2937107
-        station2.longitude = 69.3561711
+        station2.latitude = "41.2937107"
+        station2.longitude = "69.3561711"
         station2.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
         station2.plantCode = "NE=33696229"
         station2.plantName = "Жиззах вилояти юқумли касалликлар шифохонаси 50"
@@ -494,8 +513,8 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         station3.contactMethod = "zavmax92@gmail.com"
         station3.contactPerson = "Max"
         station3.gridConnectionDate = "2023-07-18T14:06:27+05:00"
-        station3.latitude = 41.3562168
-        station3.longitude = 69.37427
+        station3.latitude = "41.3562168"
+        station3.longitude = "69.37427"
         station3.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
         station3.plantCode = "NE=33696229"
         station3.plantName = "Жиззах вилояти юқумли касалликлар шифохонаси 50"
@@ -507,8 +526,8 @@ class PlantsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         station4.contactMethod = "zavmax92@gmail.com"
         station4.contactPerson = "Max"
         station4.gridConnectionDate = "2023-07-18T14:06:27+05:00"
-        station4.latitude = 41.3854563
-        station4.longitude = 69.2520689
+        station4.latitude = "41.3854563"
+        station4.longitude = "69.2520689"
         station4.plantAddress = "42 O\'zbekiston Ovozi ko\'chasi, Узбекистан"
         station4.plantCode = "NE=33696229"
         station4.plantName = "Жиззах вилояти юқумли касалликлар шифохонаси 50"

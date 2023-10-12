@@ -76,8 +76,8 @@ class JSONParse: NSObject {
             station.contactMethod = result["contactMethod"] as? String ?? ""
             station.contactPerson = result["contactPerson"] as? String ?? ""
             station.gridConnectionDate = result["gridConnectionDate"] as? String ?? ""
-            station.latitude = result["latitude"] as? Double ?? 0.0
-            station.longitude = result["longitude"] as? Double ?? 0.0
+            station.latitude = result["latitude"] as? String ?? "0.0"
+            station.longitude = result["longitude"] as? String ?? "0.0"
             station.plantAddress = result["plantAddress"] as? String ?? ""
             station.plantCode = result["plantCode"] as? String ?? ""
             station.plantName = result["plantName"] as? String ?? ""
@@ -92,6 +92,7 @@ class JSONParse: NSObject {
                 var stationRealKpis = [StationRealKpi]()
                 for dictionary in data as [[String: AnyObject]]  {
                     if let stationRealKpi = stationRealKpiParse(json: dictionary["dataItemMap"] as? Dictionary<String,Any>) {
+                        stationRealKpi.stationCode = dictionary["stationCode"] as? String ?? ""
                         stationRealKpis.append(stationRealKpi)
                     }
                 }

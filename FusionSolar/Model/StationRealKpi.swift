@@ -14,4 +14,5 @@ class StationRealKpi: NSObject {
     var day_income: Double?
     var total_income: Double?
     var real_health_state: Int?
+    var stationCode: String?
 }

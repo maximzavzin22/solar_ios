@@ -172,7 +172,7 @@ extension CGFloat {
         if(UIScreen.main.bounds.height/UIScreen.main.bounds.width >= 16/9) {
             koeficient = UIScreen.main.bounds.width / 390
         } else {
-            koeficient = UIScreen.main.bounds.height / 844
+            koeficient = UIScreen.main.bounds.height / 1300//844
         }
         return self*koeficient
     }
@@ -184,7 +184,7 @@ extension Int {
         if(UIScreen.main.bounds.height/UIScreen.main.bounds.width >= 16/9) {
             koeficient = UIScreen.main.bounds.width / 390
         } else {
-            koeficient = UIScreen.main.bounds.height / 844
+            koeficient = UIScreen.main.bounds.height / 1300//844
         }
         return CGFloat(self)*koeficient
     }
@@ -196,7 +196,7 @@ extension Double {
         if(UIScreen.main.bounds.height/UIScreen.main.bounds.width >= 16/9) {
             koeficient = UIScreen.main.bounds.width / 390
         } else {
-            koeficient = UIScreen.main.bounds.height / 844
+            koeficient = UIScreen.main.bounds.height / 1300//844
         }
         return CGFloat(self)*koeficient
     }
