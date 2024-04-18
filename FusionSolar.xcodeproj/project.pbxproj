@@ -31,6 +31,13 @@
 		223DCD132AA6E36C00E1AF6C /* UnissoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DCD122AA6E36C00E1AF6C /* UnissoLogin.swift */; };
 		223DCD152AA6F17000E1AF6C /* ValidateCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DCD142AA6F17000E1AF6C /* ValidateCookie.swift */; };
 		2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245356D2A72E056007F5708 /* BasicInfoController.swift */; };
+		229540C72BD0DEEE00BA0884 /* StatusNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */; };
+		229540C92BD0E1BB00BA0884 /* PlantsTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */; };
+		229540CB2BD0E1D700BA0884 /* PlantsSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */; };
+		229540CF2BD11F8500BA0884 /* TotalStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540CE2BD11F8500BA0884 /* TotalStatisticsView.swift */; };
+		229540D12BD12E0F00BA0884 /* StatisticsPlantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540D02BD12E0F00BA0884 /* StatisticsPlantsView.swift */; };
+		229540D32BD12E2F00BA0884 /* EnvironmentalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540D22BD12E2F00BA0884 /* EnvironmentalView.swift */; };
+		229540D52BD12E4A00BA0884 /* EnvironmentalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540D42BD12E4A00BA0884 /* EnvironmentalCellView.swift */; };
 		22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */; };
 		22A1AA322A6BBADD002AA262 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 22A1AA312A6BBADD002AA262 /* empty.json */; };
 		22A1AA342A6BD8C9002AA262 /* StatisticPlantCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1AA332A6BD8C9002AA262 /* StatisticPlantCellView.swift */; };
@@ -56,9 +63,8 @@
 		22A58A7A2A6A3B5A00E29710 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 22A58A792A6A3B5A00E29710 /* loader.json */; };
 		22A58A7C2A6A3C6800E29710 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A7B2A6A3C6800E29710 /* MenuBar.swift */; };
 		22A58A7E2A6A4A5D00E29710 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A7D2A6A4A5D00E29710 /* HomeView.swift */; };
-		22A58A812A6A4B7F00E29710 /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A802A6A4B7F00E29710 /* HomeNavigationView.swift */; };
-		22A58A832A6A516100E29710 /* PlantsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A822A6A516100E29710 /* PlantsCellView.swift */; };
-		22A58A852A6A52A200E29710 /* HomeStatisticsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A842A6A52A200E29710 /* HomeStatisticsCellView.swift */; };
+		22A58A832A6A516100E29710 /* PlantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A822A6A516100E29710 /* PlantsView.swift */; };
+		22A58A852A6A52A200E29710 /* StatisticPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A842A6A52A200E29710 /* StatisticPlantView.swift */; };
 		22A58A872A6A6B3F00E29710 /* PlantCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A862A6A6B3F00E29710 /* PlantCellView.swift */; };
 		22A58A892A6A6BB600E29710 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A882A6A6BB600E29710 /* Station.swift */; };
 		22A58A8B2A6A6D9000E29710 /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A8A2A6A6D9000E29710 /* EmptyDataView.swift */; };
@@ -140,6 +146,13 @@
 		223DCD122AA6E36C00E1AF6C /* UnissoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnissoLogin.swift; sourceTree = "<group>"; };
 		223DCD142AA6F17000E1AF6C /* ValidateCookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCookie.swift; sourceTree = "<group>"; };
 		2245356D2A72E056007F5708 /* BasicInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoController.swift; sourceTree = "<group>"; };
+		229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNavigationView.swift; sourceTree = "<group>"; };
+		229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTopView.swift; sourceTree = "<group>"; };
+		229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsSearchView.swift; sourceTree = "<group>"; };
+		229540CE2BD11F8500BA0884 /* TotalStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStatisticsView.swift; sourceTree = "<group>"; };
+		229540D02BD12E0F00BA0884 /* StatisticsPlantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPlantsView.swift; sourceTree = "<group>"; };
+		229540D22BD12E2F00BA0884 /* EnvironmentalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentalView.swift; sourceTree = "<group>"; };
+		229540D42BD12E4A00BA0884 /* EnvironmentalCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentalCellView.swift; sourceTree = "<group>"; };
 		22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsFilterView.swift; sourceTree = "<group>"; };
 		22A1AA312A6BBADD002AA262 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		22A1AA332A6BD8C9002AA262 /* StatisticPlantCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticPlantCellView.swift; sourceTree = "<group>"; };
@@ -176,9 +189,8 @@
 		22A58A792A6A3B5A00E29710 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
 		22A58A7B2A6A3C6800E29710 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		22A58A7D2A6A4A5D00E29710 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		22A58A802A6A4B7F00E29710 /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
-		22A58A822A6A516100E29710 /* PlantsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsCellView.swift; sourceTree = "<group>"; };
-		22A58A842A6A52A200E29710 /* HomeStatisticsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatisticsCellView.swift; sourceTree = "<group>"; };
+		22A58A822A6A516100E29710 /* PlantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsView.swift; sourceTree = "<group>"; };
+		22A58A842A6A52A200E29710 /* StatisticPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticPlantView.swift; sourceTree = "<group>"; };
 		22A58A862A6A6B3F00E29710 /* PlantCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCellView.swift; sourceTree = "<group>"; };
 		22A58A882A6A6BB600E29710 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		22A58A8A2A6A6D9000E29710 /* EmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
@@ -279,6 +291,31 @@
 			path = web;
 			sourceTree = "<group>";
 		};
+		229540C52BD0DEAE00BA0884 /* PlantsViews */ = {
+			isa = PBXGroup;
+			children = (
+				22A58A822A6A516100E29710 /* PlantsView.swift */,
+				229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */,
+				229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */,
+				229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */,
+				22A58A862A6A6B3F00E29710 /* PlantCellView.swift */,
+			);
+			path = PlantsViews;
+			sourceTree = "<group>";
+		};
+		229540CD2BD0F32300BA0884 /* StatisticPlantViews */ = {
+			isa = PBXGroup;
+			children = (
+				22A58A842A6A52A200E29710 /* StatisticPlantView.swift */,
+				22A1AA332A6BD8C9002AA262 /* StatisticPlantCellView.swift */,
+				229540CE2BD11F8500BA0884 /* TotalStatisticsView.swift */,
+				229540D02BD12E0F00BA0884 /* StatisticsPlantsView.swift */,
+				229540D22BD12E2F00BA0884 /* EnvironmentalView.swift */,
+				229540D42BD12E4A00BA0884 /* EnvironmentalCellView.swift */,
+			);
+			path = StatisticPlantViews;
+			sourceTree = "<group>";
+		};
 		22A58A2B2A6914A400E29710 = {
 			isa = PBXGroup;
 			children = (
@@ -353,15 +390,15 @@
 		22A58A4E2A69151100E29710 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				222D33E42A722A7A00004453 /* OverviewViews */,
 				22A58A7F2A6A4B6B00E29710 /* HomeViews */,
+				229540CD2BD0F32300BA0884 /* StatisticPlantViews */,
+				222D33E42A722A7A00004453 /* OverviewViews */,
 				22B3C9DE2A6F79C300548753 /* MaintenanceViews */,
 				22B3C9E72A6F7D2E00548753 /* DevicesViews */,
 				22ED5C8A2A70DDDE007C8AB1 /* ProfileViews */,
 				22A58A592A6915CD00E29710 /* SimpleErrorView.swift */,
 				22A58A5B2A6915E300E29710 /* LoadingView.swift */,
 				22A58A7B2A6A3C6800E29710 /* MenuBar.swift */,
-				22A58A7D2A6A4A5D00E29710 /* HomeView.swift */,
 				22A58A8A2A6A6D9000E29710 /* EmptyDataView.swift */,
 				22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */,
 				22C53B8A2A6EA8EB0014D195 /* MonthYearWheelPicker.swift */,
@@ -435,12 +472,9 @@
 		22A58A7F2A6A4B6B00E29710 /* HomeViews */ = {
 			isa = PBXGroup;
 			children = (
+				229540C52BD0DEAE00BA0884 /* PlantsViews */,
 				22C53B812A6E8A860014D195 /* ChartComponents */,
-				22A58A802A6A4B7F00E29710 /* HomeNavigationView.swift */,
-				22A58A822A6A516100E29710 /* PlantsCellView.swift */,
-				22A58A842A6A52A200E29710 /* HomeStatisticsCellView.swift */,
-				22A58A862A6A6B3F00E29710 /* PlantCellView.swift */,
-				22A1AA332A6BD8C9002AA262 /* StatisticPlantCellView.swift */,
+				22A58A7D2A6A4A5D00E29710 /* HomeView.swift */,
 				22A1AA352A6C2687002AA262 /* GraphView.swift */,
 				22C53B862A6E96050014D195 /* DatePickerView.swift */,
 				22C53B882A6EA7C90014D195 /* MonthPickerView.swift */,
@@ -665,6 +699,7 @@
 				22A58A582A6915BA00E29710 /* CustomError.swift in Sources */,
 				22C0E2DE2A73C70C000FFAAB /* MapView.swift in Sources */,
 				22A58A5A2A6915CD00E29710 /* SimpleErrorView.swift in Sources */,
+				229540CB2BD0E1D700BA0884 /* PlantsSearchView.swift in Sources */,
 				22ED5C922A712BB6007C8AB1 /* TasksNavigationView.swift in Sources */,
 				22B3C9DD2A6F792100548753 /* MaintenanceView.swift in Sources */,
 				22ED5C892A70D7AC007C8AB1 /* DeviceFilterView.swift in Sources */,
@@ -680,6 +715,7 @@
 				22ED5C942A7136B6007C8AB1 /* InspectionTasksCellView.swift in Sources */,
 				22B3C9E02A6F79D000548753 /* MaintenanceNavigationView.swift in Sources */,
 				22A1AA342A6BD8C9002AA262 /* StatisticPlantCellView.swift in Sources */,
+				229540CF2BD11F8500BA0884 /* TotalStatisticsView.swift in Sources */,
 				22B3C9E22A6F7AFC00548753 /* AlarmsCellView.swift in Sources */,
 				22ED5C8E2A70F4C9007C8AB1 /* ChangeLanguageController.swift in Sources */,
 				22B3C9F72A6FB01C00548753 /* AlarmCellView.swift in Sources */,
@@ -689,14 +725,13 @@
 				22ED5C852A70C6A3007C8AB1 /* DeviceCellView.swift in Sources */,
 				222D33FA2A72912200004453 /* StationChartsView.swift in Sources */,
 				22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */,
-				22A58A832A6A516100E29710 /* PlantsCellView.swift in Sources */,
+				22A58A832A6A516100E29710 /* PlantsView.swift in Sources */,
 				22A58A522A69154500E29710 /* Extensions.swift in Sources */,
 				22A58A892A6A6BB600E29710 /* Station.swift in Sources */,
-				22A58A852A6A52A200E29710 /* HomeStatisticsCellView.swift in Sources */,
+				22A58A852A6A52A200E29710 /* StatisticPlantView.swift in Sources */,
 				22C53B8D2A6EAB410014D195 /* YearWheelPicker.swift in Sources */,
 				22C53B832A6E8AAD0014D195 /* BalloonMarker.swift in Sources */,
 				222D33F02A72361F00004453 /* WeatherView.swift in Sources */,
-				22A58A812A6A4B7F00E29710 /* HomeNavigationView.swift in Sources */,
 				22A58A762A6A2CE200E29710 /* LanguageController.swift in Sources */,
 				22A1AA362A6C2687002AA262 /* GraphView.swift in Sources */,
 				22CE080D2A6FF73300E03A1B /* Device.swift in Sources */,
@@ -705,10 +740,12 @@
 				22ED5C872A70CA2C007C8AB1 /* DeviceInverterCellView.swift in Sources */,
 				22A58A542A69155E00E29710 /* ApiService.swift in Sources */,
 				22ED5C982A713DF7007C8AB1 /* AlarmDetailController.swift in Sources */,
+				229540D52BD12E4A00BA0884 /* EnvironmentalCellView.swift in Sources */,
 				22A58A5C2A6915E300E29710 /* LoadingView.swift in Sources */,
 				222D33E82A722BB300004453 /* StationStatisticsView.swift in Sources */,
 				22B3C9E92A6F7D4200548753 /* ProfileView.swift in Sources */,
 				22ED5C8C2A70ED5E007C8AB1 /* SettingsController.swift in Sources */,
+				229540C92BD0E1BB00BA0884 /* PlantsTopView.swift in Sources */,
 				22C0E2E22A73E3C0000FFAAB /* PlantMapInfoView.swift in Sources */,
 				223DCD132AA6E36C00E1AF6C /* UnissoLogin.swift in Sources */,
 				222D33EA2A722BE000004453 /* StationLayotView.swift in Sources */,
@@ -720,7 +757,10 @@
 				22C53B872A6E96050014D195 /* DatePickerView.swift in Sources */,
 				22C53B852A6E8F0B0014D195 /* XYMarkerView.swift in Sources */,
 				22A58A872A6A6B3F00E29710 /* PlantCellView.swift in Sources */,
+				229540D12BD12E0F00BA0884 /* StatisticsPlantsView.swift in Sources */,
 				22A58A562A69159500E29710 /* JSONParse.swift in Sources */,
+				229540C72BD0DEEE00BA0884 /* StatusNavigationView.swift in Sources */,
+				229540D32BD12E2F00BA0884 /* EnvironmentalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

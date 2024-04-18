@@ -10,6 +10,7 @@
 "auth_error_title" = "Ошибка авторизации";
 "auth_error_description" = "Данный пользователь не найден.";
 "home"="Дом";
+"objects"="Объекты";
 "maintenance"="Обслуживание";
 "devices"="Устройства";
 "me"="Профиль";
@@ -22,10 +23,12 @@
 "platns_search"="Введите название.";
 "no_data"="Нет данных.";
 "kwp"="кВт";
-"kwh"="кВтч";
+"mwp"="МВт";
+"kwh"="кВт⋅ч";
+"mwh"="MВт⋅ч";
+"gwh"="ГВт⋅ч";
 "filter"="Фильтр";
 "all"="Все";
-"mwp"="МВт";
 "total_string_capacity"="Общая вместимость";
 "plant_configuration"="Конфигурация";
 "optimizer"="Оптимизатор";
@@ -41,6 +44,8 @@
 "yield_today"="Выработка сегодня";
 "total_yield"="Общая выработка";
 "kw"="кВт";
+"mw"="MВт";
+"gw"="ГВт";
 "current_plant_ranking"="Текущий рейтинг станций";
 "environmental_benefits"="Экологические преимущества";
 "t"="т";
@@ -52,7 +57,6 @@
 "month"="Месяц";
 "year"="Год";
 "lifetime"="Всё время";
-"mwh"="мВтч";
 "no_data_available"="Данные недоступны.";
 "cancel"="Отмена";
 "ok"="ОK";

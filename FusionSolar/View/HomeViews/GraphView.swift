@@ -10,7 +10,7 @@ import DGCharts
 
 class GraphView: UIView {
     
-    var homeStatisticsCellView: HomeStatisticsCellView?
+    var homeStatisticsCellView: StatisticPlantView?
     
     var selectedDate: Date? {
         didSet {
@@ -175,7 +175,7 @@ class GraphView: UIView {
         self.addConstraintsWithFormat("H:|-\(20.dp)-[v0]", views: titleLabel)
         self.addConstraintsWithFormat("H:[v0(\(320.dp))]", views: dateSwitcherView)
         self.addConstraintsWithFormat("H:[v0(\(326.dp))]", views: selectedDateView)
-        self.addConstraintsWithFormat("H:[v0(\(334.dp))]", views: barChartView)
+        self.addConstraintsWithFormat("H:|-\(16.dp)-[v0]-\(16.dp)-|", views: barChartView)
         self.addConstraintsWithFormat("H:|-\(10.dp)-[v0]", views: parametrLabel)
         
         self.addConstraintsWithFormat("V:|-\(24.dp)-[v0]-\(16.dp)-[v1(\(36.dp))]-\(16.dp)-[v2(\(20.dp))]-\(26.dp)-[v3]-\(4.dp)-[v4(\(243.dp))]", views: titleLabel, dateSwitcherView, selectedDateView, parametrLabel, barChartView)
@@ -372,13 +372,13 @@ class GraphView: UIView {
     @objc func selectedDateValueViewPress() {
         let value = self.selectedDateType ?? "day"
         if(value == "day") {
-            self.homeStatisticsCellView?.homeView?.homeController?.openDatePickerView(selectedDate: self.selectedDate ?? Date(), graphView: self)
+            self.homeStatisticsCellView?.homeController?.openDatePickerView(selectedDate: self.selectedDate ?? Date(), graphView: self)
         }
         if(value == "month") {
-            self.homeStatisticsCellView?.homeView?.homeController?.openMonthPickerView(selectedDate: self.selectedDate ?? Date(), graphView: self)
+            self.homeStatisticsCellView?.homeController?.openMonthPickerView(selectedDate: self.selectedDate ?? Date(), graphView: self)
         }
         if(value == "year" || value == "lifetime") {
-            self.homeStatisticsCellView?.homeView?.homeController?.openYearPickerView(selectedDate: self.selectedDate ?? Date(), graphView: self)
+            self.homeStatisticsCellView?.homeController?.openYearPickerView(selectedDate: self.selectedDate ?? Date(), graphView: self)
         }
     }
     

@@ -11,7 +11,7 @@ class MaintenanceView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     
     var homeController: HomeController?
     var alarmsCellView: AlarmsCellView?
-    var tasksCellView: TasksCellView?
+//    var tasksCellView: TasksCellView?
     
     let topWhiteView: UIView = {
         let view = UIView()
@@ -20,12 +20,12 @@ class MaintenanceView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         return view
     }()
     
-    lazy var navigationView: MaintenanceNavigationView = {
-        let view = MaintenanceNavigationView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.maintenanceView = self
-        return view
-    }()
+//    lazy var navigationView: MaintenanceNavigationView = {
+//        let view = MaintenanceNavigationView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.maintenanceView = self
+//        return view
+//    }()
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -51,28 +51,28 @@ class MaintenanceView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     
     func setupView() {
         self.addSubview(topWhiteView)
-        self.addSubview(navigationView)
+//        self.addSubview(navigationView)
         self.addSubview(collectionView)
         
         self.addConstraintsWithFormat("H:|[v0]|", views: topWhiteView)
-        self.addConstraintsWithFormat("H:|[v0]|", views: navigationView)
+//        self.addConstraintsWithFormat("H:|[v0]|", views: navigationView)
         self.addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         
         self.addConstraintsWithFormat("V:|[v0(\(100.dp))]", views: topWhiteView)
-        self.addConstraintsWithFormat("V:[v0(\(61.dp))]", views: navigationView)
+//        self.addConstraintsWithFormat("V:[v0(\(61.dp))]", views: navigationView)
         
-        navigationView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: navigationView.bottomAnchor).isActive = true
+//        navigationView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
-        navigationView.selectePage = 0
+//        navigationView.selectePage = 0
     }
     
     //collectionView Setup
     func setupCollectionView() {
         print("setupCollectionView")
         collectionView.register(AlarmsCellView.self, forCellWithReuseIdentifier: "alarmsCellViewId")
-        collectionView.register(TasksCellView.self, forCellWithReuseIdentifier: "tasksCellViewId")
+//        collectionView.register(TasksCellView.self, forCellWithReuseIdentifier: "tasksCellViewId")
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -88,7 +88,7 @@ class MaintenanceView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -100,12 +100,12 @@ class MaintenanceView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
             cell.initKeyboard()
             return cell
         }
-        if(index == 1) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tasksCellViewId", for: indexPath) as! TasksCellView
-            self.tasksCellView = cell
-            cell.maintenanceView = self
-            return cell
-        }
+//        if(index == 1) {
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tasksCellViewId", for: indexPath) as! TasksCellView
+//            self.tasksCellView = cell
+//            cell.maintenanceView = self
+//            return cell
+//        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
         return cell
     }
@@ -130,9 +130,9 @@ class MaintenanceView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func scrollToMenuIndex() {
-        let indexPath = IndexPath(item: (self.navigationView.selectePage ?? 0), section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        self.collectionView.setNeedsLayout()
+//        let indexPath = IndexPath(item: (self.navigationView.selectePage ?? 0), section: 0)
+//        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+//        self.collectionView.setNeedsLayout()
     }
     //
     

@@ -34,6 +34,9 @@ class StatisticPlantCellView: UICollectionViewCell {
     var station: Station? {
         didSet {
             self.nameLabel.text = station?.plantName ?? ""
+            if let attitude = station?.attitude {
+                self.valueLabel.text = "\(attitude.rounded(toPlaces: 2))"
+            }
             
         }
     }
@@ -63,7 +66,7 @@ class StatisticPlantCellView: UICollectionViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 16.dp)
+        label.font = .boldSystemFont(ofSize: 14.dp)
         label.numberOfLines = 2
         label.textColor = .rgb(1, green: 6, blue: 10)
         return label
@@ -72,7 +75,7 @@ class StatisticPlantCellView: UICollectionViewCell {
     let valueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 18.dp)
+        label.font = .boldSystemFont(ofSize: 16.dp)
         label.textColor = .rgb(1, green: 6, blue: 10)
         label.text = "0.00"
         return label
@@ -81,7 +84,7 @@ class StatisticPlantCellView: UICollectionViewCell {
     let parametrLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 14.dp)
+        label.font = .systemFont(ofSize: 12.dp)
         label.textColor = .rgb(1, green: 6, blue: 10)
         label.text = "\(NSLocalizedString("kwh", comment: ""))/\(NSLocalizedString("kwp", comment: ""))"
         return label
@@ -108,12 +111,13 @@ class StatisticPlantCellView: UICollectionViewCell {
         self.addSubview(flagImageView)
         self.addSubview(numberLabel)
         self.addSubview(iconImageView)
-        self.addSubview(nameLabel)
         self.addSubview(valueLabel)
         self.addSubview(parametrLabel)
         self.addSubview(seperateView)
+        self.addSubview(nameLabel)
         
-        self.addConstraintsWithFormat("H:|-\(20.dp)-[v0(\(28.dp))]-\(13.dp)-[v1(\(46.dp))]-\(10.dp)-[v2(\(108.dp))]-\(8.dp)-[v3]-\(4.dp)-[v4]", views: flagImageView, iconImageView, nameLabel, valueLabel, parametrLabel)
+        self.addConstraintsWithFormat("H:|-\(20.dp)-[v0(\(28.dp))]-\(13.dp)-[v1(\(46.dp))]", views: flagImageView, iconImageView)
+        self.addConstraintsWithFormat("H:[v0]-\(4.dp)-[v1]-\(20.dp)-|", views: valueLabel, parametrLabel)
         self.addConstraintsWithFormat("H:[v0]", views: numberLabel)
         self.addConstraintsWithFormat("H:|-\(20.dp)-[v0]-\(20.dp)-|", views: seperateView)
         
@@ -126,6 +130,8 @@ class StatisticPlantCellView: UICollectionViewCell {
         self.addConstraintsWithFormat("V:[v0(\(1.dp))]|", views: seperateView)
         
         numberLabel.centerXAnchor.constraint(equalTo: flagImageView.centerXAnchor).isActive = true
+        nameLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 10.dp).isActive = true
+        nameLabel.rightAnchor.constraint(equalTo: valueLabel.leftAnchor, constant: -5.dp).isActive = true
         
         flagImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         iconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

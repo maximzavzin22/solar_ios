@@ -11,19 +11,19 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
     
     var isShowPassword = false
     
-    var unissoLogin: UnissoLogin? {
-        didSet {
-           // dump(unissoLogin)
-            self.fetchValidateUser(username: unissoLogin?.body?.username ?? "", password: unissoLogin?.body?.password ?? "", url: unissoLogin?.url ?? "")
-        }
-    }
-    
-    var validateCookie: ValidateCookie? {
-        didSet {
-            dump(validateCookie)
-            self.fetchLogin()
-        }
-    }
+//    var unissoLogin: UnissoLogin? {
+//        didSet {
+//           // dump(unissoLogin)
+//            self.fetchValidateUser(username: unissoLogin?.body?.username ?? "", password: unissoLogin?.body?.password ?? "", url: unissoLogin?.url ?? "")
+//        }
+//    }
+//    
+//    var validateCookie: ValidateCookie? {
+//        didSet {
+//            dump(validateCookie)
+//            self.fetchLogin()
+//        }
+//    }
     
     lazy var contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -178,10 +178,12 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
     }
     
     @objc func loginButtonPress() {
+        print("loginButtonPress")
         HomeController.login = self.usernameTextField.text ?? ""
         HomeController.password = self.passwordTextField.text ?? ""
         if(HomeController.login != "" && HomeController.password != "") {
-            self.fetchProfile()
+            self.fetchAuth()
+//            self.fetchProfile()
 //            self.fetchPassword()
         }
     }
@@ -215,15 +217,16 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
     }
     
     //ApiService
-    func fetchProfile() {
+    func fetchAuth() {
         self.showLoadingView()
-        ApiService.sharedInstance.fetchProfile() {
+        ApiService.sharedInstance.fetchAuth(username: HomeController.login, password: HomeController.password) {
             (error: CustomError?, profile: Profile?) in
             if(error?.code ?? 0 == 0) {
                 let defaults = UserDefaults.standard
                 defaults.set (HomeController.login, forKey: "login")
                 defaults.set (HomeController.password, forKey: "password")
                 defaults.synchronize ()
+                HomeController.profile = profile
                 self.openHomeController()
             } else {
                 self.hideLoadingView()
@@ -232,70 +235,87 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
         }
     }
     
-    func fetchPassword() {
-        self.showLoadingView()
-        ApiService.sharedInstance.fetchPassword(username: HomeController.login, password: HomeController.password) {
-            (error: CustomError?, unissoLogin: UnissoLogin?) in
-           // self.hideLoadingView()
-            if(error?.code ?? 0 == 0) {
-                self.unissoLogin = unissoLogin
-            } else {
-                self.hideLoadingView()
-                self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
-            }
-        }
-    }
+//    func fetchProfile() {
+//        self.showLoadingView()
+//        ApiService.sharedInstance.fetchProfile() {
+//            (error: CustomError?, profile: Profile?) in
+//            if(error?.code ?? 0 == 0) {
+//                let defaults = UserDefaults.standard
+//                defaults.set (HomeController.login, forKey: "login")
+//                defaults.set (HomeController.password, forKey: "password")
+//                defaults.synchronize ()
+//                self.openHomeController()
+//            } else {
+//                self.hideLoadingView()
+//                self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+//            }
+//        }
+//    }
     
-    func fetchValidateUser(username: String, password: String, url: String) {
-        self.showLoadingView()
-        ApiService.sharedInstance.fetchValidateUser(username: username, password: password, url: url) {
-            (error: CustomError?, validateCookie: ValidateCookie?) in
-           // self.hideLoadingView()
-            if(error?.code ?? 0 == 0) {
-                self.validateCookie = validateCookie
-            } else {
-                self.hideLoadingView()
-                self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
-            }
-        }
-    }
-    
-    func fetchLogin() {
-        if let validateCookie = self.validateCookie {
-       //     self.showLoadingView()
-            ApiService.sharedInstance.fetchLogin(validateCookie: validateCookie) {
-                (error: CustomError?, location: String?) in
-                //self.hideLoadingView()
-                if(error?.code ?? 0 == 0) {
-                    if(location != "") {
-                        self.fetchAuth(url: location ?? "")
-                    } else {
-                        self.hideLoadingView()
-                    }
-                } else {
-                    self.hideLoadingView()
-                    self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
-                }
-            }
-        }
-    }
-    
-    func fetchAuth(url: String) {
-        if let validateCookie = self.validateCookie {
-            //self.showLoadingView()
-            ApiService.sharedInstance.fetchAuth(url: url) {
-                (error: CustomError?, bspsession: String?) in
-                self.hideLoadingView()
-                if(error?.code ?? 0 == 0) {
-                    HomeController.bspsession = bspsession ?? ""
-                    self.openHomeController()
-                } else {
-                    self.hideLoadingView()
-                    self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
-                }
-            }
-        }
-    }
+//    func fetchPassword() {
+//        self.showLoadingView()
+//        ApiService.sharedInstance.fetchPassword(username: HomeController.login, password: HomeController.password) {
+//            (error: CustomError?, unissoLogin: UnissoLogin?) in
+//           // self.hideLoadingView()
+//            if(error?.code ?? 0 == 0) {
+//                self.unissoLogin = unissoLogin
+//            } else {
+//                self.hideLoadingView()
+//                self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+//            }
+//        }
+//    }
+//    
+//    func fetchValidateUser(username: String, password: String, url: String) {
+//        self.showLoadingView()
+//        ApiService.sharedInstance.fetchValidateUser(username: username, password: password, url: url) {
+//            (error: CustomError?, validateCookie: ValidateCookie?) in
+//           // self.hideLoadingView()
+//            if(error?.code ?? 0 == 0) {
+//                self.validateCookie = validateCookie
+//            } else {
+//                self.hideLoadingView()
+//                self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+//            }
+//        }
+//    }
+//    
+//    func fetchLogin() {
+//        if let validateCookie = self.validateCookie {
+//       //     self.showLoadingView()
+//            ApiService.sharedInstance.fetchLogin(validateCookie: validateCookie) {
+//                (error: CustomError?, location: String?) in
+//                //self.hideLoadingView()
+//                if(error?.code ?? 0 == 0) {
+//                    if(location != "") {
+//                        self.fetchAuth(url: location ?? "")
+//                    } else {
+//                        self.hideLoadingView()
+//                    }
+//                } else {
+//                    self.hideLoadingView()
+//                    self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+//                }
+//            }
+//        }
+//    }
+//    
+//    func fetchAuth(url: String) {
+//        if let validateCookie = self.validateCookie {
+//            //self.showLoadingView()
+//            ApiService.sharedInstance.fetchAuth(url: url) {
+//                (error: CustomError?, bspsession: String?) in
+//                self.hideLoadingView()
+//                if(error?.code ?? 0 == 0) {
+//                    HomeController.bspsession = bspsession ?? ""
+//                    self.openHomeController()
+//                } else {
+//                    self.hideLoadingView()
+//                    self.showErrorView(title: error?.title ?? "", message: error?.message ?? "")
+//                }
+//            }
+//        }
+//    }
     //
     
     //Error and Loading views

@@ -35,7 +35,7 @@ class OverviewView: UIView {
                 gridLabel.isHidden = false
                 if let real_health_state = realKpi?.real_health_state {
                     statusView.status = real_health_state
-                    if(real_health_state == 3) { //может нужно менять для релиза
+                    if(real_health_state == 1) {
                         animationView.animation = LottieAnimation.named("3 shara off")
                         self.pvValueLabel.textColor = .white
                         self.pvIconImageView.image = UIImage(named: "ic_pv_white")
@@ -45,7 +45,7 @@ class OverviewView: UIView {
                         self.pvValueLabel.textColor = .rgb(1, green: 6, blue: 10)
                         self.pvIconImageView.image = UIImage(named: "ic_pv")
                     }
-                    if(real_health_state == 1) {
+                    if(real_health_state == 3) {
                         animationView.animation = LottieAnimation.named("3 shara")
                         self.pvValueLabel.textColor = .rgb(1, green: 6, blue: 10)
                         self.pvIconImageView.image = UIImage(named: "ic_pv")
@@ -403,43 +403,43 @@ class OverviewView: UIView {
         loadingView.isHidden = true
     }
     
-    func generateKpi() { //for test
-        var realKpi = StationRealKpi()
-       // var state = Int.random(in: 1..<4)
-        var state = self.station?.status ?? 1
-        realKpi.real_health_state = state
-        realKpi.total_power = 74.88
-        realKpi.day_income = 0.00
-        realKpi.day_power = 122.4
-        realKpi.month_power = 13.89
-        realKpi.total_income = 0.0
-        self.realKpi = realKpi
-
-        var weather = Weather()
-        weather.status = 1
-        weather.startTemp = 32
-        weather.endTemp = 43
-        self.weather = weather
-        
-        if(state == 2) {
-            var alarm1 = Alarm()
-            alarm1.alarmCause = "An unrecoverable fault has occurred in the internal circuit of the device."
-            alarm1.alarmId = 2064
-            alarm1.alarmName = "The device is abnormal."
-            alarm1.alarmType = 2
-            alarm1.causeId = 5
-            alarm1.devName = "Inverter-1"
-            alarm1.devTypeId = 38
-            alarm1.esnCode = "Inverter05"
-            alarm1.lev = 1
-            alarm1.raiseTime = 1667179861000
-            alarm1.repairSuggestion = "Turn off the AC and DC switches, wait for 5 minutes, and then turn on the AC and DC switches. If the fault persists, contact your dealer or technical support."
-            alarm1.stationCode = "NE=33554792"
-            alarm1.stationName = "hzhStation02"
-            alarm1.status = 1
-            self.alarm = alarm1
-        }
-    }
+//    func generateKpi() { //for test
+//        var realKpi = StationRealKpi()
+//       // var state = Int.random(in: 1..<4)
+//        var state = self.station?.status ?? 1
+//        realKpi.real_health_state = state
+//        realKpi.total_power = 74.88
+//        realKpi.day_income = 0.00
+//        realKpi.day_power = 122.4
+//        realKpi.month_power = 13.89
+//        realKpi.total_income = 0.0
+//        self.realKpi = realKpi
+//
+//        var weather = Weather()
+//        weather.status = 1
+//        weather.startTemp = 32
+//        weather.endTemp = 43
+//        self.weather = weather
+//        
+//        if(state == 2) {
+//            var alarm1 = Alarm()
+//            alarm1.alarmCause = "An unrecoverable fault has occurred in the internal circuit of the device."
+//            alarm1.alarmId = 2064
+//            alarm1.alarmName = "The device is abnormal."
+//            alarm1.alarmType = 2
+//            alarm1.causeId = 5
+//            alarm1.devName = "Inverter-1"
+//            alarm1.devTypeId = 38
+//            alarm1.esnCode = "Inverter05"
+//            alarm1.lev = 1
+//            alarm1.raiseTime = 1667179861000
+//            alarm1.repairSuggestion = "Turn off the AC and DC switches, wait for 5 minutes, and then turn on the AC and DC switches. If the fault persists, contact your dealer or technical support."
+//            alarm1.stationCode = "NE=33554792"
+//            alarm1.stationName = "hzhStation02"
+//            alarm1.status = 1
+//            self.alarm = alarm1
+//        }
+//    }
 }
 
 class StatusOverviewView: UIView {
@@ -449,7 +449,7 @@ class StatusOverviewView: UIView {
     var status: Int? {
         didSet {
             if let value = status {
-                if(value == 3) { //для релиза другое
+                if(value == 1) {
                     borderView.backgroundColor = .rgb(215, green: 228, blue: 237)
                     statusLabel.text = NSLocalizedString("offline", comment: "")
                     statusLabel.textColor = .rgb(106, green: 106, blue: 106)
@@ -463,7 +463,7 @@ class StatusOverviewView: UIView {
                     fonStatusView.backgroundColor = .rgb(234, green: 195, blue: 214)
                     alarmLabel.textColor = .rgb(224, green: 69, blue: 76)
                 }
-                if(value == 1) { //для релиза другое
+                if(value == 3) { 
                     borderView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
                     statusLabel.text = NSLocalizedString("normal", comment: "")
                     statusLabel.textColor = .rgb(84, green: 164, blue: 110)

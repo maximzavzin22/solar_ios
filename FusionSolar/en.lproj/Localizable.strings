@@ -10,6 +10,7 @@
 "auth_error_title" = "Authorization Error";
 "auth_error_description" = "This user was not found.";
 "home"="Home";
+"objects"="Objects";
 "maintenance"="Maintenance";
 "devices"="Devices";
 "me"="Me";
@@ -41,7 +42,10 @@
 "yield_today"="Yield today";
 "total_yield"="Total yield";
 "kw"="kW";
-"mwh"="mWh";
+"mw"="MW";
+"gw"="GW";
+"mwh"="MWh";
+"gwh"="GWh";
 "current_plant_ranking"="Current plant ranking";
 "environmental_benefits"="Environmental benefits";
 "t"="t";

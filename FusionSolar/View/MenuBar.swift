@@ -13,9 +13,9 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     let menuCellId = "menuCellId"
     
-    let defoultImageName = ["home_icon","maintenance_icon","devices_icon","profile_icon"]
-    let activeImageName = ["home_icon_active","maintenance_icon_active","devices_icon_active","profile_icon_active"]
-    let titles = [NSLocalizedString("home", comment: ""), NSLocalizedString("maintenance", comment: ""), NSLocalizedString("devices", comment: ""), NSLocalizedString("me", comment: "")]
+    let defoultImageName = ["home_icon","maintenance_icon","statistics_icon","profile_icon"]
+    let activeImageName = ["home_icon_active","maintenance_icon_active","statistics_icon_active","profile_icon_active"]
+    let titles = [NSLocalizedString("objects", comment: ""), NSLocalizedString("maintenance", comment: ""), NSLocalizedString("statistics", comment: ""), NSLocalizedString("me", comment: "")]
     let defoultColor = UIColor.rgb(106, green: 106, blue: 106)
     let activeColor = UIColor.rgb(39, green: 87, blue: 238)
     

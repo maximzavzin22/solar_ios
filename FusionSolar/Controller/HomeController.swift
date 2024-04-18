@@ -18,48 +18,29 @@ class HomeController: UIViewController {
     
     static var profile: Profile?
     
-    var stationsList = ""
+    static var window: UIWindow?
+    static var topPadding: CGFloat = 0.0
     
     var pageNo = 1
     var isLoadEnd = false
     
     var allStations = [Station]()
     
+    static var orrientation = "portain"
+    
     var stations: [Station]? {
         didSet {
-            stationsList = ""
             if let stations = self.stations {
                 for station in stations {
-                    stationsList.append("\(station.plantCode ?? ""),")
-                }
-                if(stationsList != "") {
-                    stationsList.removeLast()
-                }
-                self.allStations.append(contentsOf: stations)
-            }
-            print("stationsList \(stationsList)")
-            
-            self.fetchStations(stationCodes: stationsList)
-            self.fetchAlarmList(stationCodes: stationsList)
-            self.fetchStations()
-        }
-    }
-    
-    var realKpis: [StationRealKpi]? {
-        didSet {
-            if let stations = self.stations {
-                if let realKpis = self.realKpis {
-                    for station in stations {
-                        for realKpi in realKpis {
-                            if(station.plantCode == realKpi.stationCode) {
-                                station.stationRealKpi = realKpi
-                            }
-                        }
+                    let day_power = station.stationRealKpi?.day_power ?? 0.0
+                    var capacity = station.capacity ?? 0.0
+                    if(capacity > 0.0) {
+                        station.attitude = day_power / capacity
                     }
                 }
             }
-            //dump(stations)
-            //self.homeView.plantsCellView?.stations = self.stations
+            self.homeView.plantsView.stations = self.stations
+            self.statisticPlantView.stations = self.stations
         }
     }
     
@@ -86,29 +67,26 @@ class HomeController: UIViewController {
                 if(page == 0) {
                     self.homeView.isHidden = false
                     self.maintenanceView.isHidden = true
-                    self.devicesView.isHidden = true
+                    self.statisticPlantView.isHidden = true
                     self.profileView.isHidden = true
                 }
                 if(page == 1) {
                     self.homeView.isHidden = true
                     self.maintenanceView.isHidden = false
-                    self.devicesView.isHidden = true
+                    self.statisticPlantView.isHidden = true
                     self.profileView.isHidden = true
                     self.maintenanceView.alarmsCellView?.alarms = self.alarms
-//                    self.maintenanceView.alarmsCellView?.fetchAlarmList()
-                    self.maintenanceView.alarmsCellView?.generateAlarms() //for test need fetch api method
                 }
                 if(page == 2) {
                     self.homeView.isHidden = true
                     self.maintenanceView.isHidden = true
-                    self.devicesView.isHidden = false
+                    self.statisticPlantView.isHidden = false
                     self.profileView.isHidden = true
-                    self.devicesView.generateDevices()
                 }
                 if(page == 3) {
                     self.homeView.isHidden = true
                     self.maintenanceView.isHidden = true
-                    self.devicesView.isHidden = true
+                    self.statisticPlantView.isHidden = true
                     self.profileView.isHidden = false
                 }
             }
@@ -118,6 +96,7 @@ class HomeController: UIViewController {
     let contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .green
         return view
     }()
     
@@ -141,12 +120,19 @@ class HomeController: UIViewController {
         return view
     }()
     
-    lazy var devicesView: DevicesView = {
-        let view = DevicesView()
+    lazy var statisticPlantView: StatisticPlantView = {
+        let view = StatisticPlantView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.homeController = self
         return view
     }()
+    
+//    lazy var devicesView: DevicesView = {
+//        let view = DevicesView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.homeController = self
+//        return view
+//    }()
     
     lazy var profileView: ProfileView = {
         let view = ProfileView()
@@ -213,6 +199,10 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.isNavigationBarHidden = true
+        
+        HomeController.window = UIApplication.shared.keyWindow
+        HomeController.topPadding = HomeController.window?.safeAreaInsets.top ?? 0.0
+        
         self.view.backgroundColor = .rgb(241, green: 243, blue: 245)
         
         self.setupView()
@@ -220,6 +210,33 @@ class HomeController: UIViewController {
         
         self.showLoadingView()
         self.fetchStations()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+//
+//        if(size.width > self.view.frame.size.width){
+//            print("Landscape")
+//            //self.setupView()
+//            HomeController.orrientation = "landscape"
+//            self.view.layoutIfNeeded()
+//            self.homeView.collectionView.reloadData()
+////            self.homeView.collectionView.collectionViewLayout.invalidateLayout()
+//        }
+//        else{
+//            print("Portrait")
+//            HomeController.orrientation = "portrait"
+//           // self.setupView()
+//            self.view.layoutIfNeeded()
+//            self.homeView.collectionView.reloadData()
+//        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.maintenanceView.collectionView.collectionViewLayout.invalidateLayout()
+        self.menuBar.collectionView.collectionViewLayout.invalidateLayout()
+        //self.devicesView.collectionView.collectionViewLayout.invalidateLayout()
     }
     
     func setupView() {
@@ -264,21 +281,21 @@ class HomeController: UIViewController {
     func setupContentView() {
         contentView.addSubview(homeView)
         contentView.addSubview(maintenanceView)
-        contentView.addSubview(devicesView)
+        contentView.addSubview(statisticPlantView)
         contentView.addSubview(profileView)
-        
+
         contentView.addConstraintsWithFormat("H:|[v0]|", views: homeView)
         contentView.addConstraintsWithFormat("H:|[v0]|", views: maintenanceView)
-        contentView.addConstraintsWithFormat("H:|[v0]|", views: devicesView)
+        contentView.addConstraintsWithFormat("H:|[v0]|", views: statisticPlantView)
         contentView.addConstraintsWithFormat("H:|[v0]|", views: profileView)
-        
+
         contentView.addConstraintsWithFormat("V:|[v0]|", views: homeView)
         contentView.addConstraintsWithFormat("V:|[v0]|", views: maintenanceView)
-        contentView.addConstraintsWithFormat("V:|[v0]|", views: devicesView)
+        contentView.addConstraintsWithFormat("V:|[v0]|", views: statisticPlantView)
         contentView.addConstraintsWithFormat("V:|[v0]|", views: profileView)
-        
+
         maintenanceView.isHidden = true
-        devicesView.isHidden = true
+        statisticPlantView.isHidden = true
         profileView.isHidden = true
     }
     
@@ -339,25 +356,20 @@ class HomeController: UIViewController {
         self.present(pverviewController, animated: true)
     }
     
-    func compliteAllRequests() {
-        self.homeView.plantsCellView?.stations = self.allStations
-        self.hideLoadingView()
-    }
-    
     //ApiService
     func fetchStations() {
         if(!isLoadEnd) {
-          //  self.showLoadingView()
+            self.showLoadingView()
             ApiService.sharedInstance.fetchStations(pageNo: self.pageNo) {
                 (error: CustomError?, stations: [Station]?) in
-           //     self.hideLoadingView()
+                self.hideLoadingView()
                 if(error?.code ?? 0 == 0) {
                     self.isLoadEnd = true
                     self.stations = stations
                     
 //                    if(stations?.count ?? 0 == 0) {
                         
-                        self.compliteAllRequests()
+                     //   self.compliteAllRequests()
 //                    }
                    // self.pageNo = self.pageNo + 1
                 } else {
@@ -366,34 +378,35 @@ class HomeController: UIViewController {
             }
         }
     }
-    
-    func fetchStations(stationCodes: String) {
-       // self.showLoadingView()
-        ApiService.sharedInstance.fetchStationRealKpi(stationCodes: stationCodes) {
-            (error: CustomError?, realKpis: [StationRealKpi]?) in
-          //  self.hideLoadingView()
-            if(error?.code ?? 0 == 0) {
-                if(realKpis?.count ?? 0 > 0) {
-                    self.realKpis = realKpis
-                }
-            } else {
-                //error
-            }
-        }
-    }
-    
-    func fetchAlarmList(stationCodes: String) {
-      //  self.showLoadingView()
-        ApiService.sharedInstance.fetchAlarmList(stationCodes: stationCodes) {
-            (error: CustomError?, alarms: [Alarm]?) in
-         //   self.hideLoadingView()
-            if(error?.code ?? 0 == 0) {
-                self.alarms = alarms
-            } else {
-                //error
-            }
-        }
-    }
+//    
+//    func fetchStations(stationCodes: String) {
+//       // self.showLoadingView()
+//        ApiService.sharedInstance.fetchStationRealKpi(stationCodes: stationCodes) {
+//            (error: CustomError?, realKpis: [StationRealKpi]?) in
+//          //  self.hideLoadingView()
+//            if(error?.code ?? 0 == 0) {
+//                if(realKpis?.count ?? 0 > 0) {
+//                    self.realKpis = realKpis
+//                }
+//                self.compliteAllRequests()
+//            } else {
+//                //error
+//            }
+//        }
+//    }
+//    
+//    func fetchAlarmList(stationCodes: String) {
+//      //  self.showLoadingView()
+//        ApiService.sharedInstance.fetchAlarmList(stationCodes: stationCodes) {
+//            (error: CustomError?, alarms: [Alarm]?) in
+//         //   self.hideLoadingView()
+//            if(error?.code ?? 0 == 0) {
+//                self.alarms = alarms
+//            } else {
+//                //error
+//            }
+//        }
+//    }
     //
     
     //Error and Loading views
@@ -432,10 +445,10 @@ class HomeController: UIViewController {
         toolbar.sizeToFit()
         //setting toolbar as inputAccessoryView
         
-        homeView.plantsCellView?.plantsSearchView.searchTextField.inputAccessoryView = toolbar
+        homeView.plantsView.plantsSearchView.searchTextField.inputAccessoryView = toolbar
         maintenanceView.alarmsCellView?.alarmSearchView.searchTextField.inputAccessoryView = toolbar
-        devicesView.searchDevicesView.devicesSearchView.searchTextField.inputAccessoryView = toolbar
-        maintenanceView.tasksCellView?.inspectionTasksCellView?.searchView.searchTextField.inputAccessoryView = toolbar
+//        devicesView.searchDevicesView.devicesSearchView.searchTextField.inputAccessoryView = toolbar
+//        maintenanceView.tasksCellView?.inspectionTasksCellView?.searchView.searchTextField.inputAccessoryView = toolbar
     }
     
     @objc func doneButtonAction() {
@@ -443,4 +456,32 @@ class HomeController: UIViewController {
         self.view.endEditing(true)
     }
     //
+    
+    static func powerConvert(value: Double?) -> String {
+        var result = ""
+        if let thisValue = value {
+            if(thisValue < 1000) {
+                result = "\(thisValue.rounded(toPlaces: 3)) \(NSLocalizedString("kwp", comment: ""))"
+            } else {
+                result = "\((thisValue/1000.0).rounded(toPlaces: 3)) \(NSLocalizedString("mwp", comment: ""))"
+            }
+        } else {
+            result = "--\(NSLocalizedString("kwp", comment: ""))"
+        }
+        return result
+    }
+    
+    static func amountEnergyConvert(value: Double?) -> String {
+        var result = ""
+        if let thisValue = value {
+            if(thisValue < 1000) {
+                result = "\(thisValue.rounded(toPlaces: 2)) \(NSLocalizedString("kwh", comment: ""))"
+            } else {
+                result = "\((thisValue/1000.0).rounded(toPlaces: 2)) \(NSLocalizedString("mwh", comment: ""))"
+            }
+        } else {
+            result = "--\(NSLocalizedString("kwh", comment: ""))"
+        }
+        return result
+    }
 }

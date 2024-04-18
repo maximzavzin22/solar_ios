@@ -13,19 +13,18 @@ class PlantCellView: UICollectionViewCell {
         didSet {
             titleLabel.text = station?.plantName ?? ""
             addressLabel.text = station?.plantAddress ?? ""
-            if let capacity = station?.capacity {
-                solarValueLabel.text = "\(capacity)\(NSLocalizedString("kwp", comment: ""))"
-            }
+            solarValueLabel.text = HomeController.powerConvert(value: station?.capacity)
+            energyValueLabel.text = HomeController.amountEnergyConvert(value: station?.stationRealKpi?.day_power)
             
-            if let statusValue = station?.status {
+            if let statusValue = station?.stationRealKpi?.real_health_state {
                 if(statusValue == 1) {
-                    status = "normal"
+                    status = "offline"
                 }
                 if(statusValue == 2) {
                     status = "faulty"
                 }
                 if(statusValue == 3) {
-                    status = "offline"
+                    status = "normal"
                 }
             }
         }

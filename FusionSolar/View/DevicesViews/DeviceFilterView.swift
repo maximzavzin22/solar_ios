@@ -236,8 +236,8 @@ class DeviceFilterView: UIView {
         type1FilterCellView.isSelected = true
         type2FilterCellView.isSelected = false
         type3FilterCellView.isSelected = false
-        self.homeController?.devicesView.isFilter = false
-        self.homeController?.devicesView.filter = "all"
+//        self.homeController?.devicesView.isFilter = false
+//        self.homeController?.devicesView.filter = "all"
         self.hideAnimation()
     }
     
@@ -246,15 +246,15 @@ class DeviceFilterView: UIView {
         self.hideAnimation()
         if(!(self.type1FilterCellView.isSelected ?? false)) {
             print("confirmButtonPress")
-            self.homeController?.devicesView.isFilter = true
-            if(self.type2FilterCellView.isSelected ?? false) {
-                self.homeController?.devicesView.filter = "inverter"
-            }
-            if(self.type3FilterCellView.isSelected ?? false) {
-                self.homeController?.devicesView.filter = "dongle"
-            }
+//            self.homeController?.devicesView.isFilter = true
+//            if(self.type2FilterCellView.isSelected ?? false) {
+//                self.homeController?.devicesView.filter = "inverter"
+//            }
+//            if(self.type3FilterCellView.isSelected ?? false) {
+//                self.homeController?.devicesView.filter = "dongle"
+//            }
         } else {
-            self.homeController?.devicesView.filter = "all"
+//            self.homeController?.devicesView.filter = "all"
         }
     }
     

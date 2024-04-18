@@ -104,7 +104,8 @@ class SplashController: UIViewController {
         HomeController.password = UserDefaults.standard.string(forKey: "password") ?? ""
         
         if(HomeController.login != "" && HomeController.password != "") {
-            self.fetchProfile()
+            self.fetchAuth()
+//            self.fetchProfile()
         } else {
             self.isLoadEnd = true
         }
@@ -149,9 +150,8 @@ class SplashController: UIViewController {
     }
     
     //ApiService
-    func fetchProfile() {
-      //  self.openHomeController()
-        ApiService.sharedInstance.fetchProfile() {
+    func fetchAuth() {
+        ApiService.sharedInstance.fetchAuth(username: HomeController.login, password: HomeController.password) {
             (error: CustomError?, profile: Profile?) in
             if(error?.code ?? 0 == 0) {
                 HomeController.profile = profile
@@ -171,6 +171,28 @@ class SplashController: UIViewController {
             }
         }
     }
+//    func fetchProfile() {
+//      //  self.openHomeController()
+//        ApiService.sharedInstance.fetchProfile() {
+//            (error: CustomError?, profile: Profile?) in
+//            if(error?.code ?? 0 == 0) {
+//                HomeController.profile = profile
+//                self.isLoadEnd = true
+//                if(self.isTimerEnd) {
+//                    self.openController()
+//                }
+//            } else {
+//                let defaults = UserDefaults.standard
+//                defaults.removeObject(forKey: "login")
+//                defaults.removeObject(forKey: "password")
+//                defaults.synchronize()
+//                self.isLoadEnd = true
+//                if(self.isTimerEnd) {
+//                    self.openController()
+//                }
+//            }
+//        }
+//    }
     //
     
     //Timer

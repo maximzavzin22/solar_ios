@@ -34,6 +34,7 @@ class TasksCellView: UICollectionViewCell, UICollectionViewDataSource, UICollect
 
         self.backgroundColor = .rgb(241, green: 243, blue: 245)
 
+        
         self.setupView()
         self.setupCollectionView()
     }

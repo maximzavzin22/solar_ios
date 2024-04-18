@@ -10,6 +10,7 @@
 "auth_error_title" = "Авторизация хатоси";
 "auth_error_description" = "Ушбу фойдаланувчи топилмади.";
 "home"="Уй";
+"objects"="Объектлар";
 "maintenance"="Хизмат кўрсатиш";
 "devices"="Қурилмалар";
 "me"="Профил";
@@ -41,6 +42,8 @@
 "yield_today"="Ишлаб чиқариш бугун";
 "total_yield"="Жами ишлаб чиқариш";
 "kw"="кВт";
+"mw"="MВт";
+"gw"="ГВт";
 "current_plant_ranking"="Жорий станция рейтинги";
 "environmental_benefits"="Экологик афзалликлари";
 "t"="т";
@@ -52,7 +55,8 @@
 "month"="Ой";
 "year"="Йил";
 "lifetime"="Ҳар доим";
-"mwh"="мВт⋅с";
+"mwh"="MВт⋅с";
+"gwh"="ГВт⋅c";
 "no_data_available"="Маълумотлар мавжуд эмас.";
 "cancel"="Бекор қилиш";
 "ok"="ОK";

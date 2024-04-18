@@ -13,7 +13,7 @@ class OverviewController: UIViewController {
         didSet {
             self.titleLabel.text = station?.plantName ?? ""
             overviewView.station = station
-            self.overviewView.generateKpi()
+          //  self.overviewView.generateKpi()
         }
     }
     

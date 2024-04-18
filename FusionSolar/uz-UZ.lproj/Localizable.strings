@@ -10,6 +10,7 @@
 "auth_error_title" = "Avtorizatsiya xatosi";
 "auth_error_description" = "Ushbu foydalanuvchi topilmadi.";
 "home"="Uy";
+"objects"="Ob'ektlar";
 "maintenance"="Xizmat ko'rsatish";
 "devices"="Qurilmalar";
 "me"="Profil";
@@ -41,6 +42,8 @@
 "yield_today"="Ishlab chiqarish bugun";
 "total_yield"="Jami ishlab chiqarish";
 "kw"="kVt";
+"mw"="MVt";
+"gw"="GVt";
 "current_plant_ranking"="Joriy stansiya reytingi";
 "environmental_benefits"="Ekologik afzalliklari";
 "t"="t";
@@ -52,7 +55,8 @@
 "month"="Oy";
 "year"="Yil";
 "lifetime"="Har doim";
-"mwh"="mVt⋅s";
+"mwh"="MVt⋅s";
+"gwh"="GVt⋅s";
 "no_data_available"="Maʼlumotlar mavjud emas.";
 "cancel"="Bekor qilish";
 "ok"="ОK";
