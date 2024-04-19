@@ -173,7 +173,7 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     @objc func mapButtonPress() {
-        self.homeView?.showMap = true
+        self.homeView?.showMapView(isMap: true)
     }
     
     func setupTopView() {
@@ -215,6 +215,9 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
             showStations = getStationByStatus(stations: stations)
             showStations = getStationsByText(stations: showStations)
             showStations = getStationByCapacity(stations: showStations)
+            print("1cshowStations \(showStations.count)")
+            showStations = getStationByDates(stations: showStations)
+            print("2cshowStations \(showStations.count)")
             self.showStations = showStations
         }
     }
@@ -289,6 +292,55 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
                     showStations = newStationsList
                 }
             }
+        }
+        return showStations
+    }
+    
+    func getStationByDates(stations: [Station]) -> [Station] {
+        var showStations = stations
+        var newStationsList = [Station]()
+        if(self.fromDate != nil && self.toDate != nil) {
+            for station in stations {
+                if let gridConnectionDate = station.gridConnectionDate {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                    if let date = dateFormatter.date(from: gridConnectionDate) {
+                        if(date >= self.fromDate! && date <= self.toDate!) {
+                            newStationsList.append(station)
+                        }
+                    }
+                }
+            }
+        } else {
+            if let toDate = self.toDate {
+                for station in stations {
+                    if let gridConnectionDate = station.gridConnectionDate {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                        if let date = dateFormatter.date(from: gridConnectionDate) {
+                            if(date <= self.toDate!) {
+                                newStationsList.append(station)
+                            }
+                        }
+                    }
+                }
+            }
+            if let fromFate = self.fromDate {
+                for station in stations {
+                    if let gridConnectionDate = station.gridConnectionDate {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                        if let date = dateFormatter.date(from: gridConnectionDate) {
+                            if(date >= self.fromDate!) {
+                                newStationsList.append(station)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(newStationsList.count > 0) {
+            showStations = newStationsList
         }
         return showStations
     }

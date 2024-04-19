@@ -13,7 +13,7 @@ class StatusNavigationView: UIView {
     
     var stations: [Station]? {
         didSet {
-            self.allCount = self.stations?.count ?? 0
+            allPlantsTopView.valueLabel.text = "\(self.stations?.count ?? 0)"
             if let stations = self.stations {
                 var normalCount = 0
                 var faultyCount = 0
@@ -31,34 +31,10 @@ class StatusNavigationView: UIView {
                         }
                     }
                 }
-                self.normalCount = normalCount
-                self.faultyCount = faultyCount
-                self.offlineCount = offlineCount
+                normalPlantsTopView.valueLabel.text = "\(normalCount ?? 0)"
+                faultyPlantsTopView.valueLabel.text = "\(faultyCount ?? 0)"
+                offlinePlantsTopView.valueLabel.text = "\(offlineCount ?? 0)"
             }
-        }
-    }
-    
-    var allCount: Int? {
-        didSet {
-            allPlantsTopView.valueLabel.text = "\(allCount ?? 0)"
-        }
-    }
-    
-    var normalCount: Int? {
-        didSet {
-            normalPlantsTopView.valueLabel.text = "\(normalCount ?? 0)"
-        }
-    }
-    
-    var faultyCount: Int? {
-        didSet {
-            faultyPlantsTopView.valueLabel.text = "\(faultyCount ?? 0)"
-        }
-    }
-    
-    var offlineCount: Int? {
-        didSet {
-            offlinePlantsTopView.valueLabel.text = "\(offlineCount ?? 0)"
         }
     }
     

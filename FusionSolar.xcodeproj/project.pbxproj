@@ -13,7 +13,6 @@
 		222D33E32A72236F00004453 /* OverviewMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E22A72236F00004453 /* OverviewMenuBar.swift */; };
 		222D33E62A722A9400004453 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E52A722A9400004453 /* OverviewView.swift */; };
 		222D33E82A722BB300004453 /* StationStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E72A722BB300004453 /* StationStatisticsView.swift */; };
-		222D33EA2A722BE000004453 /* StationLayotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33E92A722BE000004453 /* StationLayotView.swift */; };
 		222D33EC2A722C0000004453 /* StationDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33EB2A722C0000004453 /* StationDevicesView.swift */; };
 		222D33EE2A72313B00004453 /* StationRealKpi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33ED2A72313B00004453 /* StationRealKpi.swift */; };
 		222D33F02A72361F00004453 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D33EF2A72361F00004453 /* WeatherView.swift */; };
@@ -31,6 +30,20 @@
 		223DCD132AA6E36C00E1AF6C /* UnissoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DCD122AA6E36C00E1AF6C /* UnissoLogin.swift */; };
 		223DCD152AA6F17000E1AF6C /* ValidateCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DCD142AA6F17000E1AF6C /* ValidateCookie.swift */; };
 		2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245356D2A72E056007F5708 /* BasicInfoController.swift */; };
+		2260A4C82BD230C1003939DB /* AlarmStatisticsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4C72BD230C1003939DB /* AlarmStatisticsMapView.swift */; };
+		2260A4CA2BD230E4003939DB /* StatisticsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4C92BD230E4003939DB /* StatisticsMapView.swift */; };
+		2260A4CC2BD2312A003939DB /* PlantMapInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4CB2BD2312A003939DB /* PlantMapInfoContentView.swift */; };
+		2260A4CE2BD2363E003939DB /* StatusOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4CD2BD2363E003939DB /* StatusOverviewView.swift */; };
+		2260A4D02BD23662003939DB /* ValueOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4CF2BD23662003939DB /* ValueOverviewView.swift */; };
+		2260A4D22BD23688003939DB /* BigValueOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4D12BD23688003939DB /* BigValueOverviewView.swift */; };
+		2260A4D42BD236A2003939DB /* BigValueOverviewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4D32BD236A2003939DB /* BigValueOverviewCellView.swift */; };
+		2260A4D92BD24333003939DB /* OverviewAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4D82BD24333003939DB /* OverviewAnimationView.swift */; };
+		2260A4DC2BD26DCD003939DB /* BasicInfoSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4DB2BD26DCD003939DB /* BasicInfoSmallView.swift */; };
+		2260A4DE2BD26DE6003939DB /* BasicInfoLargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4DD2BD26DE6003939DB /* BasicInfoLargeView.swift */; };
+		2260A4E02BD26E00003939DB /* BasicInfoAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4DF2BD26E00003939DB /* BasicInfoAddressView.swift */; };
+		2260A4E32BD27710003939DB /* AlarmDetailBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E22BD27710003939DB /* AlarmDetailBasicView.swift */; };
+		2260A4E52BD27740003939DB /* AlarmDetailTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E42BD27740003939DB /* AlarmDetailTextView.swift */; };
+		2260A4E72BD2775C003939DB /* AlarmContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E62BD2775C003939DB /* AlarmContactView.swift */; };
 		229540C72BD0DEEE00BA0884 /* StatusNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */; };
 		229540C92BD0E1BB00BA0884 /* PlantsTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */; };
 		229540CB2BD0E1D700BA0884 /* PlantsSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */; };
@@ -128,7 +141,6 @@
 		222D33E22A72236F00004453 /* OverviewMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewMenuBar.swift; sourceTree = "<group>"; };
 		222D33E52A722A9400004453 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		222D33E72A722BB300004453 /* StationStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationStatisticsView.swift; sourceTree = "<group>"; };
-		222D33E92A722BE000004453 /* StationLayotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationLayotView.swift; sourceTree = "<group>"; };
 		222D33EB2A722C0000004453 /* StationDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDevicesView.swift; sourceTree = "<group>"; };
 		222D33ED2A72313B00004453 /* StationRealKpi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRealKpi.swift; sourceTree = "<group>"; };
 		222D33EF2A72361F00004453 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -146,6 +158,20 @@
 		223DCD122AA6E36C00E1AF6C /* UnissoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnissoLogin.swift; sourceTree = "<group>"; };
 		223DCD142AA6F17000E1AF6C /* ValidateCookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCookie.swift; sourceTree = "<group>"; };
 		2245356D2A72E056007F5708 /* BasicInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoController.swift; sourceTree = "<group>"; };
+		2260A4C72BD230C1003939DB /* AlarmStatisticsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStatisticsMapView.swift; sourceTree = "<group>"; };
+		2260A4C92BD230E4003939DB /* StatisticsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMapView.swift; sourceTree = "<group>"; };
+		2260A4CB2BD2312A003939DB /* PlantMapInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantMapInfoContentView.swift; sourceTree = "<group>"; };
+		2260A4CD2BD2363E003939DB /* StatusOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusOverviewView.swift; sourceTree = "<group>"; };
+		2260A4CF2BD23662003939DB /* ValueOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueOverviewView.swift; sourceTree = "<group>"; };
+		2260A4D12BD23688003939DB /* BigValueOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigValueOverviewView.swift; sourceTree = "<group>"; };
+		2260A4D32BD236A2003939DB /* BigValueOverviewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigValueOverviewCellView.swift; sourceTree = "<group>"; };
+		2260A4D82BD24333003939DB /* OverviewAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewAnimationView.swift; sourceTree = "<group>"; };
+		2260A4DB2BD26DCD003939DB /* BasicInfoSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoSmallView.swift; sourceTree = "<group>"; };
+		2260A4DD2BD26DE6003939DB /* BasicInfoLargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoLargeView.swift; sourceTree = "<group>"; };
+		2260A4DF2BD26E00003939DB /* BasicInfoAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoAddressView.swift; sourceTree = "<group>"; };
+		2260A4E22BD27710003939DB /* AlarmDetailBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailBasicView.swift; sourceTree = "<group>"; };
+		2260A4E42BD27740003939DB /* AlarmDetailTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailTextView.swift; sourceTree = "<group>"; };
+		2260A4E62BD2775C003939DB /* AlarmContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmContactView.swift; sourceTree = "<group>"; };
 		229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNavigationView.swift; sourceTree = "<group>"; };
 		229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTopView.swift; sourceTree = "<group>"; };
 		229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsSearchView.swift; sourceTree = "<group>"; };
@@ -270,16 +296,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		222D33E42A722A7A00004453 /* OverviewViews */ = {
+		222D33E42A722A7A00004453 /* OverviewControllerViews */ = {
 			isa = PBXGroup;
 			children = (
-				222D33E52A722A9400004453 /* OverviewView.swift */,
-				222D33E72A722BB300004453 /* StationStatisticsView.swift */,
-				222D33E92A722BE000004453 /* StationLayotView.swift */,
-				222D33EB2A722C0000004453 /* StationDevicesView.swift */,
-				222D33F92A72912200004453 /* StationChartsView.swift */,
+				2260A4D52BD23700003939DB /* OverviewViews */,
+				2260A4D62BD2374B003939DB /* StationStatisticsViews */,
+				2260A4D72BD2377C003939DB /* StationDevicesViews */,
+				222D33E22A72236F00004453 /* OverviewMenuBar.swift */,
 			);
-			path = OverviewViews;
+			path = OverviewControllerViews;
 			sourceTree = "<group>";
 		};
 		223DCD112AA6E33600E1AF6C /* web */ = {
@@ -289,6 +314,69 @@
 				223DCD142AA6F17000E1AF6C /* ValidateCookie.swift */,
 			);
 			path = web;
+			sourceTree = "<group>";
+		};
+		2260A4C62BD227DD003939DB /* MapViews */ = {
+			isa = PBXGroup;
+			children = (
+				22C0E2DD2A73C70C000FFAAB /* MapView.swift */,
+				2260A4C72BD230C1003939DB /* AlarmStatisticsMapView.swift */,
+				2260A4C92BD230E4003939DB /* StatisticsMapView.swift */,
+				22C0E2E12A73E3C0000FFAAB /* PlantMapInfoView.swift */,
+				2260A4CB2BD2312A003939DB /* PlantMapInfoContentView.swift */,
+			);
+			path = MapViews;
+			sourceTree = "<group>";
+		};
+		2260A4D52BD23700003939DB /* OverviewViews */ = {
+			isa = PBXGroup;
+			children = (
+				222D33E52A722A9400004453 /* OverviewView.swift */,
+				2260A4CD2BD2363E003939DB /* StatusOverviewView.swift */,
+				2260A4CF2BD23662003939DB /* ValueOverviewView.swift */,
+				2260A4D12BD23688003939DB /* BigValueOverviewView.swift */,
+				2260A4D32BD236A2003939DB /* BigValueOverviewCellView.swift */,
+				2260A4D82BD24333003939DB /* OverviewAnimationView.swift */,
+				222D33EF2A72361F00004453 /* WeatherView.swift */,
+			);
+			path = OverviewViews;
+			sourceTree = "<group>";
+		};
+		2260A4D62BD2374B003939DB /* StationStatisticsViews */ = {
+			isa = PBXGroup;
+			children = (
+				222D33E72A722BB300004453 /* StationStatisticsView.swift */,
+				222D33F92A72912200004453 /* StationChartsView.swift */,
+			);
+			path = StationStatisticsViews;
+			sourceTree = "<group>";
+		};
+		2260A4D72BD2377C003939DB /* StationDevicesViews */ = {
+			isa = PBXGroup;
+			children = (
+				222D33EB2A722C0000004453 /* StationDevicesView.swift */,
+			);
+			path = StationDevicesViews;
+			sourceTree = "<group>";
+		};
+		2260A4DA2BD26DB5003939DB /* BasicInfoViews */ = {
+			isa = PBXGroup;
+			children = (
+				2260A4DB2BD26DCD003939DB /* BasicInfoSmallView.swift */,
+				2260A4DD2BD26DE6003939DB /* BasicInfoLargeView.swift */,
+				2260A4DF2BD26E00003939DB /* BasicInfoAddressView.swift */,
+			);
+			path = BasicInfoViews;
+			sourceTree = "<group>";
+		};
+		2260A4E12BD276FA003939DB /* AlarmDetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				2260A4E22BD27710003939DB /* AlarmDetailBasicView.swift */,
+				2260A4E42BD27740003939DB /* AlarmDetailTextView.swift */,
+				2260A4E62BD2775C003939DB /* AlarmContactView.swift */,
+			);
+			path = AlarmDetailViews;
 			sourceTree = "<group>";
 		};
 		229540C52BD0DEAE00BA0884 /* PlantsViews */ = {
@@ -312,6 +400,7 @@
 				229540D02BD12E0F00BA0884 /* StatisticsPlantsView.swift */,
 				229540D22BD12E2F00BA0884 /* EnvironmentalView.swift */,
 				229540D42BD12E4A00BA0884 /* EnvironmentalCellView.swift */,
+				22A1AA352A6C2687002AA262 /* GraphView.swift */,
 			);
 			path = StatisticPlantViews;
 			sourceTree = "<group>";
@@ -390,25 +479,25 @@
 		22A58A4E2A69151100E29710 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2260A4E12BD276FA003939DB /* AlarmDetailViews */,
+				2260A4DA2BD26DB5003939DB /* BasicInfoViews */,
 				22A58A7F2A6A4B6B00E29710 /* HomeViews */,
-				229540CD2BD0F32300BA0884 /* StatisticPlantViews */,
-				222D33E42A722A7A00004453 /* OverviewViews */,
 				22B3C9DE2A6F79C300548753 /* MaintenanceViews */,
+				229540CD2BD0F32300BA0884 /* StatisticPlantViews */,
+				222D33E42A722A7A00004453 /* OverviewControllerViews */,
 				22B3C9E72A6F7D2E00548753 /* DevicesViews */,
 				22ED5C8A2A70DDDE007C8AB1 /* ProfileViews */,
 				22A58A592A6915CD00E29710 /* SimpleErrorView.swift */,
 				22A58A5B2A6915E300E29710 /* LoadingView.swift */,
 				22A58A7B2A6A3C6800E29710 /* MenuBar.swift */,
+				22C53B862A6E96050014D195 /* DatePickerView.swift */,
+				22C53B882A6EA7C90014D195 /* MonthPickerView.swift */,
+				22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */,
 				22A58A8A2A6A6D9000E29710 /* EmptyDataView.swift */,
 				22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */,
 				22C53B8A2A6EA8EB0014D195 /* MonthYearWheelPicker.swift */,
 				22C53B8C2A6EAB410014D195 /* YearWheelPicker.swift */,
-				22B3C9DC2A6F792100548753 /* MaintenanceView.swift */,
-				22B3C9E52A6F7CE700548753 /* DevicesView.swift */,
-				22B3C9E82A6F7D4200548753 /* ProfileView.swift */,
 				22ED5C8F2A70F96D007C8AB1 /* LogoutQuestionView.swift */,
-				222D33E22A72236F00004453 /* OverviewMenuBar.swift */,
-				222D33EF2A72361F00004453 /* WeatherView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -473,14 +562,9 @@
 			isa = PBXGroup;
 			children = (
 				229540C52BD0DEAE00BA0884 /* PlantsViews */,
+				2260A4C62BD227DD003939DB /* MapViews */,
 				22C53B812A6E8A860014D195 /* ChartComponents */,
 				22A58A7D2A6A4A5D00E29710 /* HomeView.swift */,
-				22A1AA352A6C2687002AA262 /* GraphView.swift */,
-				22C53B862A6E96050014D195 /* DatePickerView.swift */,
-				22C53B882A6EA7C90014D195 /* MonthPickerView.swift */,
-				22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */,
-				22C0E2DD2A73C70C000FFAAB /* MapView.swift */,
-				22C0E2E12A73E3C0000FFAAB /* PlantMapInfoView.swift */,
 			);
 			path = HomeViews;
 			sourceTree = "<group>";
@@ -488,6 +572,7 @@
 		22B3C9DE2A6F79C300548753 /* MaintenanceViews */ = {
 			isa = PBXGroup;
 			children = (
+				22B3C9DC2A6F792100548753 /* MaintenanceView.swift */,
 				22B3C9DF2A6F79D000548753 /* MaintenanceNavigationView.swift */,
 				22B3C9E12A6F7AFC00548753 /* AlarmsCellView.swift */,
 				22B3C9E32A6F7B5700548753 /* TasksCellView.swift */,
@@ -503,6 +588,7 @@
 		22B3C9E72A6F7D2E00548753 /* DevicesViews */ = {
 			isa = PBXGroup;
 			children = (
+				22B3C9E52A6F7CE700548753 /* DevicesView.swift */,
 				22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */,
 				22ED5C842A70C6A3007C8AB1 /* DeviceCellView.swift */,
 				22ED5C862A70CA2C007C8AB1 /* DeviceInverterCellView.swift */,
@@ -523,6 +609,7 @@
 		22ED5C8A2A70DDDE007C8AB1 /* ProfileViews */ = {
 			isa = PBXGroup;
 			children = (
+				22B3C9E82A6F7D4200548753 /* ProfileView.swift */,
 			);
 			path = ProfileViews;
 			sourceTree = "<group>";
@@ -691,6 +778,7 @@
 			files = (
 				2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */,
 				223DCD152AA6F17000E1AF6C /* ValidateCookie.swift in Sources */,
+				2260A4E02BD26E00003939DB /* BasicInfoAddressView.swift in Sources */,
 				22A58A5E2A69160200E29710 /* SplashController.swift in Sources */,
 				222D33EC2A722C0000004453 /* StationDevicesView.swift in Sources */,
 				22A58A7E2A6A4A5D00E29710 /* HomeView.swift in Sources */,
@@ -701,11 +789,15 @@
 				22A58A5A2A6915CD00E29710 /* SimpleErrorView.swift in Sources */,
 				229540CB2BD0E1D700BA0884 /* PlantsSearchView.swift in Sources */,
 				22ED5C922A712BB6007C8AB1 /* TasksNavigationView.swift in Sources */,
+				2260A4D22BD23688003939DB /* BigValueOverviewView.swift in Sources */,
 				22B3C9DD2A6F792100548753 /* MaintenanceView.swift in Sources */,
+				2260A4E32BD27710003939DB /* AlarmDetailBasicView.swift in Sources */,
 				22ED5C892A70D7AC007C8AB1 /* DeviceFilterView.swift in Sources */,
 				22B3C9E62A6F7CE700548753 /* DevicesView.swift in Sources */,
 				22ED5C902A70F96D007C8AB1 /* LogoutQuestionView.swift in Sources */,
+				2260A4DE2BD26DE6003939DB /* BasicInfoLargeView.swift in Sources */,
 				222D33E12A7222F700004453 /* OverviewController.swift in Sources */,
+				2260A4CE2BD2363E003939DB /* StatusOverviewView.swift in Sources */,
 				22B3C9EB2A6F81A300548753 /* AlarmsStatisticView.swift in Sources */,
 				22ED5C962A7136FB007C8AB1 /* EliminationTasksCellView.swift in Sources */,
 				222D33E62A722A9400004453 /* OverviewView.swift in Sources */,
@@ -718,11 +810,13 @@
 				229540CF2BD11F8500BA0884 /* TotalStatisticsView.swift in Sources */,
 				22B3C9E22A6F7AFC00548753 /* AlarmsCellView.swift in Sources */,
 				22ED5C8E2A70F4C9007C8AB1 /* ChangeLanguageController.swift in Sources */,
+				2260A4D42BD236A2003939DB /* BigValueOverviewCellView.swift in Sources */,
 				22B3C9F72A6FB01C00548753 /* AlarmCellView.swift in Sources */,
 				22A58A382A6914A400E29710 /* AppDelegate.swift in Sources */,
 				22A58A7C2A6A3C6800E29710 /* MenuBar.swift in Sources */,
 				22C53B892A6EA7C90014D195 /* MonthPickerView.swift in Sources */,
 				22ED5C852A70C6A3007C8AB1 /* DeviceCellView.swift in Sources */,
+				2260A4DC2BD26DCD003939DB /* BasicInfoSmallView.swift in Sources */,
 				222D33FA2A72912200004453 /* StationChartsView.swift in Sources */,
 				22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */,
 				22A58A832A6A516100E29710 /* PlantsView.swift in Sources */,
@@ -734,21 +828,26 @@
 				222D33F02A72361F00004453 /* WeatherView.swift in Sources */,
 				22A58A762A6A2CE200E29710 /* LanguageController.swift in Sources */,
 				22A1AA362A6C2687002AA262 /* GraphView.swift in Sources */,
+				2260A4CC2BD2312A003939DB /* PlantMapInfoContentView.swift in Sources */,
 				22CE080D2A6FF73300E03A1B /* Device.swift in Sources */,
+				2260A4CA2BD230E4003939DB /* StatisticsMapView.swift in Sources */,
 				22A58A722A6918A100E29710 /* HomeController.swift in Sources */,
+				2260A4D02BD23662003939DB /* ValueOverviewView.swift in Sources */,
 				222D33E32A72236F00004453 /* OverviewMenuBar.swift in Sources */,
 				22ED5C872A70CA2C007C8AB1 /* DeviceInverterCellView.swift in Sources */,
+				2260A4E72BD2775C003939DB /* AlarmContactView.swift in Sources */,
 				22A58A542A69155E00E29710 /* ApiService.swift in Sources */,
 				22ED5C982A713DF7007C8AB1 /* AlarmDetailController.swift in Sources */,
 				229540D52BD12E4A00BA0884 /* EnvironmentalCellView.swift in Sources */,
+				2260A4C82BD230C1003939DB /* AlarmStatisticsMapView.swift in Sources */,
 				22A58A5C2A6915E300E29710 /* LoadingView.swift in Sources */,
 				222D33E82A722BB300004453 /* StationStatisticsView.swift in Sources */,
 				22B3C9E92A6F7D4200548753 /* ProfileView.swift in Sources */,
 				22ED5C8C2A70ED5E007C8AB1 /* SettingsController.swift in Sources */,
 				229540C92BD0E1BB00BA0884 /* PlantsTopView.swift in Sources */,
+				2260A4E52BD27740003939DB /* AlarmDetailTextView.swift in Sources */,
 				22C0E2E22A73E3C0000FFAAB /* PlantMapInfoView.swift in Sources */,
 				223DCD132AA6E36C00E1AF6C /* UnissoLogin.swift in Sources */,
-				222D33EA2A722BE000004453 /* StationLayotView.swift in Sources */,
 				22C53B8B2A6EA8EB0014D195 /* MonthYearWheelPicker.swift in Sources */,
 				22B3C9F12A6FACA600548753 /* Alarm.swift in Sources */,
 				22C53B8F2A6EAC5D0014D195 /* YearPickerView.swift in Sources */,
@@ -757,6 +856,7 @@
 				22C53B872A6E96050014D195 /* DatePickerView.swift in Sources */,
 				22C53B852A6E8F0B0014D195 /* XYMarkerView.swift in Sources */,
 				22A58A872A6A6B3F00E29710 /* PlantCellView.swift in Sources */,
+				2260A4D92BD24333003939DB /* OverviewAnimationView.swift in Sources */,
 				229540D12BD12E0F00BA0884 /* StatisticsPlantsView.swift in Sources */,
 				22A58A562A69159500E29710 /* JSONParse.swift in Sources */,
 				229540C72BD0DEEE00BA0884 /* StatusNavigationView.swift in Sources */,

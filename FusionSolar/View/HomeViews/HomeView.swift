@@ -11,12 +11,6 @@ class HomeView: UIView {
     
     var homeController: HomeController?
     
-    var showMap: Bool? {
-        didSet {
-            
-        }
-    }
-    
     let topWhiteView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +26,13 @@ class HomeView: UIView {
         return view
     }()
     
+    lazy var mapView: MapView = {
+        let view = MapView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.homeView = self
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -41,7 +42,6 @@ class HomeView: UIView {
     }
     
     
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -49,44 +49,30 @@ class HomeView: UIView {
     func setupView() {
         self.addSubview(topWhiteView)
         self.addSubview(plantsView)
+        self.addSubview(mapView)
         
         self.addConstraintsWithFormat("H:|[v0]|", views: topWhiteView)
         self.addConstraintsWithFormat("H:|[v0]|", views: plantsView)
+        self.addConstraintsWithFormat("H:|[v0]|", views: mapView)
         
         self.addConstraintsWithFormat("V:|[v0(\(100.dp))]", views: topWhiteView)
         
         plantsView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
         plantsView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        mapView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        self.showMapView(isMap: false)
     }
     
-//
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let index = indexPath.item
-//        if(index == 0) {
-//            if(showMap ?? false) {
-//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mapCellViewId", for: indexPath) as! MapCellView
-//                self.mapCellView = cell
-//                cell.homeView = self
-//                cell.setupGoogleMap()
-//                cell.stations = self.plantsCellView?.stations
-//                return cell
-//            } else {
-//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "plantsCellViewId", for: indexPath) as! PlantsCellView
-//                self.plantsCellView = cell
-//                cell.homeView = self
-//                cell.initKeyboard()
-//                return cell
-//            }
-//        }
-//        if(index == 1) {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeStatisticsCellViewId", for: indexPath) as! HomeStatisticsCellView
-//            self.homeStatisticsCellView = cell
-//            cell.homeView = self
-//            return cell
-//        }
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-//        return cell
-//    }
-    
+    func showMapView(isMap: Bool) {
+        if(isMap) {
+            plantsView.isHidden = true
+            mapView.isHidden = false
+            mapView.setupGoogleMap()
+        } else {
+            plantsView.isHidden = false
+            mapView.isHidden = true
+        }
+    }
 }

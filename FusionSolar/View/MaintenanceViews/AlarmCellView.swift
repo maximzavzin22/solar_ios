@@ -193,10 +193,10 @@ class AlarmCellView: UICollectionViewCell {
         borderView.addSubview(statusLabel)
         borderView.addSubview(textsContentView)
         
-        self.addConstraintsWithFormat("H:[v0(\(360.dp))]", views: borderView)
+        self.addConstraintsWithFormat("H:|-\(15.dp)-[v0]-\(15.dp)-|", views: borderView)
         borderView.addConstraintsWithFormat("H:|-\(20.dp)-[v0(\(24.dp))]-\(10.dp)-[v1]-\(100.dp)-|", views: animationView, nameLabel)
         borderView.addConstraintsWithFormat("H:[v0]-\(26.dp)-|", views: statusLabel)
-        borderView.addConstraintsWithFormat("H:[v0(\(320.dp))]", views: textsContentView)
+        borderView.addConstraintsWithFormat("H:|-\(20.dp)-[v0]-\(20.dp)-|", views: textsContentView)
         
         self.addConstraintsWithFormat("V:|[v0]|", views: borderView)
         borderView.addConstraintsWithFormat("V:[v0(\(24.dp))]", views: animationView)

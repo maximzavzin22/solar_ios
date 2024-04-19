@@ -113,10 +113,10 @@ class SettingsController: UIViewController {
         self.view.addSubview(logoutQuestionView)
         
         self.view.addConstraintsWithFormat("H:|-\(8.dp)-[v0]-\(24.dp)-|", views: headeView)
-        self.view.addConstraintsWithFormat("H:[v0(\(360.dp))]", views: languageSettingRowView)
-        self.view.addConstraintsWithFormat("H:[v0(\(360.dp))]", views: securitySettingRowView)
-        self.view.addConstraintsWithFormat("H:[v0(\(360.dp))]", views: deletionSettingRowView)
-        self.view.addConstraintsWithFormat("H:[v0(\(240.dp))]", views: logoutButton)
+        self.view.addConstraintsWithFormat("H:|-\(15.dp)-[v0]-\(15.dp)-|", views: languageSettingRowView)
+        self.view.addConstraintsWithFormat("H:|-\(15.dp)-[v0]-\(15.dp)-|", views: securitySettingRowView)
+        self.view.addConstraintsWithFormat("H:|-\(15.dp)-[v0]-\(15.dp)-|", views: deletionSettingRowView)
+        self.view.addConstraintsWithFormat("H:|-\(75.dp)-[v0]-\(75.dp)-|", views: logoutButton)
         self.view.addConstraintsWithFormat("H:|[v0]|", views: logoutQuestionView)
         
         self.view.addConstraintsWithFormat("V:[v0(\(46.dp))]", views: headeView)

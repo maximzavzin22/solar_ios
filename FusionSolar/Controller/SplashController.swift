@@ -89,10 +89,14 @@ class SplashController: UIViewController {
         descriptionLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         versionLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
-        animationView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 136.dp).isActive = true
+        animationView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.dp).isActive = true
         descriptionLabel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -126.dp).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -8.dp).isActive = true
         versionLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -32.dp).isActive = true
+        
+        if(UIScreen.main.bounds.height/UIScreen.main.bounds.width < 16/9) {
+            animationView.transform = CGAffineTransformMakeScale(1.5, 1.5)
+        }
         
         animationView.play()
     }

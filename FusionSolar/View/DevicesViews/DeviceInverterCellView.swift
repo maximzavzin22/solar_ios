@@ -232,10 +232,10 @@ class DeviceInverterCellView: UICollectionViewCell {
         borderView.addSubview(statusLabel)
         borderView.addSubview(textsContentView)
         
-        self.addConstraintsWithFormat("H:[v0(\(360.dp))]", views: borderView)
+        self.addConstraintsWithFormat("H:|-\(20.dp)-[v0]-\(20.dp)-|", views: borderView)
         borderView.addConstraintsWithFormat("H:|-\(20.dp)-[v0(\(262.dp))]", views: nameLabel)
         borderView.addConstraintsWithFormat("H:[v0]-\(26.dp)-|", views: statusLabel)
-        borderView.addConstraintsWithFormat("H:[v0(\(320.dp))]", views: textsContentView)
+        borderView.addConstraintsWithFormat("H:|-\(20.dp)-[v0]-\(20.dp)-|", views: textsContentView)
         
         self.addConstraintsWithFormat("V:|[v0]|", views: borderView)
         borderView.addConstraintsWithFormat("V:|-\(24.dp)-[v0]-\(24.dp)-[v1(\(180.dp))]", views: nameLabel, textsContentView)

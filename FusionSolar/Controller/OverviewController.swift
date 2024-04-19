@@ -13,7 +13,6 @@ class OverviewController: UIViewController {
         didSet {
             self.titleLabel.text = station?.plantName ?? ""
             overviewView.station = station
-          //  self.overviewView.generateKpi()
         }
     }
     
@@ -23,25 +22,16 @@ class OverviewController: UIViewController {
                 if(value == 0) {
                     overviewView.isHidden = false
                     stationStatisticsView.isHidden = true
-                    stationLayotView.isHidden = true
                     stationDevicesView.isHidden = true
                 }
                 if(value == 1) {
                     overviewView.isHidden = true
                     stationStatisticsView.isHidden = false
-                    stationLayotView.isHidden = true
                     stationDevicesView.isHidden = true
                 }
                 if(value == 2) {
                     overviewView.isHidden = true
                     stationStatisticsView.isHidden = true
-                    stationLayotView.isHidden = false
-                    stationDevicesView.isHidden = true
-                }
-                if(value == 3) {
-                    overviewView.isHidden = true
-                    stationStatisticsView.isHidden = true
-                    stationLayotView.isHidden = true
                     stationDevicesView.isHidden = false
                     stationDevicesView.generateDevices()
                 }
@@ -96,13 +86,6 @@ class OverviewController: UIViewController {
     
     lazy var stationStatisticsView: StationStatisticsView = {
         let view = StationStatisticsView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.overviewController = self
-        return view
-    }()
-    
-    lazy var stationLayotView: StationLayotView = {
-        let view = StationLayotView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.overviewController = self
         return view
@@ -200,24 +183,18 @@ class OverviewController: UIViewController {
     func setupContentView() {
         contentView.addSubview(overviewView)
         contentView.addSubview(stationStatisticsView)
-        contentView.addSubview(stationLayotView)
         contentView.addSubview(stationDevicesView)
         
         contentView.addConstraintsWithFormat("H:|[v0]|", views: overviewView)
         contentView.addConstraintsWithFormat("H:|[v0]|", views: stationStatisticsView)
-        contentView.addConstraintsWithFormat("H:|[v0]|", views: stationLayotView)
         contentView.addConstraintsWithFormat("H:|[v0]|", views: stationDevicesView)
         
         contentView.addConstraintsWithFormat("V:|[v0]|", views: overviewView)
         contentView.addConstraintsWithFormat("V:|[v0]|", views: stationStatisticsView)
-        contentView.addConstraintsWithFormat("V:|[v0]|", views: stationLayotView)
         contentView.addConstraintsWithFormat("V:|[v0]|", views: stationDevicesView)
         
         stationStatisticsView.isHidden = true
-        stationLayotView.isHidden = true
         stationDevicesView.isHidden = true
-        
-     //   overviewView.generateKpi()
     }
     
     func openAlarmDetailController(alarm: Alarm) {

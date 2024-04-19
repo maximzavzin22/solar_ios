@@ -159,7 +159,7 @@ class AlarmsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         topView.addSubview(searchView)
         
         topView.addConstraintsWithFormat("H:|[v0]|", views: alarmsStatisticView)
-        topView.addConstraintsWithFormat("H:[v0(\(359.dp))]", views: searchView)
+        topView.addConstraintsWithFormat("H:|-\(20.dp)-[v0]-\(20.dp)-|", views: searchView)
         
         topView.addConstraintsWithFormat("V:|-\(16.dp)-[v0(\(100.dp))]-\(32.dp)-[v1(\(48.dp))]", views: alarmsStatisticView, searchView)
         
@@ -171,7 +171,7 @@ class AlarmsCellView: UICollectionViewCell, UICollectionViewDataSource, UICollec
         searchView.addSubview(alarmSearchView)
         searchView.addSubview(filterButton)
         
-        searchView.addConstraintsWithFormat("H:|[v0(\(321.dp))]-\(15.dp)-[v1(\(24.dp))]", views: alarmSearchView, filterButton)
+        searchView.addConstraintsWithFormat("H:|[v0]-\(15.dp)-[v1(\(24.dp))]|", views: alarmSearchView, filterButton)
         
         searchView.addConstraintsWithFormat("V:|[v0]|", views: alarmSearchView)
         searchView.addConstraintsWithFormat("V:[v0(\(24.dp))]", views: filterButton)

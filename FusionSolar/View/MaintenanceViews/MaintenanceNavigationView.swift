@@ -30,7 +30,7 @@ class MaintenanceNavigationView: UIView {
                 alarmsButton.titleLabel?.textColor = .rgb(106, green: 106, blue: 106)
                 alarmsButton.tintColor = .rgb(106, green: 106, blue: 106)
             }
-            self.maintenanceView?.scrollToMenuIndex()
+//            self.maintenanceView?.scrollToMenuIndex()
         }
     }
     

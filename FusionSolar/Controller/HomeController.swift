@@ -75,7 +75,8 @@ class HomeController: UIViewController {
                     self.maintenanceView.isHidden = false
                     self.statisticPlantView.isHidden = true
                     self.profileView.isHidden = true
-                    self.maintenanceView.alarmsCellView?.alarms = self.alarms
+                    self.maintenanceView.alarmsCellView?.generateAlarms()
+                    //self.maintenanceView.alarmsCellView?.alarms = self.alarms
                 }
                 if(page == 2) {
                     self.homeView.isHidden = true
@@ -126,13 +127,6 @@ class HomeController: UIViewController {
         view.homeController = self
         return view
     }()
-    
-//    lazy var devicesView: DevicesView = {
-//        let view = DevicesView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.homeController = self
-//        return view
-//    }()
     
     lazy var profileView: ProfileView = {
         let view = ProfileView()
