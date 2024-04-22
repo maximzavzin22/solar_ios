@@ -148,7 +148,6 @@ class StatisticPlantView: UIView {
     func getTopStations() {
         if let stations = self.stations {
             let newStations = stations.sorted(by: {($0.attitude ?? 0.0) > ($1.attitude ?? 0.0)})
-            dump(newStations)
             if(stations.count > 5) {
                 self.topStations = Array(newStations.prefix(5))
             } else {

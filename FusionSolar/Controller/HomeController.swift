@@ -44,6 +44,8 @@ class HomeController: UIViewController {
         }
     }
     
+    var regions: [Region]?
+    
     var alarms: [Alarm]? {
         didSet {
             if let stations = self.stations {
@@ -348,6 +350,25 @@ class HomeController: UIViewController {
         pverviewController.modalPresentationStyle = .fullScreen
         pverviewController.station = station
         self.present(pverviewController, animated: true)
+    }
+    
+    func openRegionsController() {
+        let regionsController = RegionsController()
+        regionsController.modalPresentationStyle = .fullScreen
+        regionsController.homeController = self
+        self.present(regionsController, animated: true)
+    }
+    
+    func openCompanyInfoController() {
+        let companyInfoController = CompanyInfoController()
+        companyInfoController.modalPresentationStyle = .fullScreen
+        self.present(companyInfoController, animated: true)
+    }
+    
+    func openAboutController() {
+        let aboutController = AboutController()
+        aboutController.modalPresentationStyle = .fullScreen
+        self.present(aboutController, animated: true)
     }
     
     //ApiService

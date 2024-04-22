@@ -33,7 +33,7 @@ class OverviewController: UIViewController {
                     overviewView.isHidden = true
                     stationStatisticsView.isHidden = true
                     stationDevicesView.isHidden = false
-                    stationDevicesView.generateDevices()
+                    stationDevicesView.devices = station?.devices
                 }
             }
         }

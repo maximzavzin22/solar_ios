@@ -145,3 +145,8 @@
 "map_info_yield_today"="Cегодня";
 "map_info_total_string_capacity"="Общая вместимость";
 "map_info_plant_address"="Адрес";
+"select_plant"="Выберите объект";
+"company_name"="Название компании";
+"address"="Адрес";
+"website"="Веб-сайт";
+"record_number"="Номер записи";

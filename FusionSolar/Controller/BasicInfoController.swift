@@ -16,7 +16,7 @@ class BasicInfoController: UIViewController, UINavigationControllerDelegate, UIS
             self.personBasicInfoSmallView.valueLabel.text = station?.contactPerson ?? ""
             self.methodBasicInfoSmallView.valueLabel.text = station?.contactMethod ?? ""
             self.countryBasicInfoSmallView.valueLabel.text = "Uzbekistan"
-            self.providerBasicInfoSmallView.valueLabel.text = HomeController.login ?? ""
+            self.providerBasicInfoSmallView.valueLabel.text = ""//HomeController.login ?? ""
             self.capacityBasicInfoSmallView.valueLabel.text = "\((station?.capacity ?? 0.0).rounded(toPlaces: 2))"
             self.chargingBasicInfoSmallView.valueLabel.text = "No"
            

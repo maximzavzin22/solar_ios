@@ -44,6 +44,7 @@
 		2260A4E32BD27710003939DB /* AlarmDetailBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E22BD27710003939DB /* AlarmDetailBasicView.swift */; };
 		2260A4E52BD27740003939DB /* AlarmDetailTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E42BD27740003939DB /* AlarmDetailTextView.swift */; };
 		2260A4E72BD2775C003939DB /* AlarmContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E62BD2775C003939DB /* AlarmContactView.swift */; };
+		2260A4E92BD27A6E003939DB /* RegionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E82BD27A6E003939DB /* RegionsController.swift */; };
 		229540C72BD0DEEE00BA0884 /* StatusNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */; };
 		229540C92BD0E1BB00BA0884 /* PlantsTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */; };
 		229540CB2BD0E1D700BA0884 /* PlantsSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */; };
@@ -131,6 +132,15 @@
 		22F2D2D42A77695D003DA894 /* sun cloud rain snow.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2C92A77695D003DA894 /* sun cloud rain snow.json */; };
 		22F2D2D52A77695D003DA894 /* cloud storm.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2CA2A77695D003DA894 /* cloud storm.json */; };
 		22F2D2D62A77695D003DA894 /* cloud grad.json in Resources */ = {isa = PBXBuildFile; fileRef = 22F2D2CB2A77695D003DA894 /* cloud grad.json */; };
+		22FB575B2BD6203400048FEE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB575A2BD6203400048FEE /* Region.swift */; };
+		22FB575E2BD6280200048FEE /* RegionParentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB575D2BD6280200048FEE /* RegionParentCellView.swift */; };
+		22FB57602BD62ABD00048FEE /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB575F2BD62ABD00048FEE /* CheckBox.swift */; };
+		22FB57622BD6338A00048FEE /* RegionChildCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB57612BD6338A00048FEE /* RegionChildCellView.swift */; };
+		22FB57642BD66BA300048FEE /* CompanyInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB57632BD66BA300048FEE /* CompanyInfoController.swift */; };
+		22FB57662BD66C8800048FEE /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB57652BD66C8800048FEE /* ProfileInfoView.swift */; };
+		22FB57682BD66CA400048FEE /* ProfileRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB57672BD66CA400048FEE /* ProfileRowView.swift */; };
+		22FB576A2BD66CBE00048FEE /* ProfileRowFonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB57692BD66CBE00048FEE /* ProfileRowFonView.swift */; };
+		22FB576C2BD6722600048FEE /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB576B2BD6722600048FEE /* AboutController.swift */; };
 		DD7F8F6BB25DE47E5D13D85F /* libPods-FusionSolar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BB506999E0EC252C894123 /* libPods-FusionSolar.a */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +182,7 @@
 		2260A4E22BD27710003939DB /* AlarmDetailBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailBasicView.swift; sourceTree = "<group>"; };
 		2260A4E42BD27740003939DB /* AlarmDetailTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailTextView.swift; sourceTree = "<group>"; };
 		2260A4E62BD2775C003939DB /* AlarmContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmContactView.swift; sourceTree = "<group>"; };
+		2260A4E82BD27A6E003939DB /* RegionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionsController.swift; sourceTree = "<group>"; };
 		229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNavigationView.swift; sourceTree = "<group>"; };
 		229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTopView.swift; sourceTree = "<group>"; };
 		229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsSearchView.swift; sourceTree = "<group>"; };
@@ -270,6 +281,15 @@
 		22F2D2C92A77695D003DA894 /* sun cloud rain snow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sun cloud rain snow.json"; sourceTree = "<group>"; };
 		22F2D2CA2A77695D003DA894 /* cloud storm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cloud storm.json"; sourceTree = "<group>"; };
 		22F2D2CB2A77695D003DA894 /* cloud grad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cloud grad.json"; sourceTree = "<group>"; };
+		22FB575A2BD6203400048FEE /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		22FB575D2BD6280200048FEE /* RegionParentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionParentCellView.swift; sourceTree = "<group>"; };
+		22FB575F2BD62ABD00048FEE /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		22FB57612BD6338A00048FEE /* RegionChildCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionChildCellView.swift; sourceTree = "<group>"; };
+		22FB57632BD66BA300048FEE /* CompanyInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoController.swift; sourceTree = "<group>"; };
+		22FB57652BD66C8800048FEE /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
+		22FB57672BD66CA400048FEE /* ProfileRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRowView.swift; sourceTree = "<group>"; };
+		22FB57692BD66CBE00048FEE /* ProfileRowFonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRowFonView.swift; sourceTree = "<group>"; };
+		22FB576B2BD6722600048FEE /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		24BB506999E0EC252C894123 /* libPods-FusionSolar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FusionSolar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DAEB275D4574077463EF0B /* Pods-FusionSolar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FusionSolar.release.xcconfig"; path = "Target Support Files/Pods-FusionSolar/Pods-FusionSolar.release.xcconfig"; sourceTree = "<group>"; };
 		BD7011CF20E7132978DA55FB /* Pods-FusionSolar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FusionSolar.debug.xcconfig"; path = "Target Support Files/Pods-FusionSolar/Pods-FusionSolar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -472,6 +492,7 @@
 				22CE080C2A6FF73300E03A1B /* Device.swift */,
 				222D33ED2A72313B00004453 /* StationRealKpi.swift */,
 				222D33F12A72365900004453 /* Weather.swift */,
+				22FB575A2BD6203400048FEE /* Region.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -479,9 +500,10 @@
 		22A58A4E2A69151100E29710 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				22FB575C2BD627DE00048FEE /* RegionsViews */,
+				22A58A7F2A6A4B6B00E29710 /* HomeViews */,
 				2260A4E12BD276FA003939DB /* AlarmDetailViews */,
 				2260A4DA2BD26DB5003939DB /* BasicInfoViews */,
-				22A58A7F2A6A4B6B00E29710 /* HomeViews */,
 				22B3C9DE2A6F79C300548753 /* MaintenanceViews */,
 				229540CD2BD0F32300BA0884 /* StatisticPlantViews */,
 				222D33E42A722A7A00004453 /* OverviewControllerViews */,
@@ -489,6 +511,7 @@
 				22ED5C8A2A70DDDE007C8AB1 /* ProfileViews */,
 				22A58A592A6915CD00E29710 /* SimpleErrorView.swift */,
 				22A58A5B2A6915E300E29710 /* LoadingView.swift */,
+				22FB575F2BD62ABD00048FEE /* CheckBox.swift */,
 				22A58A7B2A6A3C6800E29710 /* MenuBar.swift */,
 				22C53B862A6E96050014D195 /* DatePickerView.swift */,
 				22C53B882A6EA7C90014D195 /* MonthPickerView.swift */,
@@ -514,6 +537,9 @@
 				22ED5C972A713DF7007C8AB1 /* AlarmDetailController.swift */,
 				222D33E02A7222F700004453 /* OverviewController.swift */,
 				2245356D2A72E056007F5708 /* BasicInfoController.swift */,
+				2260A4E82BD27A6E003939DB /* RegionsController.swift */,
+				22FB57632BD66BA300048FEE /* CompanyInfoController.swift */,
+				22FB576B2BD6722600048FEE /* AboutController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -610,8 +636,20 @@
 			isa = PBXGroup;
 			children = (
 				22B3C9E82A6F7D4200548753 /* ProfileView.swift */,
+				22FB57652BD66C8800048FEE /* ProfileInfoView.swift */,
+				22FB57672BD66CA400048FEE /* ProfileRowView.swift */,
+				22FB57692BD66CBE00048FEE /* ProfileRowFonView.swift */,
 			);
 			path = ProfileViews;
+			sourceTree = "<group>";
+		};
+		22FB575C2BD627DE00048FEE /* RegionsViews */ = {
+			isa = PBXGroup;
+			children = (
+				22FB575D2BD6280200048FEE /* RegionParentCellView.swift */,
+				22FB57612BD6338A00048FEE /* RegionChildCellView.swift */,
+			);
+			path = RegionsViews;
 			sourceTree = "<group>";
 		};
 		D0D73EAA87049D16FCBB5EDD /* Frameworks */ = {
@@ -779,6 +817,7 @@
 				2245356E2A72E056007F5708 /* BasicInfoController.swift in Sources */,
 				223DCD152AA6F17000E1AF6C /* ValidateCookie.swift in Sources */,
 				2260A4E02BD26E00003939DB /* BasicInfoAddressView.swift in Sources */,
+				22FB57602BD62ABD00048FEE /* CheckBox.swift in Sources */,
 				22A58A5E2A69160200E29710 /* SplashController.swift in Sources */,
 				222D33EC2A722C0000004453 /* StationDevicesView.swift in Sources */,
 				22A58A7E2A6A4A5D00E29710 /* HomeView.swift in Sources */,
@@ -800,19 +839,24 @@
 				2260A4CE2BD2363E003939DB /* StatusOverviewView.swift in Sources */,
 				22B3C9EB2A6F81A300548753 /* AlarmsStatisticView.swift in Sources */,
 				22ED5C962A7136FB007C8AB1 /* EliminationTasksCellView.swift in Sources */,
+				22FB575B2BD6203400048FEE /* Region.swift in Sources */,
 				222D33E62A722A9400004453 /* OverviewView.swift in Sources */,
 				22CE080B2A6FE79900E03A1B /* DeviceTypeSearchView.swift in Sources */,
+				22FB575E2BD6280200048FEE /* RegionParentCellView.swift in Sources */,
 				22A58A742A691AAC00E29710 /* SignInController.swift in Sources */,
 				22A58A8B2A6A6D9000E29710 /* EmptyDataView.swift in Sources */,
+				22FB57682BD66CA400048FEE /* ProfileRowView.swift in Sources */,
 				22ED5C942A7136B6007C8AB1 /* InspectionTasksCellView.swift in Sources */,
 				22B3C9E02A6F79D000548753 /* MaintenanceNavigationView.swift in Sources */,
 				22A1AA342A6BD8C9002AA262 /* StatisticPlantCellView.swift in Sources */,
 				229540CF2BD11F8500BA0884 /* TotalStatisticsView.swift in Sources */,
+				22FB576C2BD6722600048FEE /* AboutController.swift in Sources */,
 				22B3C9E22A6F7AFC00548753 /* AlarmsCellView.swift in Sources */,
 				22ED5C8E2A70F4C9007C8AB1 /* ChangeLanguageController.swift in Sources */,
 				2260A4D42BD236A2003939DB /* BigValueOverviewCellView.swift in Sources */,
 				22B3C9F72A6FB01C00548753 /* AlarmCellView.swift in Sources */,
 				22A58A382A6914A400E29710 /* AppDelegate.swift in Sources */,
+				22FB57662BD66C8800048FEE /* ProfileInfoView.swift in Sources */,
 				22A58A7C2A6A3C6800E29710 /* MenuBar.swift in Sources */,
 				22C53B892A6EA7C90014D195 /* MonthPickerView.swift in Sources */,
 				22ED5C852A70C6A3007C8AB1 /* DeviceCellView.swift in Sources */,
@@ -820,6 +864,7 @@
 				222D33FA2A72912200004453 /* StationChartsView.swift in Sources */,
 				22A1AA302A6A93D1002AA262 /* PlantsFilterView.swift in Sources */,
 				22A58A832A6A516100E29710 /* PlantsView.swift in Sources */,
+				22FB576A2BD66CBE00048FEE /* ProfileRowFonView.swift in Sources */,
 				22A58A522A69154500E29710 /* Extensions.swift in Sources */,
 				22A58A892A6A6BB600E29710 /* Station.swift in Sources */,
 				22A58A852A6A52A200E29710 /* StatisticPlantView.swift in Sources */,
@@ -828,6 +873,7 @@
 				222D33F02A72361F00004453 /* WeatherView.swift in Sources */,
 				22A58A762A6A2CE200E29710 /* LanguageController.swift in Sources */,
 				22A1AA362A6C2687002AA262 /* GraphView.swift in Sources */,
+				22FB57622BD6338A00048FEE /* RegionChildCellView.swift in Sources */,
 				2260A4CC2BD2312A003939DB /* PlantMapInfoContentView.swift in Sources */,
 				22CE080D2A6FF73300E03A1B /* Device.swift in Sources */,
 				2260A4CA2BD230E4003939DB /* StatisticsMapView.swift in Sources */,
@@ -839,8 +885,10 @@
 				22A58A542A69155E00E29710 /* ApiService.swift in Sources */,
 				22ED5C982A713DF7007C8AB1 /* AlarmDetailController.swift in Sources */,
 				229540D52BD12E4A00BA0884 /* EnvironmentalCellView.swift in Sources */,
+				22FB57642BD66BA300048FEE /* CompanyInfoController.swift in Sources */,
 				2260A4C82BD230C1003939DB /* AlarmStatisticsMapView.swift in Sources */,
 				22A58A5C2A6915E300E29710 /* LoadingView.swift in Sources */,
+				2260A4E92BD27A6E003939DB /* RegionsController.swift in Sources */,
 				222D33E82A722BB300004453 /* StationStatisticsView.swift in Sources */,
 				22B3C9E92A6F7D4200548753 /* ProfileView.swift in Sources */,
 				22ED5C8C2A70ED5E007C8AB1 /* SettingsController.swift in Sources */,

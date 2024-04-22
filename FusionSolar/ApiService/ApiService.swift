@@ -133,6 +133,61 @@ class ApiService: NSObject {
             }
         }) .resume()
     }
+    
+    func fetchRegions(completion: @escaping (CustomError?, [Region]?) -> ()) {
+        print("fetchRegions")
+        let url = URL(string: "\(sablabUrl)/api/regions")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(HomeController.profile?.access_token ?? "")", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            if let httpResponse = response as? HTTPURLResponse {
+                print("fetchRegions statusCode: \(httpResponse.statusCode)")
+                if(httpResponse.statusCode == 404 || httpResponse.statusCode == 500) {
+                    DispatchQueue.main.async(execute: {
+                        completion(self.getDefaultError(), nil)
+                    })
+                    return
+                }
+                if(httpResponse.statusCode == 401) {
+                    DispatchQueue.main.async(execute: {
+                        var requestError = CustomError()
+                        requestError.code = 1
+                        requestError.title = NSLocalizedString("auth_error_title", comment: "")
+                        requestError.message = NSLocalizedString("auth_error_description", comment: "")
+                        completion(requestError, nil)
+                    })
+                    return
+                }
+            }
+            if error != nil {
+                print(error)
+                DispatchQueue.main.async(execute: {
+                    completion(self.getDefaultError(), nil)
+                })
+                return
+            }
+            do {
+                let result = String(data: data!, encoding: .utf8)
+//                print("fetchRegions result \(result)")
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                
+                let requestError = JSONParse.sharedInstance.errorParse(json: json)
+                let regions = JSONParse.sharedInstance.regionsParse(json: json)
+                
+                DispatchQueue.main.async(execute: {
+                    completion(requestError, regions)
+                })
+            } catch let jsonError {
+                print(jsonError)
+                DispatchQueue.main.async(execute: {
+                    completion(self.getDefaultError(), nil)
+                })
+            }
+        }) .resume()
+    }
     //
     
     //unisso

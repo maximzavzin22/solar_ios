@@ -24,4 +24,5 @@ class Station: NSObject {
     
     var alarms: [Alarm]?
     var stationRealKpi: StationRealKpi?
+    var devices: [Device]?
 }

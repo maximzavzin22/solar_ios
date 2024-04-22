@@ -145,3 +145,8 @@
 "map_info_yield_today"="Бугун";
 "map_info_total_string_capacity"="Умумий сиғими";
 "map_info_plant_address"="Манзил";
+"select_plant"="Объектни ўрнатинг";
+"company_name"="Компания номи";
+"address"="Манзил";
+"website"="Веб-сайт";
+"record_number"="Ёзув рақами";

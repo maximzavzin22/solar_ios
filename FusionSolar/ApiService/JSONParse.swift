@@ -86,6 +86,8 @@ class JSONParse: NSObject {
                 station.stationRealKpi = stationRealKpi
             }
             
+            station.devices = devicesParse(json: result["devices"])
+            
             return station
         }
         return nil
@@ -106,7 +108,6 @@ class JSONParse: NSObject {
         return nil
     }
     
-    //sablab
     func profileParse(json: Any) -> Profile? {
         if let result = json as? Dictionary<String,Any> {
             let profile = Profile()
@@ -123,6 +124,72 @@ class JSONParse: NSObject {
         }
         return nil
     }
-    //
+    
+    func devicesParse(json: Any) -> [Device]? {
+        if let result = json as? Array<Dictionary<String,Any>> {
+            var devices = [Device]()
+            for deviceDictionary in result as [[String: AnyObject]] {
+                if let device = deviceParse(json: deviceDictionary) {
+                    devices.append(device)
+                }
+            }
+            return devices
+        }
+        return nil
+    }
+    
+    func deviceParse(json: Any) -> Device? {
+        if let result = json as? Dictionary<String,Any> {
+            let device = Device()
+            device.id = result["id"] as? Int64 ?? -1
+            device.devName = result["dev_name"] as? String ?? ""
+            device.dev_dn = result["dev_dn"] as? String ?? ""
+            device.stationCode = result["station_code"] as? String ?? ""
+            device.esnCode = result["esn_code"] as? String ?? ""
+            device.devTypeId = result["dev_type_id"] as? Int ?? -1
+            device.softwareVersion = result["software_version"] as? String ?? ""
+            device.optimizer_number = result["optimizer_number"] as? String ?? ""
+            device.invType = result["inv_type"] as? String ?? ""
+            device.latitude = result["latitude"] as? Double ?? 0.0
+            device.longitude = result["longitude"] as? Double ?? 0.0
+            return device
+        }
+        return nil
+    }
+    
+    func regionsParse(json: Any) -> [Region]? {
+        if let result = json as? Dictionary<String,Any> {
+            if let list = result["result"] as? Array<Dictionary<String,Any>> {
+                var regions = [Region]()
+                for regionDictionary in list as [[String: AnyObject]] {
+                    if let region = regionParse(json: regionDictionary) {
+                        regions.append(region)
+                    }
+                }
+                return regions
+            }
+        }
+        return nil
+    }
+    
+    func regionParse(json: Any) -> Region? {
+        if let result = json as? Dictionary<String,Any> {
+            let region = Region()
+            region.id = result["id"] as? Int ?? 0
+            region.is_parent = result["is_parent"] as? Bool ?? false
+            region.node_name = result["node_name"] as? String ?? ""
+            region.element_id = result["element_id"] as? String ?? ""
+            region.element_dn = result["element_dn"] as? String ?? ""
+            region.parent_dn = result["parent_dn"] as? String ?? ""
+            region.node_icon = result["node_icon"] as? String ?? ""
+            region.status = result["status"] as? String ?? ""
+            region.type_id = result["type_id"] as? Int ?? 0
+            region.moc_id = result["moc_id"] as? Int ?? 0
+            region.has_more_child = result["has_more_child"] as? Bool ?? false
+            return region
+        }
+        return nil
+    }
 }
+
 

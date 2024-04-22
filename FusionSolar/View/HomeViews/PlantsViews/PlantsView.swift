@@ -28,8 +28,20 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     var capacityMin: Double?
     var capacityMax: Double?
     
+    var selectedRegions: [Region]? {
+        didSet {
+            if(selectedRegions?.count ?? 0 > 0) {
+                self.plantsSearchView.groupFilteActive = true
+            } else {
+                self.plantsSearchView.groupFilteActive = false
+            }
+            self.generateShowStations()
+        }
+    }
+    
     var stations: [Station]? {
         didSet {
+//            dump(stations)
             self.statusNavigationView.stations = stations
             self.generateShowStations()
         }
@@ -215,9 +227,8 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
             showStations = getStationByStatus(stations: stations)
             showStations = getStationsByText(stations: showStations)
             showStations = getStationByCapacity(stations: showStations)
-            print("1cshowStations \(showStations.count)")
             showStations = getStationByDates(stations: showStations)
-            print("2cshowStations \(showStations.count)")
+            showStations = getStationByRegions(stations: showStations)
             self.showStations = showStations
         }
     }
@@ -340,6 +351,22 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
             }
         }
         if(newStationsList.count > 0) {
+            showStations = newStationsList
+        }
+        return showStations
+    }
+    
+    func getStationByRegions(stations: [Station]) -> [Station] {
+        var showStations = stations
+        if let regions = self.selectedRegions {
+            var newStationsList = [Station]()
+            for station in stations {
+                for region in regions {
+                    if(station.mountedDn == region.element_dn) {
+                        newStationsList.append(station)
+                    }
+                }
+            }
             showStations = newStationsList
         }
         return showStations

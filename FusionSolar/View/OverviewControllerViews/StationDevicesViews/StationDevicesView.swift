@@ -137,15 +137,23 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = indexPath.item
         let device = self.showDevices?[index]
+        var status = ""
+        if let real_health_state = self.overviewController?.station?.stationRealKpi?.real_health_state {
+            if(real_health_state == 1) {
+                status = "offline"
+            } else {
+                status = "running"
+            }
+        }
         if(device?.devTypeId ?? 0 == 1) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deviceInverterCellViewId", for: indexPath) as! DeviceInverterCellView
             cell.device = device
-            cell.status = "running"
+            cell.status = status
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deviceCellViewId", for: indexPath) as! DeviceCellView
             cell.device = device
-            cell.status = "offline"
+            cell.status = status
             return cell
         }
     }
@@ -175,47 +183,47 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     //collectionView Setup end
     
-    func generateDevices() {
-        var devices = [Device]()
-        
-        var device1 = Device()
-        device1.id = -214543629611879
-        device1.devName = "5fbfk4"
-        device1.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
-        device1.esnCode = "5fbfk4"
-        device1.devTypeId = 1
-        device1.softwareVersion = "V100R001PC666"
-        device1.invType = "SUN2000-17KTL"
-        device1.longitude = 0
-        device1.latitude = 0
-        devices.append(device1)
-        
-        var device2 = Device()
-        device2.id = -214543629611879
-        device2.devName = "5fbfk4"
-        device2.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
-        device2.esnCode = "5fbfk4"
-        device2.devTypeId = 62
-        device2.softwareVersion = "V100R001PC666"
-        device2.invType = "SUN2000-17KTL"
-        device2.longitude = 0
-        device2.latitude = 0
-        devices.append(device2)
-        
-        var device3 = Device()
-        device3.id = -214543629611879
-        device3.devName = "5fbfk4"
-        device3.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
-        device3.esnCode = "5fbfk4"
-        device3.devTypeId = 1
-        device3.softwareVersion = "V100R001PC666"
-        device3.invType = "SUN2000-17KTL"
-        device3.longitude = 0
-        device3.latitude = 0
-        devices.append(device3)
-        
-        self.devices = devices
-    }
+//    func generateDevices() {
+//        var devices = [Device]()
+//        
+//        var device1 = Device()
+//        device1.id = -214543629611879
+//        device1.devName = "5fbfk4"
+//        device1.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
+//        device1.esnCode = "5fbfk4"
+//        device1.devTypeId = 1
+//        device1.softwareVersion = "V100R001PC666"
+//        device1.invType = "SUN2000-17KTL"
+//        device1.longitude = 0
+//        device1.latitude = 0
+//        devices.append(device1)
+//        
+//        var device2 = Device()
+//        device2.id = -214543629611879
+//        device2.devName = "5fbfk4"
+//        device2.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
+//        device2.esnCode = "5fbfk4"
+//        device2.devTypeId = 62
+//        device2.softwareVersion = "V100R001PC666"
+//        device2.invType = "SUN2000-17KTL"
+//        device2.longitude = 0
+//        device2.latitude = 0
+//        devices.append(device2)
+//        
+//        var device3 = Device()
+//        device3.id = -214543629611879
+//        device3.devName = "5fbfk4"
+//        device3.stationCode = "5D02E8B40AD342159AC8D8A2BCD4FAB5"
+//        device3.esnCode = "5fbfk4"
+//        device3.devTypeId = 1
+//        device3.softwareVersion = "V100R001PC666"
+//        device3.invType = "SUN2000-17KTL"
+//        device3.longitude = 0
+//        device3.latitude = 0
+//        devices.append(device3)
+//        
+//        self.devices = devices
+//    }
 }
 
 class StationDevicesNavigationView: UIView {

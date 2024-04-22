@@ -145,4 +145,8 @@
 "map_info_yield_today"="Bugun";
 "map_info_total_string_capacity"="Umumiy sig'imi";
 "map_info_plant_address"="Manzil";
-
+"select_plant"="Ob'ektni o'rnating";
+"company_name"="Kompaniya nomi";
+"address"="Manzil";
+"website"="Veb-sayt";
+"record_number"="Yozuv raqami";

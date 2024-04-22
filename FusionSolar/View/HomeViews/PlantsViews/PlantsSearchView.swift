@@ -23,6 +23,18 @@ class PlantsSearchView: UIView {
         }
     }
     
+    var groupFilteActive: Bool? {
+        didSet {
+            if(groupFilteActive ?? false) {
+                let image = UIImage(named: "btn_active")?.withRenderingMode(.alwaysOriginal)
+                groupFilterButton.setImage(image, for: .normal)
+            } else {
+                let image = UIImage(named: "btn")?.withRenderingMode(.alwaysOriginal)
+                groupFilterButton.setImage(image, for: .normal)
+            }
+        }
+    }
+    
     let searchTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -115,6 +127,7 @@ class PlantsSearchView: UIView {
     
     @objc func groupFilterButtonPress() {
         print("groupFilterButtonPress")
+        self.plantsView?.homeView?.homeController?.openRegionsController()
     }
     
     @objc func clearButtonPress() {

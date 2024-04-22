@@ -11,6 +11,7 @@ import Lottie
 class SplashController: UIViewController {
     
     static let currentVersion = "1.0.0"
+    static let databaseVersion = "1.0.1"
     var isTimerEnd = false
     var isLoadEnd = false
     var isRightVersion = false

@@ -145,5 +145,12 @@
 "map_info_yield_today"="Yield today";
 "map_info_total_string_capacity"="Total string capacity";
 "map_info_plant_address"="Plant address";
+"select_plant"="Select plant";
+"company_name"="Company name";
+"address"="Address";
+"website"="Website";
+"record_number"="Record number";
+
+
 
 

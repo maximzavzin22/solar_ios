@@ -11,20 +11,6 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
     
     var isShowPassword = false
     
-//    var unissoLogin: UnissoLogin? {
-//        didSet {
-//           // dump(unissoLogin)
-//            self.fetchValidateUser(username: unissoLogin?.body?.username ?? "", password: unissoLogin?.body?.password ?? "", url: unissoLogin?.url ?? "")
-//        }
-//    }
-//    
-//    var validateCookie: ValidateCookie? {
-//        didSet {
-//            dump(validateCookie)
-//            self.fetchLogin()
-//        }
-//    }
-    
     lazy var contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false

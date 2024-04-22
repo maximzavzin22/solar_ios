@@ -48,8 +48,9 @@ class BasicInfoSmallView: UIView {
         self.addSubview(valueLabel)
         self.addSubview(seperateView)
         
-        self.addConstraintsWithFormat("H:|-\(24.dp)-[v0(\(191.dp))]", views: titleLabel)
-        self.addConstraintsWithFormat("H:[v0(\(151.dp))]-\(24.dp)-|", views: valueLabel)
+//        self.addConstraintsWithFormat("H:|-\(24.dp)-[v0(\(191.dp))]", views: titleLabel)
+//        self.addConstraintsWithFormat("H:[v0(\(151.dp))]-\(24.dp)-|", views: valueLabel)
+        self.addConstraintsWithFormat("H:|-\(24.dp)-[v0(\(191.dp))]-\(4.dp)-[v1]-\(24.dp)-|", views: titleLabel, valueLabel)
         self.addConstraintsWithFormat("H:|-\(24.dp)-[v0]-\(24.dp)-|", views: seperateView)
         
         self.addConstraintsWithFormat("V:[v0]", views: titleLabel)
