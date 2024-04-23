@@ -61,8 +61,9 @@
 "cancel"="Bekor qilish";
 "ok"="ОK";
 "storage_alarms"="PV+Signallar";
+"alarms"="Signallar";
 "tasks"="Vazifalar";
-"search_alarm"="Enter an alarm name.";
+"search_alarm"="Signal uchun nom kiriting.";
 "critical"="Tanqidiy";
 "major"="Jiddiy";
 "minor"="Kichik";

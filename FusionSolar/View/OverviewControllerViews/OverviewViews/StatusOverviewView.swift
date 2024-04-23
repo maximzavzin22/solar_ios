@@ -128,7 +128,7 @@ class StatusOverviewView: UIView {
     
     @objc func borderViewPress() {
         if let alarm = self.alarm {
-            self.overviewView?.overviewController?.openAlarmDetailController(alarm: alarm)
+            self.overviewView?.overviewController?.openStationAlarmsController()
         }
     }
 }

@@ -11,8 +11,10 @@ class OverviewController: UIViewController {
     
     var station: Station? {
         didSet {
+            dump(station)
             self.titleLabel.text = station?.plantName ?? ""
             overviewView.station = station
+            stationStatisticsView.environmentalView.total_power = self.station?.stationRealKpi?.total_power ?? 0.0
         }
     }
     
@@ -202,6 +204,13 @@ class OverviewController: UIViewController {
         alarmDetailController.modalPresentationStyle = .fullScreen
         alarmDetailController.alarm = alarm
         self.present(alarmDetailController, animated: true)
+    }
+    
+    func openStationAlarmsController() {
+        let stationAlarmsController = StationAlarmsController()
+        stationAlarmsController.modalPresentationStyle = .fullScreen
+        stationAlarmsController.alarms = self.station?.alarms
+        self.present(stationAlarmsController, animated: true)
     }
     
     func openBasicInfoController() {

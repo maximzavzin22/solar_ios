@@ -52,6 +52,10 @@ class OverviewView: UIView {
                 emptyView.isHidden = false
                 overviewAnimationView.isHidden = true
             }
+            if(station?.alarms?.count ?? 0 > 0) {
+                self.alarm = station?.alarms?.last
+            }
+            
         }
     }
     

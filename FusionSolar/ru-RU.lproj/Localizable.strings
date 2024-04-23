@@ -61,8 +61,9 @@
 "cancel"="Отмена";
 "ok"="ОK";
 "storage_alarms"="PV+Тревоги";
+"alarms"="Тревоги";
 "tasks"="Задачи";
-"search_alarm"="Enter an alarm name.";
+"search_alarm"="Введите название тревоги.";
 "critical"="Критических";
 "major"="Серьёзных";
 "minor"="Низких";

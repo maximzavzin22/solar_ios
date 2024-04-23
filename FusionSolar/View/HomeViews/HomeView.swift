@@ -22,7 +22,6 @@ class HomeView: UIView {
         let view = PlantsView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.homeView = self
-        view.initKeyboard()
         return view
     }()
     

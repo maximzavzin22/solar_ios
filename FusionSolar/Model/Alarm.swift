@@ -22,4 +22,7 @@ class Alarm: NSObject {
     var stationCode: String?
     var stationName: String?
     var status: Int?
+    var latitude: String?
+    var longitude: String?
+    var plantAddress: String?
 }

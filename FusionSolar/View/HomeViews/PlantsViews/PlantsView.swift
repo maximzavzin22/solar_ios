@@ -154,10 +154,6 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         self.setupSearchView()
         self.setupCollectionView()
     }
-    
-    func initKeyboard() {
-        self.homeView?.homeController?.setupToolbar()
-    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implement")

@@ -152,6 +152,9 @@ class SettingsController: UIViewController {
         logoutButton.addTarget(self, action: #selector(self.logoutButtonPress), for: .touchUpInside)
         
         logoutQuestionView.isHidden = true
+        
+        securitySettingRowView.isHidden = true
+        deletionSettingRowView.isHidden = true
     }
     
     @objc func languageSettingRowViewPress() {

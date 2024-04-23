@@ -88,6 +88,8 @@ class JSONParse: NSObject {
             
             station.devices = devicesParse(json: result["devices"])
             
+            station.alarms = alarmsParse(json: result["alarms"])
+            
             return station
         }
         return nil
@@ -157,6 +159,41 @@ class JSONParse: NSObject {
         return nil
     }
     
+    func alarmsParse(json: Any) -> [Alarm]? {
+        if let result = json as? Array<Dictionary<String,Any>> {
+            var alarms = [Alarm]()
+            for alarmDictionary in result as [[String: AnyObject]] {
+                if let alarm = alarmParse(json: alarmDictionary) {
+                    alarms.append(alarm)
+                }
+            }
+            return alarms
+        }
+        return nil
+    }
+    
+    func alarmParse(json: Any) -> Alarm? {
+        if let result = json as? Dictionary<String,Any> {
+            let alarm = Alarm()
+            alarm.alarmId = result["alarm_id"] as? Int ?? -1
+            alarm.alarmCause = result["alarm_cause"] as? String ?? ""
+            alarm.alarmName = result["alarm_name"] as? String ?? ""
+            alarm.alarmType = result["alarm_type"] as? Int ?? -1
+            alarm.causeId = result["cause_id"] as? Int ?? -1
+            alarm.devName = result["dev_name"] as? String ?? ""
+            alarm.devTypeId = result["dev_type_id"] as? Int ?? -1
+            alarm.esnCode = result["esn_code"] as? String ?? ""
+            alarm.lev = result["lev"] as? Int ?? -1
+            alarm.raiseTime = result["raise_time"] as? Int64 ?? -1
+            alarm.repairSuggestion = result["repair_suggestion"] as? String ?? ""
+            alarm.stationCode = result["station_code"] as? String ?? ""
+            alarm.stationName = result["station_name"] as? String ?? ""
+            alarm.status = result["status"] as? Int ?? -1
+            return alarm
+        }
+        return nil
+    }
+    
     func regionsParse(json: Any) -> [Region]? {
         if let result = json as? Dictionary<String,Any> {
             if let list = result["result"] as? Array<Dictionary<String,Any>> {
@@ -191,5 +228,4 @@ class JSONParse: NSObject {
         return nil
     }
 }
-
 

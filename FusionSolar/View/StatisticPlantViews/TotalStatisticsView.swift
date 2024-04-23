@@ -23,7 +23,7 @@ class TotalStatisticsView: UIView {
                     totalYearPower = totalYearPower + (station.stationRealKpi?.total_power ?? 0.0)
                 }
             }
-            self.statisticPlantView?.environmentalView.day_power = totalDayPower
+            self.statisticPlantView?.environmentalView.total_power = totalYearPower
             if(totalCapacity < 1000.0) {
                 powerHomeStatisticsTopView.valueLabel.text = "\(totalCapacity.rounded(toPlaces: 2))"
                 powerHomeStatisticsTopView.parametrLabel.text = NSLocalizedString("kw", comment: "")

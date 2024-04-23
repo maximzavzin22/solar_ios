@@ -83,7 +83,6 @@ class TasksCellView: UICollectionViewCell, UICollectionViewDataSource, UICollect
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "inspectionTasksCellViewId", for: indexPath) as! InspectionTasksCellView
             self.inspectionTasksCellView = cell
             cell.tasksCellView = self
-            cell.initKeyboard()
             return cell
         }
         if(index == 1) {

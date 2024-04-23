@@ -74,7 +74,6 @@ class AboutController: UIViewController {
         valueLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         headeView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 6.dp).isActive = true
-//        valueLabel.topAnchor.constraint(equalTo: headeView.bottomAnchor, constant: 48.dp).isActive = true
         valueLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
     }
     

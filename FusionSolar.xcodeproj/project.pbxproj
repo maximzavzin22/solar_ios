@@ -84,7 +84,7 @@
 		22A58A8B2A6A6D9000E29710 /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A58A8A2A6A6D9000E29710 /* EmptyDataView.swift */; };
 		22B3C9DD2A6F792100548753 /* MaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3C9DC2A6F792100548753 /* MaintenanceView.swift */; };
 		22B3C9E02A6F79D000548753 /* MaintenanceNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3C9DF2A6F79D000548753 /* MaintenanceNavigationView.swift */; };
-		22B3C9E22A6F7AFC00548753 /* AlarmsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3C9E12A6F7AFC00548753 /* AlarmsCellView.swift */; };
+		22B3C9E22A6F7AFC00548753 /* AlarmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3C9E12A6F7AFC00548753 /* AlarmsView.swift */; };
 		22B3C9E42A6F7B5700548753 /* TasksCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3C9E32A6F7B5700548753 /* TasksCellView.swift */; };
 		22B3C9E62A6F7CE700548753 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3C9E52A6F7CE700548753 /* DevicesView.swift */; };
 		22B3C9E92A6F7D4200548753 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3C9E82A6F7D4200548753 /* ProfileView.swift */; };
@@ -109,6 +109,10 @@
 		22C53B8B2A6EA8EB0014D195 /* MonthYearWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B8A2A6EA8EB0014D195 /* MonthYearWheelPicker.swift */; };
 		22C53B8D2A6EAB410014D195 /* YearWheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B8C2A6EAB410014D195 /* YearWheelPicker.swift */; };
 		22C53B8F2A6EAC5D0014D195 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */; };
+		22CD59592BD7932200F5CFD3 /* AlarmSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD59582BD7932200F5CFD3 /* AlarmSearchView.swift */; };
+		22CD595B2BD7BDBE00F5CFD3 /* AlarmsStatistiValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD595A2BD7BDBE00F5CFD3 /* AlarmsStatistiValueView.swift */; };
+		22CD595D2BD7C6F400F5CFD3 /* StationAlarmsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD595C2BD7C6F400F5CFD3 /* StationAlarmsController.swift */; };
+		22CD595F2BD7D3D900F5CFD3 /* StationDevicesNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD595E2BD7D3D900F5CFD3 /* StationDevicesNavigationView.swift */; };
 		22CE080B2A6FE79900E03A1B /* DeviceTypeSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */; };
 		22CE080D2A6FF73300E03A1B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE080C2A6FF73300E03A1B /* Device.swift */; };
 		22ED5C852A70C6A3007C8AB1 /* DeviceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED5C842A70C6A3007C8AB1 /* DeviceCellView.swift */; };
@@ -233,7 +237,7 @@
 		22A58A8A2A6A6D9000E29710 /* EmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
 		22B3C9DC2A6F792100548753 /* MaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceView.swift; sourceTree = "<group>"; };
 		22B3C9DF2A6F79D000548753 /* MaintenanceNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceNavigationView.swift; sourceTree = "<group>"; };
-		22B3C9E12A6F7AFC00548753 /* AlarmsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsCellView.swift; sourceTree = "<group>"; };
+		22B3C9E12A6F7AFC00548753 /* AlarmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsView.swift; sourceTree = "<group>"; };
 		22B3C9E32A6F7B5700548753 /* TasksCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCellView.swift; sourceTree = "<group>"; };
 		22B3C9E52A6F7CE700548753 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
 		22B3C9E82A6F7D4200548753 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -258,6 +262,10 @@
 		22C53B8A2A6EA8EB0014D195 /* MonthYearWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearWheelPicker.swift; sourceTree = "<group>"; };
 		22C53B8C2A6EAB410014D195 /* YearWheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearWheelPicker.swift; sourceTree = "<group>"; };
 		22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
+		22CD59582BD7932200F5CFD3 /* AlarmSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSearchView.swift; sourceTree = "<group>"; };
+		22CD595A2BD7BDBE00F5CFD3 /* AlarmsStatistiValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsStatistiValueView.swift; sourceTree = "<group>"; };
+		22CD595C2BD7C6F400F5CFD3 /* StationAlarmsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationAlarmsController.swift; sourceTree = "<group>"; };
+		22CD595E2BD7D3D900F5CFD3 /* StationDevicesNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDevicesNavigationView.swift; sourceTree = "<group>"; };
 		22CE080A2A6FE79900E03A1B /* DeviceTypeSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeSearchView.swift; sourceTree = "<group>"; };
 		22CE080C2A6FF73300E03A1B /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		22ED5C842A70C6A3007C8AB1 /* DeviceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellView.swift; sourceTree = "<group>"; };
@@ -375,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				222D33EB2A722C0000004453 /* StationDevicesView.swift */,
+				22CD595E2BD7D3D900F5CFD3 /* StationDevicesNavigationView.swift */,
 			);
 			path = StationDevicesViews;
 			sourceTree = "<group>";
@@ -540,6 +549,7 @@
 				2260A4E82BD27A6E003939DB /* RegionsController.swift */,
 				22FB57632BD66BA300048FEE /* CompanyInfoController.swift */,
 				22FB576B2BD6722600048FEE /* AboutController.swift */,
+				22CD595C2BD7C6F400F5CFD3 /* StationAlarmsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -599,14 +609,16 @@
 			isa = PBXGroup;
 			children = (
 				22B3C9DC2A6F792100548753 /* MaintenanceView.swift */,
+				22B3C9E12A6F7AFC00548753 /* AlarmsView.swift */,
 				22B3C9DF2A6F79D000548753 /* MaintenanceNavigationView.swift */,
-				22B3C9E12A6F7AFC00548753 /* AlarmsCellView.swift */,
 				22B3C9E32A6F7B5700548753 /* TasksCellView.swift */,
 				22B3C9EA2A6F81A300548753 /* AlarmsStatisticView.swift */,
 				22B3C9F62A6FB01C00548753 /* AlarmCellView.swift */,
 				22ED5C912A712BB6007C8AB1 /* TasksNavigationView.swift */,
 				22ED5C932A7136B6007C8AB1 /* InspectionTasksCellView.swift */,
 				22ED5C952A7136FB007C8AB1 /* EliminationTasksCellView.swift */,
+				22CD59582BD7932200F5CFD3 /* AlarmSearchView.swift */,
+				22CD595A2BD7BDBE00F5CFD3 /* AlarmsStatistiValueView.swift */,
 			);
 			path = MaintenanceViews;
 			sourceTree = "<group>";
@@ -828,6 +840,8 @@
 				22A58A5A2A6915CD00E29710 /* SimpleErrorView.swift in Sources */,
 				229540CB2BD0E1D700BA0884 /* PlantsSearchView.swift in Sources */,
 				22ED5C922A712BB6007C8AB1 /* TasksNavigationView.swift in Sources */,
+				22CD595D2BD7C6F400F5CFD3 /* StationAlarmsController.swift in Sources */,
+				22CD59592BD7932200F5CFD3 /* AlarmSearchView.swift in Sources */,
 				2260A4D22BD23688003939DB /* BigValueOverviewView.swift in Sources */,
 				22B3C9DD2A6F792100548753 /* MaintenanceView.swift in Sources */,
 				2260A4E32BD27710003939DB /* AlarmDetailBasicView.swift in Sources */,
@@ -851,7 +865,8 @@
 				22A1AA342A6BD8C9002AA262 /* StatisticPlantCellView.swift in Sources */,
 				229540CF2BD11F8500BA0884 /* TotalStatisticsView.swift in Sources */,
 				22FB576C2BD6722600048FEE /* AboutController.swift in Sources */,
-				22B3C9E22A6F7AFC00548753 /* AlarmsCellView.swift in Sources */,
+				22B3C9E22A6F7AFC00548753 /* AlarmsView.swift in Sources */,
+				22CD595F2BD7D3D900F5CFD3 /* StationDevicesNavigationView.swift in Sources */,
 				22ED5C8E2A70F4C9007C8AB1 /* ChangeLanguageController.swift in Sources */,
 				2260A4D42BD236A2003939DB /* BigValueOverviewCellView.swift in Sources */,
 				22B3C9F72A6FB01C00548753 /* AlarmCellView.swift in Sources */,
@@ -901,6 +916,7 @@
 				22C53B8F2A6EAC5D0014D195 /* YearPickerView.swift in Sources */,
 				22B3C9E42A6F7B5700548753 /* TasksCellView.swift in Sources */,
 				222D33EE2A72313B00004453 /* StationRealKpi.swift in Sources */,
+				22CD595B2BD7BDBE00F5CFD3 /* AlarmsStatistiValueView.swift in Sources */,
 				22C53B872A6E96050014D195 /* DatePickerView.swift in Sources */,
 				22C53B852A6E8F0B0014D195 /* XYMarkerView.swift in Sources */,
 				22A58A872A6A6B3F00E29710 /* PlantCellView.swift in Sources */,

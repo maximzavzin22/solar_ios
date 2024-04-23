@@ -31,6 +31,11 @@ class DeviceCellView: UICollectionViewCell {
                     self.statusLabel.textColor = .rgb(106, green: 106, blue: 106)
                     self.statusBorderView.backgroundColor = .rgb(242, green: 242, blue: 242)
                 }
+                if(value == "faulty") {
+                    self.statusLabel.text = NSLocalizedString("faulty", comment: "")
+                    self.statusLabel.textColor = .rgb(224, green: 69, blue: 76)
+                    self.statusBorderView.backgroundColor = .rgb(255, green: 229, blue: 231)
+                }
             }
         }
     }

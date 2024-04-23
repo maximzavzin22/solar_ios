@@ -33,7 +33,7 @@ class AlarmDetailBasicView: UIView {
             }
             nameLabel.text = alarm?.alarmName ?? ""
             plantValueLabel.text = alarm?.stationName ?? ""
-            statusValueLabel.text = NSLocalizedString("unacked", comment: "")
+            statusValueLabel.text = "--"
             idValueLabel.text = "\(alarm?.alarmId ?? 0)"
             causeIdValueLabel.text = "\(alarm?.causeId ?? 0)"
             devNameValueLabel.text = alarm?.devName ?? ""

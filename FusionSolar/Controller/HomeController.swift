@@ -31,37 +31,33 @@ class HomeController: UIViewController {
     var stations: [Station]? {
         didSet {
             if let stations = self.stations {
+                var alarms = [Alarm]()
                 for station in stations {
                     let day_power = station.stationRealKpi?.day_power ?? 0.0
-                    var capacity = station.capacity ?? 0.0
+                    let capacity = station.capacity ?? 0.0
                     if(capacity > 0.0) {
                         station.attitude = day_power / capacity
                     }
+                    for alarm in station.alarms ?? [Alarm]() {
+                        alarm.plantAddress = station.plantAddress
+                        alarm.latitude = station.latitude
+                        alarm.longitude = station.longitude
+                        alarms.append(alarm)
+                    }
+                    
+                    self.alarms = alarms
                 }
             }
             self.homeView.plantsView.stations = self.stations
             self.statisticPlantView.stations = self.stations
+            
+            
         }
     }
     
     var regions: [Region]?
     
-    var alarms: [Alarm]? {
-        didSet {
-            if let stations = self.stations {
-                if let alarms = self.alarms {
-                    for station in stations {
-                        station.alarms = [Alarm]()
-                        for alarm in alarms {
-                            if(station.plantCode == alarm.stationCode) {
-                                station.alarms?.append(alarm)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    var alarms: [Alarm]?
     
     var currentPage: Int? {
         didSet {
@@ -77,8 +73,7 @@ class HomeController: UIViewController {
                     self.maintenanceView.isHidden = false
                     self.statisticPlantView.isHidden = true
                     self.profileView.isHidden = true
-                    self.maintenanceView.alarmsCellView?.generateAlarms()
-                    //self.maintenanceView.alarmsCellView?.alarms = self.alarms
+                    self.maintenanceView.alarmsView.alarms = alarms
                 }
                 if(page == 2) {
                     self.homeView.isHidden = true
@@ -206,6 +201,8 @@ class HomeController: UIViewController {
         
         self.showLoadingView()
         self.fetchStations()
+        
+        self.setupToolbar()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -230,7 +227,7 @@ class HomeController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.maintenanceView.collectionView.collectionViewLayout.invalidateLayout()
+//        self.maintenanceView.collectionView.collectionViewLayout.invalidateLayout()
         self.menuBar.collectionView.collectionViewLayout.invalidateLayout()
         //self.devicesView.collectionView.collectionViewLayout.invalidateLayout()
     }
@@ -461,7 +458,7 @@ class HomeController: UIViewController {
         //setting toolbar as inputAccessoryView
         
         homeView.plantsView.plantsSearchView.searchTextField.inputAccessoryView = toolbar
-        maintenanceView.alarmsCellView?.alarmSearchView.searchTextField.inputAccessoryView = toolbar
+        maintenanceView.alarmsView.alarmSearchView.searchTextField.inputAccessoryView = toolbar
 //        devicesView.searchDevicesView.devicesSearchView.searchTextField.inputAccessoryView = toolbar
 //        maintenanceView.tasksCellView?.inspectionTasksCellView?.searchView.searchTextField.inputAccessoryView = toolbar
     }

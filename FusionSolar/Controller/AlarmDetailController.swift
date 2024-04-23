@@ -15,6 +15,7 @@ class AlarmDetailController: UIViewController, UINavigationControllerDelegate, U
             self.alarmDetailBasicView.alarm = alarm
             self.causeAlarmDetailTextView.valueLabel.text = alarm?.alarmCause ?? ""
             self.suggestionsAlarmDetailTextView.valueLabel.text = alarm?.repairSuggestion ?? ""
+            self.alarmContactView.addressValueLabel.text = alarm?.plantAddress ?? ""
         }
     }
     
@@ -140,15 +141,15 @@ class AlarmDetailController: UIViewController, UINavigationControllerDelegate, U
         
         let alarmName = self.alarm?.alarmName ?? ""
         let plantName = self.alarm?.stationName ?? ""
-        let alarmDetailBasicViewHeight = 24.dp + self.getHeight(text: alarmName, font: UIFont.boldSystemFont(ofSize: 16.dp), width: 286.dp) + 24.dp + self.getHeight(text: plantName, font: UIFont.systemFont(ofSize: 14.dp), width: 180.dp) + 168.dp + 24.dp
+        let alarmDetailBasicViewHeight = 24.dp + self.getHeight(text: alarmName, font: UIFont.boldSystemFont(ofSize: 16.dp), width: 286.dp) + 24.dp + self.getHeight(text: plantName, font: UIFont.systemFont(ofSize: 14.dp), width: screenWidth/2) + 168.dp + 24.dp
         contentScrollView.addConstraintsWithFormat("V:[v0(\(alarmDetailBasicViewHeight))]", views: alarmDetailBasicView)
         
         let alarmCause = self.alarm?.alarmCause ?? ""
-        let causeAlarmDetailTextViewHeight = 24.dp + 12.dp + 16.dp + self.getHeight(text: alarmCause, font: UIFont.systemFont(ofSize: 14.dp), width: 320.dp) + 24.dp
+        let causeAlarmDetailTextViewHeight = 24.dp + 12.dp + 16.dp + self.getHeight(text: alarmCause, font: UIFont.systemFont(ofSize: 14.dp), width: screenWidth) + 24.dp
         contentScrollView.addConstraintsWithFormat("V:[v0(\(causeAlarmDetailTextViewHeight))]", views: causeAlarmDetailTextView)
         
         let repairSuggestion = self.alarm?.repairSuggestion ?? ""
-        let suggestionsAlarmDetailTextViewHeight = 24.dp + 12.dp + 16.dp + self.getHeight(text: repairSuggestion, font: UIFont.systemFont(ofSize: 14.dp), width: 320.dp) + 24.dp
+        let suggestionsAlarmDetailTextViewHeight = 24.dp + 12.dp + 16.dp + self.getHeight(text: repairSuggestion, font: UIFont.systemFont(ofSize: 14.dp), width: screenWidth) + 24.dp
         contentScrollView.addConstraintsWithFormat("V:[v0(\(suggestionsAlarmDetailTextViewHeight))]", views: suggestionsAlarmDetailTextView)
         
         alarmDetailBasicView.centerXAnchor.constraint(equalTo: contentScrollView.centerXAnchor).isActive = true
@@ -172,7 +173,7 @@ class AlarmDetailController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func getHeight(text: String, font: UIFont, width: CGFloat) -> CGFloat {
-        let dummySize = CGSize(width: width, height: 1000000.dp)
+        let dummySize = CGSize(width: width, height: 10000000.dp)
         let options = NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin)
         let rect = descAttributedText(name: text, font: font).boundingRect(with: dummySize, options: options, context: nil)
         return rect.height
@@ -185,18 +186,23 @@ class AlarmDetailController: UIViewController, UINavigationControllerDelegate, U
         return normal
     }
     
-    func openApp(appName:String, longitude: Double, latitude: Double) {
-           let appScheme = "yandexnavi://"
-           let appUrl = URL(string: appScheme)
-           if UIApplication.shared.canOpenURL(appUrl! as URL)
-           {
-               let url = "yandexnavi://build_route_on_map?lat_to=\(latitude)&lon_to=\(longitude)"
-               UIApplication.shared.openURL(URL(string:url)!)
-           } else {
-               print("App not installed")
-               let url = "http://maps.apple.com/maps?daddr=\(latitude),\(longitude)"
-               UIApplication.shared.openURL(URL(string:url)!)
-           }
+    func openApp() {
+        if let latitude = alarm?.latitude {
+            if let longitude = alarm?.longitude {
+                let appScheme = "yandexnavi://"
+                let appUrl = URL(string: appScheme)
+                if UIApplication.shared.canOpenURL(appUrl! as URL)
+                {
+                    let url = "yandexnavi://build_route_on_map?lat_to=\(latitude)&lon_to=\(longitude)"
+                    UIApplication.shared.openURL(URL(string:url)!)
+                } else {
+                    print("App not installed")
+                    let url = "http://maps.apple.com/maps?daddr=\(latitude),\(longitude)"
+                    UIApplication.shared.openURL(URL(string:url)!)
+                }
+            }
+        }
+           
     }
 }
 

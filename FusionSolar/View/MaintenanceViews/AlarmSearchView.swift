@@ -1,59 +1,15 @@
 //
-//  InspectionTasksCellView.swift
+//  AlarmSearchView.swift
 //  FusionSolar
 //
-//  Created by Maxim Zavzin on 26/07/23.
+//  Created by Maxim Zavzin on 23/04/24.
 //
 
 import UIKit
 
-class InspectionTasksCellView: UICollectionViewCell {
+class AlarmSearchView: UIView {
     
-    var tasksCellView: TasksCellView?
-    
-    lazy var searchView: SearchInspectionTasksView = {
-        let view = SearchInspectionTasksView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.inspectionTasksCellView = self
-        return view
-    }()
-    
-    let emptyView: EmptyDataView = {
-        let view = EmptyDataView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        self.backgroundColor = .rgb(241, green: 243, blue: 245)
-
-        self.setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implement")
-    }
-    
-    func setupView() {
-        self.addSubview(searchView)
-        self.addSubview(emptyView)
-        
-        self.addConstraintsWithFormat("H:|[v0]|", views: searchView)
-        self.addConstraintsWithFormat("H:[v0(\(143.dp))]", views: emptyView)
-        
-        self.addConstraintsWithFormat("V:|[v0(\(78.dp))]", views: searchView)
-        self.addConstraintsWithFormat("V:[v0(\(154.dp))]", views: emptyView)
-        
-        emptyView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        emptyView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-    }
-}
-
-class SearchInspectionTasksView: UIView {
-    
-    var inspectionTasksCellView: InspectionTasksCellView?
+    var alarmsView: AlarmsView?
     
     var isEditing: Bool? {
         didSet {
@@ -75,7 +31,7 @@ class SearchInspectionTasksView: UIView {
         textField.rightView = rightPaddingView
         textField.rightViewMode = UITextField.ViewMode.always
         let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 18.dp), .foregroundColor: UIColor.rgb(106, green: 106, blue: 106)]
-        textField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("search_task", comment: ""), attributes: attrs)
+        textField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("search_alarm", comment: ""), attributes: attrs)
         textField.textColor = .rgb(1, green: 6, blue: 10)
         textField.font = UIFont.systemFont(ofSize: 18.dp)
         textField.textAlignment = .left
@@ -103,7 +59,6 @@ class SearchInspectionTasksView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.backgroundColor = .white
         
         self.setupView()
     }
@@ -117,21 +72,15 @@ class SearchInspectionTasksView: UIView {
         self.addSubview(searchImageView)
         self.addSubview(clearButton)
         
-        self.addConstraintsWithFormat("H:[v0(\(360.dp))]", views: searchTextField)
-        self.addConstraintsWithFormat("H:[v0(\(20.dp))]", views: searchImageView)
-        self.addConstraintsWithFormat("H:[v0(\(48.dp))]", views: clearButton)
+        self.addConstraintsWithFormat("H:|[v0]|", views: searchTextField)
+        self.addConstraintsWithFormat("H:|-\(17.dp)-[v0(\(20.dp))]", views: searchImageView)
+        self.addConstraintsWithFormat("H:[v0(\(48.dp))]-\(2.dp)-|", views: clearButton)
         
-        self.addConstraintsWithFormat("V:[v0(\(48.dp))]", views: searchTextField)
+        self.addConstraintsWithFormat("V:|[v0]|", views: searchTextField)
         self.addConstraintsWithFormat("V:[v0(\(20.dp))]", views: searchImageView)
-        self.addConstraintsWithFormat("V:[v0(\(48.dp))]", views: clearButton)
+        self.addConstraintsWithFormat("V:|[v0]|", views: clearButton)
         
-        searchTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        searchImageView.leftAnchor.constraint(equalTo: searchTextField.leftAnchor, constant: 17.dp).isActive = true
-        clearButton.rightAnchor.constraint(equalTo: searchTextField.rightAnchor, constant: -2.dp).isActive = true
-        
-        searchTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        searchImageView.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
-        clearButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
+        searchImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         searchTextField.addTarget(self, action: #selector(searchTextFieldChaged), for: .allEditingEvents)
         clearButton.addTarget(self, action: #selector(self.clearButtonPress), for: .touchUpInside)
@@ -144,6 +93,7 @@ class SearchInspectionTasksView: UIView {
         if let text = searchTextField.text {
             if(text != "") {
                 self.isEditing = true
+                self.alarmsView?.searchText = text
             }
         }
     }
@@ -151,7 +101,8 @@ class SearchInspectionTasksView: UIView {
     @objc func clearButtonPress() {
         print("clearButtonPress")
         self.searchTextField.text = ""
+        self.alarmsView?.searchText = ""
         self.isEditing = false
-        self.inspectionTasksCellView?.tasksCellView?.maintenanceView?.homeController?.doneButtonAction()
+        self.alarmsView?.maintenanceView?.homeController?.doneButtonAction()
     }
 }

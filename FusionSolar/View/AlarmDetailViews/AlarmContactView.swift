@@ -186,6 +186,6 @@ class AlarmContactView: UIView {
     
     @objc func directionButtonPress() {
         print("directionButtonPress")
-        self.alarmDetailController?.openApp(appName: "", longitude: 41.3158263, latitude: 69.2758336)
+        self.alarmDetailController?.openApp()
     }
 }

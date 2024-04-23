@@ -65,24 +65,6 @@ class AlarmCellView: UICollectionViewCell {
         return label
     }()
     
-    let statusLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 2
-        label.textColor = .rgb(59, green: 103, blue: 138)
-        label.font = .systemFont(ofSize: 12.dp)
-        label.text = NSLocalizedString("unacked", comment: "")
-        return label
-    }()
-    
-    let statusBorderView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 5.dp
-        view.backgroundColor = .rgb(239, green: 247, blue: 255)
-        return view
-    }()
-    
     //textsContentView
     let textsContentView: UIView = {
         let view = UIView()
@@ -189,30 +171,21 @@ class AlarmCellView: UICollectionViewCell {
         self.addSubview(borderView)
         borderView.addSubview(animationView)
         borderView.addSubview(nameLabel)
-        borderView.addSubview(statusBorderView)
-        borderView.addSubview(statusLabel)
         borderView.addSubview(textsContentView)
         
         self.addConstraintsWithFormat("H:|-\(15.dp)-[v0]-\(15.dp)-|", views: borderView)
         borderView.addConstraintsWithFormat("H:|-\(20.dp)-[v0(\(24.dp))]-\(10.dp)-[v1]-\(100.dp)-|", views: animationView, nameLabel)
-        borderView.addConstraintsWithFormat("H:[v0]-\(26.dp)-|", views: statusLabel)
         borderView.addConstraintsWithFormat("H:|-\(20.dp)-[v0]-\(20.dp)-|", views: textsContentView)
         
         self.addConstraintsWithFormat("V:|[v0]|", views: borderView)
         borderView.addConstraintsWithFormat("V:[v0(\(24.dp))]", views: animationView)
         borderView.addConstraintsWithFormat("V:|-\(24.dp)-[v0]", views: nameLabel)
-        borderView.addConstraintsWithFormat("V:[v0(\(22.dp))]", views: statusBorderView)
-        borderView.addConstraintsWithFormat("V:[v0]", views: statusLabel)
         borderView.addConstraintsWithFormat("V:|-\(79.dp)-[v0(\(120.dp))]", views: textsContentView)
         
         borderView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         textsContentView.centerXAnchor.constraint(equalTo: borderView.centerXAnchor).isActive = true
-        statusBorderView.leftAnchor.constraint(equalTo: statusLabel.leftAnchor, constant: -6.dp).isActive = true
-        statusBorderView.rightAnchor.constraint(equalTo: statusLabel.rightAnchor, constant: 6.dp).isActive = true
         
         animationView.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor).isActive = true
-        statusLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor).isActive = true
-        statusBorderView.centerYAnchor.constraint(equalTo: statusLabel.centerYAnchor).isActive = true
     }
     
     func setupTextsContentView() {

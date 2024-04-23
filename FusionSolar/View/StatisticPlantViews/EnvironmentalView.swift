@@ -9,14 +9,34 @@ import UIKit
 
 class EnvironmentalView: UIView {
     
-    var day_power: Double? {
+    var total_power: Double? {
         didSet {
-            if let value = day_power {
-                let coalEnvironmental = 398.0 * value / 1000.0
+            if let value = total_power {
+//                let coalEnvironmental = 398.0 * value / 1000.0
+                let coalEnvironmental = value / 2460.0
+                print("coalEnvironmental \(coalEnvironmental) \(value)")
                 if(coalEnvironmental > 1000) {
-                    coalEnvironmentalCellView.valueLabel.text = "\((coalEnvironmental/1000.0).rounded(toPlaces: 2))K \(NSLocalizedString("t", comment: ""))"
+                    coalEnvironmentalCellView.valueLabel.text = "\((coalEnvironmental/1000.0).rounded(toPlaces: 2))k \(NSLocalizedString("t", comment: ""))"
                 } else {
                     coalEnvironmentalCellView.valueLabel.text = "\(coalEnvironmental.rounded(toPlaces: 2)) \(NSLocalizedString("t", comment: ""))"
+                }
+                
+                let co2Count = (0.846 * value) / 2204.6 //футы -> тонны
+//                let co2Count = value * 0.00070555
+                if(co2Count > 1000) {
+                    co2EnvironmentalCellView.valueLabel.text = "\((co2Count/1000.0).rounded(toPlaces: 2))k \(NSLocalizedString("t", comment: ""))"
+                } else {
+                    co2EnvironmentalCellView.valueLabel.text = "\(co2Count.rounded(toPlaces: 2)) \(NSLocalizedString("t", comment: ""))"
+                }
+                
+                //let treesCount = 125.0 * value / 10000.0
+                //let treesCount = value / 55.3
+               // let treesCount = co2Count * 0.039//0.0075//0.021//
+                let treesCount = value / 55.3 / 10
+                if(treesCount > 1000.0) {
+                    treesEnvironmentalCellView.valueLabel.text = "\((treesCount/1000.0).rounded(toPlaces: 2))k"
+                } else {
+                    treesEnvironmentalCellView.valueLabel.text = "\(treesCount.rounded(toPlaces: 2))"
                 }
                 
             }
