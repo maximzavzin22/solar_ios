@@ -16,7 +16,8 @@ class GraphView: UIView {
         didSet {
             print("selectedDate \(selectedDate)")
             self.setupSelectedDate()
-            self.setupBarChartView()
+//            self.setupBarChartView()
+            self.homeStatisticsCellView?.getDataForGraph()
         }
     }
     
@@ -158,7 +159,7 @@ class GraphView: UIView {
         self.setupSelectedDateView()
         
         self.setupSelectedDate()
-        self.setupBarChartView()
+//        self.setupBarChartView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -388,12 +389,12 @@ class GraphView: UIView {
     var granularity = 1.0
     var barWidth = 0.5
     
-    func setupBarChartView() {
+    func setupBarChartView(graphValues: [GraphValue]) {
         let value = self.selectedDateType ?? "day"
         if(value == "day") {
             let hours = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
             axisValue = hours
-            granularity = 2.0
+            granularity = 1.0
         }
         if(value == "month") {
             let date = self.selectedDate ?? Date()
@@ -423,57 +424,71 @@ class GraphView: UIView {
             granularity = 1.0
         }
         if(value == "lifetime") {
-            let years = ["2022", "2023"]
+            let years = ["2023", "2024"]
             axisValue = years
             granularity = 1.0
         }
        
         var yields = [Double]()
         for i in 0..<axisValue.count {
-            yields.append(0.0)
+            var value = 0.0
+            for graphValue in graphValues {
+                if(axisValue[i] == graphValue.key) {
+                    value = graphValue.value ?? 0.0
+                }
+            }
+            yields.append(value)
         }
+       
+//        for yield in yields {
+//            for graphValue in graphValues {
+//                if(yield in)
+//            }
+//        }
+        
         self.yields = yields
-        //for test
-        if(value == "day") {
-            self.yields[6] = 20.0
-            self.yields[7] = 80.0
-            self.yields[8] = 110.0
-            self.yields[9] = 160.0
-            self.yields[10] = 210.0
-            self.yields[11] = 280.0
-            self.yields[12] = 310.0
-            self.yields[13] = 445.0
-            self.yields[14] = 440.0
-            self.yields[15] = 340.0
-        }
-        if(value == "month") {
-            self.yields[0] = 1.8
-            self.yields[1] = 2.8
-            self.yields[2] = 3.1
-            self.yields[3] = 0.7
-            self.yields[4] = 4.2
-            self.yields[5] = 3.3
-            self.yields[6] = 1.0
-            self.yields[7] = 2.2
-            self.yields[8] = 4.1
-            self.yields[9] = 2.9
-            self.yields[10] = 3.7
-            self.yields[10] = 1.1
-        }
-        if(value == "year") {
-            self.yields[0] = 0.26
-            self.yields[1] = 5.55
-            self.yields[2] = 10.80
-            self.yields[3] = 13.05
-            self.yields[4] = 15.77
-            self.yields[5] = 25.41
-            self.yields[6] = 65.32
-        }
-        if(value == "lifetime") {
-            self.yields[0] = 0.0
-            self.yields[1] = 136.14
-        }
-        //
+       
+//        //for test
+//        if(value == "day") {
+//            self.yields[6] = 20.0
+//            self.yields[7] = 80.0
+//            self.yields[8] = 110.0
+//            self.yields[9] = 160.0
+//            self.yields[10] = 210.0
+//            self.yields[11] = 280.0
+//            self.yields[12] = 310.0
+//            self.yields[13] = 445.0
+//            self.yields[14] = 440.0
+//            self.yields[15] = 340.0
+//        }
+//        if(value == "month") {
+//            self.yields[0] = 1.8
+//            self.yields[1] = 2.8
+//            self.yields[2] = 3.1
+//            self.yields[3] = 0.7
+//            self.yields[4] = 4.2
+//            self.yields[5] = 3.3
+//            self.yields[6] = 1.0
+//            self.yields[7] = 2.2
+//            self.yields[8] = 4.1
+//            self.yields[9] = 2.9
+//            self.yields[10] = 3.7
+//            self.yields[10] = 1.1
+//        }
+//        if(value == "year") {
+//            self.yields[0] = 0.26
+//            self.yields[1] = 5.55
+//            self.yields[2] = 10.80
+//            self.yields[3] = 13.05
+//            self.yields[4] = 15.77
+//            self.yields[5] = 25.41
+//            self.yields[6] = 65.32
+//        }
+//        if(value == "lifetime") {
+//            self.yields[0] = 0.0
+//            self.yields[1] = 136.14
+//        }
+//        //
                 
         self.setChart()
     }

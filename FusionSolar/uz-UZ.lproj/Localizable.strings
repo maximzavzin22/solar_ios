@@ -151,3 +151,285 @@
 "address"="Manzil";
 "website"="Veb-sayt";
 "record_number"="Yozuv raqami";
+
+//alarms
+"alarm_name_2001"="Simning yuqori kirish kuchlanishi";
+"alarm_cause_2001"="Fotoelektrik massivi noto'g'ri sozlangan. Haddan tashqari fotoelektrik modullari fotoelektrik simiga ketma-ket ulangan, bu esa ochiq elektron kuchlanishining SUN2000 ning maksimal ish kuchlanishidan oshib ketishiga olib keladi.
+1. Sabab ID = 1, 2
+2. Sabab ID 1: Fotoelektrik 1 kirish kuchlanishi yuqori.
+3. Sabab ID 2: Fotoelektrik 2 kirish kuchlanishi yuqori.";
+"alarm_suggestion_2001"="Fotoelektrik simining ketma-ket ulanish konfiguratsiyasini tekshiring va fotoelektrik simining ochiq tutashuv kuchlanishi SUN2000 ning maksimal ish kuchlanishidan oshmasligiga ishonch hosil qiling. Fotoelektrik massivi konfiguratsiyasi tuzatilgandan so'ng, bezovtalik signali yo'qoladi.";
+"alarm_name_2002"="O'zgarmas tok yoyi xatos";
+"alarm_cause_2002"="Fotoelektrik simli quvvat kabellari yoy yoki yomon aloqaga ega.
+1. Sabab ID = 1, 2
+2. Sabab ID 1: Fotoelektrik 1 o'zgarmas tok yoyi xatosi
+3. Sabab ID 2: Fotoelektrik 2 o'zgarmas tok yoyi xatosi
+";
+"alarm_suggestion_2002"="Kabellar uchqun yoki yomon aloqada emasligini tekshiring.";
+"alarm_name_2003"="O'zgarmas tok yoyi xatosi";
+"alarm_cause_2003"="Fotoelektrik simli quvvat kabellari yoy yoki yomon aloqaga ega. (qator darajasida aniq aniqlash)
+1. Sabab ID 1: qator Fotoelektrik  1
+2. Sabab ID 2: qator Fotoelektrik 2
+3.Sabab ID 3: qator Fotoelektrik 3";
+"alarm_suggestion_2003"="Kabellar uchqun yoki yomon aloqada emasligini tekshiring.";
+"alarm_name_2011"="Qator aylantirilgan";
+"alarm_cause_2011"="Fotoelektrik sim qayta ulangan.
+Sabab ID = 1, 2
+1. Sabab ID 1: Fotoelektrik 1 to'g'ri ulanmagan.
+2. Sabab ID 2: Fotoelektrik 2 to'g'ri ulanmagan.";
+"alarm_suggestion_2011"="Fotoelektrik simi SUN2000 ga qayta ulanganligini tekshiring. Agar u ulangan bo'lsa, Fotoelektrik simining oqimi 0,5A dan pastga tushguncha kuting, so'ngra o'zgarmas tokning tugmachasini O'CHIK holatiga o'rnating va Fotoelektrik simining qutblanishini sozlang.";
+"alarm_name_2012"="Tarmoqli oqimning teskari ta'minot";
+"alarm_cause_2012"="Fotoelektrik simiga ketma-ket ulangan fotoelektrik modullarining soni yetarli emas. Natijada, yakuniy taranglik boshqa simlarga qaraganda past bo'ladi.
+Sabab ID 1–4: Fotoelektrik qatorlari 1–4.";
+"alarm_suggestion_2012"="1. Ushbu fotoelektrik qatoriga ketma-ket ulangan fotoelektrik modullari soni ushbu fotoelektrik qatoriga parallel ravishda ulangan boshqa fotoelektrik qatorlariga ketma-ket ulangan fotoelektrik modullari sonidan kamroq ekanligini tekshiring. Agar shunday bo'lsa, fotoelektrik simli oqimi 0,5A dan pastga tushguncha kuting, so'ngra o'zgarmas tok tugmachasini O'CHIK holatiga o'tkazing va fotoelektrik simidagi fotoelektrik modullar sonini sozlang.
+2. Fotoelektrik qatori bo'yalganligini tekshiring
+3. Fotoelektrik simning ochiq tutashuv kuchlanishi normal holatdaligini tekshiring.
+";
+"alarm_name_2013"="Simning anomal kuchi";
+"alarm_cause_2013"="1. Fotoelektrik qatori uzoq vaqt davomida bo'yalgan.
+2. Fotoelektrik tarmoq g'ayritabiiy ravishda eskirgan.
+Sabab ID 1–4: Fotoelektrik qatorlari 1–4.";
+"alarm_suggestion_2013"="1. Fotoelektrik simining oqimi boshqa fotoelektrik simlarining oqimlaridan sezilarli darajada past emasligini tekshiring.
+2. Agar fotoelektrik simining oqimi aniq darajada past bo'lsa, fotoelektrik simida soya bor-yo'qligini tekshiring.
+3. Agar fotoelektrik simi ochiq joyda bo'lsa va quyosh nurlaridan himoyalanmagan bo'lsa,  qandaydir fotoelektrik moduli nosoz emasligini tekshiring.";
+"alarm_name_2014"="Zanjirning yerga nisbatan yuqori kirish kuchlanishi";
+"alarm_cause_2014"="Kirish fotoelektrik modullari va yer orasidagi kuchlanish normal holatda emas va quvvatni yo'qotish xavfi mavjud.";
+"alarm_suggestion_2014"="1. Agar tizimda PID kompensatsiya qurilmalari bo'lmasa, PID himoyasini o'chirish tavsiya etiladi. E'tibor bering, reaktiv quvvat kompensatsiyasini tunda yoqish, hatto PID himoyasi o'chirilgan bo'lsa ham, fotoelektrik modulining buzilishi xavfiga olib kelishi mumkin.
+2. Tizimda PID kompensatsiya moslamasi mavjud bo'lsa, uni nosozliklar mavjud emasligiga tekshirish kerak. Agar nosozliklar mavjud bo'lsa, ularni bartaraf etish kerak.
+3. Shuningdek, SUN2000 va PID qurilmasi uchun kompensatsiya yo'nalishi sozlamalari bir xil yoki yo'qligini tekshirishingiz kerak. Agar sozlamalar mos kelmasa, ular fotoelektrik moduli modeliga muvofiq sozlanishi kerak. (Eslatma: Agar fotoelektrik – musbat yoʻnalishga oʻrnatilgan boʻlsa, signallarni qayta oʻrnatish uchun SUN2000 fotoelektrik – va yer orasidagi kuchlanish 0 V dan katta boʻlishi kerak; agar Fotoelektrik+ manfiy yoʻnalishga oʻrnatilgan boʻlsa, SUN2000 Fotoelektrik+ va yer orasidagi kuchlanish 0 V dan katta boʻlishi kerak. Signallarni qayta o'rnatish uchun 0 V, yer 0 V dan kam bo'lishi kerak.)
+4. Agar xato qayta-qayta takrorlansa, dileringizga yoki Huawei texnik yordamiga murojaat qilishingizni tavsiya qilamiz.";
+"alarm_name_2015"="Fotoelektrik qatorni yo'qotish";
+"alarm_cause_2015"="Ushbu signal fotoelektrik simning holati quyidagi holatlar tufayli normal bo'lmagan holga kelganda hosil bo'ladi: Fotoelektrik simlardan birining yo'qolishi; ikkala 2-tasi-1 fotoelektrik simlar yo'qolishi; 2-tasi-1 fotoelektrik simlardan biri yo'qolishi";
+"alarm_suggestion_2015"="1. SUN2000 terminallari to'g'ri ulanganligini tekshiring.
+2. Fotoelektrik simli terminallari to'g'ri ulanganligini tekshiring.
+3. Agar 2-tasi-1 terminalidan foydalanilayotgan bo'linsa, uning to'g'ri ishlashini tekshiring.
+Eslatma: Agar qatorli ulanish holati qo'lda sozlangan bo'lsa, sozlangan holat haqiqiy ulanish holatiga mos ekanligini tekshiring.
+";
+"alarm_name_2021"="AFCI tekshiruvi xatosi";
+"alarm_cause_2021"="AFCI tekshiruvi amalga oshmadi.
+Sabab ID = 1, 2
+Sabab ID 1: AFCI tekshiruv sxemasi noto'g'ri.
+Sabab ID 2: AFCI simi noto'g'ri.";
+"alarm_suggestion_2021"="O'zgaruvchan tokning chiqish o'chirgichi va o'zgarmas tokning kirish o'chirgichini o'chiring, va 5 daqiqadan so'ng ularni yoqing. Agar bezovtalik signali yo'qolmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.";
+"alarm_name_2031"="Tarmoq fazasi simi va PE o'rtasidagi qisqa tutashuv";
+"alarm_cause_2031"="Chiqish fazasi simining PE ga qarshiligi past yoki chiqish fazasi simining PE ga qisqa tutashuvi.";
+"alarm_suggestion_2031"="Chiqish fazasi simining PEga nisbatan qarshiligini tekshiring, past qarshilikka ega joyni toping va muammoni bartaraf eting.";
+"alarm_name_2032"="Tarmoq xatosi";
+"alarm_cause_2032"="1. Elektr tarmog'ida uzilish.
+2. O'zgaruvchan tok zanjiri uzilgan yoki o'zgaruvchan tok o'chirgichi O'CHIK holatda qolgan";
+"alarm_suggestion_2032"="1. O'zgaruvchan tok kuchlanishini tekshiring.
+2. O'zgaruvchan tok zanjiri uzilgan yoki avtomatik o'chirgichi o'chirilganligini tekshiring.";
+"alarm_name_2033"="Tarmoqning past kuchlanishi";
+"alarm_cause_2033"="Ushbu signal chiziq kuchlanishi past chegaradan pastga tushganda yoki past kuchlanishning davomiyligi past kuchlanishni qo'llab-quvvatlash (LVRT) funktsiyasida ko'rsatilgan qiymatdan oshib ketganda hosil bo'ladi.";
+"alarm_suggestion_2033"="1. Agar signal vaqti-vaqti bilan paydo bo'lsa, elektr tarmog'i vaqtincha nosoz bo'lishi mumkin. SUN2000 elektr tarmog'ining normal holatini aniqlaganidan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal tez-tez ro'y bersa, siz elektr tarmog'ining kuchlanishi maqbul diapazonda ekanligini tekshirishingiz kerak. Aks holda, mahalliy elektr ta'minoti operatoriga murojaat qilish tavsiya etiladi. Agar tarmoqdagi kuchlanish maqbul diapazonda bo'lsa, past kuchlanishdan himoya qilish chegarasi mahalliy energiya operatorining roziligi bilan mobil ilova, SmartLogger yoki Tarmoqni boshqarish tizimi (NMS) orqali o'zgartirilishi mumkin.
+3. Agar signal uzoq vaqt davom etsa, siz o’'zgaruvchan tok o'chirgichi va chiqish quvvat kabeli o'rtasidagi aloqani tekshirishingiz kerak.";
+"alarm_name_2034"="Tarmoqda haddan tashqari kuchlanish";
+"alarm_cause_2034"="Ushbu signal tarmoq kuchlanishi yuqori chegaradan oshib ketganda yoki yuqori kuchlanish yuqori kuchlanish kompensatsiyasi (HVRT) tizimida belgilangan qiymatdan uzoqroq davom etganda hosil bo'ladi.";
+"alarm_suggestion_2034"="1. Agar signal vaqti-vaqti bilan paydo bo'lsa, elektr tarmog'i vaqtincha nosoz bo'lishi mumkin. SUN2000 elektr tarmog'ining normal holatini aniqlaganidan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal tez-tez ro'y bersa, siz elektr tarmog'ining kuchlanishi maqbul diapazonda ekanligini tekshirishingiz kerak. Aks holda, mahalliy elektr ta'minoti operatoriga murojaat qilish tavsiya etiladi. Agar tarmoqdagi kuchlanish maqbul diapazonda bo'lsa, past kuchlanishdan himoya qilish chegarasi mahalliy energiya operatorining roziligi bilan mobil ilova, SmartLogger yoki Tarmoqni boshqarish tizimi (NMS) orqali o'zgartirilishi mumkin.
+3. Shuningdek, elektr tarmog'idagi eng yuqori kuchlanishning ruxsat etilgan qiymatlardan oshib ketmaganligini tekshirish kerak. Agar signal saqlanib tursa va uzoq vaqt davomida bartaraf etilmasa, elektr ta'minoti operatoriga murojaat qilish tavsiya etiladi.";
+"alarm_name_2035"="Tarmoq kuchlanishining nomutanosibligi";
+"alarm_cause_2035"="Tarmoqning fazali kuchlanishlari orasidagi farq yuqori chegaradan oshib ketadi.";
+"alarm_suggestion_2035"="1. Agar signal vaqti-vaqti bilan paydo bo'lsa, elektr tarmog'i vaqtincha nosoz bo'lishi mumkin. SUN2000 elektr tarmog'ining normal holatini aniqlaganidan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal o'chmasa, tarmoq kuchlanishining maqbul chegaralar ichida ekanligini tekshirish kerak. Aks holda, mahalliy elektr ta'minoti operatoriga murojaat qilish tavsiya etiladi.
+3. Agar signal uzoq vaqt davom etsa, o'zgaruvchan tokning chiqish kabelining ulanishini tekshirish kerak.
+4. Agar o'zgaruvchan tokning chiqish quvvat kabeli to'g'ri ulangan bo'lsa, lekin signal saqlanib tursa va fotoelektrik elektr stantsiyasining quvvatiga ta'sir etsa, mahalliy energiya operatoriga murojaat qilish tavsiya etiladi.";
+"alarm_name_2036"="Tarmoq chastotasining ortishi";
+"alarm_cause_2036"="Elektr tarmog'idan istisno: Haqiqiy tarmoq chastotasi mahalliy tarmoq uchun standart talablardan yuqori.";
+"alarm_suggestion_2036"="1. Agar signal vaqti-vaqti bilan paydo bo'lsa, elektr tarmog'i vaqtincha nosoz bo'lishi mumkin. SUN2000 elektr tarmog'ining normal holatini aniqlaganidan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal tez-tez ro'y bersa, siz elektr tarmog'ining kuchlanishi maqbul diapazonda ekanligini tekshirishingiz kerak. Aks holda, mahalliy elektr ta'minoti operatoriga murojaat qilish tavsiya etiladi. Agar tarmoqdagi kuchlanish maqbul diapazonda bo'lsa, past kuchlanishdan himoya qilish chegarasi mahalliy energiya operatorining roziligi bilan mobil ilova, SmartLogger yoki Tarmoqni boshqarish tizimi (NMS) orqali o'zgartirilishi mumkin.";
+"alarm_name_2037"="Kamaytirilgan tarmoq chastotasi";
+"alarm_cause_2037"="Elektr tarmog'idan istisno: Haqiqiy tarmoq chastotasi mahalliy tarmoq uchun standart talablardan yuqori.";
+"alarm_suggestion_2037"="1. Agar signal vaqti-vaqti bilan paydo bo'lsa, elektr tarmog'i vaqtincha nosoz bo'lishi mumkin. SUN2000 elektr tarmog'ining normal holatini aniqlaganidan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal tez-tez ro'y bersa, siz elektr tarmog'ining kuchlanishi maqbul diapazonda ekanligini tekshirishingiz kerak. Aks holda, mahalliy elektr ta'minoti operatoriga murojaat qilish tavsiya etiladi. Agar tarmoqdagi kuchlanish maqbul diapazonda bo'lsa, past kuchlanishdan himoya qilish chegarasi mahalliy energiya operatorining roziligi bilan mobil ilova, SmartLogger yoki Tarmoqni boshqarish tizimi (NMS) orqali o'zgartirilishi mumkin.";
+"alarm_name_2038"="Barqaror tarmoq chastotasi";
+"alarm_cause_2038"="Elektr tarmog'idan istisno: Tarmoq chastotasini o'zgartirishning haqiqiy tezligi mahalliy elektr tarmoqlari standartiga mos kelmaydi.";
+"alarm_suggestion_2038"="1. Agar signal vaqti-vaqti bilan paydo bo'lsa, elektr tarmog'i vaqtincha nosoz bo'lishi mumkin. SUN2000 elektr tarmog'ining normal holatini aniqlaganidan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal tez-tez sodir bo'lsa, elektr tarmog'i chastotasi maqbul diapazonda ekanligini tekshirish kerak. Aks holda, mahalliy elektr ta'minoti operatoriga murojaat qilish tavsiya etiladi.";
+"alarm_name_2039"="Chiqishning ortiqcha oqimi";
+"alarm_cause_2039"="Elektr ta'minoti kuchlanishi keskin pasayadi yoki elektr ta'minoti tarmog'ida qisqa tutashuv sodir etgan. Natijada, SUN2000 ning vaqtinchalik chiqish oqimi yuqori chegaradan oshib ketgan, va shuning uchun SUN2000 himoyasi faollashgan.";
+"alarm_suggestion_2039"="1. SUN2000 doimiy ravishda tashqi ish sharoitlarini real vaqtda kuzatib boradi va nosozlik tuzatilgandan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal tez-tez sodir bo'lsa va elektr stantsiyasining quvvat chiqishiga ta'sir qilsa, chiqishning qisqa tutashuvi sodir bo'maganini tekshirish kerak. Agar signal davom etsa, dileringizga yoki Huawei texnik yordamiga murojaat qilish tavsiya etiladi.";
+"alarm_name_2040"="Chiqish o'zgarmas tok komponentining oshib ketishi";
+"alarm_cause_2040"="SUN2000 chiqish oqimining o'zgarmas tok komponenti belgilangan yuqori chegaradan oshib ketgan.";
+"alarm_suggestion_2040"="1. SUN2000 doimiy ravishda tashqi ish sharoitlarini real vaqtda kuzatib boradi va nosozlik tuzatilgandan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal tez-tez sodir bo'lsa va elektr stantsiyasining quvvat chiqishiga ta'sir qilsa, chiqishning qisqa tutashuvi sodir bo'maganini tekshirish kerak. Agar signal davom etsa, dileringizga yoki Huawei texnik yordamiga murojaat qilish tavsiya etiladi.";
+"alarm_name_2051"="Anomal qoldiq oqim";
+"alarm_cause_2051"="SUN2000 ning ishlashi paytida PEga nisbatan kirish izolyatsiyasining qarshiligi pasayadi.";
+"alarm_suggestion_2051"="1. Agar signal vaqti-vaqti bilan ro'y bersa, tashqi zanjir vaqtincha ishlamay qolgan bo'lishi mumkin va SUN2000 nosozlik bartaraf etilgandan so'ng avtomatik ravishda tiklanadi.
+2. Agar signal tez-tez ro'y bersa yoki saqlanib qolsa, fotoelektrik sim va yer orasidagi qarshilik juda past emasligini tekshirish kerak.";
+"alarm_name_2062"="Past izolyatsiya qarshiligi";
+"alarm_cause_2062"="1. Fotoelektrik batareya va yer o'rtasida qisqa tutashuv sodir bo'ladi.
+2. Fotoelektrik batareyaning atrof-muhit havosi nam, fotoelektrik batareya va er o'rtasidagi izolyatsiya esa yomon.";
+"alarm_suggestion_2062"="1. Fotoelektrik batareyaning yerga chiqish qarshiligini tekshiring. Qisqa tutashuv yoki izolyatsiya yetishmasligi aniqlansa, buni tuzatish kerak.
+2. SUN2000 PE kabeli to'g'ri ulanganligiga ishonch hosil qiling.
+3. Agar yomg'irli va bulutli kunlar bo'lsa yoki impedans belgilangan himoya chegarasidan past bo'lsa, Mobile APP, SmartLogger yoki Network Management System (NMS) yordamida izolyatsiyaga qarshilik himoyasini o'rnatish tavsiya etiladi.
+4. Oqim izolyatsiyasining joriy qarshiligi: x MOm, mumkin bo'lgan qisqa tutashuv holati: x%. Qisqa tutashuv holati bitta fotoelektrik sim uchun amal qiladi. Agar tizim bir nechta fotoelektrik qatorlarini o'z ichiga olsa, har bir fotoelektrik qatorini alohida tekshiring.
+Qo'shimcha ma'lumot olish uchun \"Izolyatsiya qarshiligining buzilishini aniqlash\" bo'limiga qarang.";
+"alarm_name_2063"="Qizib ketgan";
+"alarm_cause_2063"="1. SUN2000 ventilyatsiyasi yomon bo'lgan joyga o'rnatilgan.
+2. Atrof-muhit harorati chegaradan yuqori.
+3. SUN2000 noto'g'ri ishlamoqda.";
+"alarm_suggestion_2063"="1. SUN2000 o'rnatilgan joyda ventilyatsiya va atrof-muhit haroratini tekshiring.
+2. Agar ventilyatsiya yomon bo'lsa yoki atrof-muhit harorati yuqori chegaradan oshsa, shamollatish va issiqlik tarqalishini yaxshilang.
+3. Agar ventilyatsiya va atrof-muhit harorati to'g'ri bo'lsa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.";
+"alarm_name_2064"="Qurilmaning noto'g'ri ishlashi";
+"alarm_cause_2064"="SUN2000 ichidagi zanjirida to'g'irlanmaydigan nosozlik yuz berdi.
+Sabab ID = 1–12.
+Sabab ID 1: Boostga kiritish qisqartirilgan.
+Sabab ID 2: Boostga kirishida haddan tashqari oqim mavjud.
+Sabab ID 3: Boshqaruv zanjiri noto'g'ri.
+Sabab ID 4: SUN2000 zanjiri noto'g'ri.
+Sabab ID 5: Qoldiq oqim sensori noto'g'ri.
+Sabab ID 6: Harorat aniqlashda xato.
+Sabab ID 7: EEPROM o'qish/yozish xatosi.
+Sabab ID 8: yordamchi quvvat manbai noto'g'ri.
+Sabab ID 9: Tarmoq o'rni noto'g'ri.
+Sabab ID 10: O'zgarmas tok shinasida ortiqcha kuchlanish kuzatildi.
+Sabab ID 11: O'zgarmas tok shinasida past kuchlanish kuzatildi.
+Sabab ID 12: O'zgarmas tok shinasida kuchlanish nomutanosibligi kuzatildi. ";
+"alarm_suggestion_2064"="O'zgaruvchan tokning chiqish o'chirgichini va o'zgarmas tokning kirish o'chirgichini o'chiring va 5 daqiqadan so'ng ularni qayta yoqing. Agar signal yo'qolib qolmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.";
+"alarm_name_2065"="Yangilash xatosi yoki versiya nomuvofiqligi";
+"alarm_cause_2065"="Yangilash normal yakunlanmadi.
+Sabab ID = 1–4, 7.
+Sabab ID 1: Asosiy boshqaruvchining dasturiy va apparat ta'minoti mos kelmayapti.
+Sabab ID 2: Asosiy va ikkilamchi kontrollerlarning dasturiy ta'minot versiyalari mos kelmayapti.
+Sabab ID 3: Monitoring va quvvat boshqaruvchisi dasturiy ta'minot versiyalari mos kelmayapti.
+Sabab ID 4: Yangilash amalga oshmadi.
+Sabab ID 7: Optimizator yangilanishida xato.";
+"alarm_suggestion_2065"="1. Yangilashni qayta bajaring.
+2. Agar yangilanishni bir necha marta amalga oshirib bo'lmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.";
+"alarm_name_2066"="Litsenziya muddati tugagan";
+"alarm_cause_2066"="1. Imtiyoz sertifikati uchun imtiyozli davr kiritildi.
+2. Imtiyoz xususiyati tez orada o‘z kuchini yo‘qotadi.";
+"alarm_suggestion_2066"="1. Yangi sertifikat olish uchun ariza bering.
+2. Yangi sertifikatni yuklang.";
+"alarm_name_61440"="Kuzatuv bloki noto'g'ri";
+"alarm_cause_61440"="1. Flesh xotira yetarli emas.
+2. Flesh xotirada urilgan sektorlar mavjud.";
+"alarm_suggestion_61440"="O'zgaruvchan tokning chiqish o'chirgichi va o'zgarmas tokning kirish o'chirgichini o'chiring va 5 daqiqadan so'ng ularni qayta yoqing. Agar signal yo'qolmasa, monitoring platasini almashtiring yoki Huawei texnik qo'llab-quvvatlash bo'limida dileringizga murojaat qiling.";
+"alarm_name_2067"="Noto'g'ri quvvat kollektori";
+"alarm_cause_2067"="Smart quvvat sensori oʻchirilgan";
+"alarm_suggestion_2067"="1. Sozlangan quvvat o'lchagich modeli haqiqiy model bilan bir xil ekanligiga ishonch hosil qiling.
+2. Aqlli quvvat sensorlari uchun aloqa parametrlari SUN2000 RS485 konfiguratsiyalari bilan bir xil ekanligiga ishonch hosil qiling.
+3. Smart quvvat sensori yoqilganligini va RS485 aloqa kabeli ulanganligini tekshiring.";
+"alarm_name_2068"="Batareya normal holatda emas";
+"alarm_cause_2068"="Ish paytida batareyaning nosozligi, uzilganligi yoki noto'g'ri ishlashi.
+Sabab ID = 1–4.
+Sabab ID 1: Batareya bilan aloqa normal holatda emas.
+Sabab ID 2: Batareya portida haddan tashqari oqim holati mavjud.
+Sabab ID 3: batareya quvvat kabeli to'g'ri ulanmagan.
+Sabab ID 4: Batareya portidagi kuchlanish normal emas.";
+"alarm_suggestion_2068"="1. Batareya nosozlik indikatori barqaror ravishda yonib tursa yoki miltillayotgan bo'lsa, batareya yetkazib beruvchiga murojaat qiling.
+2. Batareya/quvvat/aloqa kabeli to'g'ri o'rnatilganligiga va aloqa parametrlari SUN2000 RS485 konfiguratsiyalari bilan bir xilligiga ishonch hosil qiling.
+3. Batareyadagi yordamchi quvvat tugmasi YOQIQ holatiga o'rnatilganligiga ishonch hosil qiling.
+4. Ilovaga o'chirish buyrug'ini yuboring. O'zgaruvchan tokning chiqish o'chirgichini, o'zgarmas tokning kirish o'chirgichini va batareya o'chirgichini o'chiring. Keyin 5 daqiqadan so'ng, batareya kalitini, o'zgaruvchan tokning chiqish o'chirgichini va O'zgarmas tokning kirish o'chirgichini ketma-ket yoqing.
+5. Agar signal yo'qolmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.";
+"alarm_name_2069"="Teskari batareya ulanishi";
+"alarm_cause_2069"="Batareya SUN2000 ga ulanganda ijobiy va salbiy qutblarni almashtiring.";
+"alarm_suggestion_2069"="1. O'zgaruvchan tokning chiqish o’chirgichini, o'zgarmas tokning kirish o'chirgichini va batareya tugmasini o'chiring. Batareyaning yordamchi quvvat tugmasini yoqing va 5 daqiqa kuting.
+2. SUN2000L batareya va Smart hisoblagichni oʻrnatish qoʻllanmasidagi koʻrsatmalarga rioya qilib, kabel ulanishlarini tekshiring.
+3. Batareya quvvat kabeli to'g'ri ulanganligiga ishonch hosil qiling. Batareyaning yordamchi quvvat tugmachasini, batareya tugmachasini, o'zgaruvchan tokning chiqish o'chirgichini va o'zgarmas tokning  kirish o'chirgichini ketma-ket yoqing. Agar signal yo'qolmasa, qo'shimcha yordam va diagnostika uchun batareya ishlab chiqaruvchisiga murojaat qilish tavsiya etiladi.";
+"alarm_name_2070"="Faol orollanish";
+"alarm_cause_2070"="O'zgaruvchan tokning quvvat uzilishi sodir bo'lganda, SUN2000 orolni oldindan aniqlaydi.";
+"alarm_suggestion_2070"="SUN2000 quvvat manbai kuchlanishi normal ekanligiga ishonch hosil qiling.";
+"alarm_name_2071"="Passiv orollanish";
+"alarm_cause_2071"="Elektr tarmog'ida o'zgaruvchan tokning uzilishi sodir bo'lganda, SUN2000 passiv tarzda izolyatsiya qilingan tarmoqni aniqlaydi.";
+"alarm_suggestion_2071"="SUN2000 tarmog'iga ulanish nuqtasidagi kuchlanish normal ekanligini tekshiring.";
+"alarm_name_2072"="O'zgaruvchan tokning ortiqcha kuchlanishi";
+"alarm_cause_2072"="SUN2000 fazali kuchlanish o'zgaruvchan tokning ortiqcha kuchlanishdan himoyalanish chegarasidan oshib ketganini aniqlaydi.";
+"alarm_suggestion_2072"="1. Agar tarmoqqa ulanish nuqtasida kuchlanish juda yuqori bo'lsa, mahalliy energiya operatoriga murojaat qiling.
+2. Agar siz tarmoqqa ulanish kuchlanishining yuqori chegaradan ham yuqori ekanligini tasdiqlagan bo'lsangiz va mahalliy energiya ta'minoti tashkilotidan ruxsat olgan bo'lsangiz, kuchlanishdan himoyalanish chegarasini o'zgartiring.
+3. Tarmoqning eng yuqori kuchlanishi yuqori chegaradan oshib ketganligini tekshiring.";
+"alarm_name_2075"="Tashqi qurilma portining qisqa tutashuvi";
+"alarm_cause_2075"="SUN2000 signal porti periferik qurilmaga 12V quvvat berilganda qisqa tutashgan.";
+"alarm_suggestion_2075"="1. SUN2000 dagi o'zgaruvchan va o'zgarmas toklarning o'chirgichlarini o'chiring va periferik qurilmani signal portidan ajrating. So'ng SUN2000-ni yana yoqing va foydalanuvchi qo'llanmasidagi ko'rsatmalarga amal qilgan holda mobil telefon ilovasi orqali signalni qo'lda tiklashga harakat qiling. Agar bezovtalik signali yo'qolmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling. Agar bezovtalik signali o'chirilgan bo'lsa, signal porti normal ishlayapgan bo'lsa, periferik qurilmaning quvvat portining kontakti qisqa tutashuvga uchramaganligini tekshiring.
+2. Periferik qurilmani almashtirgandan so'ng, foydalanuvchi qo'llanmasiga muvofiq o'z-o'zini sinab ko'rish funktsiyasini ishga tushuring va portning to'g'ri ishlashiga ishonch hosil qiling.";
+"alarm_name_2077"="Avtonom chiqishning ortiqcha yuklanishi";
+"alarm_cause_2077"="Chiqish haddan tashqari yuklangan yoki qisqa tutilgan.";
+"alarm_suggestion_2077"="1. Qurilma chiqishi qisqa tutashmaganligini tekshiring.
+2. Qurilma yukining nominal qiymatdan oshib ketganligini tekshiring.";
+"alarm_name_2080"="Fotoelektrik modulinig normal bo'lmagan konfiguratsiyasi";
+"alarm_cause_2080"="Fotoelektrik modulinig konfiguratsiyasi talablarga javob bermaydi yoki fotoelektrik modulining chiqishi noto'g'ri ulangan yoki qisqa tutashgan.
+Sabab ID = 2, 3, 6, 7, 8, 9
+Sabab ID 2: Fotoelektrik simining kuchi yoki Fotoelektrik simida ketma-ket ulangan optimallashtiruvchilar soni yuqori chegaradan oshib ketgan.
+Sabab ID 3: Fotoelektrik simida ketma-ket ulangan optimallashtiruvchilar soni pastki chegaradan kamroq, Fotoelektrik simida chiqishi teskari yoki Fotoelektrik simida ba'zi optimallashtiruvchilarning chiqishlari teskari ulangan.
+Sabab ID 6: Xuddi shu MPPT uchun parallel yoki turli ulangan fotoelektrik qatorlarida ketma-ket ulangan optimallashtiruvchilar soni, yoki fotoelektrik qatorlaridagi ba'zi optimallashtiruvchilarning chiqishlari teskari ulangan.
+Sabab ID 7: Optimallashtiruvchi o'rnatish pozitsiyasi o'zgartirilgan yoki fotoelktrik simlar birlashtirilgan yoki almashtirilgan.
+Sabab ID 8: Quyosh nuri zaif yoki normal bo'lmagan tarzda o'zgarib turadi.
+Sabab ID 9: Qisman konfiguratsiya stsenariylarida fotoelektrik simining kuchlanishi SUN2000 kirish kuchlanishi spetsifikatsiyalaridan oshib ketgan.";
+"alarm_suggestion_2080"="Fotoelektrik modullarining umumiy soni, qatordagi fotoelektrik modullarining soni va fotoelektrik qatorlarining soni talablarga javob berishini, shuningdek fotoelektrik modulining chiqishi to'g'ri ulanganligini tekshiring.
+Sabab ID 2: Fotoelektrik simining quvvati yoki fotoelektrik qatorida ketma-ket ulanganfotoelektrik modullari soni yuqori chegaradan oshmaganligini tekshiring.
+Sabab ID 3: Fotoelektrik zanjirida ketma-ket ulangan optimallashtiruvchilar soni pastki chegaradan oshib ketmaganligini tekshiring.
+Fotoelektrik simining chiqishi qayta ulanganligini tekshiring.
+Fotoelektrik simining chiqishi o'chirilganligini tekshiring.
+Optimallashtiruvchi chiqish uzatma kabeli to'g'ri ekanligini tekshiring (bir uchida ijobiy ulagich, ikkinchisida salbiy ulagich).
+Sabab ID 6:
+Xuddi shu MPPT ostida parallel ravishda ulangan fotoelektrik simlarida ketma-ket ulangan optimallashtiruvchilar soni bir xil ekanligini tekshiring.
+Optimallashtiruvchi chiqish uzatma kabelining sozlamalarini tekshiring (bir uchida ijobiy ulagich va boshqa uchida salbiy ulagich).
+Sabab ID 7: Quyosh nuri normal holatga kelganda, optimallashtiruvchi qidiruv funksiyasini bajaring.
+Sabab identifikatori 8: Quyosh nuri normal holatga kelganda, optimallashtiruvchi qidiruv funksiyasini yana bajaring.
+Sabab ID 9: Fotoelektrik simidagi fotoelektrik modullari soni asosida fotoelektrik simining kuchlanishini hisoblang va fotoelektrik simining kuchlanishi SUN2000 kirish kuchlanishining yuqori chegarasidan oshib ketmaganligini tekshiring.";
+"alarm_name_2082"="Tarmoq ulangan/tarmoqda emas boshqaruvchi xatosi";
+"alarm_cause_2082"="Sabab ID 1: SUN2000 Backup Box bilan bog'lana olmadi.
+Sabab ID 2: Zaxira bloki ichidagi simda tuzatib bo'lmaydigan xatolik yuz berdi.";
+"alarm_suggestion_2082"="1. Ilovaga o'chirish buyrug'ini yuboring. O'zgaruvchan tokning chiqish o'chirgichini, o'zgarmas tokning kirish o'chirgichini va batareya o'chirgichini o'chiring.
+2. Backup Box va SUN2000 o'rtasidagi quvvat kabeli va RS485 kabelini tekshiring.
+3. 5 daqiqadan so'ng, batareya o'chirgichini, o'zgaruvchan tokning chiqish o'chirgichini, o'zgarmas tokning kirish o'chirgichin yoqing.
+4. Agar bezovtalik signali yo'qolmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.";
+"alarm_name_2087"="Ichki ventilyator ishlamayapti";
+"alarm_cause_2087"="Ichki ventilyator qisqa tutashga uchragan, quvvat manbai yetarli emas yoki ventilyator shikastlangan.";
+"alarm_suggestion_2087"="O'zgaruvchan tokning chiqish o'chirgichini, so'ng o'zgarmas tokning kirish o'chirgichini o'chiring. 5 daqiqadan so'ng ularni yoqing va SUN2000 elektr tarmog'iga ulanishini kuting. Agar bezovtalik signali yo'qolmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.";
+"alarm_name_2088"="Anomal o'zgarmas tokdan himoya qilish bloki";
+"alarm_cause_2088"="Sabab ID 1: Saqlagich joyida emas yoki yonib ketgan.
+Sabab ID 2: Ochilish platadagi ikkala rele ham ochiq.
+Sabab ID 3: O'zgarmas tok o'chirgichlarining kontaktlari qotib qolgan.";
+"alarm_suggestion_2088"="1. O'zgaruvchan tokning chiqish o'chirgichini, so'ng o'zgarmas tokning kirish o'chirgichini o'chiring. 5 daqiqadan so'ng ularni yoqing va SUN2000 elektr tarmog'iga ulanishini kuting. Agar bezovtalik signali yo'qolmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.
+2. Agar LED1 (PV indikatori) yonmasa, SUN2000 ni almashtirish uchun dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling. Agar LED1 (PV indikatori) yoqilsa, fotoelektrik simining oqimi 0,5A dan past bo'lguncha kuting. O'zgaruvchan tokning chiqish o'chirgichini, so'ng o'zgarmas tokning kirish o'chirgichini o'chiring. 5 daqiqadan so'ng ularni yoqing va SUN2000 elektr tarmog'iga ulanishini kuting. Agar bezovtalik signali yo'qolmasa, dileringizga yoki Huawei texnik qo'llab-quvvatlash bo'limiga murojaat qiling.";
+"alarm_name_2090"="Normal bo'lmagan faol quvvatni rejalashtirish bo'yicha ko'rsatmalar";
+"alarm_cause_2090"="1. DI kirish normal holatda emas.
+2. DI kirish konfiguratsiyaga mos kelmadi.";
+"alarm_suggestion_2090"="1. Kabellar DI portlariga to'g'ri ulanganligini tekshiring.
+2. Quruq kontaktli raqamli kirish faol quvvat rejalashtirish rejimini sozlash sahifasini oching va raqamli kirish signali konfiguratsiyasi jadvalini ko'rib chiqing. Jadvaldagi konfiguratsiyalar toʻliq va talablarga javob berishini tekshirish uchun elektr tarmog'i korxonasi bilan bog'laning.";
+"alarm_name_2091"="Normal bo'lmagan reaktiv quvvatni rejalashtirish bo'yicha ko'rsatmalar";
+"alarm_cause_2091"="1. DI kirish normal holatda emas.
+2. DI kirish konfiguratsiyaga mos kelmadi.";
+"alarm_suggestion_2091"="1. Kabellar DI portlariga to'g'ri ulanganligini tekshiring.
+2. Quruq kontaktli raqamli kirish reaktiv quvvat rejalashtirish rejimini sozlash sahifasini oching va raqamli kirish signali konfiguratsiyasi jadvalini ko'rib chiqing. Jadvaldagi konfiguratsiyalar toʻliq va talablarga javob berishini tekshirish uchun elektr tarmog'i korxonasi bilan bog'laning.";
+"alarm_name_2092"="Tok transformatori kabelining noto'g'ri ulanishi";
+"alarm_cause_2092"="1. Tok transformatorining fazasi yoki o'rnatish yo'nalishi noto'g'ri.
+2. CT kabeli ulanmagan";
+"alarm_suggestion_2092"="1. Tok transformatorining o'rnatish yo'nalishi to'g'ri ekanligini tekshiring.
+2. Tok transformatorining o'rnatish bosqichi to'g'riligini tekshiring.
+3. Kabel tok transformatoridan SUN2000 ga ulanmaganligini tekshiring.";
+"alarm_name_2093"="O'zgarmas tok o'chirgichi normal holatda emas";
+"alarm_cause_2093"="O'zgarmas tokning o'chirgichlari yoqilmagan, o'zgarmas tokning tiklash tugmalari esa to'liq bosilmagan.";
+"alarm_suggestion_2093"="Barcha o'zgarmas tokning o'chirgichlari YOQIQ holatida ekanligini tekshiring. Agar unday bo'lmasa, o'chirgichlarni \"YOQIQ\" holatiga o'tkazing (to'g'ri holatda ekanligiga ishonch hosil qilish uchun o'chirgichlarni aylantirishingiz mumkin). Agar o'chirgichni hali ham \"YOQIQ\" holatiga o'tkazishni iloji bo'lmasa, o'zgarmas tokning barcha tiklash tugmalarini ularni ko'chirish mumkin bo'lmagan holatigacha ichkariga bosing, keyin esa o'zgarmas tokning o'chirgichlarini qayta yoqing.";
+"alarm_name_2094"="Batareyaning qolgan zaryadsizlanish quvvati past.";
+"alarm_cause_2094"="Qolgan zaryadsizlanadigan batareya quvvati avtonom rejimda batareyaning umumiy hajmining 10% dan kamini tashkil qilmoqda.";
+"alarm_suggestion_2094"="Qolgan batareya quvvati kam. Iltimos, zaxira quvvat muddatini oshirish uchun keraksiz yuklarni o'chirib tashlang.";
+//
+"alarm_name_999999999"="Бошқарув тизими ва ускуналар ўртасидаги ғайритабиий алоқа";
+"alarm_cause_999999999"="Бошқарув тизими ва ускуналар ўртасидаги ғайритабиий алоқа";
+"alarm_suggestion_999999999"="1-сценарий: тармоқ кабели орқали қурилма уланиши.
+1. Роутернинг тармоқ ва кабел алоқаси нормал ёки йўқлигини текширинг.
+2. Роутер тармоғи умумий тармоққа кира оладими ёки йўқлигини текширинг.
+
+Сценарий 2: Wи-Фи орқали қурилма уланиши.
+1. Роутер пароли ўзгарганлигини ёки сигнал кучсизлигини текширинг.
+2. Роутер тармоғи умумий тармоққа кира оладими ёки йўқлигини текширинг.
+
+Сценарий 3: 4Г тармоғи орқали қурилма уланиши.
+СИМ-карта нотўғри ўрнатилганми ёки кечиктирилганми ёки унинг тармоғи анормал еканлигини текширинг.
+
+Сценарий 4: Ускунанинг ён тизимидаги електр қувватининг узилиши.
+Илтимос, ускунанинг қуввати тикланганлигини текширинг.";
+"alarm_name_2061"="Ғайритабиий топраклама";
+"alarm_cause_2061"="1. Қурилманинг нейтрал сими ёки ПЕ кабели уланмаган.
+2. Қурилма учун ўрнатилган чиқиш режими ҳақиқий кабел уланишига мос келмайди.";
+"alarm_suggestion_2061"="Қурилмани ўчиринг (AC ва ДC калитини ўчиринг ва қурилма хавфсизлиги огоҳлантириш ёрлиғида кўрсатилган вақтни кутинг) ва кейин қуйидаги амалларни бажаринг:
+1. Қурилманинг ПЕ кабели тўғри уланганлигини текширинг.
+2. Aгар қурилма ТН електр тармоғига уланган бўлса, нейтрал симнинг тўғри уланганлигини ва ерга кучланиш нормал ёки йўқлигини текширинг.
+3. Қурилмани ёққанингиздан сўнг, қурилмада ўрнатилган чиқиш режими ҳақиқий кабел уланишига мос келишини текширинг.";
+//

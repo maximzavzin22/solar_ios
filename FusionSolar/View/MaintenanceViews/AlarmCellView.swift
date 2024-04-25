@@ -27,7 +27,9 @@ class AlarmCellView: UICollectionViewCell {
                 }
                 animationView.play()
             }
-            nameLabel.text = alarm?.alarmName ?? ""
+            if let alarmId = alarm?.alarmId {
+                nameLabel.text = NSLocalizedString("alarm_name_\(alarmId)", value: alarm?.alarmName ?? "", comment: "")
+            }
             deviceValueLabel.text = alarm?.devName ?? ""
             plantValueLabel.text = alarm?.stationName ?? ""
             if let milliseconds = alarm?.raiseTime {

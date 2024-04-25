@@ -11,7 +11,7 @@ class OverviewController: UIViewController {
     
     var station: Station? {
         didSet {
-            dump(station)
+//            dump(station)
             self.titleLabel.text = station?.plantName ?? ""
             overviewView.station = station
             stationStatisticsView.environmentalView.total_power = self.station?.stationRealKpi?.total_power ?? 0.0
@@ -29,6 +29,7 @@ class OverviewController: UIViewController {
                 if(value == 1) {
                     overviewView.isHidden = true
                     stationStatisticsView.isHidden = false
+                    stationStatisticsView.getDataForGraph()
                     stationDevicesView.isHidden = true
                 }
                 if(value == 2) {
@@ -98,6 +99,18 @@ class OverviewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.overviewController = self
         return view
+    }()
+    
+    let errorView: SimpleErrorView = {
+        let eV = SimpleErrorView()
+        eV.translatesAutoresizingMaskIntoConstraints = false
+        return eV
+    }()
+
+    let loadingView: LoadingView = {
+        let lV = LoadingView()
+        lV.translatesAutoresizingMaskIntoConstraints = false
+        return lV
     }()
     
     lazy var datePickerView: DatePickerView = {
@@ -240,4 +253,45 @@ class OverviewController: UIViewController {
         self.yearPickerView.isHidden = false
         self.yearPickerView.showAnimaton()
     }
+    
+    //ApiService
+    func fetchStationHourKpi(collectTime: Int64) {
+        if let plantCode = station?.plantCode {
+            self.showLoadingView()
+            ApiService.sharedInstance.fetchStationHourKpi(collectTime: collectTime, station: plantCode) {
+                (error: CustomError?, detailRealKpis: [DetailRealKpi]?) in
+                self.hideLoadingView()
+                if(error?.code ?? 0 == 0) {
+                    self.stationStatisticsView.detailRealKpis = detailRealKpis
+                } else {
+                    //error
+                }
+            }
+        }
+    }
+    //
+    
+    //Error and Loading views
+    func showErrorView(title: String, message: String) {
+        self.view.addSubview(errorView)
+        self.view.addConstraintsWithFormat("H:|[v0]|", views: errorView)
+        self.view.addConstraintsWithFormat("V:|[v0]|", views: errorView)
+        errorView.isHidden = false
+        errorView.title = title
+        errorView.message = message
+    }
+    
+    func showLoadingView() {
+        self.view.addSubview(loadingView)
+        self.view.addConstraintsWithFormat("H:|[v0]|", views: loadingView)
+        self.view.addConstraintsWithFormat("V:|[v0]|", views: loadingView)
+        loadingView.isHidden = false
+        loadingView.startActivityIndicator()
+    }
+    
+    func hideLoadingView() {
+        loadingView.stopActivityIndicator()
+        loadingView.isHidden = true
+    }
+    //
 }

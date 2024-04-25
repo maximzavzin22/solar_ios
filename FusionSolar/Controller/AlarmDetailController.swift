@@ -10,11 +10,22 @@ import Lottie
 
 class AlarmDetailController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate {
     
+    var alarmName: String = ""
+    var alarmCause: String = ""
+    var repairSuggestion: String = ""
+    
     var alarm: Alarm? {
         didSet {
             self.alarmDetailBasicView.alarm = alarm
-            self.causeAlarmDetailTextView.valueLabel.text = alarm?.alarmCause ?? ""
-            self.suggestionsAlarmDetailTextView.valueLabel.text = alarm?.repairSuggestion ?? ""
+            if let alarmId = alarm?.alarmId {
+                alarmName = NSLocalizedString("alarm_name_\(alarmId)", value: alarm?.alarmName ?? "", comment: "")
+                alarmCause = NSLocalizedString("alarm_cause_\(alarmId)", value: alarm?.alarmCause ?? "", comment: "")
+                repairSuggestion = NSLocalizedString("alarm_suggestion_\(alarmId)", value: alarm?.repairSuggestion ?? "", comment: "")
+            }
+            
+            self.alarmDetailBasicView.nameLabel.text = alarmName
+            self.causeAlarmDetailTextView.valueLabel.text = alarmCause
+            self.suggestionsAlarmDetailTextView.valueLabel.text = repairSuggestion
             self.alarmContactView.addressValueLabel.text = alarm?.plantAddress ?? ""
         }
     }
@@ -139,16 +150,13 @@ class AlarmDetailController: UIViewController, UINavigationControllerDelegate, U
         
         contentScrollView.addConstraintsWithFormat("V:[v0(\(173.dp))]", views: alarmContactView)
         
-        let alarmName = self.alarm?.alarmName ?? ""
         let plantName = self.alarm?.stationName ?? ""
         let alarmDetailBasicViewHeight = 24.dp + self.getHeight(text: alarmName, font: UIFont.boldSystemFont(ofSize: 16.dp), width: 286.dp) + 24.dp + self.getHeight(text: plantName, font: UIFont.systemFont(ofSize: 14.dp), width: screenWidth/2) + 168.dp + 24.dp
         contentScrollView.addConstraintsWithFormat("V:[v0(\(alarmDetailBasicViewHeight))]", views: alarmDetailBasicView)
         
-        let alarmCause = self.alarm?.alarmCause ?? ""
         let causeAlarmDetailTextViewHeight = 24.dp + 12.dp + 16.dp + self.getHeight(text: alarmCause, font: UIFont.systemFont(ofSize: 14.dp), width: screenWidth) + 24.dp
         contentScrollView.addConstraintsWithFormat("V:[v0(\(causeAlarmDetailTextViewHeight))]", views: causeAlarmDetailTextView)
         
-        let repairSuggestion = self.alarm?.repairSuggestion ?? ""
         let suggestionsAlarmDetailTextViewHeight = 24.dp + 12.dp + 16.dp + self.getHeight(text: repairSuggestion, font: UIFont.systemFont(ofSize: 14.dp), width: screenWidth) + 24.dp
         contentScrollView.addConstraintsWithFormat("V:[v0(\(suggestionsAlarmDetailTextViewHeight))]", views: suggestionsAlarmDetailTextView)
         

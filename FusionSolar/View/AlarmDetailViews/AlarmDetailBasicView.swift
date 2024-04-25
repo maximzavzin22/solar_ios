@@ -31,7 +31,7 @@ class AlarmDetailBasicView: UIView {
                 }
                 animationView.play()
             }
-            nameLabel.text = alarm?.alarmName ?? ""
+            //nameLabel.text = alarm?.alarmName ?? ""
             plantValueLabel.text = alarm?.stationName ?? ""
             statusValueLabel.text = "--"
             idValueLabel.text = "\(alarm?.alarmId ?? 0)"

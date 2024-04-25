@@ -11,6 +11,29 @@ class StationStatisticsView: UIView {
     
     var overviewController: OverviewController?
     
+    var detailRealKpis: [DetailRealKpi]? {
+        didSet {
+            var yields = [Double]()
+            var graphValues = [GraphValue]()
+            for detailRealKpi in detailRealKpis ?? [] {
+                if let collectTime = detailRealKpi.collectTime {
+                    detailRealKpi.date = Date(milliseconds: collectTime)
+                    yields.append(detailRealKpi.power_profit ?? 0.0)
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "HH"
+                    let hourString = formatter.string(from: detailRealKpi.date ?? Date())
+                    var graphValue = GraphValue()
+                    graphValue.key = hourString
+                    graphValue.value = detailRealKpi.power_profit ?? 0.0
+                    graphValues.append(graphValue)
+                    print("\(hourString) \(detailRealKpi.power_profit ?? 0.0)")
+                }
+            }
+            stationChartsView.setupBarChartView(graphValues: graphValues)
+//            dump(detailRealKpis)
+        }
+    }
+    
     let whiteTopView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -94,6 +117,16 @@ class StationStatisticsView: UIView {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x != 0 {
             scrollView.contentOffset.x = 0
+        }
+    }
+    
+    func getDataForGraph() {
+        let value = self.stationChartsView.selectedDateType ?? "day"
+        if(value == "day") {
+            let date = self.stationChartsView.selectedDate ?? Date()
+            let collectTime = date.millisecondsSince1970
+            print("getDataForGraph \(date) \(collectTime)")
+            self.overviewController?.fetchStationHourKpi(collectTime: collectTime)
         }
     }
 }

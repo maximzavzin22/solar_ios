@@ -42,7 +42,10 @@ class StatusOverviewView: UIView {
         didSet {
             self.alarmLabel.isHidden = false
             self.arrowImageView.isHidden = false
-            self.alarmLabel.text = alarm?.alarmName ?? ""
+            if let alarmId = alarm?.alarmId {
+                self.alarmLabel.text = NSLocalizedString("alarm_name_\(alarmId)", value: alarm?.alarmName ?? "", comment: "")
+            }
+            
         }
     }
     

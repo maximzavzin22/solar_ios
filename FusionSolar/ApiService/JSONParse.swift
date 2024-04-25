@@ -194,6 +194,37 @@ class JSONParse: NSObject {
         return nil
     }
     
+    func detailRealKpisParse(json: Any) -> [DetailRealKpi]? {
+        if let result = json as? Dictionary<String,Any> {
+            if let list = result["result"] as? Array<Dictionary<String,Any>> {
+                print("try parse detailRealKpisParse")
+                var detailRealKpis = [DetailRealKpi]()
+                for kpiDictionary in list as [[String: AnyObject]] {
+                    if let detailRealKpi = detailRealKpiParse(json: kpiDictionary) {
+                        detailRealKpis.append(detailRealKpi)
+                    }
+                }
+                return detailRealKpis
+            }
+        }
+        return nil
+    }
+    
+    func detailRealKpiParse(json: Any) -> DetailRealKpi? {
+        if let result = json as? Dictionary<String,Any> {
+            let detailRealKpi = DetailRealKpi()
+            detailRealKpi.id = result["id"] as? Int ?? -1
+            detailRealKpi.radiation_intensity = result["radiation_intensity"] as? Double ?? 0.0
+            detailRealKpi.inverter_power = result["inverter_power"] as? Double ?? 0.0
+            detailRealKpi.ongrid_power = result["ongrid_power"] as? Double ?? 0.0
+            detailRealKpi.power_profit = result["power_profit"] as? Double ?? 0.0
+            detailRealKpi.theory_power = result["theory_power"] as? Double ?? 0.0
+            detailRealKpi.collectTime = result["collect_time"] as? Int64 ?? 0
+            return detailRealKpi
+        }
+        return nil
+    }
+    
     func regionsParse(json: Any) -> [Region]? {
         if let result = json as? Dictionary<String,Any> {
             if let list = result["result"] as? Array<Dictionary<String,Any>> {

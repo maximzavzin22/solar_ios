@@ -144,7 +144,13 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
                     status = "faulty"
                 }
             }
-        } 
+        } else {
+            if let statusValue = self.overviewController?.station?.stationRealKpi?.real_health_state {
+                if(statusValue == 1) {
+                    status = "offline"
+                }
+            }
+        }
         
         if(device?.devTypeId ?? 0 == 1) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deviceInverterCellViewId", for: indexPath) as! DeviceInverterCellView

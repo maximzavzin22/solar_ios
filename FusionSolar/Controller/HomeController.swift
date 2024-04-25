@@ -79,6 +79,7 @@ class HomeController: UIViewController {
                     self.homeView.isHidden = true
                     self.maintenanceView.isHidden = true
                     self.statisticPlantView.isHidden = false
+                    self.statisticPlantView.getDataForGraph()
                     self.profileView.isHidden = true
                 }
                 if(page == 3) {
@@ -378,19 +379,26 @@ class HomeController: UIViewController {
                 if(error?.code ?? 0 == 0) {
                     self.isLoadEnd = true
                     self.stations = stations
-                    
-//                    if(stations?.count ?? 0 == 0) {
-                        
-                     //   self.compliteAllRequests()
-//                    }
-                   // self.pageNo = self.pageNo + 1
                 } else {
                     //error
                 }
             }
         }
     }
-//    
+    
+    func fetchHourKpi(collectTime: Int64) {
+        self.showLoadingView()
+        ApiService.sharedInstance.fetchHourKpi(collectTime: collectTime) {
+            (error: CustomError?, detailRealKpis: [DetailRealKpi]?) in
+            self.hideLoadingView()
+            if(error?.code ?? 0 == 0) {
+                self.statisticPlantView.detailRealKpis = detailRealKpis
+            } else {
+                //error
+            }
+        }
+    }
+//
 //    func fetchStations(stationCodes: String) {
 //       // self.showLoadingView()
 //        ApiService.sharedInstance.fetchStationRealKpi(stationCodes: stationCodes) {

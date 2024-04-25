@@ -152,6 +152,309 @@
 "website"="Website";
 "record_number"="Record number";
 
+//alarms
 
+"alarm_name_2001"="High String Input Voltage";
+"alarm_cause_2001"="The PV array is not properly configured. Excessive PV modules are connected in series to the PV string, and therefore the open-circuit voltage exceeds the maximum SUN2000 operating voltage.
 
+Cause ID = 1, 2
+
+Cause ID 1: The PV1 input voltage is high.
+Cause ID 2: The PV2 input voltage is high.";
+"alarm_suggestion_2001"="Check the serial connection configuration of the PV string and ensure that the PV string open-circuit voltage is not greater than the maximum operating voltage of the SUN2000. After the PV array configuration is corrected, the alarm disappears.";
+"alarm_name_2002"="DC Arc Fault
+
+";
+"alarm_cause_2002"="The PV string power cables arc or are in poor contact.
+
+Cause ID = 1, 2
+
+Cause ID 1: PV1 DC arc fault
+Cause ID 2: PV2 DC arc fault";
+"alarm_suggestion_2002"="Check whether the string cables arc or are in poor contact.
+
+";
+"alarm_name_2003"="DC Arc Fault";
+"alarm_cause_2003"="The PV string power cables arc or are in poor contact. (string-level fine detection)
+
+Cause ID 1: PV string 1
+Cause ID 2: PV string 2
+Cause ID 3: PV string 3";
+"alarm_suggestion_2003"="Check whether the string cables arc or are in poor contact.
+
+";
+"alarm_name_2011"="String Reversed";
+"alarm_cause_2011"="The PV string is reversely connected.
+1. PV1 is reversely connected.
+2. PV2 is reversely connected.";
+"alarm_suggestion_2011"="Check whether the PV string is reversely connected to the SUN2000. If yes, wait until the PV string current decreases below 0.5 A, set DC switch to OFF, and adjust the PV string polarity.";
+"alarm_name_2012"="String Current Backfeed";
+"alarm_cause_2012"="The number of PV modules connected in series to the PV string is insufficient. As a result, the end voltage is lower than that of other strings.
+
+Cause ID 1–4: PV strings 1–4";
+"alarm_suggestion_2012"="1. Check whether the number of PV modules connected in series to this PV string is less than the number of PV modules connected in series to the other PV strings connected in parallel with this PV string. If yes, wait until the PV string current drops below 0.5 A, set the DC switch to OFF, and adjust the number of PV modules in the PV string.
+2. Check whether the PV string is shaded.
+3. Check whether the open-circuit voltage of the PV string is normal.";
+//
+"alarm_name_2013"="Abnormal string power";
+"alarm_cause_2013"="1. The PV string is shaded for a long time.
+2. The PV string is aged abnormally.
+Cause ID 1–4: PV strings 1–4";
+"alarm_suggestion_2013"="1. Check whether the PV string current is obviously lower than the currents of other PV strings.
+2. If the PV string current is obviously low, check whether the PV string is shaded.
+3. If the PV string is clean and not shielded from sunlight, check whether any PV module is faulty";
+"alarm_name_2014"="High Input String Voltage to Ground";
+"alarm_cause_2014"="The voltage between the input PV modules and the ground is abnormal, and there is a risk of power degradation.";
+"alarm_suggestion_2014"="1. If the system does not have PID compensation devices, disable the PID protection. Note that enabling the reactive power compensation at night even when the PID protection is disabled brings risks of PV module degradation.
+2. If the system has a PID compensation device, check whether the device is abnormal. If yes, rectify the fault.
+3. Check whether the settings of compensation direction for the SUN2000 and the PID device are consistent. If not, set them to be consistent based on the PV module model. (Note: If the PV– is set to positive offset, the voltage between the SUN2000 PV– and the ground should be greater than 0 V to clear the alarms; if the PV+ is set to negative offset, the voltage between the SUN2000 PV+ and the ground should be less than 0 V to clear the alarms.)
+4. If the fault occurs repeatedly, contact your dealer or Huawei technical support.";
+"alarm_name_2015"="PV String Loss";
+"alarm_cause_2015"="This alarm is generated when the PV string status is abnormal due to the following conditions: a single PV string is lost; both 2-in-1 PV strings are lost; one of the 2-in-1 PV strings is lost.";
+"alarm_suggestion_2015"="1. Check whether the SUN2000 terminals are properly connected.
+2. Check whether the PV string terminals are properly connected.
+3. If a 2-in-1 terminal is used, check whether it is normal.
+Note: If the string connection status is manually configured, check whether the configured status is consistent with the actual connection status.";
+"alarm_name_2021"="AFCI Check Failure";
+"alarm_cause_2021"="The AFCI check fails.
+
+1. The AFCI check circuit is abnormal.
+2. The AFCI circuit is faulty.";
+"alarm_suggestion_2021"="Turn off the AC output switch and DC input switch, and then turn them on after 5 minutes. If the alarm persists, contact your dealer or Huawei technical support.";
+"alarm_name_2031"="Short Circuit Between Grid Phase Wire and PE";
+"alarm_cause_2031"="The impedance of the output phase wire to PE is low or the output phase wire is short-circuited to PE.";
+"alarm_suggestion_2031"="Check the impedance of the output phase wire to PE, locate the position with low impedance, and rectify the fault.";
+"alarm_name_2032"="Grid Failure";
+"alarm_cause_2032"="1. The power grid experiences an outage.
+2. The AC circuit is disconnected or the AC circuit breaker is OFF.";
+"alarm_suggestion_2032"="1. Check the AC voltage.
+2. Check whether the AC circuit is disconnected or the AC circuit breaker is OFF.";
+//
+"alarm_name_2033"="Grid Undervoltage";
+"alarm_cause_2033"="The grid voltage is below the lower threshold or the low voltage duration has lasted for more than the value specified by low voltage ride-through (LVRT).";
+"alarm_suggestion_2033"="1. If the alarm occurs occasionally, the power grid may be abnormal temporarily. The SUN2000 automatically recovers after detecting that the power grid becomes normal.
+2. If the alarm occurs frequently, check whether the power grid voltage is within the allowed range. If not, contact the local power operator. If yes, modify the grid undervoltage protection threshold through the mobile app, SmartLogger, or network management system (NMS) with the consent of the local power operator.
+3. If the alarm persists for a long time, check the connection between the AC switch and the output power cable.";
+"alarm_name_2034"="Grid Overvoltage";
+"alarm_cause_2034"="The grid voltage exceeds the higher threshold or the high voltage has lasted for more than the value specified by high voltage ride-through (HVRT).";
+"alarm_suggestion_2034"="1. If the alarm occurs occasionally, the power grid may be abnormal temporarily. The SUN2000 automatically recovers after detecting that the power grid becomes normal.
+2. If the alarm occurs frequently, check whether the power grid voltage is within the allowed range. If not, contact the local power operator. If yes, modify the grid overvoltage protection threshold through the mobile app, SmartLogger, or NMS with the consent of the local power operator.
+3. Check whether the peak voltage of the power grid is too high. If the alarm persists and cannot be rectified for a long time, contact the power operator.";
+"alarm_name_2035"="Grid Voltage Imbalance";
+"alarm_cause_2035"="The difference between grid phase voltages exceeds the upper threshold.";
+"alarm_suggestion_2035"="1. If the alarm occurs occasionally, the power grid may be abnormal temporarily. The SUN2000 automatically recovers after detecting that the power grid becomes normal.
+2. If the alarm persists, check whether the power grid voltage is within the acceptable range. If not, contact the local power operator.
+3. If the alarm lasts for a long time, check the AC output power cable connection.
+4. If the AC output power cable is correctly connected, yet the alarm persists and affects the energy yield of the PV plant, contact the local power operator.";
+"alarm_name_2036"="Grid Overfrequency";
+"alarm_cause_2036"="Power grid exception: The actual power grid frequency is higher than the standard requirement for the local power grid.";
+"alarm_suggestion_2036"="1. If the alarm occurs occasionally, the power grid may be abnormal temporarily. The SUN2000 automatically recovers after detecting that the power grid becomes normal.
+2. If the alarm occurs frequently, check whether the power grid frequency is within the allowed range. If not, contact the local power operator. If yes, modify the grid overfrequency protection threshold through the mobile app, SmartLogger, or NMS with the consent of the local power operator.";
+"alarm_name_2037"="Grid Underfrequency";
+"alarm_cause_2037"="Power grid exception: The actual power grid frequency is lower than the standard requirement for the local power grid.";
+"alarm_suggestion_2037"="1. If the alarm occurs occasionally, the power grid may be abnormal temporarily. The SUN2000 automatically recovers after detecting that the power grid becomes normal.
+2. If the alarm occurs frequently, check whether the power grid frequency is within the allowed range. If not, contact the local power operator. If yes, modify the grid underfrequency protection threshold through the mobile app, SmartLogger, or NMS with the consent of the local power operator.";
+"alarm_name_2038"="Unstable Grid Frequency";
+"alarm_cause_2038"="Power grid exception: The actual grid frequency change rate does not comply with the local power grid standard.";
+"alarm_suggestion_2038"="1. If the alarm occurs occasionally, the power grid may be abnormal temporarily. The SUN2000 automatically recovers after detecting that the power grid becomes normal.
+2. If the alarm occurs frequently, check whether the power grid frequency is within the allowed range. If not, contact the local power operator.";
+//
+"alarm_name_2039"="Output Overcurrent";
+"alarm_cause_2039"="The power grid voltage drops dramatically or the power grid is short-circuited. As a result, the SUN2000 transient output current exceeds the upper threshold and therefore the SUN2000 protection is triggered.";
+"alarm_suggestion_2039"="1. The SUN2000 detects its external working conditions in real time. After the fault is rectified, the SUN2000 automatically recovers.
+2. If the alarm occurs frequently and affects the energy yield of the power plant, check whether the output is short-circuited. If the alarm persists, contact your dealer or Huawei technical support.";
+"alarm_name_2040"="Output DC Component Overhigh";
+"alarm_cause_2040"="The DC component of the SUN2000 output current exceeds the specified upper threshold.";
+"alarm_suggestion_2040"="1. The SUN2000 detects its external working conditions in real time. After the fault is rectified, the SUN2000 automatically recovers.
+2. If the alarm occurs frequently, contact your dealer or Huawei technical support.";
+"alarm_name_2051"="Abnormal Residual Current";
+"alarm_cause_2051"="The insulation impedance of the input side to PE decreases when the SUN2000 is operating.";
+"alarm_suggestion_2051"="1. If the alarm occurs occasionally, the external circuit may be abnormal temporarily. The SUN2000 automatically recovers after the fault is rectified.
+2. If the alarm occurs frequently or persists, check whether the impedance between the PV string and the ground is too low.";
+"alarm_name_2062"="Low Insulation Resistance";
+"alarm_cause_2062"="1. A short circuit occurs between the PV array and the ground.
+2. The ambient air of the PV array is damp and the insulation between the PV array and the ground is poor.";
+"alarm_suggestion_2062"="1. Check the output impedance of the PV array to ground. If there is a short circuit or lack of insulation, rectify it.
+2. Check that the PE cable of the SUN2000 is correctly connected.
+3. If the impedance is lower than the specified protection threshold in rainy and cloudy days, set Insulation resistance protection using the mobile app, SmartLogger, or NMS.
+4. Current insulation resistance: x MΩ, possible short circuit position: x%. The short circuit position is valid for a single PV string. If there are multiple PV strings, check the PV strings one by one. For details, see Locating Insulation Resistance Faults.";
+"alarm_name_2063"="Overtemperature";
+"alarm_cause_2063"="1. The SUN2000 is installed in a place with poor ventilation.
+2. The ambient temperature is higher than the upper threshold.
+3. The SUN2000 is not working properly.";
+"alarm_suggestion_2063"="1. Check the ventilation and ambient temperature of the SUN2000 installation position.
+2. If the ventilation is poor or the ambient temperature exceeds the upper threshold, improve the ventilation and heat dissipation.
+3. If the ventilation and ambient temperature both meet requirements, contact your dealer or Huawei technical support.";
+"alarm_name_2064"="Device Fault";
+"alarm_cause_2064"="An unrecoverable fault has occurred on a circuit inside the SUN2000.
+
+Cause ID = 1–12
+
+Cause ID 1: The Boost input is short-circuited.
+Cause ID 2: The Boost input experiences overcurrent.
+Cause ID 3: The control circuit is faulty.
+Cause ID 4: The SUN2000 circuit is abnormal.
+Cause ID 5: The residual current sensor is faulty.
+Cause ID 6: The temperature detection fails.
+Cause ID 7: EEPROM read/write fails.
+Cause ID 8: The auxiliary power supply is abnormal.
+Cause ID 9: The grid-tied relay is abnormal.
+Cause ID 10: The DC bus experiences overvoltage.
+Cause ID 11: The DC bus experiences undervoltage.
+Cause ID 12: The DC bus experiences voltage imbalance.";
+"alarm_suggestion_2064"="Turn off the AC output switch and DC input switch, and then turn them on after 5 minutes. If the alarm persists, contact your dealer or Huawei technical support.";
+//
+"alarm_name_2065"="Upgrade Failed or Version Mismatch";
+"alarm_cause_2065"="The upgrade does not complete normally.
+
+Cause ID = 1–4, 7
+
+Cause ID 1: The software and hardware of the main controller do not match.
+Cause ID 2: The main and auxiliary controller software versions do not match.
+Cause ID 3: The monitoring and power controller software versions do not match.
+Cause ID 4: The upgrade fails.
+Cause ID 7: The optimizer upgrade fails.";
+"alarm_suggestion_2065"="1. Perform an upgrade again.
+2. If the upgrade fails for multiple times, contact your dealer or Huawei technical support.";
+"alarm_name_2066"="License Expired";
+"alarm_cause_2066"="1. The privilege certificate has entered the grace period.
+2. The privilege feature will be invalid soon.";
+"alarm_suggestion_2066"="1. Apply for a new certificate.
+2. Load the new certificate";
+"alarm_name_61440"="Monitoring Unit Faulty";
+"alarm_cause_61440"="1. The flash memory is insufficient.
+2. The flash memory has bad sectors.";
+"alarm_suggestion_61440"="Turn off the AC output switch and DC input switch, and then turn them on after 5 minutes. If the alarm persists, replace the monitoring board or contact your dealer Huawei technical support.";
+"alarm_name_2067"="Faulty Power Collector";
+"alarm_cause_2067"="The smart power sensor is disconnected.";
+"alarm_suggestion_2067"="1. Check that the configured power meter model is the same as the actual model.
+2. Check that the communications parameters for the smart power sensors are the same as the SUN2000 RS485 configurations.
+3. Check whether the smart power sensor is powered on and whether the RS485 communications cable is connected.";
+"alarm_name_2068"="Battery Abnormal";
+"alarm_cause_2068"="The battery is faulty, disconnected, or the battery circuit breaker is OFF when the battery is running.
+
+Cause ID = 1–4
+
+Cause ID 1: The battery communication is abnormal.
+Cause ID 2: The battery port experiences overcurrent.
+Cause ID 3: The battery enabling cable is not properly connected.
+Cause ID 4: The battery port voltage is abnormal.";
+"alarm_suggestion_2068"="1. If the battery fault indicator is steady on or blinking, contact the battery supplier.
+2. Check that the battery enabling/power/communications cable is correctly installed, and that the communications parameters are the same as the SUN2000 RS485 configurations.
+3. Check that the auxiliary power switch on the battery is set to ON.
+4. Send a shutdown command on the app. Turn off the AC output switch, DC input switch, and battery switch. Then turn on the battery switch, AC output switch, and DC input switch in sequence after 5 minutes.
+5. If the alarm persists, contact your dealer or Huawei technical support.";
+"alarm_name_2069"="Battery Reverse Connection";
+"alarm_cause_2069"="Reverse positive and negative poles when the battery is connected to the SUN2000.";
+"alarm_suggestion_2069"="1. Turn off the AC output switch, DC input switch, and battery switch, and turn on the battery auxiliary power switch. Wait for 5 minutes.
+2. Check the cable connection by referring to the SUN2000L Battery and Smart Meter Quick Installation Guide.
+3. After ensuring that the battery power cable is correctly connected, turn on the battery auxiliary power switch, battery switch, AC output switch, and DC input switch in sequence. If the alarm persists, contact the battery manufacturer.";
+//
+"alarm_name_2070"="Active Islanding";
+"alarm_cause_2070"="When the power grid experiences an AC power outage, the SUN2000 detects islanding proactively.";
+"alarm_suggestion_2070"="Check that the grid connection voltage of the SUN2000 is normal.";
+"alarm_name_2071"="Passive Islanding";
+"alarm_cause_2071"="When the power grid experiences an AC power outage, the SUN2000 detects an island grid passively.";
+"alarm_suggestion_2071"="Check whether the voltage at the grid connection point of the SUN2000 is normal.";
+"alarm_name_2072"="Transient AC Overvoltage";
+"alarm_cause_2072"="The SUN2000 detects that the phase voltage exceeds the transient AC overvoltage protection threshold.";
+"alarm_suggestion_2072"="1. If the voltage at the grid connection point is too high, contact the local power operator.
+2. If you have confirmed that the grid connection voltage exceeds the upper threshold and have obtained the consent of the local power operator, modify the overvoltage protection threshold.
+3. Check whether the peak grid voltage exceeds the upper threshold.";
+"alarm_name_2075"="External Device Port Short Circuit";
+"alarm_cause_2075"="The SUN2000 Alarm port is short-circuited when supplying 12 V power to a peripherals device.";
+"alarm_suggestion_2075"="1. Turn off the AC and DC switches on the SUN2000 and disconnect the peripherals device from the Alarm port. Then power on the SUN2000 again and try to clear the alarm manually over the mobile phone app by following the instructions in the user manual. If the alarm persists, contact your dealer or Huawei technical support. If the alarm is cleared, the Alarm port is normal. Check whether the power port pin of the peripherals device is short-circuited.
+2. After replacing the peripherals device, start the self-check according to the user manual and ensure that the port functions properly.";
+"alarm_name_2077"="Off-grid Output";
+"alarm_cause_2077"="The output is overloaded or short-circuited.";
+"alarm_suggestion_2077"="1. Check whether the device output is short-circuited.
+2. Check whether the device load exceeds the rated value.";
+"alarm_name_2080"="Abnormal PV Module Configuration";
+"alarm_cause_2080"="PV module configuration does not meet requirements, or the PV module output is reversely connected or short-circuited.
+
+Cause ID = 2, 3, 6, 7, 8, 9
+
+Cause ID 2: The PV string power or the number of optimizers connected in series in a PV string exceeds the upper threshold.
+Cause ID 3: The number of optimizers connected in series in a PV string is less than the lower threshold, the PV string output is reversely connected, or the output of some optimizers in the PV string is reversely connected.
+Cause ID 6: Under the same MPPT, the number of optimizers connected in series in PV strings connected in parallel is different, or the output of some optimizers in PV strings is reversely connected.
+Cause ID 7: The optimizer installation position is changed, or PV strings are combined or exchanged.
+Cause ID 8: The sunlight is weak or changes abnormally.
+Cause ID 9: In partial configuration scenarios, the PV string voltage exceeds the SUN2000 input voltage specifications.";
+"alarm_suggestion_2080"="Check whether the total number of PV modules, number of PV modules in a string, and number of PV strings meet requirements and whether the PV module output is reversely connected.
+
+Cause ID 2: Check whether the PV string power or the number of PV modules connected in series in the PV string exceeds the upper threshold.
+Cause ID 3:
+Check whether the number of optimizers connected in series in the PV string is below the lower threshold.
+Check whether the PV string output is reversely connected.
+Check whether the PV string output is disconnected.
+Check whether the optimizer output extension cable is correct (positive connector at one end and negative connector at the other).
+Cause ID 6:
+Check whether the number of optimizers connected in series in the PV strings connected in parallel under the same MPPT is the same.
+Check whether the optimizer output extension cable is correct (positive connector at one end and negative connector at the other).
+Cause ID 7: When the sunlight is normal, perform the optimizer search function again.
+Cause ID 8: When the sunlight is normal, perform the optimizer search function again.
+Cause ID 9: Calculate the PV string voltage based on the number of PV modules in the PV string and check whether the PV string voltage exceeds the upper threshold of the SUN2000 input voltage.";
+//
+"alarm_name_2082"="Grid-tied/Off-grid Controller Abnormal";
+"alarm_cause_2082"="Cause ID 1: The SUN2000 fails to communicate with the Backup Box.
+Cause ID 2: An unrecoverable fault occurs on a circuit inside the Backup Box.";
+"alarm_suggestion_2082"="1. Send a shutdown command on the app. Turn off the AC output switch, DC input switch, and battery switch.
+2. Check whether the power cable and RS485 cable between the Backup Box and the SUN2000 are normal.
+3. After 5 minutes, turn on the battery switch, AC output switch, and DC input switch.
+4. If the alarm persists, contact your dealer or Huawei technical support.";
+"alarm_name_2087"="Internal Fan Abnormal";
+"alarm_cause_2087"="The internal fan is short-circuited, the power supply is insufficient, or the fan is damaged.";
+"alarm_suggestion_2087"="Turn off the AC output switch and then the DC input switch. Turn them on after 5 minutes and wait for the SUN2000 to connect to the power grid. If the alarm persists, contact your dealer or Huawei technical support.";
+"alarm_name_2088"="Abnormal DC Protection Unit";
+"alarm_cause_2088"="Cause ID 1: The fuse is not in position or is blown.
+Cause ID 2: The two relays on the breaking board are open-circuited.
+Cause ID 3: The contact points of the DC switches are stuck.";
+"alarm_suggestion_2088"="1. Turn off the AC output switch and then the DC input switch. Turn them on after 5 minutes and wait for the SUN2000 to connect to the power grid. If the alarm persists, contact your dealer or Huawei technical support to replace the faulty component.
+2 If the LED1 indicator (PV indicator) is off, contact your dealer or Huawei technical support to replace the SUN2000. If the LED1 indicator (PV indicator) is on, wait until the PV string current decreases to below 0.5 A. Turn off the AC output switch and then the DC input switch. Turn them on after 5 minutes and wait for the SUN2000 to connect to the power grid. If the alarm persists, contact your dealer or Huawei technical support.";
+"alarm_name_2090"="Abnormal Active Power Scheduling Instruction";
+"alarm_cause_2090"="1. The DI input is abnormal.
+2. The DI input is inconsistent with the configuration.";
+"alarm_suggestion_2090"="1. Check whether the cables are connected correctly to the DI ports.
+2. Access the configuration page for the dry contact DI active power scheduling mode and view the DI signal configuration mapping table. Contact the power grid company to check whether the configurations in the mapping table are complete and meet the requirements.";
+"alarm_name_2091"="Abnormal Reactive Power Scheduling Instruction";
+"alarm_cause_2091"="1. The DI input is abnormal.
+2. The DI input is inconsistent with the configuration.";
+"alarm_suggestion_2091"="1. Check whether the cables are connected correctly to the DI ports.
+2. Access the configuration page for the dry contact DI reactive power scheduling mode and view the DI signal configuration mapping table. Contact the power grid company to check whether the configurations in the mapping table are complete and meet the requirements.";
+"alarm_name_2092"="Abnormal CT Cable Connection";
+"alarm_cause_2092"="1. The CT installation phase or direction is incorrect.
+2. The CT cable is disconnected.";
+"alarm_suggestion_2092"="1. Check whether the CT installation direction is correct.
+2. Check whether the CT installation phase is correct.
+3. Check whether the cable from the CT to the SUN2000 is disconnected.";
+"alarm_name_2093"="DC Switch Abnormal";
+"alarm_cause_2093"="The DC switches are not switched on, and the DC switch reset buttons are not fully pressed.";
+"alarm_suggestion_2093"="Check whether all DC switches are in the ON position. If not, turn the switches to the ON position (you can rotate the switches to ensure that they are in position). If the switch still cannot be turned to ON, press the reset buttons of all DC switches inwards until they cannot be moved, and then turn on the DC switches again.";
+"alarm_name_2094"="The remaining dischargeable capacity of the battery is low.";
+"alarm_cause_2094"="The remaining dischargeable capacity of the battery is lower than 10% of the total capacity in off-grid scenario.";
+"alarm_suggestion_2094"="The remaining power of the battery is low. Please remove unnecessary loads to increase power backup duration.";
+//
+"alarm_name_999999999"="Abnormal communication between management system and equipment";
+"alarm_cause_999999999"="Abnormal communication between management system and equipment";
+"alarm_suggestion_999999999"="Scenario 1: device connection through a network cable.
+1. Check whether the network and cable connection of the router are normal.
+2. Check whether the router network can access the public network.
+
+Scenario 2:device connection through WiFi.
+1. Check whether the router password is changed or the signal strength is weak.
+2. Check whether the router network can access the public network.
+
+Scenario 3:device connection through a 4G network.
+Check whether the SIM card is inserted improperly or in arrears, or its network is abnormal.
+
+Scenario 4: Equipment side system power outage.
+please check if the equipment power has been restored.";
+"alarm_name_2061"="Abnormal Grounding";
+"alarm_cause_2061"="1. The neutral wire or PE cable of the device is not connected.
+2. The output mode set for the device does not match the actual cable connection.";
+"alarm_suggestion_2061"="Power off the device (turn off the AC switch and DC switch, and wait for a period specified on the device safety warning label), and then perform the following operations:
+1. Check that the PE cable of the device is connected properly.
+2. If the device is connected to a TN power grid, check whether the neutral wire is properly connected and whether the voltage to ground is normal.
+3. After powering on the device, check whether the output mode set on the device matches the actual cable connection.";
+//
 

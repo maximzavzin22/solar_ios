@@ -17,6 +17,7 @@ class DatePickerView: UIView {
     var selectedDate: Date? {
         didSet {
             if let date = selectedDate {
+                print("selectedDate \(date)")
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: HomeController.selectedLanguage)
                 dateFormatter.dateFormat = "dd MMM, yyyy"
@@ -60,6 +61,7 @@ class DatePickerView: UIView {
         dP.maximumDate = Date()
         let loc = Locale(identifier: HomeController.selectedLanguage)
         dP.locale = loc
+        dP.timeZone = TimeZone.init(identifier: "UTC")
         return dP
     }()
     
