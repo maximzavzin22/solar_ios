@@ -13,24 +13,62 @@ class StationStatisticsView: UIView {
     
     var detailRealKpis: [DetailRealKpi]? {
         didSet {
-            var yields = [Double]()
+//            dump(detailRealKpis)
             var graphValues = [GraphValue]()
+            var koefficient = 1.0
+            let maxDetailRealKpi = detailRealKpis?.max {($0.inverter_power ?? 0.0) < ($1.inverter_power ?? 0.0)}
+            if let inverter_power = maxDetailRealKpi?.inverter_power {
+                print("Max inverter_power \(inverter_power)")
+                if(inverter_power < 1000.0) {
+                    koefficient = 1.0
+                    self.stationChartsView.yieldParametrLabel.text = NSLocalizedString("kwh", comment: "")
+                } else {
+                    if(inverter_power < 1000000.0) {
+                        koefficient = 1000.0
+                        self.stationChartsView.yieldParametrLabel.text = NSLocalizedString("mwh", comment: "")
+                    } else {
+                        koefficient = 1000000.0
+                        self.stationChartsView.yieldParametrLabel.text = NSLocalizedString("gwh", comment: "")
+                    }
+                }
+            }
+            
+            var yieldTotal: Double = 0.0
+            var revenueTotal: Double = 0.0
             for detailRealKpi in detailRealKpis ?? [] {
                 if let collectTime = detailRealKpi.collectTime {
                     detailRealKpi.date = Date(milliseconds: collectTime)
-                    yields.append(detailRealKpi.power_profit ?? 0.0)
+                    let graphValue = GraphValue()
                     let formatter = DateFormatter()
-                    formatter.dateFormat = "HH"
-                    let hourString = formatter.string(from: detailRealKpi.date ?? Date())
-                    var graphValue = GraphValue()
-                    graphValue.key = hourString
-                    graphValue.value = detailRealKpi.power_profit ?? 0.0
+                    let selectedDateType = stationChartsView.selectedDateType ?? "day"
+                    if(selectedDateType == "day") {
+                        formatter.dateFormat = "HH"
+                    }
+                    if(selectedDateType == "month") {
+                        formatter.dateFormat = "dd"
+                    }
+                    if(selectedDateType == "year") {
+                        formatter.dateFormat = "MM"
+                    }
+                    if(selectedDateType == "lifetime") {
+                        formatter.dateFormat = "yyyy"
+                    }
+                    if let date = detailRealKpi.date {
+                        let dateString = formatter.string(from: date)
+                        graphValue.key = dateString
+                        print("\(dateString) \(detailRealKpi.power_profit ?? 0.0) \(detailRealKpi.inverter_power ?? 0.0)")
+                    }
+                    revenueTotal = revenueTotal + (detailRealKpi.power_profit ?? 0.0)
+                    graphValue.powerProfit = detailRealKpi.power_profit ?? 0.0
+                    yieldTotal = yieldTotal + (detailRealKpi.inverter_power ?? 0.0)
+                    graphValue.inverterPower = (detailRealKpi.inverter_power ?? 0.0) / koefficient
                     graphValues.append(graphValue)
-                    print("\(hourString) \(detailRealKpi.power_profit ?? 0.0)")
                 }
             }
+           
             stationChartsView.setupBarChartView(graphValues: graphValues)
-//            dump(detailRealKpis)
+            stationChartsView.yieldTotal = yieldTotal
+            stationChartsView.revenueTotal = revenueTotal
         }
     }
     
@@ -122,11 +160,20 @@ class StationStatisticsView: UIView {
     
     func getDataForGraph() {
         let value = self.stationChartsView.selectedDateType ?? "day"
+        let date = self.stationChartsView.selectedDate ?? Date()
+        let collectTime = date.millisecondsSince1970
+        print("getDataForGraph \(date) \(collectTime)")
         if(value == "day") {
-            let date = self.stationChartsView.selectedDate ?? Date()
-            let collectTime = date.millisecondsSince1970
-            print("getDataForGraph \(date) \(collectTime)")
-            self.overviewController?.fetchStationHourKpi(collectTime: collectTime)
+            self.overviewController?.fetchReportKpi(collectTime: collectTime, road: "kpi-hour")
+        }
+        if(value == "month") {
+            self.overviewController?.fetchReportKpi(collectTime: collectTime, road: "kpi-daily")
+        }
+        if(value == "year") {
+            self.overviewController?.fetchReportKpi(collectTime: collectTime, road: "kpi-monthly")
+        }
+        if(value == "lifetime") {
+            self.overviewController?.fetchReportKpi(collectTime: collectTime, road: "kpi-yearly")
         }
     }
 }

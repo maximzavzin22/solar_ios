@@ -220,6 +220,12 @@ class JSONParse: NSObject {
             detailRealKpi.power_profit = result["power_profit"] as? Double ?? 0.0
             detailRealKpi.theory_power = result["theory_power"] as? Double ?? 0.0
             detailRealKpi.collectTime = result["collect_time"] as? Int64 ?? 0
+            detailRealKpi.installed_capacity = result["installed_capacity"] as? Double ?? 0.0
+            detailRealKpi.use_power = result["use_power"] as? Double ?? 0.0
+            detailRealKpi.perpower_ratio = result["perpower_ratio"] as? Double ?? 0.0
+            detailRealKpi.reduction_total_co2 = result["reduction_total_co2"] as? Double ?? 0.0
+            detailRealKpi.reduction_total_coal = result["reduction_total_coal"] as? Double ?? 0.0
+            detailRealKpi.reduction_total_tree = result["reduction_total_tree"] as? Double ?? 0.0
             return detailRealKpi
         }
         return nil

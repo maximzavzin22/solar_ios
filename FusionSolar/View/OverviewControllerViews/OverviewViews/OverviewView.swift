@@ -46,7 +46,7 @@ class OverviewView: UIView {
                         }
                     }
                 }
-                self.revenueValueOverviewView.valueLabel.text = "\(stationRealKpi.day_income ?? 0.00)"
+                self.revenueValueOverviewView.valueLabel.text = "\((stationRealKpi.day_income ?? 0.00).rounded(toPlaces: 2))"
                 self.initBigValueOverviewView(realKpi: stationRealKpi)
             } else {
                 emptyView.isHidden = false

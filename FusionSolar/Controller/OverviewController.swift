@@ -11,7 +11,7 @@ class OverviewController: UIViewController {
     
     var station: Station? {
         didSet {
-//            dump(station)
+            dump(station)
             self.titleLabel.text = station?.plantName ?? ""
             overviewView.station = station
             stationStatisticsView.environmentalView.total_power = self.station?.stationRealKpi?.total_power ?? 0.0
@@ -255,10 +255,10 @@ class OverviewController: UIViewController {
     }
     
     //ApiService
-    func fetchStationHourKpi(collectTime: Int64) {
+    func fetchReportKpi(collectTime: Int64, road: String) {
         if let plantCode = station?.plantCode {
             self.showLoadingView()
-            ApiService.sharedInstance.fetchStationHourKpi(collectTime: collectTime, station: plantCode) {
+            ApiService.sharedInstance.fetchReportKpi(collectTime: collectTime, station: plantCode, road: road) {
                 (error: CustomError?, detailRealKpis: [DetailRealKpi]?) in
                 self.hideLoadingView()
                 if(error?.code ?? 0 == 0) {

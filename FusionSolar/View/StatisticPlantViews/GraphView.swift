@@ -16,7 +16,6 @@ class GraphView: UIView {
         didSet {
             print("selectedDate \(selectedDate)")
             self.setupSelectedDate()
-//            self.setupBarChartView()
             self.homeStatisticsCellView?.getDataForGraph()
         }
     }
@@ -24,7 +23,7 @@ class GraphView: UIView {
     var selectedDateType: String? {
         didSet {
             self.selectedDate = Date()
-            self.setupSelectedDate()
+           // self.setupSelectedDate()
         }
     }
     
@@ -294,25 +293,21 @@ class GraphView: UIView {
             dateFormatter.dateFormat = "dd/MM/yyyy"
             selectedDateValueViewWidthConstraint?.constant = 112.dp
             newDate = Calendar.current.date(byAdding: .day, value: 1, to: date)
-            parametrLabel.text = NSLocalizedString("kwh", comment: "")
         }
         if(value == "month") {
             dateFormatter.dateFormat = "MM/yyyy"
             selectedDateValueViewWidthConstraint?.constant = 87.dp
             newDate = Calendar.current.date(byAdding: .month, value: 1, to: date)
-            parametrLabel.text = NSLocalizedString("mwh", comment: "")
         }
         if(value == "year") {
             dateFormatter.dateFormat = "yyyy"
             selectedDateValueViewWidthConstraint?.constant = 62.dp
             newDate = Calendar.current.date(byAdding: .year, value: 1, to: date)
-            parametrLabel.text = NSLocalizedString("mwh", comment: "")
         }
         if(value == "lifetime") {
             dateFormatter.dateFormat = "yyyy"
             selectedDateValueViewWidthConstraint?.constant = 62.dp
             newDate = Calendar.current.date(byAdding: .year, value: 1, to: date)
-            parametrLabel.text = NSLocalizedString("mwh", comment: "")
         }
         self.layoutIfNeeded()
         self.selectedDateLabel.text = dateFormatter.string(from: date)
@@ -434,62 +429,13 @@ class GraphView: UIView {
             var value = 0.0
             for graphValue in graphValues {
                 if(axisValue[i] == graphValue.key) {
-                    value = graphValue.value ?? 0.0
+                    value = graphValue.inverterPower ?? 0.0
                 }
             }
             yields.append(value)
         }
-       
-//        for yield in yields {
-//            for graphValue in graphValues {
-//                if(yield in)
-//            }
-//        }
-        
         self.yields = yields
        
-//        //for test
-//        if(value == "day") {
-//            self.yields[6] = 20.0
-//            self.yields[7] = 80.0
-//            self.yields[8] = 110.0
-//            self.yields[9] = 160.0
-//            self.yields[10] = 210.0
-//            self.yields[11] = 280.0
-//            self.yields[12] = 310.0
-//            self.yields[13] = 445.0
-//            self.yields[14] = 440.0
-//            self.yields[15] = 340.0
-//        }
-//        if(value == "month") {
-//            self.yields[0] = 1.8
-//            self.yields[1] = 2.8
-//            self.yields[2] = 3.1
-//            self.yields[3] = 0.7
-//            self.yields[4] = 4.2
-//            self.yields[5] = 3.3
-//            self.yields[6] = 1.0
-//            self.yields[7] = 2.2
-//            self.yields[8] = 4.1
-//            self.yields[9] = 2.9
-//            self.yields[10] = 3.7
-//            self.yields[10] = 1.1
-//        }
-//        if(value == "year") {
-//            self.yields[0] = 0.26
-//            self.yields[1] = 5.55
-//            self.yields[2] = 10.80
-//            self.yields[3] = 13.05
-//            self.yields[4] = 15.77
-//            self.yields[5] = 25.41
-//            self.yields[6] = 65.32
-//        }
-//        if(value == "lifetime") {
-//            self.yields[0] = 0.0
-//            self.yields[1] = 136.14
-//        }
-//        //
-                
         self.setChart()
     }
     
@@ -568,13 +514,10 @@ class GraphView: UIView {
         endComps.month = month == 12 ? 1 : month + 1
         endComps.year = month == 12 ? year + 1 : year
 
-            
         let startDate = calendar.date(from: startComps)!
         let endDate = calendar.date(from:endComps)!
 
-            
         let diff = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
-
         return diff.day
     }
     

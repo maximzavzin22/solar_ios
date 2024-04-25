@@ -189,9 +189,70 @@ class ApiService: NSObject {
         }) .resume()
     }
     
-    func fetchHourKpi(collectTime: Int64, completion: @escaping (CustomError?, [DetailRealKpi]?) -> ()) {
-        print("fetchHourKpi")
-        let url = URL(string: "\(sablabUrl)/api/stations/kpi-hour?collect_time=\(collectTime)")
+//    func fetchHourKpi(collectTime: Int64, completion: @escaping (CustomError?, [DetailRealKpi]?) -> ()) {
+//        print("fetchHourKpi")
+//        
+//        let url = URL(string: "\(sablabUrl)/api/stations/kpi-hour?collect_time=\(collectTime)")
+//        var request = URLRequest(url: url!)
+//        request.httpMethod = "GET"
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.setValue("Bearer \(HomeController.profile?.access_token ?? "")", forHTTPHeaderField: "Authorization")
+//
+//        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//            if let httpResponse = response as? HTTPURLResponse {
+//                print("fetchHourKpi statusCode: \(httpResponse.statusCode)")
+//                if(httpResponse.statusCode == 404 || httpResponse.statusCode == 500) {
+//                    DispatchQueue.main.async(execute: {
+//                        completion(self.getDefaultError(), nil)
+//                    })
+//                    return
+//                }
+//                if(httpResponse.statusCode == 401) {
+//                    DispatchQueue.main.async(execute: {
+//                        var requestError = CustomError()
+//                        requestError.code = 1
+//                        requestError.title = NSLocalizedString("auth_error_title", comment: "")
+//                        requestError.message = NSLocalizedString("auth_error_description", comment: "")
+//                        completion(requestError, nil)
+//                    })
+//                    return
+//                }
+//            }
+//            if error != nil {
+//                print(error)
+//                DispatchQueue.main.async(execute: {
+//                    completion(self.getDefaultError(), nil)
+//                })
+//                return
+//            }
+//            do {
+//                let result = String(data: data!, encoding: .utf8)
+//                print("fetchHourKpi result \(result)")
+//                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+//                
+//                let requestError = JSONParse.sharedInstance.errorParse(json: json)
+//                let detailRealKpis = JSONParse.sharedInstance.detailRealKpisParse(json: json)
+//                
+//                DispatchQueue.main.async(execute: {
+//                    completion(requestError, detailRealKpis)
+//                })
+//            } catch let jsonError {
+//                print(jsonError)
+//                DispatchQueue.main.async(execute: {
+//                    completion(self.getDefaultError(), nil)
+//                })
+//            }
+//        }) .resume()
+//    }
+    
+    func fetchReportKpi(collectTime: Int64, station: String, road: String, completion: @escaping (CustomError?, [DetailRealKpi]?) -> ()) {
+        print("fetchReportKpi")
+        var urlStr = "\(sablabUrl)/api/stations/\(road)?collect_time=\(collectTime)"
+        if(station != "") {
+            urlStr = "\(urlStr)&station=\(station)"
+        }
+        print("urlStr \(urlStr)")
+        let url = URL(string: urlStr)
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -199,7 +260,7 @@ class ApiService: NSObject {
 
         URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             if let httpResponse = response as? HTTPURLResponse {
-                print("fetchHourKpi statusCode: \(httpResponse.statusCode)")
+                print("fetchDailyKpi statusCode: \(httpResponse.statusCode)")
                 if(httpResponse.statusCode == 404 || httpResponse.statusCode == 500) {
                     DispatchQueue.main.async(execute: {
                         completion(self.getDefaultError(), nil)
@@ -226,11 +287,11 @@ class ApiService: NSObject {
             }
             do {
                 let result = String(data: data!, encoding: .utf8)
+                print("fetchDailyKpi result \(result)")
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                 
                 let requestError = JSONParse.sharedInstance.errorParse(json: json)
                 let detailRealKpis = JSONParse.sharedInstance.detailRealKpisParse(json: json)
-                //let regions = JSONParse.sharedInstance.regionsParse(json: json)
                 
                 DispatchQueue.main.async(execute: {
                     completion(requestError, detailRealKpis)
@@ -244,60 +305,60 @@ class ApiService: NSObject {
         }) .resume()
     }
     
-    func fetchStationHourKpi(collectTime: Int64, station: String, completion: @escaping (CustomError?, [DetailRealKpi]?) -> ()) {
-        print("fetchStationHourKpi")
-        let url = URL(string: "\(sablabUrl)/api/stations/kpi-hour?collect_time=\(collectTime)&station=\(station)")
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(HomeController.profile?.access_token ?? "")", forHTTPHeaderField: "Authorization")
-
-        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-            if let httpResponse = response as? HTTPURLResponse {
-                print("fetchStationHourKpi statusCode: \(httpResponse.statusCode)")
-                if(httpResponse.statusCode == 404 || httpResponse.statusCode == 500) {
-                    DispatchQueue.main.async(execute: {
-                        completion(self.getDefaultError(), nil)
-                    })
-                    return
-                }
-                if(httpResponse.statusCode == 401) {
-                    DispatchQueue.main.async(execute: {
-                        var requestError = CustomError()
-                        requestError.code = 1
-                        requestError.title = NSLocalizedString("auth_error_title", comment: "")
-                        requestError.message = NSLocalizedString("auth_error_description", comment: "")
-                        completion(requestError, nil)
-                    })
-                    return
-                }
-            }
-            if error != nil {
-                print(error)
-                DispatchQueue.main.async(execute: {
-                    completion(self.getDefaultError(), nil)
-                })
-                return
-            }
-            do {
-                let result = String(data: data!, encoding: .utf8)
+//    func fetchStationHourKpi(collectTime: Int64, station: String, completion: @escaping (CustomError?, [DetailRealKpi]?) -> ()) {
+//        print("fetchStationHourKpi")
+//        let url = URL(string: "\(sablabUrl)/api/stations/kpi-hour?collect_time=\(collectTime)&station=\(station)")
+//        var request = URLRequest(url: url!)
+//        request.httpMethod = "GET"
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.setValue("Bearer \(HomeController.profile?.access_token ?? "")", forHTTPHeaderField: "Authorization")
+//
+//        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//            if let httpResponse = response as? HTTPURLResponse {
+//                print("fetchStationHourKpi statusCode: \(httpResponse.statusCode)")
+//                if(httpResponse.statusCode == 404 || httpResponse.statusCode == 500) {
+//                    DispatchQueue.main.async(execute: {
+//                        completion(self.getDefaultError(), nil)
+//                    })
+//                    return
+//                }
+//                if(httpResponse.statusCode == 401) {
+//                    DispatchQueue.main.async(execute: {
+//                        var requestError = CustomError()
+//                        requestError.code = 1
+//                        requestError.title = NSLocalizedString("auth_error_title", comment: "")
+//                        requestError.message = NSLocalizedString("auth_error_description", comment: "")
+//                        completion(requestError, nil)
+//                    })
+//                    return
+//                }
+//            }
+//            if error != nil {
+//                print(error)
+//                DispatchQueue.main.async(execute: {
+//                    completion(self.getDefaultError(), nil)
+//                })
+//                return
+//            }
+//            do {
+//                let result = String(data: data!, encoding: .utf8)
 //                print("fetchStationHourKpi result \(result)")
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                
-                let requestError = JSONParse.sharedInstance.errorParse(json: json)
-                let detailRealKpis = JSONParse.sharedInstance.detailRealKpisParse(json: json)
-                
-                DispatchQueue.main.async(execute: {
-                    completion(requestError, detailRealKpis)
-                })
-            } catch let jsonError {
-                print(jsonError)
-                DispatchQueue.main.async(execute: {
-                    completion(self.getDefaultError(), nil)
-                })
-            }
-        }) .resume()
-    }
+//                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+//                
+//                let requestError = JSONParse.sharedInstance.errorParse(json: json)
+//                let detailRealKpis = JSONParse.sharedInstance.detailRealKpisParse(json: json)
+//                
+//                DispatchQueue.main.async(execute: {
+//                    completion(requestError, detailRealKpis)
+//                })
+//            } catch let jsonError {
+//                print(jsonError)
+//                DispatchQueue.main.async(execute: {
+//                    completion(self.getDefaultError(), nil)
+//                })
+//            }
+//        }) .resume()
+//    }
     //
     
     

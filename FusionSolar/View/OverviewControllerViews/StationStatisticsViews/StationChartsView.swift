@@ -17,14 +17,61 @@ class StationChartsView: UIView {
             print("selectedDate \(selectedDate)")
             self.setupSelectedDate()
             self.stationStatisticsView?.getDataForGraph()
-           // self.setupBarChartView(powerProfits: [Double]())
         }
     }
     
     var selectedDateType: String? {
         didSet {
             self.selectedDate = Date()
-            self.setupSelectedDate()
+        }
+    }
+    
+    var yieldTotal: Double? {
+        didSet {
+            if let value = yieldTotal {
+                let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 26.dp), NSAttributedString.Key.foregroundColor: UIColor.rgb(1, green: 6, blue: 10)]
+                let attrs1: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 14.dp), NSAttributedString.Key.foregroundColor: UIColor.rgb(106, green: 106, blue: 106)]
+                if(value < 1000.0) {
+                    let attString: NSMutableAttributedString = NSMutableAttributedString(string: "\(value.rounded(toPlaces: 2))", attributes: attrs)
+                    let attrString1 = NSAttributedString(string: " \(NSLocalizedString("kwh", comment: ""))", attributes: attrs1)
+                    attString.append(attrString1)
+                    yieldValueLabel.attributedText = attString
+                } else {
+                    if(value < 1000000.0) {
+                        let attString: NSMutableAttributedString = NSMutableAttributedString(string: "\((value/1000.0).rounded(toPlaces: 2))", attributes: attrs)
+                        let attrString1 = NSAttributedString(string: " \(NSLocalizedString("mwh", comment: ""))", attributes: attrs1)
+                        attString.append(attrString1)
+                        yieldValueLabel.attributedText = attString
+                    } else {
+                        let attString: NSMutableAttributedString = NSMutableAttributedString(string: "\((value/1000000.0).rounded(toPlaces: 2))", attributes: attrs)
+                        let attrString1 = NSAttributedString(string: " \(NSLocalizedString("gwh", comment: ""))", attributes: attrs1)
+                        attString.append(attrString1)
+                        yieldValueLabel.attributedText = attString
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    var revenueTotal: Double? {
+        didSet {
+            if let value = revenueTotal {
+                let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 26.dp), NSAttributedString.Key.foregroundColor: UIColor.rgb(1, green: 6, blue: 10)]
+                let attrs1: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 14.dp), NSAttributedString.Key.foregroundColor: UIColor.rgb(106, green: 106, blue: 106)]
+                
+                if(value < 1000.0) {
+                    let attString: NSMutableAttributedString = NSMutableAttributedString(string: "\(value.rounded(toPlaces: 2))", attributes: attrs)
+                    let attrString1 = NSAttributedString(string: " \(NSLocalizedString("$", comment: ""))", attributes: attrs1)
+                    attString.append(attrString1)
+                    revenueValueLabel.attributedText = attString
+                } else {
+                    let attString: NSMutableAttributedString = NSMutableAttributedString(string: "\((value/1000.0).rounded(toPlaces: 2))k", attributes: attrs)
+                    let attrString1 = NSAttributedString(string: " \(NSLocalizedString("$", comment: ""))", attributes: attrs1)
+                    attString.append(attrString1)
+                    revenueValueLabel.attributedText = attString
+                }
+            }
         }
     }
     
@@ -437,25 +484,21 @@ class StationChartsView: UIView {
             dateFormatter.dateFormat = "dd/MM/yyyy"
             selectedDateValueViewWidthConstraint?.constant = 112.dp
             newDate = Calendar.current.date(byAdding: .day, value: 1, to: date)
-            yieldParametrLabel.text = NSLocalizedString("kwh", comment: "")
         }
         if(value == "month") {
             dateFormatter.dateFormat = "MM/yyyy"
             selectedDateValueViewWidthConstraint?.constant = 87.dp
             newDate = Calendar.current.date(byAdding: .month, value: 1, to: date)
-            yieldParametrLabel.text = NSLocalizedString("mwh", comment: "")
         }
         if(value == "year") {
             dateFormatter.dateFormat = "yyyy"
             selectedDateValueViewWidthConstraint?.constant = 62.dp
             newDate = Calendar.current.date(byAdding: .year, value: 1, to: date)
-            yieldParametrLabel.text = NSLocalizedString("mwh", comment: "")
         }
         if(value == "lifetime") {
             dateFormatter.dateFormat = "yyyy"
             selectedDateValueViewWidthConstraint?.constant = 62.dp
             newDate = Calendar.current.date(byAdding: .year, value: 1, to: date)
-            yieldParametrLabel.text = NSLocalizedString("mwh", comment: "")
         }
         self.layoutIfNeeded()
         self.selectedDateLabel.text = dateFormatter.string(from: date)
@@ -603,65 +646,26 @@ class StationChartsView: UIView {
             var value = 0.0
             for graphValue in graphValues {
                 if(axisValue[i] == graphValue.key) {
-                    value = graphValue.value ?? 0.0
+                    value = graphValue.inverterPower ?? 0.0
                 }
             }
             yields.append(value)
         }
        
-//        for yield in yields {
-//            for graphValue in graphValues {
-//                if(yield in)
-//            }
-//        }
         
         self.yields = yields
+        
         var revenues = [Double]()
         for i in 0..<axisValue.count {
-            revenues.append(0.0)
+            var value = 0.0
+            for graphValue in graphValues {
+                if(axisValue[i] == graphValue.key) {
+                    value = graphValue.powerProfit ?? 0.0
+                }
+            }
+            revenues.append(value)
         }
         self.revenues = revenues
-//        //for test
-//        if(value == "day") {
-//            self.yields[6] = 20.0
-//            self.yields[7] = 80.0
-//            self.yields[8] = 110.0
-//            self.yields[9] = 160.0
-//            self.yields[10] = 210.0
-//            self.yields[11] = 280.0
-//            self.yields[12] = 310.0
-//            self.yields[13] = 445.0
-//            self.yields[14] = 440.0
-//            self.yields[15] = 340.0
-//        }
-//        if(value == "month") {
-//            self.yields[0] = 1.8
-//            self.yields[1] = 2.8
-//            self.yields[2] = 3.1
-//            self.yields[3] = 0.7
-//            self.yields[4] = 4.2
-//            self.yields[5] = 3.3
-//            self.yields[6] = 1.0
-//            self.yields[7] = 2.2
-//            self.yields[8] = 4.1
-//            self.yields[9] = 2.9
-//            self.yields[10] = 3.7
-//            self.yields[10] = 1.1
-//        }
-//        if(value == "year") {
-//            self.yields[0] = 0.26
-//            self.yields[1] = 5.55
-//            self.yields[2] = 10.80
-//            self.yields[3] = 13.05
-//            self.yields[4] = 15.77
-//            self.yields[5] = 25.41
-//            self.yields[6] = 65.32
-//        }
-//        if(value == "lifetime") {
-//            self.yields[0] = 0.0
-//            self.yields[1] = 136.14
-//        }
-//        //
                 
         self.setChart()
         self.setRevenueChart()
@@ -771,7 +775,7 @@ class StationChartsView: UIView {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "$")
         chartDataSet.drawValuesEnabled = false
         chartDataSet.colors = [UIColor.rgb(25, green: 206, blue: 135)]
         

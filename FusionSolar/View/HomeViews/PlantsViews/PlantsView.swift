@@ -41,7 +41,7 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     
     var stations: [Station]? {
         didSet {
-//            dump(stations)
+            dump(stations)
             self.statusNavigationView.stations = stations
             self.generateShowStations()
         }

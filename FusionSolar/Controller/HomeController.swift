@@ -79,7 +79,9 @@ class HomeController: UIViewController {
                     self.homeView.isHidden = true
                     self.maintenanceView.isHidden = true
                     self.statisticPlantView.isHidden = false
-                    self.statisticPlantView.getDataForGraph()
+                    if(self.statisticPlantView.detailRealKpis == nil) {
+                        self.statisticPlantView.getDataForGraph()
+                    }
                     self.profileView.isHidden = true
                 }
                 if(page == 3) {
@@ -386,9 +388,9 @@ class HomeController: UIViewController {
         }
     }
     
-    func fetchHourKpi(collectTime: Int64) {
+    func fetchReportKpi(collectTime: Int64, road: String) {
         self.showLoadingView()
-        ApiService.sharedInstance.fetchHourKpi(collectTime: collectTime) {
+        ApiService.sharedInstance.fetchReportKpi(collectTime: collectTime, station: "", road: road) {
             (error: CustomError?, detailRealKpis: [DetailRealKpi]?) in
             self.hideLoadingView()
             if(error?.code ?? 0 == 0) {
@@ -398,6 +400,7 @@ class HomeController: UIViewController {
             }
         }
     }
+    
 //
 //    func fetchStations(stationCodes: String) {
 //       // self.showLoadingView()
