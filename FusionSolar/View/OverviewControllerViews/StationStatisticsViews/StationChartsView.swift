@@ -14,7 +14,6 @@ class StationChartsView: UIView {
     
     var selectedDate: Date? {
         didSet {
-            print("selectedDate \(selectedDate)")
             self.setupSelectedDate()
             self.stationStatisticsView?.getDataForGraph()
         }
@@ -318,8 +317,7 @@ class StationChartsView: UIView {
         self.setupDateSwitcherView()
         self.setupSelectedDateView()
         self.setupYieldView()
-        
-//        self.setupBarChartView(powerProfits: [Double]())
+
         self.setupSelectedDate()
     }
     
@@ -373,7 +371,7 @@ class StationChartsView: UIView {
     }
     
     @objc func yieldViewPress() {
-        print("yieldViewPress")
+
     }
     
     func setupDateSwitcherView() {
@@ -503,15 +501,13 @@ class StationChartsView: UIView {
         self.layoutIfNeeded()
         self.selectedDateLabel.text = dateFormatter.string(from: date)
         if(newDate != nil) {
-            var toDay = Calendar.current.startOfDay(for: Date())
-            var newDay = Calendar.current.startOfDay(for: newDate!)
+            let toDay = Calendar.current.startOfDay(for: Date())
+            let newDay = Calendar.current.startOfDay(for: newDate!)
             if(newDay > toDay) {
-                print("needs disable button")
                 self.rightButton.isEnabled = false
                 let image = UIImage(named: "arrow_right_gray")?.withRenderingMode(.alwaysOriginal)
                 self.rightButton.setImage(image, for: .normal)
             } else {
-                print("needs active button")
                 self.rightButton.isEnabled = true
                 let image = UIImage(named: "arrow_right")?.withRenderingMode(.alwaysOriginal)
                 self.rightButton.setImage(image, for: .normal)
@@ -520,7 +516,6 @@ class StationChartsView: UIView {
     }
     
     @objc func leftButtonPress() {
-        print("leftButtonPress")
         let date = self.selectedDate ?? Date()
         let value = self.selectedDateType ?? "day"
         if(value == "day") {
@@ -538,7 +533,6 @@ class StationChartsView: UIView {
     }
     
     @objc func rightButtonPress() {
-        print("rightButtonPress")
         let date = self.selectedDate ?? Date()
         let value = self.selectedDateType ?? "day"
         if(value == "day") {
@@ -579,6 +573,8 @@ class StationChartsView: UIView {
         
         yieldLabel.centerYAnchor.constraint(equalTo: yieldView.centerYAnchor).isActive = true
         questionImageView.centerYAnchor.constraint(equalTo: yieldView.centerYAnchor).isActive = true
+        
+        questionImageView.isHidden = true
     }
     
     func getWidth(text: String) -> CGFloat {
@@ -606,7 +602,11 @@ class StationChartsView: UIView {
         if(value == "day") {
             let hours = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
             axisValue = hours
-            granularity = 1.0
+            if(UIScreen.main.bounds.height/UIScreen.main.bounds.width < 16/9) {
+                granularity = 1.0
+            } else {
+                granularity = 2.0
+            }
         }
         if(value == "month") {
             let date = self.selectedDate ?? Date()
@@ -721,7 +721,7 @@ class StationChartsView: UIView {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "PV output")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: NSLocalizedString("pv_output", comment: ""))
         chartDataSet.drawValuesEnabled = false
         chartDataSet.colors = [UIColor.rgb(25, green: 206, blue: 135)]
         
@@ -789,24 +789,17 @@ class StationChartsView: UIView {
     
     func getDaysInMonth(month: Int, year: Int) -> Int? {
         let calendar = Calendar.current
-
         var startComps = DateComponents()
         startComps.day = 1
         startComps.month = month
         startComps.year = year
-
         var endComps = DateComponents()
         endComps.day = 1
         endComps.month = month == 12 ? 1 : month + 1
         endComps.year = month == 12 ? year + 1 : year
-
-            
         let startDate = calendar.date(from: startComps)!
         let endDate = calendar.date(from:endComps)!
-
-            
         let diff = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
-
         return diff.day
     }
 }

@@ -20,13 +20,7 @@ class HomeController: UIViewController {
     
     static var window: UIWindow?
     static var topPadding: CGFloat = 0.0
-    
-    var pageNo = 1
-    var isLoadEnd = false
-    
-    var allStations = [Station]()
-    
-    static var orrientation = "portain"
+    static var bottomSafeArea: CGFloat = 0.0
     
     var stations: [Station]? {
         didSet {
@@ -50,8 +44,6 @@ class HomeController: UIViewController {
             }
             self.homeView.plantsView.stations = self.stations
             self.statisticPlantView.stations = self.stations
-            
-            
         }
     }
     
@@ -81,6 +73,9 @@ class HomeController: UIViewController {
                     self.statisticPlantView.isHidden = false
                     if(self.statisticPlantView.detailRealKpis == nil) {
                         self.statisticPlantView.getDataForGraph()
+                    }
+                    if(self.statisticPlantView.environmentalView.detailRealKpis == nil) {
+                        self.fetchEnvironmental(collectTime: Date().millisecondsSince1970)
                     }
                     self.profileView.isHidden = true
                 }
@@ -196,6 +191,7 @@ class HomeController: UIViewController {
         
         HomeController.window = UIApplication.shared.keyWindow
         HomeController.topPadding = HomeController.window?.safeAreaInsets.top ?? 0.0
+        HomeController.bottomSafeArea = HomeController.window?.safeAreaInsets.bottom ?? 0.0
         
         self.view.backgroundColor = .rgb(241, green: 243, blue: 245)
         
@@ -208,31 +204,19 @@ class HomeController: UIViewController {
         self.setupToolbar()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-//
-//        if(size.width > self.view.frame.size.width){
-//            print("Landscape")
-//            //self.setupView()
-//            HomeController.orrientation = "landscape"
-//            self.view.layoutIfNeeded()
-//            self.homeView.collectionView.reloadData()
-////            self.homeView.collectionView.collectionViewLayout.invalidateLayout()
-//        }
-//        else{
-//            print("Portrait")
-//            HomeController.orrientation = "portrait"
-//           // self.setupView()
-//            self.view.layoutIfNeeded()
-//            self.homeView.collectionView.reloadData()
-//        }
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       get {
+          return .portrait
+       }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        self.maintenanceView.collectionView.collectionViewLayout.invalidateLayout()
         self.menuBar.collectionView.collectionViewLayout.invalidateLayout()
-        //self.devicesView.collectionView.collectionViewLayout.invalidateLayout()
     }
     
     func setupView() {
@@ -373,17 +357,14 @@ class HomeController: UIViewController {
     
     //ApiService
     func fetchStations() {
-        if(!isLoadEnd) {
-            self.showLoadingView()
-            ApiService.sharedInstance.fetchStations(pageNo: self.pageNo) {
-                (error: CustomError?, stations: [Station]?) in
-                self.hideLoadingView()
-                if(error?.code ?? 0 == 0) {
-                    self.isLoadEnd = true
-                    self.stations = stations
-                } else {
-                    //error
-                }
+        self.showLoadingView()
+        ApiService.sharedInstance.fetchStations() {
+            (error: CustomError?, stations: [Station]?) in
+            self.hideLoadingView()
+            if(error?.code ?? 0 == 0) {
+                self.stations = stations
+            } else {
+                //error
             }
         }
     }
@@ -401,35 +382,18 @@ class HomeController: UIViewController {
         }
     }
     
-//
-//    func fetchStations(stationCodes: String) {
-//       // self.showLoadingView()
-//        ApiService.sharedInstance.fetchStationRealKpi(stationCodes: stationCodes) {
-//            (error: CustomError?, realKpis: [StationRealKpi]?) in
-//          //  self.hideLoadingView()
-//            if(error?.code ?? 0 == 0) {
-//                if(realKpis?.count ?? 0 > 0) {
-//                    self.realKpis = realKpis
-//                }
-//                self.compliteAllRequests()
-//            } else {
-//                //error
-//            }
-//        }
-//    }
-//    
-//    func fetchAlarmList(stationCodes: String) {
-//      //  self.showLoadingView()
-//        ApiService.sharedInstance.fetchAlarmList(stationCodes: stationCodes) {
-//            (error: CustomError?, alarms: [Alarm]?) in
-//         //   self.hideLoadingView()
-//            if(error?.code ?? 0 == 0) {
-//                self.alarms = alarms
-//            } else {
-//                //error
-//            }
-//        }
-//    }
+    func fetchEnvironmental(collectTime: Int64) {
+        self.showLoadingView()
+        ApiService.sharedInstance.fetchReportKpi(collectTime: collectTime, station: "", road: "kpi-yearly") {
+            (error: CustomError?, detailRealKpis: [DetailRealKpi]?) in
+            self.hideLoadingView()
+            if(error?.code ?? 0 == 0) {
+                self.statisticPlantView.environmentalView.detailRealKpis = detailRealKpis
+            } else {
+                //error
+            }
+        }
+    }
     //
     
     //Error and Loading views
@@ -458,24 +422,17 @@ class HomeController: UIViewController {
     
     //keyboard
     func setupToolbar() {
-        print("setupToolbar")
-        //init toolbar
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30.dp))
-        //create left side empty space so that done button set on right side
         let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("done", comment: ""), style: .done, target: self, action: #selector(self.doneButtonAction))
         toolbar.setItems([flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
-        //setting toolbar as inputAccessoryView
         
         homeView.plantsView.plantsSearchView.searchTextField.inputAccessoryView = toolbar
         maintenanceView.alarmsView.alarmSearchView.searchTextField.inputAccessoryView = toolbar
-//        devicesView.searchDevicesView.devicesSearchView.searchTextField.inputAccessoryView = toolbar
-//        maintenanceView.tasksCellView?.inspectionTasksCellView?.searchView.searchTextField.inputAccessoryView = toolbar
     }
     
     @objc func doneButtonAction() {
-        print("doneButtonAction")
         self.view.endEditing(true)
     }
     //

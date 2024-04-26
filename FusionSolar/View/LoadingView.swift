@@ -26,8 +26,6 @@ class LoadingView: UIView {
         return view
     }()
     
-//    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -40,16 +38,8 @@ class LoadingView: UIView {
     
     func setupView() {
         self.addSubview(loadingBlackoutView)
-       // self.addBlurEffect()
         self.addConstraintsWithFormat("H:|[v0]|", views: loadingBlackoutView)
         self.addConstraintsWithFormat("V:|[v0]|", views: loadingBlackoutView)
-        
-//        self.addSubview(activityIndicator)
-//        self.addConstraintsWithFormat("H:[v0]", views: activityIndicator)
-//        self.addConstraintsWithFormat("V:[v0]", views: activityIndicator)
-//        activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-//        activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-//        activityIndicator.center = self.center
         
         self.addSubview(animationView)
         self.addConstraintsWithFormat("H:[v0(\(175.dp))]", views: animationView)
@@ -60,21 +50,11 @@ class LoadingView: UIView {
     }
     
     func startActivityIndicator() {
-        print("startActivityIndicator")
         animationView.play()
-//        self.activityIndicator.isHidden = false
-//        activityIndicator.center = self.center
-//        activityIndicator.hidesWhenStopped = true
-//        activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-//       // activityIndicator.style = UIActivityIndicatorView.Style.gray
-//
-//        //self.addSubview(activityIndicator)
-//        activityIndicator.startAnimating()
     }
     
     func stopActivityIndicator() {
         animationView.stop()
-//        activityIndicator.stopAnimating()
         self.isHidden = true
     }
     
@@ -86,7 +66,7 @@ class LoadingView: UIView {
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.frame = self.bounds
         
-        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(blurEffectView!)
     }
     

@@ -113,21 +113,16 @@ class StationAlarmsController: UIViewController {
     
     //keyboard
     func setupToolbar() {
-        print("setupToolbar")
-        //init toolbar
         let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30.dp))
-        //create left side empty space so that done button set on right side
         let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("done", comment: ""), style: .done, target: self, action: #selector(self.doneButtonAction))
         toolbar.setItems([flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
-        //setting toolbar as inputAccessoryView
 
         self.alarmsView.alarmSearchView.searchTextField.inputAccessoryView = toolbar
     }
     
     @objc func doneButtonAction() {
-        print("doneButtonAction")
         self.view.endEditing(true)
     }
     //

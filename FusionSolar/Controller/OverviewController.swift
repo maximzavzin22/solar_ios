@@ -11,10 +11,9 @@ class OverviewController: UIViewController {
     
     var station: Station? {
         didSet {
-            dump(station)
+//            dump(station)
             self.titleLabel.text = station?.plantName ?? ""
             overviewView.station = station
-            stationStatisticsView.environmentalView.total_power = self.station?.stationRealKpi?.total_power ?? 0.0
         }
     }
     
@@ -29,6 +28,9 @@ class OverviewController: UIViewController {
                 if(value == 1) {
                     overviewView.isHidden = true
                     stationStatisticsView.isHidden = false
+                    if(self.stationStatisticsView.environmentalView.detailRealKpis == nil) {
+                        self.fetchEnvironmental(collectTime: Date().millisecondsSince1970)
+                    }
                     stationStatisticsView.getDataForGraph()
                     stationDevicesView.isHidden = true
                 }
@@ -263,6 +265,21 @@ class OverviewController: UIViewController {
                 self.hideLoadingView()
                 if(error?.code ?? 0 == 0) {
                     self.stationStatisticsView.detailRealKpis = detailRealKpis
+                } else {
+                    //error
+                }
+            }
+        }
+    }
+    
+    func fetchEnvironmental(collectTime: Int64) {
+        if let plantCode = station?.plantCode {
+            self.showLoadingView()
+            ApiService.sharedInstance.fetchReportKpi(collectTime: collectTime, station: plantCode, road: "kpi-yearly") {
+                (error: CustomError?, detailRealKpis: [DetailRealKpi]?) in
+                self.hideLoadingView()
+                if(error?.code ?? 0 == 0) {
+                    self.stationStatisticsView.environmentalView.detailRealKpis = detailRealKpis
                 } else {
                     //error
                 }

@@ -31,9 +31,9 @@ class StatusNavigationView: UIView {
                         }
                     }
                 }
-                normalPlantsTopView.valueLabel.text = "\(normalCount ?? 0)"
-                faultyPlantsTopView.valueLabel.text = "\(faultyCount ?? 0)"
-                offlinePlantsTopView.valueLabel.text = "\(offlineCount ?? 0)"
+                normalPlantsTopView.valueLabel.text = "\(normalCount)"
+                faultyPlantsTopView.valueLabel.text = "\(faultyCount)"
+                offlinePlantsTopView.valueLabel.text = "\(offlineCount)"
             }
         }
     }

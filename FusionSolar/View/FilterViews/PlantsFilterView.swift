@@ -219,11 +219,6 @@ class PlantsFilterView: UIView {
     }
     
     func setupView() {
-        let window = UIApplication.shared.keyWindow
-        var topSafeArea: CGFloat = 0.0
-        topSafeArea = window?.safeAreaInsets.top ?? 0
-        bottomSafeArea = window?.safeAreaInsets.bottom ?? 0
-        
         self.addSubview(blackoutView)
         self.addBlurEffect()
         self.addSubview(borderView)
@@ -232,7 +227,7 @@ class PlantsFilterView: UIView {
         self.addConstraintsWithFormat("H:|[v0]|", views: borderView)
         self.addConstraintsWithFormat("V:|[v0]|", views: blackoutView)
         
-        height = 392.dp + bottomSafeArea
+        height = 392.dp + HomeController.bottomSafeArea
         
         viewBottomConstraint = borderView.anchor(nil, left: nil, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: (-1 * height), rightConstant: 0, widthConstant: 0, heightConstant: 0)[0]
         viewBottomConstraint?.isActive = true
@@ -460,7 +455,6 @@ class PlantsFilterView: UIView {
     }
     
     @objc func resetButtonPress() {
-        print("resetButtonPress")
         self.unSelectAll()
         self.cap1FilterCellView.isSelected = true
         self.fromDate = nil
@@ -478,21 +472,16 @@ class PlantsFilterView: UIView {
     }
     
     @objc func confirmButtonPress() {
-        print("confirmButtonPress")
         self.isDatePickerShow = false
         self.hideAnimation()
         var isFilter = true
-        if((self.cap1FilterCellView.isSelected ?? false) && fromDate == nil && toDate == nil) { //тут надо добавить дату
-            print("confirmButtonPress")
+        if((self.cap1FilterCellView.isSelected ?? false) && fromDate == nil && toDate == nil) {
             isFilter = false
         }
-        if(!(self.cap1FilterCellView.isSelected ?? false) || fromDate != nil || toDate != nil) { //тут надо добавить дату
-            print("confirmButtonPress")
+        if(!(self.cap1FilterCellView.isSelected ?? false) || fromDate != nil || toDate != nil) {
             isFilter = true
         }
-        
         self.sendData()
-        
         self.homeController?.homeView.plantsView.isFilter = isFilter
     }
     
@@ -516,7 +505,6 @@ class PlantsFilterView: UIView {
     }
     
     func showAnimaton() {
-        print("showAnimaton")
         viewBottomConstraint?.constant = 0.dp
         blackoutView.alpha = 0
         blackoutView.isHidden = false
@@ -535,7 +523,7 @@ class PlantsFilterView: UIView {
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.frame = self.bounds
         
-        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(blurEffectView!)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.closeBlackoutView))
@@ -544,49 +532,7 @@ class PlantsFilterView: UIView {
     }
     
     @objc func closeBlackoutView() {
-        print("close Status View")
         self.isDatePickerShow = false
         hideAnimation()
-    }
-}
-
-class FilterCellView: UIView {
-    
-    var isSelected: Bool? {
-        didSet {
-            if(isSelected ?? false) {
-                self.backgroundColor = .rgb(231, green: 238, blue: 254)
-            } else {
-                self.backgroundColor = .rgb(243, green: 243, blue: 243)
-            }
-        }
-    }
-    
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .rgb(1, green: 6, blue: 10)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.backgroundColor = .rgb(243, green: 243, blue: 243)
-        self.layer.cornerRadius = 14.dp
-        
-        self.setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupView() {
-        self.addSubview(titleLabel)
-        self.addConstraintsWithFormat("H:|-\(8.dp)-[v0]-\(8.dp)-|", views: titleLabel)
-        self.addConstraintsWithFormat("V:[v0]", views: titleLabel)
-        titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }

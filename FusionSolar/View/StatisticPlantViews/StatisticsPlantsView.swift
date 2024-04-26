@@ -60,13 +60,11 @@ class StatisticsPlantsView: UIView, UICollectionViewDataSource, UICollectionView
     
     //collectionView Setup
     func setupCollectionView() {
-        print("setupCollectionView")
         collectionView.register(StatisticPlantCellView.self, forCellWithReuseIdentifier: "statisticPlantCellViewId")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var count = self.stations?.count ?? 0
-        return count
+        return self.stations?.count ?? 0
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -75,7 +73,7 @@ class StatisticsPlantsView: UIView, UICollectionViewDataSource, UICollectionView
         cell.index = index
         cell.station = self.stations?[index]
         if(index == (self.stations?.count ?? 0) - 1) {
-            cell.seperateView.isHidden = true//true
+            cell.seperateView.isHidden = true
         } else {
             cell.seperateView.isHidden = true
         }
@@ -92,11 +90,6 @@ class StatisticsPlantsView: UIView, UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8.dp
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Press")
-        let index = indexPath.item
     }
     //collectionView Setup end
 }

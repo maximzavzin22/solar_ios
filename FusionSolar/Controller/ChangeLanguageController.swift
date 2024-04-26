@@ -235,7 +235,7 @@ class ChangeLanguageController: UIViewController {
     }
     
     func setupLanguage() {
-        var language = HomeController.selectedLanguage
+        let language = HomeController.selectedLanguage
         let defaults = UserDefaults.standard
         defaults.set (language, forKey: "AppleLanguage")
         defaults.synchronize ()

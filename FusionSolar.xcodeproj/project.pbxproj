@@ -43,6 +43,9 @@
 		2260A4E52BD27740003939DB /* AlarmDetailTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E42BD27740003939DB /* AlarmDetailTextView.swift */; };
 		2260A4E72BD2775C003939DB /* AlarmContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E62BD2775C003939DB /* AlarmContactView.swift */; };
 		2260A4E92BD27A6E003939DB /* RegionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4E82BD27A6E003939DB /* RegionsController.swift */; };
+		226363312BDB7A07008ED51F /* SearchDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226363302BDB7A07008ED51F /* SearchDevicesView.swift */; };
+		226363332BDB7A35008ED51F /* DevicesSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226363322BDB7A35008ED51F /* DevicesSearchView.swift */; };
+		226363362BDB805B008ED51F /* FilterCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226363352BDB805B008ED51F /* FilterCellView.swift */; };
 		229540C72BD0DEEE00BA0884 /* StatusNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */; };
 		229540C92BD0E1BB00BA0884 /* PlantsTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */; };
 		229540CB2BD0E1D700BA0884 /* PlantsSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */; };
@@ -185,6 +188,9 @@
 		2260A4E42BD27740003939DB /* AlarmDetailTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailTextView.swift; sourceTree = "<group>"; };
 		2260A4E62BD2775C003939DB /* AlarmContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmContactView.swift; sourceTree = "<group>"; };
 		2260A4E82BD27A6E003939DB /* RegionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionsController.swift; sourceTree = "<group>"; };
+		226363302BDB7A07008ED51F /* SearchDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDevicesView.swift; sourceTree = "<group>"; };
+		226363322BDB7A35008ED51F /* DevicesSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesSearchView.swift; sourceTree = "<group>"; };
+		226363352BDB805B008ED51F /* FilterCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCellView.swift; sourceTree = "<group>"; };
 		229540C62BD0DEEE00BA0884 /* StatusNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNavigationView.swift; sourceTree = "<group>"; };
 		229540C82BD0E1BB00BA0884 /* PlantsTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTopView.swift; sourceTree = "<group>"; };
 		229540CA2BD0E1D700BA0884 /* PlantsSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsSearchView.swift; sourceTree = "<group>"; };
@@ -399,6 +405,15 @@
 			path = AlarmDetailViews;
 			sourceTree = "<group>";
 		};
+		226363342BDB8044008ED51F /* FilterViews */ = {
+			isa = PBXGroup;
+			children = (
+				22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */,
+				226363352BDB805B008ED51F /* FilterCellView.swift */,
+			);
+			path = FilterViews;
+			sourceTree = "<group>";
+		};
 		229540C52BD0DEAE00BA0884 /* PlantsViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +516,7 @@
 		22A58A4E2A69151100E29710 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				226363342BDB8044008ED51F /* FilterViews */,
 				22FB575C2BD627DE00048FEE /* RegionsViews */,
 				22A58A7F2A6A4B6B00E29710 /* HomeViews */,
 				2260A4E12BD276FA003939DB /* AlarmDetailViews */,
@@ -518,7 +534,6 @@
 				22C53B882A6EA7C90014D195 /* MonthPickerView.swift */,
 				22C53B8E2A6EAC5D0014D195 /* YearPickerView.swift */,
 				22A58A8A2A6A6D9000E29710 /* EmptyDataView.swift */,
-				22A1AA2F2A6A93D1002AA262 /* PlantsFilterView.swift */,
 				22C53B8A2A6EA8EB0014D195 /* MonthYearWheelPicker.swift */,
 				22C53B8C2A6EAB410014D195 /* YearWheelPicker.swift */,
 				22ED5C8F2A70F96D007C8AB1 /* LogoutQuestionView.swift */,
@@ -623,6 +638,8 @@
 				22ED5C842A70C6A3007C8AB1 /* DeviceCellView.swift */,
 				22ED5C862A70CA2C007C8AB1 /* DeviceInverterCellView.swift */,
 				22ED5C882A70D7AC007C8AB1 /* DeviceFilterView.swift */,
+				226363302BDB7A07008ED51F /* SearchDevicesView.swift */,
+				226363322BDB7A35008ED51F /* DevicesSearchView.swift */,
 			);
 			path = DevicesViews_old;
 			sourceTree = "<group>";
@@ -884,6 +901,9 @@
 				2260A4CC2BD2312A003939DB /* PlantMapInfoContentView.swift in Sources */,
 				22CE080D2A6FF73300E03A1B /* Device.swift in Sources */,
 				2260A4CA2BD230E4003939DB /* StatisticsMapView.swift in Sources */,
+				226363332BDB7A35008ED51F /* DevicesSearchView.swift in Sources */,
+				226363312BDB7A07008ED51F /* SearchDevicesView.swift in Sources */,
+				226363362BDB805B008ED51F /* FilterCellView.swift in Sources */,
 				22A58A722A6918A100E29710 /* HomeController.swift in Sources */,
 				2260A4D02BD23662003939DB /* ValueOverviewView.swift in Sources */,
 				222D33E32A72236F00004453 /* OverviewMenuBar.swift in Sources */,
@@ -1082,7 +1102,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = R37J42Q9W7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FusionSolar/Info.plist;
@@ -1115,7 +1135,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = R37J42Q9W7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FusionSolar/Info.plist;

@@ -35,29 +35,13 @@ class StatisticPlantView: UIView {
         }
     }
     
-    var totalRevenue: Double? { //не правильно, подумать как считать и где брать//в идеале брать только при первом запросе за сегодня
-        didSet {
-            let value = totalRevenue ?? 0.0
-            if(value > 1000.0) {
-                self.totalStatisticsView.revenueHomeStatisticsTopView.valueLabel.text = "\((value/1000.0).rounded(toPlaces: 2))k"
-            } else {
-                self.totalStatisticsView.revenueHomeStatisticsTopView.valueLabel.text = "\(value.rounded(toPlaces: 2))"
-            }
-        }
-    }
-    
     var detailRealKpis: [DetailRealKpi]? {
         didSet {
 //            dump(detailRealKpis)
-            var reductionTotalCo2: Double = 0.0
-            var reductionTotalCoal: Double = 0.0
-            var reductionTotalTree: Double = 0.0
-            
             var graphValues = [GraphValue]()
             var koefficient = 1.0
             let maxDetailRealKpi = detailRealKpis?.max {($0.inverter_power ?? 0.0) < ($1.inverter_power ?? 0.0)}
             if let inverter_power = maxDetailRealKpi?.inverter_power {
-                print("Max inverter_power \(inverter_power)")
                 if(inverter_power < 1000.0) {
                     koefficient = 1.0
                     self.graphView.parametrLabel.text = NSLocalizedString("kwh", comment: "")
@@ -75,7 +59,7 @@ class StatisticPlantView: UIView {
             for detailRealKpi in detailRealKpis ?? [] {
                 if let collectTime = detailRealKpi.collectTime {
                     detailRealKpi.date = Date(milliseconds: collectTime)
-                    var graphValue = GraphValue()
+                    let graphValue = GraphValue()
                     let formatter = DateFormatter()
                     let selectedDateType = graphView.selectedDateType ?? "day"
                     if(selectedDateType == "day") {
@@ -93,27 +77,13 @@ class StatisticPlantView: UIView {
                     if let date = detailRealKpi.date {
                         let dateString = formatter.string(from: date)
                         graphValue.key = dateString
-                        print("\(dateString) \(detailRealKpi.power_profit ?? 0.0) \(detailRealKpi.inverter_power ?? 0.0)")
                     }
                     graphValue.powerProfit = detailRealKpi.power_profit ?? 0.0
                     graphValue.inverterPower = (detailRealKpi.inverter_power ?? 0.0) / koefficient
                     
-                    reductionTotalCo2 = reductionTotalCo2 + (detailRealKpi.reduction_total_co2 ?? 0.0)
-                    reductionTotalCoal = reductionTotalCoal + (detailRealKpi.reduction_total_coal ?? 0.0)
-                    reductionTotalTree = reductionTotalTree + (detailRealKpi.reduction_total_tree ?? 0.0)
-                    
                     graphValues.append(graphValue)
                 }
             }
-            
-            if(totalRevenue ?? 0.0 == 0.0) {
-                for graphValue in graphValues ?? [] {
-                    totalRevenue = (totalRevenue ?? 0.0) + (graphValue.powerProfit ?? 0.0)
-                }
-            }
-            
-            print("reductionTotalCo2 \(reductionTotalCo2.rounded(toPlaces: 2))  reductionTotalCoal \(reductionTotalCoal.rounded(toPlaces: 2)) reductionTotalTree \(reductionTotalTree.rounded(toPlaces: 2))")
-            
             self.graphView.setupBarChartView(graphValues: graphValues)
         }
     }
@@ -243,7 +213,7 @@ class StatisticPlantView: UIView {
         let value = self.graphView.selectedDateType ?? "day"
         let date = self.graphView.selectedDate ?? Date()
         let collectTime = date.millisecondsSince1970
-        print("getDataForGraph \(date) \(collectTime)")
+
         if(value == "day") {
             self.homeController?.fetchReportKpi(collectTime: collectTime, road: "kpi-hour")
         }

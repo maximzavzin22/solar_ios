@@ -102,7 +102,6 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
         self.addSubview(collectionView)
         
         let width = navigationView.allViewWidth + 26.dp + navigationView.inverterViewWidth + 26.dp + navigationView.dongleViewWidth
-        print("width \(width)")
         self.addConstraintsWithFormat("H:[v0(\(width))]", views: navigationView)
         self.addConstraintsWithFormat("H:[v0(\(143.dp))]", views: emptyView)
         self.addConstraintsWithFormat("H:|[v0]|", views: collectionView)
@@ -123,7 +122,6 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     //collectionView Setup
     func setupCollectionView() {
-        print("setupCollectionView")
         collectionView.register(DeviceCellView.self, forCellWithReuseIdentifier: "deviceCellViewId")
         collectionView.register(DeviceInverterCellView.self, forCellWithReuseIdentifier: "deviceInverterCellViewId")
         collectionView.contentInset = UIEdgeInsets(top: 16.dp, left: 0, bottom: 16.dp, right: 0)
@@ -181,12 +179,6 @@ class StationDevicesView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16.dp
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Press")
-        let index = indexPath.item
-        
     }
     //collectionView Setup end
 }

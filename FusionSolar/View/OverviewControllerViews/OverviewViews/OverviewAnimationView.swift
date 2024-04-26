@@ -13,17 +13,17 @@ class OverviewAnimationView: UIView {
     var real_health_state: Int? {
         didSet {
             if let value = real_health_state {
-                if(real_health_state == 1) {
+                if(value == 1) {
                     animationView.animation = LottieAnimation.named("3 shara off")
                     self.pvValueLabel.textColor = .white
                     self.pvIconImageView.image = UIImage(named: "ic_pv_white")
                 }
-                if(real_health_state == 2) {
+                if(value == 2) {
                     animationView.animation = LottieAnimation.named("3 shara faulty")
                     self.pvValueLabel.textColor = .rgb(1, green: 6, blue: 10)
                     self.pvIconImageView.image = UIImage(named: "ic_pv")
                 }
-                if(real_health_state == 3) {
+                if(value == 3) {
                     animationView.animation = LottieAnimation.named("3 shara")
                     self.pvValueLabel.textColor = .rgb(1, green: 6, blue: 10)
                     self.pvIconImageView.image = UIImage(named: "ic_pv")
@@ -74,7 +74,6 @@ class OverviewAnimationView: UIView {
     let pvContentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-       // view.backgroundColor = .green
         return view
     }()
     

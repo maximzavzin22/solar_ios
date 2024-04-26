@@ -17,7 +17,6 @@ class DatePickerView: UIView {
     var selectedDate: Date? {
         didSet {
             if let date = selectedDate {
-                print("selectedDate \(date)")
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: HomeController.selectedLanguage)
                 dateFormatter.dateFormat = "dd MMM, yyyy"
@@ -117,11 +116,6 @@ class DatePickerView: UIView {
     }
     
     func setupView() {
-        let window = UIApplication.shared.keyWindow
-        var topSafeArea: CGFloat = 0.0
-        topSafeArea = window?.safeAreaInsets.top ?? 0
-        bottomSafeArea = window?.safeAreaInsets.bottom ?? 0
-        
         self.addSubview(blackoutView)
         self.addBlurEffect()
         self.addSubview(borderView)
@@ -130,7 +124,7 @@ class DatePickerView: UIView {
         self.addConstraintsWithFormat("H:|[v0]|", views: borderView)
         self.addConstraintsWithFormat("V:|[v0]|", views: blackoutView)
         
-        height = 392.dp + bottomSafeArea
+        height = 392.dp + HomeController.bottomSafeArea
         self.addConstraintsWithFormat("V:[v0(\(height))]", views: borderView)
         
         viewBottomConstraint = borderView.anchor(nil, left: nil, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: (-1 * height), rightConstant: 0, widthConstant: 0, heightConstant: 0)[0]
@@ -162,9 +156,9 @@ class DatePickerView: UIView {
     }
     
     @objc func datePickerChanged() {
-        var dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, yyyy"
-        var strDate = dateFormatter.string(from: datePicker.date)
+        _ = dateFormatter.string(from: datePicker.date)
         self.selectedDate = datePicker.date
     }
     
@@ -186,12 +180,10 @@ class DatePickerView: UIView {
     }
     
     @objc func cancelButtonPress() {
-        print("cancelButtonPress")
         self.hideAnimation()
     }
     
     @objc func okButtonPress() {
-        print("okButtonPress")
         self.graphView?.selectedDate = self.selectedDate
         self.stationChartsView?.selectedDate = self.selectedDate
         self.hideAnimation()
@@ -210,7 +202,6 @@ class DatePickerView: UIView {
     }
     
     func showAnimaton() {
-        print("showAnimaton")
         viewBottomConstraint?.constant = 0.dp
         blackoutView.alpha = 0
         blackoutView.isHidden = false
@@ -229,7 +220,7 @@ class DatePickerView: UIView {
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.frame = self.bounds
         
-        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(blurEffectView!)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.closeBlackoutView))
@@ -238,7 +229,6 @@ class DatePickerView: UIView {
     }
     
     @objc func closeBlackoutView() {
-        print("close Status View")
         hideAnimation()
     }
 }

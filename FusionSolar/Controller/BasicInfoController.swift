@@ -16,7 +16,7 @@ class BasicInfoController: UIViewController, UINavigationControllerDelegate, UIS
             self.personBasicInfoSmallView.valueLabel.text = station?.contactPerson ?? ""
             self.methodBasicInfoSmallView.valueLabel.text = station?.contactMethod ?? ""
             self.countryBasicInfoSmallView.valueLabel.text = "Uzbekistan"
-            self.providerBasicInfoSmallView.valueLabel.text = ""//HomeController.login ?? ""
+            self.providerBasicInfoSmallView.valueLabel.text = ""
             self.capacityBasicInfoSmallView.valueLabel.text = "\((station?.capacity ?? 0.0).rounded(toPlaces: 2))"
             self.chargingBasicInfoSmallView.valueLabel.text = "No"
            
@@ -247,9 +247,6 @@ class BasicInfoController: UIViewController, UINavigationControllerDelegate, UIS
     }
     
     func setupView() {
-        let window = UIApplication.shared.keyWindow
-        var topSafeArea = window?.safeAreaInsets.top ?? 0
-
         self.view.addSubview(backgroundImageView)
         self.view.addSubview(whiteTopView)
         self.view.addSubview(headerView)
@@ -261,7 +258,7 @@ class BasicInfoController: UIViewController, UINavigationControllerDelegate, UIS
         self.view.addConstraintsWithFormat("H:|[v0]|", views: contentScrollView)
         
         self.view.addConstraintsWithFormat("V:|[v0(\(399.dp))]", views: backgroundImageView)
-        self.view.addConstraintsWithFormat("V:|[v0(\(70.dp + topSafeArea))]", views: whiteTopView)
+        self.view.addConstraintsWithFormat("V:|[v0(\(70.dp + HomeController.topPadding))]", views: whiteTopView)
         self.view.addConstraintsWithFormat("V:[v0(\(46.dp))]", views: headerView)
         
         contentScrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -365,7 +362,6 @@ class BasicInfoController: UIViewController, UINavigationControllerDelegate, UIS
     }
     
     @objc func directionButtonPress() {
-        print("directionButtonPress")
         self.openApp(appName: "", longitude: 41.3158263, latitude: 69.2758336)
     }
     

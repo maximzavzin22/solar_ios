@@ -369,7 +369,7 @@ class SignInController: UIViewController, UITextFieldDelegate, UINavigationContr
     var keyboardHeight: CGFloat! = 0
     
     @objc func keyboardWasShown(notification: NSNotification){
-        var info = notification.userInfo!
+        let info = notification.userInfo!
         let kbSize: CGSize = ((info[UIApplication.keyboardFrameEndUserInfoKey] as? CGRect)?.size)!
         print("kbSize = \(kbSize)")
         let contentInsets: UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)

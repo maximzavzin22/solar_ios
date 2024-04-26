@@ -41,7 +41,7 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     
     var stations: [Station]? {
         didSet {
-            dump(stations)
+//            dump(stations)
             self.statusNavigationView.stations = stations
             self.generateShowStations()
         }
@@ -136,12 +136,6 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         button.setImage(image, for: .normal)
         button.tintColor = .white
         return button
-    }()
-    
-    let loadingView: LoadingView = {
-        let lV = LoadingView()
-        lV.translatesAutoresizingMaskIntoConstraints = false
-        return lV
     }()
     
     override init(frame: CGRect) {
@@ -253,7 +247,6 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
                 }
             }
         }
-        
         return showStations
     }
     
@@ -319,7 +312,7 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
                 }
             }
         } else {
-            if let toDate = self.toDate {
+            if self.toDate != nil {
                 for station in stations {
                     if let gridConnectionDate = station.gridConnectionDate {
                         let dateFormatter = DateFormatter()
@@ -332,7 +325,7 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
                     }
                 }
             }
-            if let fromFate = self.fromDate {
+            if self.fromDate != nil {
                 for station in stations {
                     if let gridConnectionDate = station.gridConnectionDate {
                         let dateFormatter = DateFormatter()
@@ -370,7 +363,6 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     
     //collectionView Setup
     func setupCollectionView() {
-        print("setupCollectionView")
         collectionView.register(PlantCellView.self, forCellWithReuseIdentifier: "plantCellViewId")
         collectionView.contentInset = UIEdgeInsets(top: 16.dp, left: 0, bottom: 66.dp, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 16.dp, left: 0, bottom: 66.dp, right: 0)
@@ -400,26 +392,11 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Press")
         let index = indexPath.item
         if let station = self.showStations?[index] {
             self.homeView?.homeController?.openOverviewController(station: station)
         }
     }
     //collectionView Setup end
-    
-    func showLoadingView() {
-        self.addSubview(loadingView)
-        self.addConstraintsWithFormat("H:|[v0]|", views: loadingView)
-        loadingView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
-        loadingView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        loadingView.isHidden = false
-        loadingView.startActivityIndicator()
-    }
-    
-    func hideLoadingView() {
-        loadingView.stopActivityIndicator()
-        loadingView.isHidden = true
-    }
 }
 

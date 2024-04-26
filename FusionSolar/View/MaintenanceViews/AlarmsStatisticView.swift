@@ -118,7 +118,6 @@ class AlarmsStatisticView: UIView {
 
         let totalCount = criticalCount + majorCount + minorCount + warningCount
 
-        
         if(totalCount == 0) {
             let entrieEmpty = PieChartDataEntry(value: 1.0, label: "")
             entries.append(entrieEmpty)
@@ -162,7 +161,6 @@ class AlarmsStatisticView: UIView {
         chartView.holeRadiusPercent = 0.9
         chartView.highlightPerTapEnabled = false
         
-      //  chartView.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
         chartView.animate(xAxisDuration: 1.4, yAxisDuration: 1.4)
     }
     

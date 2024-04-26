@@ -151,6 +151,7 @@
 "address"="Manzil";
 "website"="Veb-sayt";
 "record_number"="Yozuv raqami";
+"pv_output"="Fotovoltaik energiya chiqishi";
 
 //alarms
 "alarm_name_2001"="Simning yuqori kirish kuchlanishi";

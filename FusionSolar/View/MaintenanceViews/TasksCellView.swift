@@ -57,7 +57,6 @@ class TasksCellView: UICollectionViewCell, UICollectionViewDataSource, UICollect
     
     //collectionView Setup
     func setupCollectionView() {
-        print("setupCollectionView")
         collectionView.register(InspectionTasksCellView.self, forCellWithReuseIdentifier: "inspectionTasksCellViewId")
         collectionView.register(EliminationTasksCellView.self, forCellWithReuseIdentifier: "eliminationTasksCellViewId")
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
@@ -68,7 +67,6 @@ class TasksCellView: UICollectionViewCell, UICollectionViewDataSource, UICollect
         }
         
         collectionView.isPagingEnabled = true
-//        collectionView.isScrollEnabled = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
@@ -96,7 +94,7 @@ class TasksCellView: UICollectionViewCell, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var height: CGFloat? = collectionView.frame.height
+        let height: CGFloat? = collectionView.frame.height
         return CGSize(width: self.frame.width, height: height!)
     }
     
@@ -104,14 +102,8 @@ class TasksCellView: UICollectionViewCell, UICollectionViewDataSource, UICollect
         return 0
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-       // let index = Int(targetContentOffset.pointee.x / view.frame.width)
-        print("scrollViewWillBeginDragging \(index)")
-    }
-    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let index = Int(targetContentOffset.pointee.x / self.frame.width)
-        print("scrollViewWillEndDragging \(index)")
         self.tasksNavigationView.selectePage = index
     }
     

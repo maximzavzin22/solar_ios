@@ -36,7 +36,7 @@ class JSONParse: NSObject {
             if let result = json as? Dictionary<String,Any> {
                 let success = result["success"] as? Bool ?? false
                 if(!success) {
-                    var error = CustomError()
+                    let error = CustomError()
                     error.title = NSLocalizedString("error", comment: "")
                     error.code = result["failCode"] as? Int ?? 0
                     error.message = result["message"] as? String ?? ""

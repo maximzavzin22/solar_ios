@@ -174,7 +174,7 @@ class RegionParentCellView: UICollectionViewCell, UICollectionViewDataSource, UI
                             for region2 in region1.regions ?? [Region]() {
                                 height = height + 36.dp
                                 if(region2.isOpen ?? false) {
-                                    for region3 in region2.regions ?? [Region]() {
+                                    for _ in region2.regions ?? [Region]() {
                                         height = height + 36.dp
                                     }
                                 }

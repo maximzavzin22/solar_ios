@@ -21,7 +21,7 @@ class AlarmStatisticsMapView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "0"
         label.textColor = .rgb(152, green: 152, blue: 152)
-        label.font = .systemFont(ofSize: 20.dp)
+        label.font = .boldSystemFont(ofSize: 20.dp)
         label.textAlignment = .center
         return label
     }()
@@ -55,8 +55,8 @@ class AlarmStatisticsMapView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "0"
-        label.textColor = .rgb(152, green: 152, blue: 152)
-        label.font = .systemFont(ofSize: 20.dp)
+        label.textColor = .rgb(246, green: 117, blue: 26)
+        label.font = .boldSystemFont(ofSize: 20.dp)
         label.textAlignment = .center
         return label
     }()
@@ -90,8 +90,8 @@ class AlarmStatisticsMapView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "0"
-        label.textColor = .rgb(152, green: 152, blue: 152)
-        label.font = .systemFont(ofSize: 20.dp)
+        label.textColor = .rgb(246, green: 195, blue: 8)
+        label.font = .boldSystemFont(ofSize: 20.dp)
         label.textAlignment = .center
         return label
     }()
@@ -125,8 +125,8 @@ class AlarmStatisticsMapView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "0"
-        label.textColor = .rgb(152, green: 152, blue: 152)
-        label.font = .systemFont(ofSize: 20.dp)
+        label.textColor = .rgb(93, green: 140, blue: 246)
+        label.font = .boldSystemFont(ofSize: 20.dp)
         label.textAlignment = .center
         return label
     }()

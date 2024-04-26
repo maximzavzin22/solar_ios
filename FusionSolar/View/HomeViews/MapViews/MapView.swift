@@ -24,7 +24,6 @@ class MapView: UIView, GMSMapViewDelegate, CLLocationManagerDelegate {
     
     var stations: [Station]? {
         didSet {
-            print("start generate markers")
             var index = 0
             var normalCount = 0
             var faultyCount = 0
@@ -37,8 +36,8 @@ class MapView: UIView, GMSMapViewDelegate, CLLocationManagerDelegate {
                     marker.userData = ["index": index]
                     marker.appearAnimation = .pop
                     index = index + 1
-                    var latitude = Double(station.latitude ?? "0.0")
-                    var longitude = Double(station.longitude ?? "0.0")
+                    let latitude = Double(station.latitude ?? "0.0")
+                    let longitude = Double(station.longitude ?? "0.0")
                     marker.position = CLLocationCoordinate2D(latitude: latitude ?? 0.0, longitude: longitude ?? 0.0)
                     marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
                     var animationName = ""
@@ -57,12 +56,12 @@ class MapView: UIView, GMSMapViewDelegate, CLLocationManagerDelegate {
                         }
                     }
                     let pointAnimation = LottieAnimation.named(animationName)
-                    var pointImageView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 50.dp, height: 50.dp))
+                    let pointImageView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 50.dp, height: 50.dp))
                     pointImageView.animation = pointAnimation
                     pointImageView.loopMode = .loop
                     pointImageView.play()
                     animatios.append(pointImageView)
-                    let markerView = UIImageView()
+                    _ = UIImageView()
                     marker.iconView = pointImageView
 
                     googleMapView.selectedMarker = marker
@@ -77,6 +76,37 @@ class MapView: UIView, GMSMapViewDelegate, CLLocationManagerDelegate {
                 self.statisticsMapView.faultyValueLabel.text = "\(faultyCount)"
                 self.statisticsMapView.offlineValueLabel.text = "\(offlineCount)"
             }
+        }
+    }
+    
+    var alarms: [Alarm]? {
+        didSet {
+            var criticalCount = 0
+            var majorCount = 0
+            var minorCount = 0
+            var warningCount = 0
+            if let alarms = self.alarms {
+                for alarm in alarms {
+                    if let status = alarm.lev {
+                        if(status == 1) {
+                            criticalCount = criticalCount + 1
+                        }
+                        if(status == 2) {
+                            majorCount = majorCount + 1
+                        }
+                        if(status == 3) {
+                            minorCount = minorCount + 1
+                        }
+                        if(status == 4) {
+                            warningCount = warningCount + 1
+                        }
+                    }
+                }
+            }
+            self.alarmStatisticsMapView.criticalValueLabel.text = "\(criticalCount)"
+            self.alarmStatisticsMapView.majorValueLabel.text = "\(majorCount)"
+            self.alarmStatisticsMapView.minorValueLabel.text = "\(minorCount)"
+            self.alarmStatisticsMapView.warningValueLabel.text = "\(warningCount)"
         }
     }
 
@@ -188,6 +218,7 @@ class MapView: UIView, GMSMapViewDelegate, CLLocationManagerDelegate {
         clusterManager.setMapDelegate(self)
         
         self.stations = self.homeView?.homeController?.stations
+        self.alarms = self.homeView?.homeController?.alarms
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -208,7 +239,6 @@ class MapView: UIView, GMSMapViewDelegate, CLLocationManagerDelegate {
         if let dict = marker.userData as? [String:Int] {
             if let index = dict["index"] {
                 if let station = self.stations?[index] {
-                    print("select station \(station.plantName)")
                     var animationName = ""
                     if let real_health_state = station.stationRealKpi?.real_health_state {
                         if(real_health_state == 3) {
@@ -240,7 +270,6 @@ class MapView: UIView, GMSMapViewDelegate, CLLocationManagerDelegate {
                             self.animatios[index].play()
                         }
                     }
-                    
                     self.homeView?.homeController?.openPlantMapInfoView(station: station)
                 }
             }

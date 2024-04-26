@@ -65,7 +65,7 @@ class EnvironmentalCellView: UIView {
         
         self.addConstraintsWithFormat("H:|-\(12.dp)-[v0]", views: valueLabel)
         self.addConstraintsWithFormat("H:|-\(12.dp)-[v0]-\(12.dp)-|", views: titleLabel)
-        self.addConstraintsWithFormat("H:|[v0(\(100.dp))]|", views: animationView)
+        self.addConstraintsWithFormat("H:[v0(\(100.dp))]|", views: animationView)
         
         self.addConstraintsWithFormat("V:|-\(16.dp)-[v0]-\(6.dp)-[v1]", views: valueLabel, titleLabel)
         self.addConstraintsWithFormat("V:[v0(\(100.dp))]|", views: animationView)

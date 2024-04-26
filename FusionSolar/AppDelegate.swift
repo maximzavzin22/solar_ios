@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let googleKey = "AIzaSyB66_T58kU51Ss_7-Mln0ou5el3dHtLwAU"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
@@ -26,17 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             self.window?.overrideUserInterfaceStyle = .light
         }
-//
-//        if #available(iOS 13.0, *) {
-//            UIApplication.shared.statusBarStyle = .darkContent
-//        } else {
-//            UIApplication.shared.statusBarStyle = .default
-//        }
-        
+
         let splashController = SplashController()
         window?.rootViewController = UINavigationController(rootViewController: splashController)
         
         return true
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return .portrait
     }
 }
 

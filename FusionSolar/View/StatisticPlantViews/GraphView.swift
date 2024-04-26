@@ -14,7 +14,6 @@ class GraphView: UIView {
     
     var selectedDate: Date? {
         didSet {
-            print("selectedDate \(selectedDate)")
             self.setupSelectedDate()
             self.homeStatisticsCellView?.getDataForGraph()
         }
@@ -23,7 +22,6 @@ class GraphView: UIView {
     var selectedDateType: String? {
         didSet {
             self.selectedDate = Date()
-           // self.setupSelectedDate()
         }
     }
     
@@ -312,15 +310,13 @@ class GraphView: UIView {
         self.layoutIfNeeded()
         self.selectedDateLabel.text = dateFormatter.string(from: date)
         if(newDate != nil) {
-            var toDay = Calendar.current.startOfDay(for: Date())
-            var newDay = Calendar.current.startOfDay(for: newDate!)
+            let toDay = Calendar.current.startOfDay(for: Date())
+            let newDay = Calendar.current.startOfDay(for: newDate!)
             if(newDay > toDay) {
-                print("needs disable button")
                 self.rightButton.isEnabled = false
                 let image = UIImage(named: "arrow_right_gray")?.withRenderingMode(.alwaysOriginal)
                 self.rightButton.setImage(image, for: .normal)
             } else {
-                print("needs active button")
                 self.rightButton.isEnabled = true
                 let image = UIImage(named: "arrow_right")?.withRenderingMode(.alwaysOriginal)
                 self.rightButton.setImage(image, for: .normal)
@@ -330,7 +326,6 @@ class GraphView: UIView {
     }
     
     @objc func leftButtonPress() {
-        print("leftButtonPress")
         let date = self.selectedDate ?? Date()
         let value = self.selectedDateType ?? "day"
         if(value == "day") {
@@ -348,7 +343,6 @@ class GraphView: UIView {
     }
     
     @objc func rightButtonPress() {
-        print("rightButtonPress")
         let date = self.selectedDate ?? Date()
         let value = self.selectedDateType ?? "day"
         if(value == "day") {
@@ -389,7 +383,11 @@ class GraphView: UIView {
         if(value == "day") {
             let hours = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
             axisValue = hours
-            granularity = 1.0
+            if(UIScreen.main.bounds.height/UIScreen.main.bounds.width < 16/9) {
+                granularity = 1.0
+            } else {
+                granularity = 2.0
+            }
         }
         if(value == "month") {
             let date = self.selectedDate ?? Date()
@@ -489,7 +487,7 @@ class GraphView: UIView {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Yield")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: NSLocalizedString("yield", comment: ""))
         chartDataSet.drawValuesEnabled = false
         chartDataSet.colors = [UIColor.rgb(25, green: 206, blue: 135)]
         

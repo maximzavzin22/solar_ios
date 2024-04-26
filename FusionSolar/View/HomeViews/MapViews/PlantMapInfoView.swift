@@ -72,11 +72,6 @@ class PlantMapInfoView: UIView {
     }
     
     func setupView() {
-        let window = UIApplication.shared.keyWindow
-        var topSafeArea: CGFloat = 0.0
-        topSafeArea = window?.safeAreaInsets.top ?? 0
-        bottomSafeArea = window?.safeAreaInsets.bottom ?? 0
-       
         self.addSubview(blackoutView)
         self.addSubview(borderView)
         
@@ -84,7 +79,7 @@ class PlantMapInfoView: UIView {
         self.addConstraintsWithFormat("H:|[v0]|", views: borderView)
         
         self.addConstraintsWithFormat("V:|[v0]|", views: blackoutView)
-        height = 266.dp + bottomSafeArea
+        height = 266.dp + HomeController.bottomSafeArea
         self.addConstraintsWithFormat("V:[v0(\(height))]", views: borderView)
         
         viewBottomConstraint = borderView.anchor(nil, left: nil, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: (-1 * height), rightConstant: 0, widthConstant: 0, heightConstant: 0)[0]
@@ -140,7 +135,6 @@ class PlantMapInfoView: UIView {
     }
     
     func showAnimaton() {
-        print("showAnimaton")
         viewBottomConstraint?.constant = 0.dp
         borderView.isHidden = false
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
@@ -149,7 +143,6 @@ class PlantMapInfoView: UIView {
     }
     
     @objc func closeBlackoutView() {
-        print("close Status View")
         hideAnimation()
     }
 }

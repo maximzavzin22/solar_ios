@@ -16,14 +16,16 @@ class TotalStatisticsView: UIView {
             var totalCapacity: Double = 0.0
             var totalDayPower: Double = 0.0
             var totalYearPower: Double = 0.0
+            var totalRevenue: Double = 0.0
             if let stations = self.stations {
                 for station in stations {
                     totalCapacity = totalCapacity + (station.capacity ?? 0.0)
                     totalDayPower = totalDayPower + (station.stationRealKpi?.day_power ?? 0.0)
                     totalYearPower = totalYearPower + (station.stationRealKpi?.total_power ?? 0.0)
+                    totalRevenue = totalRevenue + (station.stationRealKpi?.day_income ?? 0.0)
                 }
             }
-            self.statisticPlantView?.environmentalView.total_power = totalYearPower
+            
             if(totalCapacity < 1000.0) {
                 powerHomeStatisticsTopView.valueLabel.text = "\(totalCapacity.rounded(toPlaces: 2))"
                 powerHomeStatisticsTopView.parametrLabel.text = NSLocalizedString("kw", comment: "")
@@ -59,6 +61,11 @@ class TotalStatisticsView: UIView {
                     totalHomeStatisticsTopView.valueLabel.text = "\((totalYearPower/1000000.0).rounded(toPlaces: 2))"
                     totalHomeStatisticsTopView.parametrLabel.text = NSLocalizedString("gwh", comment: "")
                 }
+            }
+            if(totalRevenue > 1000.0) {
+                self.revenueHomeStatisticsTopView.valueLabel.text = "\((totalRevenue/1000.0).rounded(toPlaces: 2))k"
+            } else {
+                self.revenueHomeStatisticsTopView.valueLabel.text = "\(totalRevenue.rounded(toPlaces: 2))"
             }
         }
     }

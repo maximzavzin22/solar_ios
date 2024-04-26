@@ -18,7 +18,6 @@ class StationStatisticsView: UIView {
             var koefficient = 1.0
             let maxDetailRealKpi = detailRealKpis?.max {($0.inverter_power ?? 0.0) < ($1.inverter_power ?? 0.0)}
             if let inverter_power = maxDetailRealKpi?.inverter_power {
-                print("Max inverter_power \(inverter_power)")
                 if(inverter_power < 1000.0) {
                     koefficient = 1.0
                     self.stationChartsView.yieldParametrLabel.text = NSLocalizedString("kwh", comment: "")
@@ -56,7 +55,6 @@ class StationStatisticsView: UIView {
                     if let date = detailRealKpi.date {
                         let dateString = formatter.string(from: date)
                         graphValue.key = dateString
-                        print("\(dateString) \(detailRealKpi.power_profit ?? 0.0) \(detailRealKpi.inverter_power ?? 0.0)")
                     }
                     revenueTotal = revenueTotal + (detailRealKpi.power_profit ?? 0.0)
                     graphValue.powerProfit = detailRealKpi.power_profit ?? 0.0

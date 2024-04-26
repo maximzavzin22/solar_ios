@@ -126,11 +126,6 @@ class DeviceFilterView: UIView {
     }
     
     func setupView() {
-        let window = UIApplication.shared.keyWindow
-        var topSafeArea: CGFloat = 0.0
-        topSafeArea = window?.safeAreaInsets.top ?? 0
-        bottomSafeArea = window?.safeAreaInsets.bottom ?? 0
-        
         self.addSubview(blackoutView)
         self.addBlurEffect()
         self.addSubview(borderView)
@@ -139,7 +134,7 @@ class DeviceFilterView: UIView {
         self.addConstraintsWithFormat("H:|[v0]|", views: borderView)
         self.addConstraintsWithFormat("V:|[v0]|", views: blackoutView)
         
-        height = 220.dp + bottomSafeArea
+        height = 220.dp + HomeController.bottomSafeArea
         self.addConstraintsWithFormat("V:[v0(\(height))]", views: borderView)
         
         viewBottomConstraint = borderView.anchor(nil, left: nil, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: (-1 * height), rightConstant: 0, widthConstant: 0, heightConstant: 0)[0]
@@ -232,29 +227,18 @@ class DeviceFilterView: UIView {
     }
     
     @objc func resetButtonPress() {
-        print("resetButtonPress")
         type1FilterCellView.isSelected = true
         type2FilterCellView.isSelected = false
         type3FilterCellView.isSelected = false
-//        self.homeController?.devicesView.isFilter = false
-//        self.homeController?.devicesView.filter = "all"
         self.hideAnimation()
     }
     
     @objc func confirmButtonPress() {
-        print("confirmButtonPress")
         self.hideAnimation()
         if(!(self.type1FilterCellView.isSelected ?? false)) {
-            print("confirmButtonPress")
-//            self.homeController?.devicesView.isFilter = true
-//            if(self.type2FilterCellView.isSelected ?? false) {
-//                self.homeController?.devicesView.filter = "inverter"
-//            }
-//            if(self.type3FilterCellView.isSelected ?? false) {
-//                self.homeController?.devicesView.filter = "dongle"
-//            }
+            
         } else {
-//            self.homeController?.devicesView.filter = "all"
+
         }
     }
     
@@ -271,7 +255,6 @@ class DeviceFilterView: UIView {
     }
     
     func showAnimaton() {
-        print("showAnimaton")
         viewBottomConstraint?.constant = 0.dp
         blackoutView.alpha = 0
         blackoutView.isHidden = false
@@ -299,7 +282,6 @@ class DeviceFilterView: UIView {
     }
     
     @objc func closeBlackoutView() {
-        print("close Status View")
         hideAnimation()
     }
 }

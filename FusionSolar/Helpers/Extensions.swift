@@ -328,19 +328,10 @@ extension UITextField {
         var components = DateComponents()
         components.calendar = calendar
         
-        var identifier = "ru"
-//        if(HomeController.region_slug == "ru") {
-//            identifier = "ru"
-//        }
-//        if(HomeController.region_slug == "lt") {
-//            identifier = "lt"
-//        }
-        
+        let identifier = "ru"
         let loc = Locale(identifier: identifier)
         datePicker.locale = loc
 
-//        components.year = -18
-//        components.month = 12
         let maxDate = calendar.date(byAdding: components, to: currentDate)!
 
         components.year = -150
@@ -637,10 +628,9 @@ class BundleEx: Bundle {
 
 public extension Bundle {
     class func setLanguage(_ language: String?) {
-        let oneToken: String = "com.sablab.domvet"
+        let oneToken: String = "org.sabgmes.solarapp"
 
         DispatchQueue.once(token: oneToken) {
-            print("Do This Once!")
             object_setClass(Bundle.main, BundleEx.self as AnyClass)
         }
 
@@ -707,9 +697,7 @@ func currencyInputFormatting() -> String {
 
     let double = (amountWithPrefix as NSString).doubleValue
     
-    //number = NSNumber(value: (double / 100))
     number = NSNumber(value: (double))
-    print("number \(number)")
 
     // if first number is 0 or all numbers were deleted
     guard number != 0 as NSNumber else {
@@ -731,17 +719,9 @@ extension Double {
 extension UIColor {
     public convenience init(hex: String) {
         var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-            
             if cString.hasPrefix("#") { cString.removeFirst() }
-            
-//            if cString.count != 6 {
-//              self.init("ff0000") // return red color for wrong hex input
-//              return
-//            }
-            
             var rgbValue: UInt64 = 0
             Scanner(string: cString).scanHexInt64(&rgbValue)
-            
             self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
                       green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
                       blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
@@ -784,7 +764,7 @@ extension Date {
     }
     
     init(milliseconds: Int64) {
-        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)//.addingTimeInterval(5 * 60.0 * 60.0)
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
 }
 

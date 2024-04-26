@@ -9,36 +9,34 @@ import UIKit
 
 class EnvironmentalView: UIView {
     
-    var total_power: Double? {
+    var detailRealKpis: [DetailRealKpi]? {
         didSet {
-            if let value = total_power {
-//                let coalEnvironmental = 398.0 * value / 1000.0
-                let coalEnvironmental = value / 2460.0
-                print("coalEnvironmental \(coalEnvironmental) \(value)")
-                if(coalEnvironmental > 1000) {
-                    coalEnvironmentalCellView.valueLabel.text = "\((coalEnvironmental/1000.0).rounded(toPlaces: 2))k \(NSLocalizedString("t", comment: ""))"
-                } else {
-                    coalEnvironmentalCellView.valueLabel.text = "\(coalEnvironmental.rounded(toPlaces: 2)) \(NSLocalizedString("t", comment: ""))"
-                }
-                
-                let co2Count = (0.846 * value) / 2204.6 //футы -> тонны
-//                let co2Count = value * 0.00070555
-                if(co2Count > 1000) {
-                    co2EnvironmentalCellView.valueLabel.text = "\((co2Count/1000.0).rounded(toPlaces: 2))k \(NSLocalizedString("t", comment: ""))"
-                } else {
-                    co2EnvironmentalCellView.valueLabel.text = "\(co2Count.rounded(toPlaces: 2)) \(NSLocalizedString("t", comment: ""))"
-                }
-                
-                //let treesCount = 125.0 * value / 10000.0
-                //let treesCount = value / 55.3
-               // let treesCount = co2Count * 0.039//0.0075//0.021//
-                let treesCount = value / 55.3 / 10
-                if(treesCount > 1000.0) {
-                    treesEnvironmentalCellView.valueLabel.text = "\((treesCount/1000.0).rounded(toPlaces: 2))k"
-                } else {
-                    treesEnvironmentalCellView.valueLabel.text = "\(treesCount.rounded(toPlaces: 2))"
-                }
-                
+            var reductionTotalCo2: Double = 0.0
+            var reductionTotalCoal: Double = 0.0
+            var reductionTotalTree: Double = 0.0
+            
+            for detailRealKpi in detailRealKpis ?? [] {
+                reductionTotalCo2 = reductionTotalCo2 + (detailRealKpi.reduction_total_co2 ?? 0.0)
+                reductionTotalCoal = reductionTotalCoal + (detailRealKpi.reduction_total_coal ?? 0.0)
+                reductionTotalTree = reductionTotalTree + (detailRealKpi.reduction_total_tree ?? 0.0)
+            }
+            
+            if(reductionTotalCoal > 1000) {
+                coalEnvironmentalCellView.valueLabel.text = "\((reductionTotalCoal/1000.0).rounded(toPlaces: 2))k \(NSLocalizedString("t", comment: ""))"
+            } else {
+                coalEnvironmentalCellView.valueLabel.text = "\(reductionTotalCoal.rounded(toPlaces: 2)) \(NSLocalizedString("t", comment: ""))"
+            }
+            
+            if(reductionTotalCo2 > 1000) {
+                co2EnvironmentalCellView.valueLabel.text = "\((reductionTotalCo2/1000.0).rounded(toPlaces: 2))k \(NSLocalizedString("t", comment: ""))"
+            } else {
+                co2EnvironmentalCellView.valueLabel.text = "\(reductionTotalCo2.rounded(toPlaces: 2)) \(NSLocalizedString("t", comment: ""))"
+            }
+            
+            if(reductionTotalTree > 1000.0) {
+                treesEnvironmentalCellView.valueLabel.text = "\((reductionTotalTree/1000.0).rounded(toPlaces: 2))k"
+            } else {
+                treesEnvironmentalCellView.valueLabel.text = "\(Int(reductionTotalTree))"
             }
         }
     }
@@ -53,9 +51,13 @@ class EnvironmentalView: UIView {
     }()
     
     //contentView
-    let contentView: UIView = {
-        let view = UIView()
+    var contentView: UIStackView = {
+        let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.distribution = .fillEqually
+        view.spacing = 10.dp
+        view.axis = .horizontal
+        view.alignment = .fill
         return view
     }()
     
@@ -109,7 +111,7 @@ class EnvironmentalView: UIView {
         self.addSubview(contentView)
         
         self.addConstraintsWithFormat("H:|-\(20.dp)-[v0]", views: titleLabel)
-        self.addConstraintsWithFormat("H:[v0(\(320.dp))]", views: contentView)
+        self.addConstraintsWithFormat("H:|-\(20.dp)-[v0]-\(20.dp)-|", views: contentView)
         
         self.addConstraintsWithFormat("V:|-\(24.dp)-[v0]-\(19.dp)-[v1(\(130.dp))]", views: titleLabel, contentView)
         
@@ -117,14 +119,16 @@ class EnvironmentalView: UIView {
     }
     
     func setupContentView() {
-        contentView.addSubview(coalEnvironmentalCellView)
-        contentView.addSubview(co2EnvironmentalCellView)
-        contentView.addSubview(treesEnvironmentalCellView)
+        coalEnvironmentalCellView.widthAnchor.constraint(equalToConstant: 100.dp).isActive = true
+        co2EnvironmentalCellView.widthAnchor.constraint(equalToConstant: 100.dp).isActive = true
+        treesEnvironmentalCellView.widthAnchor.constraint(equalToConstant: 100.dp).isActive = true
         
-        contentView.addConstraintsWithFormat("H:|[v0(\(100.dp))]-\(10.dp)-[v1(\(100.dp))]-\(10.dp)-[v2(\(100.dp))]", views: coalEnvironmentalCellView, co2EnvironmentalCellView, treesEnvironmentalCellView)
+        coalEnvironmentalCellView.heightAnchor.constraint(equalToConstant: 130.dp).isActive = true
+        coalEnvironmentalCellView.heightAnchor.constraint(equalToConstant: 130.dp).isActive = true
+        coalEnvironmentalCellView.heightAnchor.constraint(equalToConstant: 130.dp).isActive = true
         
-        contentView.addConstraintsWithFormat("V:|[v0]|", views: coalEnvironmentalCellView)
-        contentView.addConstraintsWithFormat("V:|[v0]|", views: co2EnvironmentalCellView)
-        contentView.addConstraintsWithFormat("V:|[v0]|", views: treesEnvironmentalCellView)
+        contentView.addArrangedSubview(coalEnvironmentalCellView)
+        contentView.addArrangedSubview(co2EnvironmentalCellView)
+        contentView.addArrangedSubview(treesEnvironmentalCellView)
     }
 }
