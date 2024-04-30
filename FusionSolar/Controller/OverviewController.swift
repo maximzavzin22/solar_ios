@@ -274,10 +274,8 @@ class OverviewController: UIViewController {
     
     func fetchEnvironmental(collectTime: Int64) {
         if let plantCode = station?.plantCode {
-            self.showLoadingView()
             ApiService.sharedInstance.fetchReportKpi(collectTime: collectTime, station: plantCode, road: "kpi-yearly") {
                 (error: CustomError?, detailRealKpis: [DetailRealKpi]?) in
-                self.hideLoadingView()
                 if(error?.code ?? 0 == 0) {
                     self.stationStatisticsView.environmentalView.detailRealKpis = detailRealKpis
                 } else {

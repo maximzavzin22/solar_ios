@@ -64,6 +64,10 @@ class SplashController: UIViewController {
             self.setupLanguage()
         }
         
+        HomeController.window = UIApplication.shared.keyWindow
+        HomeController.topPadding = HomeController.window?.safeAreaInsets.top ?? 0.0
+        HomeController.bottomSafeArea = HomeController.window?.safeAreaInsets.bottom ?? 0.0
+        
         self.setupView()
         self.initView()
         self.startTimer()
@@ -121,6 +125,8 @@ class SplashController: UIViewController {
         defaults.set (language, forKey: "AppleLanguage")
         defaults.synchronize ()
         Bundle.setLanguage (language)
+        
+        self.descriptionLabel.text = NSLocalizedString("app_description", comment: "")
     }
     
     func openController() {

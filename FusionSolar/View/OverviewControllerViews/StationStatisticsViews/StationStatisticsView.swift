@@ -160,7 +160,6 @@ class StationStatisticsView: UIView {
         let value = self.stationChartsView.selectedDateType ?? "day"
         let date = self.stationChartsView.selectedDate ?? Date()
         let collectTime = date.millisecondsSince1970
-        print("getDataForGraph \(date) \(collectTime)")
         if(value == "day") {
             self.overviewController?.fetchReportKpi(collectTime: collectTime, road: "kpi-hour")
         }

@@ -17,6 +17,9 @@ class PlantCellView: UICollectionViewCell {
             energyValueLabel.text = HomeController.amountEnergyConvert(value: station?.stationRealKpi?.day_power)
             
             if let statusValue = station?.stationRealKpi?.real_health_state {
+                if(statusValue == 0) {
+                    status = "offline"
+                }
                 if(statusValue == 1) {
                     status = "offline"
                 }

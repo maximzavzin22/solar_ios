@@ -20,7 +20,6 @@ class PlantMapInfoView: UIView {
     
     var viewBottomConstraint: NSLayoutConstraint?
     var height: CGFloat = 0
-    var bottomSafeArea: CGFloat = 0
     
     let blackoutView: UIView = {
         let view = UIView()

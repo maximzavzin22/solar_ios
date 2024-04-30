@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class StatisticPlantView: UIView {
+class StatisticPlantView: UIView, UIScrollViewDelegate {
     
     var homeController: HomeController?
     
@@ -99,6 +99,7 @@ class StatisticPlantView: UIView {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.bounces = false
+        scrollView.delegate = self
         return scrollView
     }()
     
@@ -188,6 +189,7 @@ class StatisticPlantView: UIView {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scrollViewDidScroll")
         if scrollView.contentOffset.x != 0 {
             scrollView.contentOffset.x = 0
         }

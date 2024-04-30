@@ -26,28 +26,33 @@ class OverviewView: UIView {
                 }
                 
             }
-            if let stationRealKpi = station?.stationRealKpi {
-                emptyView.isHidden = true
-                overviewAnimationView.isHidden = false
-                overviewAnimationView.real_health_state = stationRealKpi.real_health_state
-                statusView.status = stationRealKpi.real_health_state
-                
-                if let day_power = stationRealKpi.day_power {
-                    if(day_power < 1000) {
-                        self.yieldValueOverviewView.valueLabel.text = "\(day_power.rounded(toPlaces: 2))"
-                        self.yieldValueOverviewView.parametrLabel.text = NSLocalizedString("kwh", comment: "")
-                    } else {
-                        if (day_power < 1000000) {
-                            self.yieldValueOverviewView.valueLabel.text = "\((day_power/1000.0).rounded(toPlaces: 2))"
-                            self.yieldValueOverviewView.parametrLabel.text = NSLocalizedString("mwh", comment: "")
+            if let stationRealKpi = station?.stationRealKpi { 
+                if(stationRealKpi.day_power != -1) {
+                    emptyView.isHidden = true
+                    overviewAnimationView.isHidden = false
+                    overviewAnimationView.real_health_state = stationRealKpi.real_health_state
+                    statusView.status = stationRealKpi.real_health_state
+                    
+                    if let day_power = stationRealKpi.day_power {
+                        if(day_power < 1000) {
+                            self.yieldValueOverviewView.valueLabel.text = "\(day_power.rounded(toPlaces: 2))"
+                            self.yieldValueOverviewView.parametrLabel.text = NSLocalizedString("kwh", comment: "")
                         } else {
-                            self.yieldValueOverviewView.valueLabel.text = "\((day_power/1000000.0).rounded(toPlaces: 2))"
-                            self.yieldValueOverviewView.parametrLabel.text = NSLocalizedString("gwh", comment: "")
+                            if (day_power < 1000000) {
+                                self.yieldValueOverviewView.valueLabel.text = "\((day_power/1000.0).rounded(toPlaces: 2))"
+                                self.yieldValueOverviewView.parametrLabel.text = NSLocalizedString("mwh", comment: "")
+                            } else {
+                                self.yieldValueOverviewView.valueLabel.text = "\((day_power/1000000.0).rounded(toPlaces: 2))"
+                                self.yieldValueOverviewView.parametrLabel.text = NSLocalizedString("gwh", comment: "")
+                            }
                         }
                     }
+                    self.revenueValueOverviewView.valueLabel.text = "\((stationRealKpi.day_income ?? 0.00).rounded(toPlaces: 2))"
+                    self.initBigValueOverviewView(realKpi: stationRealKpi)
+                } else {
+                    emptyView.isHidden = false
+                    overviewAnimationView.isHidden = true
                 }
-                self.revenueValueOverviewView.valueLabel.text = "\((stationRealKpi.day_income ?? 0.00).rounded(toPlaces: 2))"
-                self.initBigValueOverviewView(realKpi: stationRealKpi)
             } else {
                 emptyView.isHidden = false
                 overviewAnimationView.isHidden = true

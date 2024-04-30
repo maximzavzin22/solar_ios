@@ -111,7 +111,7 @@ class ApiService: NSObject {
                 return
             }
             do {
-                _ = String(data: data!, encoding: .utf8)
+                let result = String(data: data!, encoding: .utf8)
 //                print("fetchStations result \(result)")
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                 
@@ -140,7 +140,7 @@ class ApiService: NSObject {
 
         URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             if let httpResponse = response as? HTTPURLResponse {
-                print("fetchRegions statusCode: \(httpResponse.statusCode)")
+//                print("fetchRegions statusCode: \(httpResponse.statusCode)")
                 if(httpResponse.statusCode == 404 || httpResponse.statusCode == 500) {
                     DispatchQueue.main.async(execute: {
                         completion(self.getDefaultError(), nil)
@@ -190,7 +190,7 @@ class ApiService: NSObject {
         if(station != "") {
             urlStr = "\(urlStr)&station=\(station)"
         }
-        print("urlStr \(urlStr)")
+//        print("urlStr \(urlStr)")
         let url = URL(string: urlStr)
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"

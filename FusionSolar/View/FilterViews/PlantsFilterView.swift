@@ -19,15 +19,14 @@ class PlantsFilterView: UIView {
     var viewBottomConstraint: NSLayoutConstraint?
     var viewHeightConstraint: NSLayoutConstraint?
     var height: CGFloat = 0
-    var bottomSafeArea: CGFloat = 0
     
     var isDatePickerShow: Bool? {
         didSet {
             if(isDatePickerShow ?? false) {
-                height = 392.dp + 200.dp + bottomSafeArea
+                height = 392.dp + 200.dp + HomeController.bottomSafeArea
                 datePicker.isHidden = false
             } else {
-                height = 392.dp + bottomSafeArea
+                height = 392.dp + HomeController.bottomSafeArea
                 datePicker.isHidden = true
             }
             self.viewHeightConstraint?.constant = height
@@ -262,7 +261,7 @@ class PlantsFilterView: UIView {
         buttonsView.centerXAnchor.constraint(equalTo: borderView.centerXAnchor).isActive = true
         
         datePicker.topAnchor.constraint(equalTo: dateConnectionView.bottomAnchor, constant: 16.dp).isActive = true
-        buttonsView.bottomAnchor.constraint(equalTo: borderView.bottomAnchor, constant: -1 * bottomSafeArea).isActive = true
+        buttonsView.bottomAnchor.constraint(equalTo: borderView.bottomAnchor, constant: -1 * HomeController.bottomSafeArea).isActive = true
         
         datePicker.addTarget(self, action: #selector(self.datePickerChanged), for: .valueChanged)
         

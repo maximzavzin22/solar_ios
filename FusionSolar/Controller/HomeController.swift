@@ -189,10 +189,6 @@ class HomeController: UIViewController {
         
         navigationController?.isNavigationBarHidden = true
         
-        HomeController.window = UIApplication.shared.keyWindow
-        HomeController.topPadding = HomeController.window?.safeAreaInsets.top ?? 0.0
-        HomeController.bottomSafeArea = HomeController.window?.safeAreaInsets.bottom ?? 0.0
-        
         self.view.backgroundColor = .rgb(241, green: 243, blue: 245)
         
         self.setupView()
@@ -383,10 +379,8 @@ class HomeController: UIViewController {
     }
     
     func fetchEnvironmental(collectTime: Int64) {
-        self.showLoadingView()
         ApiService.sharedInstance.fetchReportKpi(collectTime: collectTime, station: "", road: "kpi-yearly") {
             (error: CustomError?, detailRealKpis: [DetailRealKpi]?) in
-            self.hideLoadingView()
             if(error?.code ?? 0 == 0) {
                 self.statisticPlantView.environmentalView.detailRealKpis = detailRealKpis
             } else {

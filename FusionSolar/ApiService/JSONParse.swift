@@ -98,7 +98,7 @@ class JSONParse: NSObject {
     func kpiParse(json: Any) -> StationRealKpi? {
         if let result = json as? Dictionary<String,Any> {
             let stationRealKpi = StationRealKpi()
-            stationRealKpi.day_power = result["day_power"] as? Double ?? 0.0
+            stationRealKpi.day_power = result["day_power"] as? Double ?? -1
             stationRealKpi.month_power = result["month_power"] as? Double ?? 0.0
             stationRealKpi.total_power = result["total_power"] as? Double ?? 0.0
             stationRealKpi.day_income = result["day_income"] as? Double ?? 0.0
@@ -197,7 +197,6 @@ class JSONParse: NSObject {
     func detailRealKpisParse(json: Any) -> [DetailRealKpi]? {
         if let result = json as? Dictionary<String,Any> {
             if let list = result["result"] as? Array<Dictionary<String,Any>> {
-                print("try parse detailRealKpisParse")
                 var detailRealKpis = [DetailRealKpi]()
                 for kpiDictionary in list as [[String: AnyObject]] {
                     if let detailRealKpi = detailRealKpiParse(json: kpiDictionary) {

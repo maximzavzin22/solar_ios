@@ -27,7 +27,6 @@ class MonthPickerView: UIView {
     
     var viewBottomConstraint: NSLayoutConstraint?
     var height: CGFloat = 0
-    var bottomSafeArea: CGFloat = 0
     
     let blackoutView: UIView = {
         let view = UIView()
@@ -56,12 +55,6 @@ class MonthPickerView: UIView {
         let dP = MonthYearWheelPicker()
         dP.translatesAutoresizingMaskIntoConstraints = false
         dP.calendar.locale = Locale(identifier: HomeController.selectedLanguage)
-//        let loc = Locale(identifier: HomeController.selectedLanguage)
-//        dP.locale = loc
-       // dP.datePickerMode = .date
-       // dP.preferredDatePickerStyle = .wheels
-      //  dP.maximumDate = Date()
-      //  dP.minimumDate = Date(-2)
         return dP
     }()
     
@@ -117,11 +110,6 @@ class MonthPickerView: UIView {
     }
     
     func setupView() {
-        let window = UIApplication.shared.keyWindow
-        var topSafeArea: CGFloat = 0.0
-        topSafeArea = window?.safeAreaInsets.top ?? 0
-        bottomSafeArea = window?.safeAreaInsets.bottom ?? 0
-        
         self.addSubview(blackoutView)
         self.addBlurEffect()
         self.addSubview(borderView)
@@ -130,7 +118,7 @@ class MonthPickerView: UIView {
         self.addConstraintsWithFormat("H:|[v0]|", views: borderView)
         self.addConstraintsWithFormat("V:|[v0]|", views: blackoutView)
         
-        height = 392.dp + bottomSafeArea
+        height = 392.dp + HomeController.bottomSafeArea
         self.addConstraintsWithFormat("V:[v0(\(height))]", views: borderView)
         
         viewBottomConstraint = borderView.anchor(nil, left: nil, bottom: self.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: (-1 * height), rightConstant: 0, widthConstant: 0, heightConstant: 0)[0]
@@ -157,14 +145,14 @@ class MonthPickerView: UIView {
         datePicker.centerXAnchor.constraint(equalTo: borderView.centerXAnchor).isActive = true
         buttonsView.centerXAnchor.constraint(equalTo: borderView.centerXAnchor).isActive = true
         
-        buttonsView.bottomAnchor.constraint(equalTo: borderView.bottomAnchor, constant: -1 * bottomSafeArea).isActive = true
+        buttonsView.bottomAnchor.constraint(equalTo: borderView.bottomAnchor, constant: -1 * HomeController.bottomSafeArea).isActive = true
         datePicker.addTarget(self, action: #selector(self.datePickerChanged), for: .valueChanged)
     }
     
     @objc func datePickerChanged() {
-        var dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, yyyy"
-        var strDate = dateFormatter.string(from: datePicker.date)
+        let strDate = dateFormatter.string(from: datePicker.date)
         self.selectedDate = datePicker.date
     }
     
@@ -186,12 +174,10 @@ class MonthPickerView: UIView {
     }
     
     @objc func cancelButtonPress() {
-        print("cancelButtonPress")
         self.hideAnimation()
     }
     
     @objc func okButtonPress() {
-        print("okButtonPress")
         self.graphView?.selectedDate = self.selectedDate
         self.stationChartsView?.selectedDate = self.selectedDate
         self.hideAnimation()
@@ -210,7 +196,6 @@ class MonthPickerView: UIView {
     }
     
     func showAnimaton() {
-        print("showAnimaton")
         viewBottomConstraint?.constant = 0.dp
         blackoutView.alpha = 0
         blackoutView.isHidden = false
@@ -238,7 +223,6 @@ class MonthPickerView: UIView {
     }
     
     @objc func closeBlackoutView() {
-        print("close Status View")
         hideAnimation()
     }
 }

@@ -186,23 +186,9 @@ class AlarmsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     
     func setupSearchView() {
         searchView.addSubview(alarmSearchView)
-//        searchView.addSubview(filterButton)
-        
-//        searchView.addConstraintsWithFormat("H:|[v0]-\(15.dp)-[v1(\(24.dp))]|", views: alarmSearchView, filterButton)
         searchView.addConstraintsWithFormat("H:|[v0]|", views: alarmSearchView)
-        
         searchView.addConstraintsWithFormat("V:|[v0]|", views: alarmSearchView)
-//        searchView.addConstraintsWithFormat("V:[v0(\(24.dp))]", views: filterButton)
-        
-//        filterButton.centerYAnchor.constraint(equalTo: searchView.centerYAnchor).isActive = true
-//        
-//        filterButton.addTarget(self, action: #selector(self.filterButtonPress), for: .touchUpInside)
-        
         alarmSearchView.alarmsView = self
-    }
-    
-    @objc func filterButtonPress() {
-        print("filterButtonPress")
     }
     
     func generateShowAlarms() {
@@ -234,8 +220,9 @@ class AlarmsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         let searchText = self.searchText ?? ""
         if(searchText.count > 2) {
             for alarm in alarms {
-                if let alarmName = alarm.alarmName {
-                    if(alarmName.lowercased().contains(searchText.lowercased())) {
+                if let alarmId = alarm.alarmId {
+                    let localizationName = NSLocalizedString("alarm_name_\(alarmId)", value: alarm.alarmName ?? "", comment: "")
+                    if(localizationName.lowercased().contains(searchText.lowercased())) {
                         showAlarms.append(alarm)
                     }
                 }
@@ -281,7 +268,6 @@ class AlarmsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Press")
         let index = indexPath.item
         if let alarm = self.showAlarms?[index] {
             self.maintenanceView?.homeController?.openAlarmDetailController(alarm: alarm)

@@ -156,7 +156,6 @@ class GraphView: UIView {
         self.setupSelectedDateView()
         
         self.setupSelectedDate()
-//        self.setupBarChartView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -478,7 +477,7 @@ class GraphView: UIView {
                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8),
                                   xAxisValueFormatter: barChartView.xAxis.valueFormatter!)
         marker.chartView = barChartView
-        marker.minimumSize = CGSize(width: 80, height: 40)
+        marker.minimumSize = CGSize(width: 80.dp, height: 40.dp)
         barChartView.marker = marker
         
         var dataEntries: [BarChartDataEntry] = []

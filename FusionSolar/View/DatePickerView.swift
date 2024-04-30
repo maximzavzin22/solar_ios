@@ -27,7 +27,6 @@ class DatePickerView: UIView {
     
     var viewBottomConstraint: NSLayoutConstraint?
     var height: CGFloat = 0
-    var bottomSafeArea: CGFloat = 0
     
     let blackoutView: UIView = {
         let view = UIView()
@@ -151,7 +150,7 @@ class DatePickerView: UIView {
         datePicker.centerXAnchor.constraint(equalTo: borderView.centerXAnchor).isActive = true
         buttonsView.centerXAnchor.constraint(equalTo: borderView.centerXAnchor).isActive = true
         
-        buttonsView.bottomAnchor.constraint(equalTo: borderView.bottomAnchor, constant: -1 * bottomSafeArea).isActive = true
+        buttonsView.bottomAnchor.constraint(equalTo: borderView.bottomAnchor, constant: -1 * HomeController.bottomSafeArea).isActive = true
         datePicker.addTarget(self, action: #selector(self.datePickerChanged), for: .valueChanged)
     }
     

@@ -712,7 +712,7 @@ class StationChartsView: UIView {
                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8),
                                   xAxisValueFormatter: barChartView.xAxis.valueFormatter!)
         marker.chartView = barChartView
-        marker.minimumSize = CGSize(width: 80, height: 40)
+        marker.minimumSize = CGSize(width: 80.dp, height: 40.dp)
         barChartView.marker = marker
         
         var dataEntries: [BarChartDataEntry] = []
@@ -766,7 +766,7 @@ class StationChartsView: UIView {
                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8),
                                   xAxisValueFormatter: revenueBarChartView.xAxis.valueFormatter!)
         marker.chartView = revenueBarChartView
-        marker.minimumSize = CGSize(width: 80, height: 40)
+        marker.minimumSize = CGSize(width: 80.dp, height: 40.dp)
         revenueBarChartView.marker = marker
         
         var dataEntries: [BarChartDataEntry] = []

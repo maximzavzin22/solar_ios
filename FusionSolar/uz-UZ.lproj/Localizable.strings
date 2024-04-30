@@ -411,26 +411,26 @@ Sabab ID 3: O'zgarmas tok o'chirgichlarining kontaktlari qotib qolgan.";
 "alarm_cause_2094"="Qolgan zaryadsizlanadigan batareya quvvati avtonom rejimda batareyaning umumiy hajmining 10% dan kamini tashkil qilmoqda.";
 "alarm_suggestion_2094"="Qolgan batareya quvvati kam. Iltimos, zaxira quvvat muddatini oshirish uchun keraksiz yuklarni o'chirib tashlang.";
 //
-"alarm_name_999999999"="Бошқарув тизими ва ускуналар ўртасидаги ғайритабиий алоқа";
-"alarm_cause_999999999"="Бошқарув тизими ва ускуналар ўртасидаги ғайритабиий алоқа";
-"alarm_suggestion_999999999"="1-сценарий: тармоқ кабели орқали қурилма уланиши.
-1. Роутернинг тармоқ ва кабел алоқаси нормал ёки йўқлигини текширинг.
-2. Роутер тармоғи умумий тармоққа кира оладими ёки йўқлигини текширинг.
+"alarm_name_999999999"="Boshqaruv tizimi va uskunalar o'rtasidagi g'ayritabiiy aloqa";
+"alarm_cause_999999999"="Boshqaruv tizimi va uskuna o'rtasidagi g'ayritabiiy aloqa";
+"alarm_suggestion_999999999"="1-stsenariy: tarmoq kabeli orqali qurilma ulanishi.
+1. Routerning tarmoq va kabel aloqasi normal yoki yo'qligini tekshiring.
+2. Router tarmog'i umumiy tarmoqqa kira oladimi yoki yo'qligini tekshiring.
 
-Сценарий 2: Wи-Фи орқали қурилма уланиши.
-1. Роутер пароли ўзгарганлигини ёки сигнал кучсизлигини текширинг.
-2. Роутер тармоғи умумий тармоққа кира оладими ёки йўқлигини текширинг.
+2-stsenariy: Wi-Fi orqali qurilma ulanishi.
+1. Router paroli o'zgarganligini yoki signal kuchsizligini tekshiring.
+2. Router tarmog'i umumiy tarmoqqa kira oladimi yoki yo'qligini tekshiring.
 
-Сценарий 3: 4Г тармоғи орқали қурилма уланиши.
-СИМ-карта нотўғри ўрнатилганми ёки кечиктирилганми ёки унинг тармоғи анормал еканлигини текширинг.
+Stsenariy 3: 4G tarmog'i orqali qurilma ulanishi.
+SIM-karta noto'g'ri o'rnatilgan yoki kechiktirilganligini yoki uning tarmog'i anormal ekanligini tekshiring.
 
-Сценарий 4: Ускунанинг ён тизимидаги електр қувватининг узилиши.
-Илтимос, ускунанинг қуввати тикланганлигини текширинг.";
-"alarm_name_2061"="Ғайритабиий топраклама";
-"alarm_cause_2061"="1. Қурилманинг нейтрал сими ёки ПЕ кабели уланмаган.
-2. Қурилма учун ўрнатилган чиқиш режими ҳақиқий кабел уланишига мос келмайди.";
-"alarm_suggestion_2061"="Қурилмани ўчиринг (AC ва ДC калитини ўчиринг ва қурилма хавфсизлиги огоҳлантириш ёрлиғида кўрсатилган вақтни кутинг) ва кейин қуйидаги амалларни бажаринг:
-1. Қурилманинг ПЕ кабели тўғри уланганлигини текширинг.
-2. Aгар қурилма ТН електр тармоғига уланган бўлса, нейтрал симнинг тўғри уланганлигини ва ерга кучланиш нормал ёки йўқлигини текширинг.
-3. Қурилмани ёққанингиздан сўнг, қурилмада ўрнатилган чиқиш режими ҳақиқий кабел уланишига мос келишини текширинг.";
+Stsenariy 4: Uskunaning yon tizimidagi elektr quvvatining uzilishi.
+Iltimos, uskunaning quvvati tiklanganligini tekshiring.";
+"alarm_name_2061"="G'ayritabiiy topraklama";
+"alarm_cause_2061"="1. Qurilmaning neytral simi yoki PE kabeli ulanmagan.
+2. Qurilma uchun o'rnatilgan chiqish rejimi haqiqiy kabel ulanishiga mos kelmaydi.";
+"alarm_suggestion_2061"="Qurilmani o'chiring (AC va DC kalitini o'chiring va qurilma xavfsizligi ogohlantirish yorlig'ida ko'rsatilgan vaqtni kuting) va keyin quyidagi amallarni bajaring:
+1. Qurilmaning PE kabeli to'g'ri ulanganligini tekshiring.
+2. Agar qurilma TN elektr tarmog'iga ulangan bo'lsa, neytral simning to'g'ri ulanganligini va erga kuchlanish normal yoki yo'qligini tekshiring.
+3. Qurilmani yoqqaningizdan so'ng, qurilmada o'rnatilgan chiqish rejimi haqiqiy kabel ulanishiga mos kelishini tekshiring.";
 //
