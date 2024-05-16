@@ -362,10 +362,14 @@ class BasicInfoController: UIViewController, UINavigationControllerDelegate, UIS
     }
     
     @objc func directionButtonPress() {
-        self.openApp(appName: "", longitude: 41.3158263, latitude: 69.2758336)
+        if let longitude = self.station?.longitude {
+            if let latitude = self.station?.latitude {
+                self.openApp(appName: "", longitude: longitude, latitude: latitude)
+            }
+        }
     }
     
-    func openApp(appName:String, longitude: Double, latitude: Double) {
+    func openApp(appName:String, longitude: String, latitude: String) {
            let appScheme = "yandexnavi://"
            let appUrl = URL(string: appScheme)
            if UIApplication.shared.canOpenURL(appUrl! as URL)
@@ -373,7 +377,6 @@ class BasicInfoController: UIViewController, UINavigationControllerDelegate, UIS
                let url = "yandexnavi://build_route_on_map?lat_to=\(latitude)&lon_to=\(longitude)"
                UIApplication.shared.openURL(URL(string:url)!)
            } else {
-               print("App not installed")
                let url = "http://maps.apple.com/maps?daddr=\(latitude),\(longitude)"
                UIApplication.shared.openURL(URL(string:url)!)
            }

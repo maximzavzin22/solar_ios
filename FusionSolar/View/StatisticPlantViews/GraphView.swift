@@ -474,10 +474,10 @@ class GraphView: UIView {
         let marker = XYMarkerView(color: UIColor(white: 180/250, alpha: 1),
                                   font: .systemFont(ofSize: 12.dp),
                                   textColor: .white,
-                                  insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8),
+                                  insets: UIEdgeInsets(top: 8.dp, left: 8.dp, bottom: 20.dp, right: 8.dp),
                                   xAxisValueFormatter: barChartView.xAxis.valueFormatter!)
         marker.chartView = barChartView
-        marker.minimumSize = CGSize(width: 80.dp, height: 40.dp)
+        marker.minimumSize = CGSize(width: 80.dp, height: 50.dp)
         barChartView.marker = marker
         
         var dataEntries: [BarChartDataEntry] = []

@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class StatisticPlantView: UIView, UIScrollViewDelegate {
+class StatisticPlantView: UIView, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     var homeController: HomeController?
     
@@ -98,8 +98,8 @@ class StatisticPlantView: UIView, UIScrollViewDelegate {
     lazy var contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.bounces = false
         scrollView.delegate = self
+        scrollView.bounces = false
         return scrollView
     }()
     
@@ -189,15 +189,16 @@ class StatisticPlantView: UIView, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollViewDidScroll")
         if scrollView.contentOffset.x != 0 {
             scrollView.contentOffset.x = 0
         }
     }
     
     func setScrollViewHeight() {
+        let screenWidth = UIScreen.main.bounds.width
+        self.contentScrollView.isScrollEnabled = true
         let contentScrollViewHeight = 196.dp + 16.dp + 434.dp + 16.dp + height + 16.dp + 218.dp + 16.dp
-        self.contentScrollView.contentSize = CGSize(width: 390.dp, height: contentScrollViewHeight)
+        self.contentScrollView.contentSize = CGSize(width: screenWidth, height: contentScrollViewHeight)
     }
     
     func getTopStations() {

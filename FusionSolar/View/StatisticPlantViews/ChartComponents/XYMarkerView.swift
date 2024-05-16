@@ -22,10 +22,11 @@ public class XYMarkerView: BalloonMarker {
     }
     
     public override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
-        let string = ""
-            + xAxisValueFormatter.stringForValue(entry.x, axis: XAxis())
-            + "\n"
-            + yFormatter.string(from: NSNumber(floatLiteral: entry.y))!
+//        let string = ""
+//            + xAxisValueFormatter.stringForValue(entry.x, axis: XAxis())
+//            + "\n"
+//            + yFormatter.string(from: NSNumber(floatLiteral: entry.y))!
+        let string = "\(yFormatter.string(from: NSNumber(floatLiteral: entry.y)) ?? "")"
         setLabel(string)
     }
     

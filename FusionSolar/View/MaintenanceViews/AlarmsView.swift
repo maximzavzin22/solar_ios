@@ -33,7 +33,7 @@ class AlarmsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
     
     var showAlarms: [Alarm]? {
         didSet {
-            dump(showAlarms)
+//            dump(showAlarms)
             if let count = self.showAlarms?.count {
                 if(count > 0) {
                     emptyView.isHidden = true

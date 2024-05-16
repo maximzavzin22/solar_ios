@@ -121,6 +121,15 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         return cv
     }()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(self.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.rgb(101, green: 142, blue: 245)
+        return refreshControl
+    }()
+    
     let emptyView: EmptyDataView = {
         let view = EmptyDataView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -366,6 +375,7 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         collectionView.register(PlantCellView.self, forCellWithReuseIdentifier: "plantCellViewId")
         collectionView.contentInset = UIEdgeInsets(top: 16.dp, left: 0, bottom: 66.dp, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 16.dp, left: 0, bottom: 66.dp, right: 0)
+        collectionView.addSubview(refreshControl)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -398,5 +408,10 @@ class PlantsView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, 
         }
     }
     //collectionView Setup end
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        self.homeView?.homeController?.fetchStations()
+        refreshControl.endRefreshing()
+    }
 }
 
